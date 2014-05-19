@@ -1,18 +1,22 @@
 class AppliedTechniquesController < ApplicationController
   def aikido
-    @selection, @video = videos("Aikido", "Rank")
+    @type = "aikido"
+    @selection, @video = videos(@type.titleize, "Rank")
     @default_filter = "Rank"
   end
 
   def iaido
-    @selection, @video = videos("Iaido", "Rank")
+    @type = "iaido"
+    @selection, @video = videos(@type.titleize, "Rank")
     @default_filter = "Rank"
+    render :aikido
   end
 
   # ajax calls
   def filtered_list
     @selection, @video = videos(params[:type], params[:filter_type])
     @default_filter = params[:filter_type]
+    @type = params[:type]
   end
 
   def remote_show
