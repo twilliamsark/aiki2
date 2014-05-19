@@ -1,0 +1,47 @@
+<div id="filter_results">
+
+  <h3>Select an <%= type.titleize %> video</h3>
+  <h4>by <%= filter.pluralize %></h4>
+
+  <% if selection && selection.any? %>
+    <div class="panel-group" id="accordion">
+      <%
+        first = true
+        selection.each do |key, techniques|
+      %>
+        <div class="panel panel-default">
+
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= key.id %>">
+                <ul>
+                  <li class="no_bullet_list"><%= key.name %></li>
+                  <li class="no_bullet_list_indented"><%= key.description %></li>
+                </ul>
+              </a>
+            </h4>
+          </div>
+
+          <div id="collapse<%= key.id %>" class="panel-collapse collapse<%= first ? ' in' : '' %>">
+            <% first = false %>
+            <div class="panel-body">
+              <ul>
+                <% techniques.each do |t| %>
+                  <li class="no_bullet_list">
+                    <%=
+                      link_to "#{t[:list_name]}",
+                        remote_show_url(t[:video].id),
+                        remote: true
+                    %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      <% end %>
+    </div>
+  <% end %>
+</div>

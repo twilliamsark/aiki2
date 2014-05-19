@@ -1,0 +1,23 @@
+<header class="navbar navbar-inverse" role="navigation">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 center">
+        <%= image_tag 'ssj_mon_color_web.gif' %>
+      </div>
+      <div class="col-md-6 center">
+        <h1>Aikido Center of San Antonio</h1>
+        <h2>Video Library</h2>
+        <p>a Yurusu Aikido Dojo</p>
+      </div>
+      <div class="col-md-3 center">
+        <%= image_tag 'nishio_patch.gif' %>
+      </div>
+    </div>
+    <% if SHOW_MENU %>
+      <ul class="nav navbar-nav">
+        <li id="nav_aikido"><%= link_to "Aikido", applied_techniques_aikido_path %></li>
+        <li id="nav_iaido"><%= link_to "Iaido", applied_techniques_iaido_path %></li>
+      </ul>
+    <% end %>
+  </div>
+</header>

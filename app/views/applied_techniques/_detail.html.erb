@@ -1,0 +1,21 @@
+<h1><%= applied_technique.name %></h1>
+<% if SHOW_DEBUG %>
+  <h2>(<%= youtube_code %>)</h2>
+<% end %>
+<ul class="left_align">
+  <% if applied_technique.waza %>
+    <li class="no_bullet_list"><strong><%= applied_technique.waza.name %>:</strong> <%= applied_technique.waza.description %></li>
+  <% end %>
+  <% if applied_technique.stance %>
+    <li class="no_bullet_list"><strong><%= applied_technique.stance.name %>:</strong> <%= applied_technique.stance.description %></li>
+  <% end %>
+  <% if applied_technique.attack %>
+    <li class="no_bullet_list"><strong><%= applied_technique.attack.name %>:</strong> <%= applied_technique.attack.description %></li>
+  <% end %>
+  <% if applied_technique.technique %>
+    <li class="no_bullet_list"><strong><%= applied_technique.technique.name %>:</strong> <%= applied_technique.technique.description %></li>
+  <% end %>
+  <% if applied_technique.direction %>
+    <li class="no_bullet_list"><strong><%= applied_technique.direction.name %>:</strong> <%= applied_technique.direction.description %></li>
+  <% end %>
+</ul>

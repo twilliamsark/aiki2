@@ -1,0 +1,20 @@
+<div id="vid" class="vid_area">
+  <% if video %>
+    <%= render 'applied_techniques/detail', applied_technique: video.applied_technique, youtube_code: video.youtube_code %>
+  <% else %>
+    <h1><em>Please select a video</em></h1>
+  <% end %>
+  <% if Video.show_video?(video) %>
+    <div class="videowrapper">
+      <iframe class="movie" width="560" height="315" src="http://www.youtube.com/embed/<%= video.youtube_code %>?rel=0" frameborder="1" allowfullscreen></iframe>
+    </div>
+  <% else %>
+    <%= image_tag 'nishio_patch.gif' %>
+    <% unless video && video.show_video? %>
+      <h2>Video not yet uploaded</h2>
+    <% end %>
+  <% end %>
+</div>
+
+
+

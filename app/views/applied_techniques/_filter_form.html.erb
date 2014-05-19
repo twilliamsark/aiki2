@@ -1,0 +1,18 @@
+<div id="filter_form">
+  <% if FILTERING %>
+    <%= form_tag applied_techniques_filtered_list_url, method: :get, remote: true do %>
+      <%
+        options = %w(Rank)
+        options += %w(Technique Attack Stance) if type == 'aikido'
+        options += %w(Kata) if type == 'iaido'
+      %>
+      <%= label_tag "filter_type", "Filter By:" %>
+      <%= select_tag "filter_type", options_for_select(options, selected: filter) %>
+      <%= hidden_field_tag "type", type.titleize %>
+
+      <%= submit_tag 'Filter' %>
+    <% end %>
+  <% else %>
+    <br/>
+  <% end %>
+</div>

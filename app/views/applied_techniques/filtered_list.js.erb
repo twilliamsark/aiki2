@@ -1,0 +1,2 @@
+$("#filter_results").replaceWith("<%= escape_javascript(render('video_list', selection: @selection, filter: @default_filter)) %>")
+$("#vid").replaceWith("<%= escape_javascript(render('shared/video', video: @video)) %>")
