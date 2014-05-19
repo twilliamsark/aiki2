@@ -11,9 +11,17 @@ body {
   // padding-top: 240px;
 }
 
+.aiki_header {
+  background-color: white;
+  border: 1px solid black;
+}
+
 .center {
   text-align: center;
-  color: white;
+}
+
+.header_image {
+  transform: translateY(20%);
 }
 
 .vid_area {
