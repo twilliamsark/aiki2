@@ -4,8 +4,8 @@
       <%
         options = %w(Rank)
         if type == 'aikido'
+          options += %w(Technique Attack Stance Format)
           options += ['Testing Level']
-          options += %w(Technique Attack Stance)
         end
         options += %w(Kata) if type == 'iaido'
       %>
