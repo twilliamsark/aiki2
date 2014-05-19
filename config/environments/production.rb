@@ -2,6 +2,7 @@ VIDEOS_ONLINE = true
 FILTERING = true
 SHOW_MENU = true
 SHOW_DEBUG = false
+CHECK_YOUTUBE = false
 
 Aiki::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.

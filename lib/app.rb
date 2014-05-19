@@ -17,6 +17,7 @@ module App
   end
 
   def self.connected_to_youtube?
+    return true unless CHECK_YOUTUBE
     connected = false
     AppLogging.say('Testing YouTube Connection') do
       connected = test_connection('www.youtube.com')
