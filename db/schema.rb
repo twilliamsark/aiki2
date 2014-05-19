@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140517181832) do
+ActiveRecord::Schema.define(version: 20140519150830) do
 
   create_table "applied_techniques", force: true do |t|
     t.integer  "technique_id"
@@ -24,11 +24,13 @@ ActiveRecord::Schema.define(version: 20140517181832) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "art_id"
+    t.integer  "kata_id"
   end
 
   add_index "applied_techniques", ["art_id"], name: "index_applied_techniques_on_art_id"
   add_index "applied_techniques", ["attack_id"], name: "index_applied_techniques_on_attack_id"
   add_index "applied_techniques", ["direction_id"], name: "index_applied_techniques_on_direction_id"
+  add_index "applied_techniques", ["kata_id"], name: "index_applied_techniques_on_kata_id"
   add_index "applied_techniques", ["rank_id"], name: "index_applied_techniques_on_rank_id"
   add_index "applied_techniques", ["stance_id"], name: "index_applied_techniques_on_stance_id"
   add_index "applied_techniques", ["technique_id"], name: "index_applied_techniques_on_technique_id"
@@ -49,6 +51,13 @@ ActiveRecord::Schema.define(version: 20140517181832) do
   end
 
   create_table "directions", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "kata", force: true do |t|
     t.string   "name"
     t.string   "description"
     t.datetime "created_at"

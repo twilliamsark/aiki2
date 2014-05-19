@@ -6,6 +6,7 @@ class AppliedTechnique < ActiveRecord::Base
   belongs_to :waza, inverse_of: :applied_techniques
   belongs_to :rank, inverse_of: :applied_techniques
   belongs_to :art, inverse_of: :applied_techniques
+  belongs_to :kata, inverse_of: :applied_techniques
 
   has_many :videos, inverse_of: :applied_technique
 

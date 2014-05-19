@@ -15,12 +15,12 @@ module HasVideos
 
   module ClassMethods
     def aikido_videos
-      videos = self.default_order.all.map{|r| r.aikido_videos}.flatten
+      videos = self.default_order.map{|r| r.aikido_videos}.flatten
       video_selection(videos)
     end
 
     def iaido_videos
-      videos = self.default_order.all.map{|r| r.iaido_videos}.flatten
+      videos = self.default_order.map{|r| r.iaido_videos}.flatten
       video_selection(videos)
     end
 
