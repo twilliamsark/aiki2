@@ -14,9 +14,9 @@ class AppliedTechniquesController < ApplicationController
 
   # ajax calls
   def filtered_list
-    @selection, @video = videos(params[:type], params[:filter_type])
-    @default_filter = params[:filter_type]
     @type = params[:type]
+    @default_filter = params[:filter_type].gsub(/[[:space:]]/,'')
+    @selection, @video = videos(@type, @default_filter)
   end
 
   def remote_show

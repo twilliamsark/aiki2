@@ -28,7 +28,7 @@ module HasVideos
     def video_selection(videos)
       selection = {}
       videos.each do |video|
-        selection[video.applied_technique.send(self.to_s.downcase)] ||= []
+        selection[video.applied_technique.send(self.to_s.underscore)] ||= []
         entry = {
           video: video,
           list_name: video.applied_technique.name
@@ -36,7 +36,7 @@ module HasVideos
         if SHOW_DEBUG
           entry[:list_name] += "(#{video.youtube_code})"
         end
-        selection[video.applied_technique.send(self.to_s.downcase)] << entry
+        selection[video.applied_technique.send(self.to_s.underscore)] << entry
       end
       selection
     end

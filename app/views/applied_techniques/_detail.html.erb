@@ -6,6 +6,9 @@
   <% if applied_technique.waza %>
     <li class="no_bullet_list"><strong><%= applied_technique.waza.name %>:</strong> <%= applied_technique.waza.description %></li>
   <% end %>
+  <% if applied_technique.testing_level %>
+    <li class="no_bullet_list"><strong><%= applied_technique.testing_level.name %>:</strong> <%= applied_technique.testing_level.description %></li>
+  <% end %>
   <% if applied_technique.stance %>
     <li class="no_bullet_list"><strong><%= applied_technique.stance.name %>:</strong> <%= applied_technique.stance.description %></li>
   <% end %>

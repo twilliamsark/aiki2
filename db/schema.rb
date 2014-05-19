@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140519150830) do
+ActiveRecord::Schema.define(version: 20140519201124) do
 
   create_table "applied_techniques", force: true do |t|
     t.integer  "technique_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140519150830) do
     t.datetime "updated_at"
     t.integer  "art_id"
     t.integer  "kata_id"
+    t.integer  "testing_level_id"
   end
 
   add_index "applied_techniques", ["art_id"], name: "index_applied_techniques_on_art_id"
@@ -34,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140519150830) do
   add_index "applied_techniques", ["rank_id"], name: "index_applied_techniques_on_rank_id"
   add_index "applied_techniques", ["stance_id"], name: "index_applied_techniques_on_stance_id"
   add_index "applied_techniques", ["technique_id"], name: "index_applied_techniques_on_technique_id"
+  add_index "applied_techniques", ["testing_level_id"], name: "index_applied_techniques_on_testing_level_id"
   add_index "applied_techniques", ["waza_id"], name: "index_applied_techniques_on_waza_id"
 
   create_table "arts", force: true do |t|
@@ -81,6 +83,13 @@ ActiveRecord::Schema.define(version: 20140519150830) do
   end
 
   create_table "techniques", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "testing_levels", force: true do |t|
     t.string   "name"
     t.string   "description"
     t.datetime "created_at"

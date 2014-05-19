@@ -3,6 +3,11 @@ Art.seed(:id, [
   {id: 2, name: 'Iaido'}
 ])
 
+TestingLevel.seed(:id, [
+  {id: 1, name: 'Kihon Waza', description: 'Basic Technique'},
+  {id: 2, name: 'Oyo Waza', description: 'Advanced version or application of the technique'}
+])
+
 Stance.seed(:id, [
   {id: 1, name: 'Gyaku Hanmi', description: 'Opposing stance (i.e. uke right foot forward and nage left foot forward)'},
   {id: 2, name: 'Ai Hanmi', description: 'Mirroring stance (i.e. uke and nage have same foot forward)'}
@@ -54,12 +59,12 @@ Technique.seed(:id, [
 ])
 
 AppliedTechnique.seed(:id, [
-  {id: 1, name: 'Gyaku Hanmi Kaiten Nage Omote', art_id: 1, technique_id: 1, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 5, direction_id: 1},
-  {id: 2, name: 'Gyaku Hanmi Kote Gaeshi', art_id: 1, technique_id: 2, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3},
-  {id: 3, name: 'Gyaku Hanmi Shiho Nage',  art_id: 1, technique_id: 3, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 5},
-  {id: 4, name: 'Shohatto Maegiri',        art_id: 2, kata_id: 1, rank_id: 5},
-  {id: 5, name: 'Ukenagashi',              art_id: 2, kata_id: 2, rank_id: 5},
-  {id: 6, name: 'Ukenagashi Variation',    art_id: 2, kata_id: 2, rank_id: 5}
+  {id: 1, name: 'Gyaku Hanmi Kaiten Nage Omote',  art_id: 1, testing_level_id: 1, technique_id: 1, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 5, direction_id: 1},
+  {id: 2, name: 'Gyaku Hanmi Kote Gaeshi',        art_id: 1, testing_level_id: 1, technique_id: 2, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3},
+  {id: 3, name: 'Gyaku Hanmi Shiho Nage',         art_id: 1, testing_level_id: 1, technique_id: 3, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 5},
+  {id: 4, name: 'Shohatto Maegiri',               art_id: 2, kata_id: 1, rank_id: 5},
+  {id: 5, name: 'Ukenagashi',                     art_id: 2, kata_id: 2, rank_id: 5},
+  {id: 6, name: 'Ukenagashi Variation',           art_id: 2, kata_id: 2, rank_id: 5}
 ])
 
 Video.seed(:id, [

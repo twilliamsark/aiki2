@@ -3,7 +3,10 @@
     <%= form_tag applied_techniques_filtered_list_url, method: :get, remote: true do %>
       <%
         options = %w(Rank)
-        options += %w(Technique Attack Stance) if type == 'aikido'
+        if type == 'aikido'
+          options += ['Testing Level']
+          options += %w(Technique Attack Stance)
+        end
         options += %w(Kata) if type == 'iaido'
       %>
       <%= label_tag "filter_type", "Filter By:" %>
