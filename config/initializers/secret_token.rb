@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Aiki::Application.config.secret_key_base = 'e3943f6c65a19f470d2acfe07f97e7fa2599cd7da6b8202d55936fdbf3dbe5176c1d99dd1b6806657aef9281e97d114f1e5d36db50d1bf023d2f2542524f8215'
+
+#Michael Hartl. Ruby on Rails Tutorial (Kindle Locations 2115-2130). railstutorial.org.
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file) # Use the existing token.
+    File.read(token_file).chomp
+  else # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Aiki::Application.config.secret_key_base = secure_token
