@@ -66,7 +66,8 @@ Technique.seed(:id, [
   {id: 3, name: 'Shiho Nage',   description: 'Four corners throw'},
   {id: 4, name: 'Ikkyo',        description: 'Wrist technique, generally palm down'},
   {id: 5, name: 'Irimi Nage',   description: 'Entering Throw'},
-  {id: 6, name: 'Nikkyo',       description: "Wrist technique, pressure applied on wrist towards Uke's body"}
+  {id: 6, name: 'Nikkyo',       description: "Wrist technique, pressure applied on wrist towards Uke's body"},
+  {id: 7, name: 'Jo Kata',      description: 'Sequential movements with a Jo'}
 ])
 
 AppliedTechnique.seed(:id, [
@@ -78,13 +79,15 @@ AppliedTechnique.seed(:id, [
   {id: 7,   name: 'Ushirogiri',                     art_id: 2, kata_id: 3, rank_id: 5},
   {id: 8,   name: 'Ushirogiri Variation',           art_id: 2, kata_id: 3, rank_id: 5},
   {id: 9,   name: 'Ushirogiri Kiriage Variation',   art_id: 2, kata_id: 3, rank_id: 5},
+
   {id: 3,   name: 'Gyaku Hanmi Shiho Nage',         art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 3, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 5},
-  {id: 10,  name: 'Irimi Nage Backstretch',         art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 5, attack_id: 1, stance_id: 2, waza_id: 1, rank_id: 9},
+  {id: 10,  name: 'Ai Hanmi Irimi Nage Backstretch',art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 5, attack_id: 1, stance_id: 2, waza_id: 1, rank_id: 9},
   {id: 11,  name: 'Gyaku Hanmi Nikkyo Ura',         art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 6, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3, direction_id: 2},
   {id: 12,  name: 'Gyaku Hanmi Kote Gaeshi Jodan',  art_id: 1,                      format_id: 1, technique_id: 2, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 9},
   {id: 13,  name: 'Gyaku Hanmi Irimi Nage',         art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 5, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3},
   {id: 14,  name: 'Gyaku Hanmi Ikkyo Ura',          art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 4, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3, direction_id: 2},
-  {id: 15,  name: 'Gyaku Hanmi Ikkyo Omote',        art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 4, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3, direction_id: 1}
+  {id: 15,  name: 'Gyaku Hanmi Ikkyo Omote',        art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 4, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3, direction_id: 1},
+  {id: 16,  name: 'Jo Kata 1',                      art_id: 1, testing_level_id: 1,               technique_id: 7,                                         rank_id: 3}
 ])
 
 Video.seed(:id, [
@@ -96,13 +99,15 @@ Video.seed(:id, [
   {id: 7,   applied_technique_id: 7,  youtube_code: 'UyxKnC0S-VA'},
   {id: 8,   applied_technique_id: 8,  youtube_code: 'HakhxTqMTPo'},
   {id: 9,   applied_technique_id: 9,  youtube_code: 'SL0kRTT1Y0U'},
-  {id: 3,   applied_technique_id: 3,  youtube_code: 'n/a'},
-  {id: 10,  applied_technique_id: 10, youtube_code: 'n/a'},
-  {id: 11,  applied_technique_id: 11, youtube_code: 'n/a'},
-  {id: 12,  applied_technique_id: 12, youtube_code: 'n/a'},
-  {id: 13,  applied_technique_id: 13, youtube_code: 'n/a'},
-  {id: 14,  applied_technique_id: 14, youtube_code: 'n/a'},
-  {id: 15,  applied_technique_id: 14, youtube_code: 'n/a'},
-  {id: 16,  applied_technique_id: 15, youtube_code: 'n/a'},
-  {id: 17,  applied_technique_id: 15, youtube_code: 'n/a'}
+
+  {id: 3,   applied_technique_id: 3,  youtube_code: 'G1NHjOGYXbU'},
+  {id: 10,  applied_technique_id: 10, youtube_code: 'yVsO1Q18u0c'},
+  {id: 11,  applied_technique_id: 11, youtube_code: 'xxyGZ2TWmKE'},
+  {id: 12,  applied_technique_id: 12, youtube_code: 'AZ8PfWKlNDE'},
+  {id: 13,  applied_technique_id: 13, youtube_code: 'hH21Xdivvo0'},
+  {id: 14,  applied_technique_id: 14, youtube_code: 'sk9YHsTBQck'},
+  {id: 15,  applied_technique_id: 14, youtube_code: 'oSlynDDLxAE'},
+  {id: 16,  applied_technique_id: 15, youtube_code: 'ZxuDokKK2w8'},
+  {id: 17,  applied_technique_id: 15, youtube_code: 'Pf2yV0dJuRs'},
+  {id: 18,  applied_technique_id: 16, youtube_code: 'n/a'}
 ])
