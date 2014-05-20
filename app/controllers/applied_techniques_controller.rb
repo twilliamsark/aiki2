@@ -7,8 +7,8 @@ class AppliedTechniquesController < ApplicationController
 
   def iaido
     @type = "iaido"
-    @selection, @video = videos(@type.titleize, "Rank")
-    @default_filter = "Rank"
+    @selection, @video = videos(@type.titleize, "Kata")
+    @default_filter = "Kata"
     render :aikido
   end
 

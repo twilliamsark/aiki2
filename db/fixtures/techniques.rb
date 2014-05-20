@@ -72,14 +72,20 @@ AppliedTechnique.seed(:id, [
   {id: 3, name: 'Gyaku Hanmi Shiho Nage',         art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 3, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 5},
   {id: 4, name: 'Shohatto Maegiri',               art_id: 2, kata_id: 1, rank_id: 5},
   {id: 5, name: 'Ukenagashi',                     art_id: 2, kata_id: 2, rank_id: 5},
-  {id: 6, name: 'Ukenagashi Variation',           art_id: 2, kata_id: 2, rank_id: 5}
+  {id: 6, name: 'Ukenagashi Variation',           art_id: 2, kata_id: 2, rank_id: 5},
+  {id: 7, name: 'Ushirogiri',                     art_id: 2, kata_id: 3, rank_id: 5},
+  {id: 8, name: 'Ushirogiri Variation',           art_id: 2, kata_id: 3, rank_id: 5},
+  {id: 9, name: 'Ushirogiri Kiriage Variation',   art_id: 2, kata_id: 3, rank_id: 5}
 ])
 
 Video.seed(:id, [
   {id: 1, applied_technique_id: 1, youtube_code: 'uz_HX7XSw_E'},
   {id: 2, applied_technique_id: 2, youtube_code: 'QfRIObuixRg'},
   {id: 3, applied_technique_id: 3, youtube_code: 'n/a'},
-  {id: 4, applied_technique_id: 4, youtube_code: 'n/a'},
-  {id: 5, applied_technique_id: 5, youtube_code: 'n/a'},
-  {id: 6, applied_technique_id: 6, youtube_code: 'n/a'}
+  {id: 4, applied_technique_id: 4, youtube_code: 'lYLsqOANqZ4'},
+  {id: 5, applied_technique_id: 5, youtube_code: 'bwYeN-OrFuU'},
+  {id: 6, applied_technique_id: 6, youtube_code: '81XmB2XTxmA'},
+  {id: 7, applied_technique_id: 7, youtube_code: 'UyxKnC0S-VA'},
+  {id: 8, applied_technique_id: 8, youtube_code: 'HakhxTqMTPo'},
+  {id: 9, applied_technique_id: 9, youtube_code: 'SL0kRTT1Y0U'}
 ])
