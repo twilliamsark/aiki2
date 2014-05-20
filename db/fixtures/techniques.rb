@@ -13,7 +13,8 @@ Format.seed(:id, [
   {id: 2, name: 'Ken no Tebiki',  description: 'With sword guidance (one person with boken)'},
   {id: 3, name: 'Jo no Tebiki',   description: 'With jo guidance (one person with jo)'},
   {id: 4, name: 'Ken ti Ken',     description: 'Sword vs Sword (bokens)'},
-  {id: 5, name: 'Ken ti Jo',      description: 'Sword(boken) vs Jo'}
+  {id: 5, name: 'Ken ti Jo',      description: 'Sword(boken) vs Jo'},
+  {id: 6, name: 'Suburi',         description: 'A single movement using the ken or jo, done as a solo practice'}
 ])
 
 Stance.seed(:id, [
@@ -87,7 +88,7 @@ AppliedTechnique.seed(:id, [
   {id: 13,  name: 'Gyaku Hanmi Irimi Nage',         art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 5, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3},
   {id: 14,  name: 'Gyaku Hanmi Ikkyo Ura',          art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 4, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3, direction_id: 2},
   {id: 15,  name: 'Gyaku Hanmi Ikkyo Omote',        art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 4, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3, direction_id: 1},
-  {id: 16,  name: 'Jo Kata 1',                      art_id: 1, testing_level_id: 1,               technique_id: 7,                                         rank_id: 3}
+  {id: 16,  name: 'Jo Kata 1',                      art_id: 1, testing_level_id: 1, format_id: 6, technique_id: 7,                                         rank_id: 3}
 ])
 
 Video.seed(:id, [
