@@ -61,31 +61,48 @@ Kata.seed(:id, [
 ])
 
 Technique.seed(:id, [
-  {id: 1, name: 'Kaiten Nage', description: 'Rotary throw'},
-  {id: 2, name: 'Kote Gaeshi', description: 'Wrist turn out'},
-  {id: 3, name: 'Shiho Nage', description: 'Four corners throw'}
+  {id: 1, name: 'Kaiten Nage',  description: 'Rotary throw'},
+  {id: 2, name: 'Kote Gaeshi',  description: 'Wrist turn out'},
+  {id: 3, name: 'Shiho Nage',   description: 'Four corners throw'},
+  {id: 4, name: 'Ikkyo',        description: 'Wrist technique, generally palm down'},
+  {id: 5, name: 'Irimi Nage',   description: 'Entering Throw'},
+  {id: 6, name: 'Nikkyo',       description: "Wrist technique, pressure applied on wrist towards Uke's body"}
 ])
 
 AppliedTechnique.seed(:id, [
-  {id: 1, name: 'Gyaku Hanmi Kaiten Nage Omote',  art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 1, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 5, direction_id: 1},
-  {id: 2, name: 'Gyaku Hanmi Kote Gaeshi',        art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 2, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3},
-  {id: 3, name: 'Gyaku Hanmi Shiho Nage',         art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 3, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 5},
-  {id: 4, name: 'Shohatto Maegiri',               art_id: 2, kata_id: 1, rank_id: 5},
-  {id: 5, name: 'Ukenagashi',                     art_id: 2, kata_id: 2, rank_id: 5},
-  {id: 6, name: 'Ukenagashi Variation',           art_id: 2, kata_id: 2, rank_id: 5},
-  {id: 7, name: 'Ushirogiri',                     art_id: 2, kata_id: 3, rank_id: 5},
-  {id: 8, name: 'Ushirogiri Variation',           art_id: 2, kata_id: 3, rank_id: 5},
-  {id: 9, name: 'Ushirogiri Kiriage Variation',   art_id: 2, kata_id: 3, rank_id: 5}
+  {id: 1,   name: 'Gyaku Hanmi Kaiten Nage Omote',  art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 1, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 5, direction_id: 1},
+  {id: 2,   name: 'Gyaku Hanmi Kote Gaeshi',        art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 2, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3},
+  {id: 4,   name: 'Shohatto Maegiri',               art_id: 2, kata_id: 1, rank_id: 5},
+  {id: 5,   name: 'Ukenagashi',                     art_id: 2, kata_id: 2, rank_id: 5},
+  {id: 6,   name: 'Ukenagashi Variation',           art_id: 2, kata_id: 2, rank_id: 5},
+  {id: 7,   name: 'Ushirogiri',                     art_id: 2, kata_id: 3, rank_id: 5},
+  {id: 8,   name: 'Ushirogiri Variation',           art_id: 2, kata_id: 3, rank_id: 5},
+  {id: 9,   name: 'Ushirogiri Kiriage Variation',   art_id: 2, kata_id: 3, rank_id: 5},
+  {id: 3,   name: 'Gyaku Hanmi Shiho Nage',         art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 3, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 5},
+  {id: 10,  name: 'Irimi Nage Backstretch',         art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 5, attack_id: 1, stance_id: 2, waza_id: 1, rank_id: 9},
+  {id: 11,  name: 'Gyaku Hanmi Nikkyo Ura',         art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 6, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3, direction_id: 2},
+  {id: 12,  name: 'Gyaku Hanmi Kote Gaeshi Jodan',  art_id: 1,                      format_id: 1, technique_id: 2, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 9},
+  {id: 13,  name: 'Gyaku Hanmi Irimi Nage',         art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 5, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3},
+  {id: 14,  name: 'Gyaku Hanmi Ikkyo Ura',          art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 4, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3, direction_id: 2},
+  {id: 15,  name: 'Gyaku Hanmi Ikkyo Omote',        art_id: 1, testing_level_id: 1, format_id: 1, technique_id: 4, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3, direction_id: 1}
 ])
 
 Video.seed(:id, [
-  {id: 1, applied_technique_id: 1, youtube_code: 'uz_HX7XSw_E'},
-  {id: 2, applied_technique_id: 2, youtube_code: 'QfRIObuixRg'},
-  {id: 3, applied_technique_id: 3, youtube_code: 'n/a'},
-  {id: 4, applied_technique_id: 4, youtube_code: 'lYLsqOANqZ4'},
-  {id: 5, applied_technique_id: 5, youtube_code: 'bwYeN-OrFuU'},
-  {id: 6, applied_technique_id: 6, youtube_code: '81XmB2XTxmA'},
-  {id: 7, applied_technique_id: 7, youtube_code: 'UyxKnC0S-VA'},
-  {id: 8, applied_technique_id: 8, youtube_code: 'HakhxTqMTPo'},
-  {id: 9, applied_technique_id: 9, youtube_code: 'SL0kRTT1Y0U'}
+  {id: 1,   applied_technique_id: 1,  youtube_code: 'uz_HX7XSw_E'},
+  {id: 2,   applied_technique_id: 2,  youtube_code: 'QfRIObuixRg'},
+  {id: 4,   applied_technique_id: 4,  youtube_code: 'lYLsqOANqZ4'},
+  {id: 5,   applied_technique_id: 5,  youtube_code: 'bwYeN-OrFuU'},
+  {id: 6,   applied_technique_id: 6,  youtube_code: '81XmB2XTxmA'},
+  {id: 7,   applied_technique_id: 7,  youtube_code: 'UyxKnC0S-VA'},
+  {id: 8,   applied_technique_id: 8,  youtube_code: 'HakhxTqMTPo'},
+  {id: 9,   applied_technique_id: 9,  youtube_code: 'SL0kRTT1Y0U'},
+  {id: 3,   applied_technique_id: 3,  youtube_code: 'n/a'},
+  {id: 10,  applied_technique_id: 10, youtube_code: 'n/a'},
+  {id: 11,  applied_technique_id: 11, youtube_code: 'n/a'},
+  {id: 12,  applied_technique_id: 12, youtube_code: 'n/a'},
+  {id: 13,  applied_technique_id: 13, youtube_code: 'n/a'},
+  {id: 14,  applied_technique_id: 14, youtube_code: 'n/a'},
+  {id: 15,  applied_technique_id: 14, youtube_code: 'n/a'},
+  {id: 16,  applied_technique_id: 15, youtube_code: 'n/a'},
+  {id: 17,  applied_technique_id: 15, youtube_code: 'n/a'}
 ])
