@@ -2,18 +2,44 @@
   <% if FILTERING %>
     <%= form_tag applied_techniques_video_list_url, method: :get, remote: true do %>
       <%
-        options = %w(Rank)
+        sort_options = %w(Rank)
         if type == 'aikido'
-          options += %w(Technique Attack Stance Format)
-          options += ['Testing Level']
+          sort_options += %w(Technique Attack Stance Format)
+          sort_options += ['Testing Level']
+        elsif type == 'iaido'
+          sort_options += %w(Kata)
         end
-        options += %w(Kata) if type == 'iaido'
       %>
-      <%= label_tag "sort_type", "Sort By:" %>
-      <%= select_tag "sort_type", options_for_select(options, selected: sort_by) %>
+      <div class="row">
+        <div class="col-md-4">
+          <%= label_tag "sort_type", "Sort By:" %>
+        </div>
+        <div class="col-md-8">
+          <%= select_tag "sort_type", options_for_select(sort_options, selected: sort_by) %>
+        </div>
+      </div>
+
+      <% if type == 'aikido' %>
+        <div class="row">
+          <div class="col-md-4">
+            <%= label_tag "format_type", "Filter Format By:" %>
+          </div>
+          <div class="col-md-8">
+            <%= select_tag "format_type", options_from_collection_for_select(Format.all, 'id', 'label', Format::NO_FORMAT) %>
+          </div>
+        </div>
+      <% end %>
+
       <%= hidden_field_tag "type", type.titleize %>
 
-      <%= submit_tag 'Filter' %>
+      <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-8">
+          <%= submit_tag 'Filter' %>
+        </div>
+      </div>
+
     <% end %>
   <% else %>
     <br/>

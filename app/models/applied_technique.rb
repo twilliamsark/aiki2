@@ -14,4 +14,7 @@ class AppliedTechnique < ActiveRecord::Base
 
   scope :aikido_techniques, -> {where(art: Art.aikido)}
   scope :iaido_techniques, -> {where(art: Art.iaido)}
+
+  scope :for_format, ->(format) { where(format_id: format) }
+  scope :for_direction, ->(direction) { where(direction_id: direction) }
 end

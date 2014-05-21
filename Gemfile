@@ -25,6 +25,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development do
+  gem 'awesome_print'
+end
+
 group :development, :test do
   gem 'debugger'
   gem 'rspec-rails', '2.13.1'
