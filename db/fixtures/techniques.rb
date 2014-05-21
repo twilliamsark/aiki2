@@ -56,10 +56,11 @@ Attack.seed(:id, [
 ])
 
 Kata.seed(:id, [
-  {id: 1, name: 'Shohatto Maegiri', description: 'Kata 1'},
-  {id: 2, name: 'Ukenagashi', description: 'Kata 2'},
-  {id: 3, name: 'Ushirogiri', description: 'Kata 3'},
-  {id: 4, name: 'Zengogiri', description: 'Kata 4'}
+  {id: 1, name: 'Supplemental', description: 'Extra katas'},
+  {id: 2, name: 'Shohatto Maegiri', description: 'Kata 1'},
+  {id: 3, name: 'Ukenagashi', description: 'Kata 2'},
+  {id: 4, name: 'Ushirogiri', description: 'Kata 3'},
+  {id: 5, name: 'Zengogiri', description: 'Kata 4'}
 ])
 
 Technique.seed(:id, [
@@ -75,13 +76,12 @@ Technique.seed(:id, [
 AppliedTechnique.seed(:id, [
   {id: 1,   name: 'Gyaku Hanmi Kaiten Nage Omote',  art_id: 1, testing_level_id: 1, format_id: 2, technique_id: 1, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 5, direction_id: 1},
   {id: 2,   name: 'Gyaku Hanmi Kote Gaeshi',        art_id: 1, testing_level_id: 1, format_id: 2, technique_id: 2, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3},
-  {id: 4,   name: 'Shohatto Maegiri',               art_id: 2, kata_id: 1, rank_id: 5},
-  {id: 5,   name: 'Ukenagashi',                     art_id: 2, kata_id: 2, rank_id: 5},
-  {id: 6,   name: 'Ukenagashi Variation',           art_id: 2, kata_id: 2, rank_id: 5},
-  {id: 7,   name: 'Ushirogiri',                     art_id: 2, kata_id: 3, rank_id: 5},
-  {id: 8,   name: 'Ushirogiri Variation',           art_id: 2, kata_id: 3, rank_id: 5},
-  {id: 9,   name: 'Ushirogiri Kiriage Variation',   art_id: 2, kata_id: 3, rank_id: 5},
-
+  {id: 4,   name: 'Shohatto Maegiri',               art_id: 2, kata_id: 2, rank_id: 5},
+  {id: 5,   name: 'Ukenagashi',                     art_id: 2, kata_id: 3, rank_id: 5},
+  {id: 6,   name: 'Ai Hanmi Kata Dori Ikkyo Omote Variation',           art_id: 2, kata_id: 1, rank_id: 5},
+  {id: 7,   name: 'Ushirogiri',                     art_id: 2, kata_id: 4, rank_id: 5},
+  {id: 8,   name: 'Variation to Kata 3',            art_id: 2, kata_id: 1, rank_id: 5},
+  {id: 9,   name: 'Kiriage',                        art_id: 2, kata_id: 1, rank_id: 5},
   {id: 3,   name: 'Gyaku Hanmi Shiho Nage',         art_id: 1, testing_level_id: 1, format_id: 2, technique_id: 3, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 5},
   {id: 10,  name: 'Ai Hanmi Irimi Nage Backstretch',art_id: 1, testing_level_id: 1, format_id: 2, technique_id: 5, attack_id: 1, stance_id: 2, waza_id: 1, rank_id: 9},
   {id: 11,  name: 'Gyaku Hanmi Nikkyo Ura',         art_id: 1, testing_level_id: 1, format_id: 2, technique_id: 6, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3, direction_id: 2},
@@ -101,7 +101,6 @@ Video.seed(:id, [
   {id: 7,   applied_technique_id: 7,  youtube_code: 'UyxKnC0S-VA'},
   {id: 8,   applied_technique_id: 8,  youtube_code: 'HakhxTqMTPo'},
   {id: 9,   applied_technique_id: 9,  youtube_code: 'SL0kRTT1Y0U'},
-
   {id: 3,   applied_technique_id: 3,  youtube_code: 'G1NHjOGYXbU'},
   {id: 10,  applied_technique_id: 10, youtube_code: 'yVsO1Q18u0c'},
   {id: 11,  applied_technique_id: 11, youtube_code: 'xxyGZ2TWmKE'},
