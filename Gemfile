@@ -20,6 +20,9 @@ gem 'jbuilder', '~> 1.2'
 gem 'rr'
 gem 'seed-fu'
 
+gem 'devise'
+gem 'activeadmin', github: 'gregbell/active_admin'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

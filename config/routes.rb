@@ -1,4 +1,6 @@
 Aiki::Application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   root 'applied_techniques#aikido'
   get "applied_techniques/aikido"
   get "applied_techniques/iaido"
