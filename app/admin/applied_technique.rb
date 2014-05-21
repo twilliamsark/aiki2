@@ -1,4 +1,4 @@
-ActiveAdmin.register Video do
+ActiveAdmin.register AppliedTechnique do
 
 
   # See permitted parameters documentation:
@@ -13,5 +13,6 @@ ActiveAdmin.register Video do
   #  permitted << :other if resource.something?
   #  permitted
   # end
-  permit_params :applied_technique_id, :youtube_code
+  permit_params :name, :technique_id, :attack_id, :stance_id, :direction_id, :waza_id, :rank_id, :art_id, :kata_id, :testing_level_id, :format_id
+
 end
