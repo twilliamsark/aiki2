@@ -1,6 +1,6 @@
 <div id="filter_form">
   <% if FILTERING %>
-    <%= form_tag applied_techniques_filtered_list_url, method: :get, remote: true do %>
+    <%= form_tag applied_techniques_video_list_url, method: :get, remote: true do %>
       <%
         options = %w(Rank)
         if type == 'aikido'
@@ -9,8 +9,8 @@
         end
         options += %w(Kata) if type == 'iaido'
       %>
-      <%= label_tag "filter_type", "Filter By:" %>
-      <%= select_tag "filter_type", options_for_select(options, selected: filter) %>
+      <%= label_tag "sort_type", "Sort By:" %>
+      <%= select_tag "sort_type", options_for_select(options, selected: sort_by) %>
       <%= hidden_field_tag "type", type.titleize %>
 
       <%= submit_tag 'Filter' %>

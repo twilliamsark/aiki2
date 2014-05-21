@@ -2,7 +2,7 @@ Aiki::Application.routes.draw do
   root 'applied_techniques#aikido'
   get "applied_techniques/aikido"
   get "applied_techniques/iaido"
-  get "applied_techniques/filtered_list"
+  get "applied_techniques/video_list"
   get "applied_techniques/remote_show/:id" => "applied_techniques#remote_show", as: :remote_show
   resources :applied_techniques
   # The priority is based upon order of creation: first created -> highest priority.
