@@ -16,3 +16,8 @@ $(document).ready ->
   $('#show_filters').click (event) ->
     $('#filter_selection').show('blind')
     $('#filter_buttons').css('display','none')
+
+$(document).ready ->
+  $('#hide_filters').click (event) ->
+    $('#filter_selection').hide('blind')
+    $('#filter_buttons').show('blind')

@@ -9,7 +9,7 @@ TestingLevel.seed(:id, [
 ])
 
 Format.seed(:id, [
-  {id: 1, name: 'None'},
+  {id: 1, name: 'Any'},
   {id: 2, name: 'Tiado',          short_description: 'hand',             description: 'Way of the hand'},
   {id: 3, name: 'Ken no Tebiki',  short_description: 'nage with sword',  description: 'With sword guidance (one person with boken)'},
   {id: 4, name: 'Jo no Tebiki',   short_description: 'nage with jo',     description: 'With jo guidance (one person with jo)'},

@@ -56,8 +56,17 @@ body {
   text-align: left;
 }
 
-.bottom_row {
-  margin-bottom: 10px;
+.drop_down_select {
+  padding-right: 10px;
+}
+
+.filter_buttons {
+  padding-left: 0px;
+}
+
+.lnav_row {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 #filter_selection {
