@@ -41,7 +41,14 @@ module HasVideos
 
   module ClassMethods
     def aikido_videos(filter_options={})
-      filter_options.reverse_merge! format: Format::ANY_FORMAT, technique: Technique::ANY_TECHNIQUE, direction: Direction::ANY_DIRECTION
+      filter_options.reverse_merge!(
+                                    format: Format::ANY_FORMAT,
+                                    technique: Technique::ANY_TECHNIQUE,
+                                    direction: Direction::ANY_DIRECTION,
+                                    stance: Stance::ANY_STANCE,
+                                    waza: Waza::ANY_WAZA,
+                                    testing_level: TestingLevel::ANY_TESTING_LEVEL
+                                    )
 
       videos = self.default_order.map do |a|
         a.aikido_vids(filter_options)

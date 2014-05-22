@@ -1,12 +1,12 @@
 <div id="filter_selection">
   <div class="row lnav_row">
     <div class="col-md-2">
-      <%= label_tag "format_type", "Format:" %>
+      <%= label_tag "stance_type", "Stance:" %>
     </div>
     <div class="col-md-8">
-      <%= select_tag "format_type", options_from_collection_for_select(Format.all, 'id', 'label', Format::ANY_FORMAT) %>
+      <%= select_tag "stance_type", options_from_collection_for_select(Stance.all, 'id', 'label', Stance::ANY_STANCE) %>
     </div>
-    <div class="col-md-2 filter_buttons">
+    <div class="col-md-2">
       <button id="hide_filters">Hide</button>
     </div>
   </div>
@@ -26,6 +26,36 @@
     </div>
     <div class="col-md-8">
       <%= select_tag "direction_type", options_from_collection_for_select(Direction.all, 'id', 'label', Direction::ANY_DIRECTION) %>
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+  <div class="row lnav_row">
+    <div class="col-md-2">
+      <%= label_tag "format_type", "Format:" %>
+    </div>
+    <div class="col-md-8">
+      <%= select_tag "format_type", options_from_collection_for_select(Format.all, 'id', 'label', Format::ANY_FORMAT) %>
+    </div>
+    <div class="col-md-2 filter_buttons">
+    </div>
+  </div>
+  <div class="row lnav_row">
+    <div class="col-md-2">
+      <%= label_tag "waza_type", "Waza:" %>
+    </div>
+    <div class="col-md-8">
+      <%= select_tag "waza_type", options_from_collection_for_select(Waza.all, 'id', 'label', Waza::ANY_WAZA) %>
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+  <div class="row lnav_row">
+    <div class="col-md-2">
+      <%= label_tag "testing_level_type", "Level:" %>
+    </div>
+    <div class="col-md-8">
+      <%= select_tag "testing_level_type", options_from_collection_for_select(TestingLevel.all, 'id', 'label', TestingLevel::ANY_TESTING_LEVEL) %>
     </div>
     <div class="col-md-2">
     </div>

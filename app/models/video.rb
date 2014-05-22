@@ -15,6 +15,18 @@ class Video < ActiveRecord::Base
    ->(technique) { joins(:applied_technique)
                     .merge(AppliedTechnique.for_technique(technique))
                     .merge(AppliedTechnique.aikido_techniques) }
+  scope :for_aikido_stance,
+   ->(stance) { joins(:applied_technique)
+                    .merge(AppliedTechnique.for_stance(stance))
+                    .merge(AppliedTechnique.aikido_techniques) }
+  scope :for_aikido_waza,
+   ->(waza) { joins(:applied_technique)
+                    .merge(AppliedTechnique.for_waza(waza))
+                    .merge(AppliedTechnique.aikido_techniques) }
+  scope :for_aikido_testing_level,
+   ->(testing_level) { joins(:applied_technique)
+                    .merge(AppliedTechnique.for_testing_level(testing_level))
+                    .merge(AppliedTechnique.aikido_techniques) }
 
   def show_video?
     youtube_code && youtube_code != 'n/a'

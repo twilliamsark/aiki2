@@ -26,9 +26,15 @@ class AppliedTechniquesController < ApplicationController
     if params[:direction_type].present?
       filters[:direction] = params[:direction_type]
     end
-    format = params[:format_type] || Format::ANY_FORMAT
-    technique = params[:technique_type] || Format::ANY_TECHNIQUE
-    direction = params[:direction_type] || Format::ANY_DIRECTION
+    if params[:stance_type].present?
+      filters[:stance] = params[:stance_type]
+    end
+    if params[:waza_type].present?
+      filters[:waza] = params[:waza_type]
+    end
+    if params[:testing_level_type].present?
+      filters[:testing_level] = params[:testing_level_type]
+    end
     @selection, @video = videos(@type, @default_sort, filters)
   end
 

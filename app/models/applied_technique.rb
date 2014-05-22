@@ -18,4 +18,7 @@ class AppliedTechnique < ActiveRecord::Base
   scope :for_format, ->(format) { where(format_id: format) }
   scope :for_direction, ->(direction) { where(direction_id: direction) }
   scope :for_technique, ->(technique) { where(technique_id: technique) }
+  scope :for_stance, ->(stance) { where(stance_id: stance) }
+  scope :for_waza, ->(waza) { where(waza_id: waza) }
+  scope :for_testing_level, ->(testing_level) { where(testing_level_id: testing_level) }
 end
