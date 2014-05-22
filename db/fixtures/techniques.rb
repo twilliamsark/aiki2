@@ -9,7 +9,7 @@ TestingLevel.seed(:id, [
 ])
 
 Format.seed(:id, [
-  {id: 1, name: 'Any'},
+  {id: 1, name: 'Any', description: nil},
   {id: 2, name: 'Tiado',          short_description: 'hand',             description: 'Way of the hand'},
   {id: 3, name: 'Ken no Tebiki',  short_description: 'nage with sword',  description: 'With sword guidance (one person with boken)'},
   {id: 4, name: 'Jo no Tebiki',   short_description: 'nage with jo',     description: 'With jo guidance (one person with jo)'},
@@ -30,8 +30,9 @@ Waza.seed(:id, [
 ])
 
 Direction.seed(:id, [
-  {id: 1, name: 'Omote', description: 'Entering in the front'},
-  {id: 2, name: 'Ura', description: 'Entering in the back'}
+  {id: 1, name: 'Any', description: nil},
+  {id: 2, name: 'Omote', short_description: 'front', description: 'Entering in the front'},
+  {id: 3, name: 'Ura', short_description: 'back', description: 'Entering in the back'}
 ])
 
 Rank.seed(:id, [
@@ -64,32 +65,33 @@ Kata.seed(:id, [
 ])
 
 Technique.seed(:id, [
-  {id: 1, name: 'Kaiten Nage',  description: 'Rotary throw'},
-  {id: 2, name: 'Kote Gaeshi',  description: 'Wrist turn out'},
-  {id: 3, name: 'Shiho Nage',   description: 'Four corners throw'},
-  {id: 4, name: 'Ikkyo',        description: 'Wrist technique, generally palm down'},
-  {id: 5, name: 'Irimi Nage',   description: 'Entering Throw'},
-  {id: 6, name: 'Nikkyo',       description: "Wrist technique, pressure applied on wrist towards Uke's body"},
-  {id: 7, name: 'Jo Kata',      description: 'Sequential movements with a Jo'}
+  {id: 1, name: 'Any',          short_description: nil, description: nil},
+  {id: 2, name: 'Kaiten Nage',  short_description: nil, description: 'Rotary throw'},
+  {id: 3, name: 'Kote Gaeshi',  short_description: nil, description: 'Wrist turn out'},
+  {id: 4, name: 'Shiho Nage',   short_description: nil, description: 'Four corners throw'},
+  {id: 5, name: 'Ikkyo',        short_description: nil, description: 'Wrist technique, generally palm down'},
+  {id: 6, name: 'Irimi Nage',   short_description: nil, description: 'Entering Throw'},
+  {id: 7, name: 'Nikkyo',       short_description: nil, description: "Wrist technique, pressure applied on wrist towards Uke's body"},
+  {id: 8, name: 'Jo Kata',      short_description: nil, description: 'Sequential movements with a Jo'}
 ])
 
 AppliedTechnique.seed(:id, [
-  {id: 1,   name: 'Gyaku Hanmi Kaiten Nage Omote',  art_id: 1, testing_level_id: 1, format_id: 2, technique_id: 1, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 5, direction_id: 1},
-  {id: 2,   name: 'Gyaku Hanmi Kote Gaeshi',        art_id: 1, testing_level_id: 1, format_id: 2, technique_id: 2, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3},
+  {id: 1,   name: 'Gyaku Hanmi Kaiten Nage Omote',  art_id: 1, testing_level_id: 1, format_id: 2, technique_id: 2, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 5, direction_id: 2},
+  {id: 2,   name: 'Gyaku Hanmi Kote Gaeshi',        art_id: 1, testing_level_id: 1, format_id: 2, technique_id: 3, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3},
   {id: 4,   name: 'Shohatto Maegiri',               art_id: 2, kata_id: 2, rank_id: 5},
   {id: 5,   name: 'Ukenagashi',                     art_id: 2, kata_id: 3, rank_id: 5},
   {id: 6,   name: 'Ai Hanmi Kata Dori Ikkyo Omote Variation',           art_id: 2, kata_id: 1, rank_id: 5},
   {id: 7,   name: 'Ushirogiri',                     art_id: 2, kata_id: 4, rank_id: 5},
   {id: 8,   name: 'Variation to Kata 3',            art_id: 2, kata_id: 1, rank_id: 5},
   {id: 9,   name: 'Kiriage',                        art_id: 2, kata_id: 1, rank_id: 5},
-  {id: 3,   name: 'Gyaku Hanmi Shiho Nage',         art_id: 1, testing_level_id: 1, format_id: 2, technique_id: 3, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 5},
-  {id: 10,  name: 'Ai Hanmi Irimi Nage Backstretch',art_id: 1, testing_level_id: 1, format_id: 2, technique_id: 5, attack_id: 1, stance_id: 2, waza_id: 1, rank_id: 9},
-  {id: 11,  name: 'Gyaku Hanmi Nikkyo Ura',         art_id: 1, testing_level_id: 1, format_id: 2, technique_id: 6, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3, direction_id: 2},
-  {id: 12,  name: 'Gyaku Hanmi Kote Gaeshi Jodan',  art_id: 1,                      format_id: 2, technique_id: 2, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 9},
-  {id: 13,  name: 'Gyaku Hanmi Irimi Nage',         art_id: 1, testing_level_id: 1, format_id: 2, technique_id: 5, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3},
-  {id: 14,  name: 'Gyaku Hanmi Ikkyo Ura',          art_id: 1, testing_level_id: 1, format_id: 2, technique_id: 4, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3, direction_id: 2},
-  {id: 15,  name: 'Gyaku Hanmi Ikkyo Omote',        art_id: 1, testing_level_id: 1, format_id: 2, technique_id: 4, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3, direction_id: 1},
-  {id: 16,  name: 'Jo Kata 1',                      art_id: 1, testing_level_id: 1, format_id: 7, technique_id: 7,                                         rank_id: 3}
+  {id: 3,   name: 'Gyaku Hanmi Shiho Nage',         art_id: 1, testing_level_id: 1, format_id: 2, technique_id: 4, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 5},
+  {id: 10,  name: 'Ai Hanmi Irimi Nage Backstretch',art_id: 1, testing_level_id: 1, format_id: 2, technique_id: 6, attack_id: 1, stance_id: 2, waza_id: 1, rank_id: 9},
+  {id: 11,  name: 'Gyaku Hanmi Nikkyo Ura',         art_id: 1, testing_level_id: 1, format_id: 2, technique_id: 7, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3, direction_id: 3},
+  {id: 12,  name: 'Gyaku Hanmi Kote Gaeshi Jodan',  art_id: 1,                      format_id: 2, technique_id: 3, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 9},
+  {id: 13,  name: 'Gyaku Hanmi Irimi Nage',         art_id: 1, testing_level_id: 1, format_id: 2, technique_id: 6, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3},
+  {id: 14,  name: 'Gyaku Hanmi Ikkyo Ura',          art_id: 1, testing_level_id: 1, format_id: 2, technique_id: 5, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3, direction_id: 3},
+  {id: 15,  name: 'Gyaku Hanmi Ikkyo Omote',        art_id: 1, testing_level_id: 1, format_id: 2, technique_id: 5, attack_id: 1, stance_id: 1, waza_id: 1, rank_id: 3, direction_id: 2},
+  {id: 16,  name: 'Jo Kata 1',                      art_id: 1, testing_level_id: 1, format_id: 7, technique_id: 8,                                         rank_id: 3}
 ])
 
 Video.seed(:id, [

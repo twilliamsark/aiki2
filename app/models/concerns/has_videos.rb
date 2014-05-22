@@ -13,26 +13,45 @@ module HasVideos
     scope :default_order, -> { order(:name) }
   end
 
-  def aikido_videos
-    videos.for_aikido
-  end
+  # def aikido_videos
+  #   videos.for_aikido
+  # end
 
-  def aikido_videos_for_format(format)
-    videos.for_aikido_format(format)
+  # def aikido_videos_for_format(format)
+  #   videos.for_aikido_format(format)
+  # end
+
+  # def aikido_videos_for_technique(technique)
+  #   videos.for_aikido_technique(technique)
+  # end
+
+  # def aikido_videos_for_direction(direction)
+  #   videos.for_aikido_direction(direction)
+  # end
+
+  # rank.aikido_vids([['format', 7], ['technique', 8]])
+  def aikido_vids(filters={})
+    vids = videos.for_aikido
+    filters.each do |filter, value|
+      next if value == "1" #ugly, brittle, fix this
+      vids = vids.send("for_aikido_#{filter.to_s}", value)
+    end
+    vids.flatten
   end
 
   module ClassMethods
-    def aikido_videos(format_type=Format::ANY_FORMAT)
-      videos = if format_type == Format::ANY_FORMAT
-        self.default_order.map{|r| r.aikido_videos}.flatten
-      else
-        self.default_order.map{|r| r.aikido_videos_for_format(format_type)}.flatten
-      end
+    def aikido_videos(filter_options={})
+      filter_options.reverse_merge! format: Format::ANY_FORMAT, technique: Technique::ANY_TECHNIQUE, direction: Direction::ANY_DIRECTION
+
+      videos = self.default_order.map do |a|
+        a.aikido_vids(filter_options)
+      end.flatten
+
       video_selection(videos)
     end
 
     # format_type ignored for iaido
-    def iaido_videos(format_type=Format::ANY_FORMAT)
+    def iaido_videos(filter_options={})
       videos = self.default_order.map{|r| r.iaido_videos}.flatten
       video_selection(videos)
     end

@@ -10,7 +10,7 @@
           sort_options += %w(Kata)
         end
       %>
-      <div class="row">
+      <div id="sort_row" class="row">
         <div class="col-md-2">
           <%= label_tag "sort_type", "Sort:" %>
         </div>
@@ -25,17 +25,7 @@
       </div>
 
       <% if type == 'aikido' %>
-        <div id="filter_selection" class="row lnav_row">
-          <div class="col-md-2">
-            <%= label_tag "format_type", "Format:" %>
-          </div>
-          <div class="col-md-8">
-            <%= select_tag "format_type", options_from_collection_for_select(Format.all, 'id', 'label', Format::ANY_FORMAT) %>
-          </div>
-          <div class="col-md-2 filter_buttons">
-            <button id="hide_filters">Hide</button>
-          </div>
-        </div>
+        <%= render 'filter_selection' %>
       <% end %>
 
       <%= hidden_field_tag "type", type.titleize %>

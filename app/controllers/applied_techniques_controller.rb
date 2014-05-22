@@ -15,9 +15,21 @@ class AppliedTechniquesController < ApplicationController
   # ajax calls
   def video_list
     @type = params[:type]
-    @default_sort = params[:sort_type].gsub(/[[:space:]]/,'')
+    @default_sort = params[:sort_type].gsub(/[[:space:]]/,'') || "Rank"
+    filters = {}
+    if params[:format_type].present?
+      filters[:format] = params[:format_type]
+    end
+    if params[:technique_type].present?
+      filters[:technique] = params[:technique_type]
+    end
+    if params[:direction_type].present?
+      filters[:direction] = params[:direction_type]
+    end
     format = params[:format_type] || Format::ANY_FORMAT
-    @selection, @video = videos(@type, @default_sort, format)
+    technique = params[:technique_type] || Format::ANY_TECHNIQUE
+    direction = params[:direction_type] || Format::ANY_DIRECTION
+    @selection, @video = videos(@type, @default_sort, filters)
   end
 
   def remote_show
@@ -25,9 +37,9 @@ class AppliedTechniquesController < ApplicationController
   end
 
   private
-  def videos(art, sort_class="Rank", format_type=Format::ANY_FORMAT)
+  def videos(art, sort_class, filters={})
     method = "#{art.downcase}_videos"
-    selection = sort_class.constantize.send(method, format_type)
+    selection = sort_class.constantize.send(method, filters)
     first_selector = selection.keys.first
     first_video = selection[first_selector].first[:video] rescue nil
     return [selection, first_video]

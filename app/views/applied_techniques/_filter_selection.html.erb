@@ -1,0 +1,33 @@
+<div id="filter_selection">
+  <div class="row lnav_row">
+    <div class="col-md-2">
+      <%= label_tag "format_type", "Format:" %>
+    </div>
+    <div class="col-md-8">
+      <%= select_tag "format_type", options_from_collection_for_select(Format.all, 'id', 'label', Format::ANY_FORMAT) %>
+    </div>
+    <div class="col-md-2 filter_buttons">
+      <button id="hide_filters">Hide</button>
+    </div>
+  </div>
+  <div class="row lnav_row">
+    <div class="col-md-2">
+      <%= label_tag "technique_type", "Technique:" %>
+    </div>
+    <div class="col-md-8">
+      <%= select_tag "technique_type", options_from_collection_for_select(Technique.all, 'id', 'label', Technique::ANY_TECHNIQUE) %>
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+  <div class="row lnav_row">
+    <div class="col-md-2">
+      <%= label_tag "direction_type", "Direction:" %>
+    </div>
+    <div class="col-md-8">
+      <%= select_tag "direction_type", options_from_collection_for_select(Direction.all, 'id', 'label', Direction::ANY_DIRECTION) %>
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+</div>

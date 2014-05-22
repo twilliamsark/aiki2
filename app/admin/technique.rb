@@ -13,6 +13,6 @@ ActiveAdmin.register Technique do
   #  permitted << :other if resource.something?
   #  permitted
   # end
-  permit_params :name, :description
+  permit_params :name, :short_description, :description
   menu parent: "Attributes"
 end

@@ -1,5 +1,6 @@
 class Format < ActiveRecord::Base
   include HasVideos
+  include Filterable
 
   # brittle
   ANY_FORMAT = "1"
@@ -8,9 +9,5 @@ class Format < ActiveRecord::Base
 
   def self.options_for_select
     Format.all.inject({}) { |options_hash, format| options_hash[format.label] = format.id; options_hash }
-  end
-
-  def label
-    "#{name}#{short_description.present? ? ' - ' + short_description : '' }"
   end
 end
