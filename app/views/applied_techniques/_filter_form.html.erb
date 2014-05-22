@@ -18,7 +18,9 @@
           <%= select_tag "sort_type", options_for_select(sort_options, selected: sort_by) %>
         </div>
         <div class="col-md-2 filter_buttons">
-          <button id="show_filters">Filter</button>
+          <% if type == 'aikido' %>
+            <button id="show_filters">Filter</button>
+          <% end %>
         </div>
       </div>
 
