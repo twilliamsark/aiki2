@@ -10,9 +10,12 @@
           sort_options += %w(Kata)
         end
       %>
-      <div id="sort_row" class="row">
+      <div class="row">
+        <div class="col-md-12"><h4>Sort</h4></div>
+      </div>
+      <div id="sort_row" class="row lnav_row">
         <div class="col-md-2">
-          <%= label_tag "sort_type", "Sort:" %>
+          <%= label_tag "sort_type", "Attribute:" %>
         </div>
         <div class="col-md-8">
           <%= select_tag "sort_type", options_for_select(sort_options, selected: sort_by) %>
