@@ -1,5 +1,13 @@
 ActiveAdmin.setup do |config|
 
+
+  config.namespace :admin do |admin|
+    admin.build_menu do |menu|
+      menu.add label: 'Attributes', priority: 1
+    end
+  end
+
+
   # == Site Title
   #
   # Set the title that is displayed on the main layout
@@ -10,7 +18,7 @@ ActiveAdmin.setup do |config|
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
   #
-  # config.site_title_link = "/"
+  config.site_title_link = "/"
 
   # Set an optional image to be displayed for the header
   # instead of a string (overrides :site_title)
@@ -110,7 +118,7 @@ ActiveAdmin.setup do |config|
   # roots for each namespace.
   #
   # Default:
-  # config.root_to = 'dashboard#index'
+  config.root_to = 'videos#index'
 
 
   # == Admin Comments
