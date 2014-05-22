@@ -17,6 +17,16 @@
   </div>
   <div class="row lnav_row">
     <div class="col-md-2">
+      <%= label_tag "attack_type", "Attack:" %>
+    </div>
+    <div class="col-md-8">
+      <%= select_tag "attack_type", options_from_collection_for_select(Attack.all, 'id', 'label', Attack::ANY_ATTACK) %>
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+  <div class="row lnav_row">
+    <div class="col-md-2">
       <%= label_tag "technique_type", "Technique:" %>
     </div>
     <div class="col-md-8">
@@ -51,6 +61,16 @@
     </div>
     <div class="col-md-8">
       <%= select_tag "waza_type", options_from_collection_for_select(Waza.all, 'id', 'label', Waza::ANY_WAZA) %>
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+  <div class="row lnav_row">
+    <div class="col-md-2">
+      <%= label_tag "rank_type", "Rank:" %>
+    </div>
+    <div class="col-md-8">
+      <%= select_tag "rank_type", options_from_collection_for_select(Rank.all, 'id', 'label', Rank::ANY_RANK) %>
     </div>
     <div class="col-md-2">
     </div>

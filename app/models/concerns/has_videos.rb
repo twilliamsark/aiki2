@@ -47,7 +47,9 @@ module HasVideos
                                     direction: Direction::ANY_DIRECTION,
                                     stance: Stance::ANY_STANCE,
                                     waza: Waza::ANY_WAZA,
-                                    testing_level: TestingLevel::ANY_TESTING_LEVEL
+                                    testing_level: TestingLevel::ANY_TESTING_LEVEL,
+                                    attack: Attack::ANY_ATTACK,
+                                    rank: Rank::ANY_RANK
                                     )
 
       videos = self.default_order.map do |a|

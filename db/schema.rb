@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140522185919) do
+ActiveRecord::Schema.define(version: 20140522205210) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20140522185919) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "short_description", limit: 20
   end
 
   create_table "directions", force: true do |t|
@@ -116,7 +117,8 @@ ActiveRecord::Schema.define(version: 20140522185919) do
     t.string   "belt"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "position",    default: 99
+    t.integer  "position",                     default: 99
+    t.string   "short_description", limit: 20
   end
 
   create_table "stances", force: true do |t|

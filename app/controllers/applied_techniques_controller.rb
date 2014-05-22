@@ -35,6 +35,12 @@ class AppliedTechniquesController < ApplicationController
     if params[:testing_level_type].present?
       filters[:testing_level] = params[:testing_level_type]
     end
+    if params[:attack_type].present?
+      filters[:attack] = params[:attack_type]
+    end
+    if params[:rank_type].present?
+      filters[:rank] = params[:rank_type]
+    end
     @selection, @video = videos(@type, @default_sort, filters)
   end
 
