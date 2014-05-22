@@ -10,3 +10,9 @@ $(document).ready ->
     $('#nav_iaido').addClass('active')
     $('#nav_aikido').removeClass('active')
 
+  $('#filter_selection').css('display','none')
+
+$(document).ready ->
+  $('#show_filters').click (event) ->
+    $('#filter_selection').show('blind')
+    $('#filter_buttons').css('display','none')
