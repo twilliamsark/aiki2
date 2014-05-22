@@ -16,7 +16,7 @@ class AppliedTechniquesController < ApplicationController
   def video_list
     @type = params[:type]
     @default_sort = params[:sort_type].gsub(/[[:space:]]/,'')
-    format = params[:format_type] || Format::NO_FORMAT
+    format = params[:format_type] || Format::ANY_FORMAT
     @selection, @video = videos(@type, @default_sort, format)
   end
 
@@ -25,7 +25,7 @@ class AppliedTechniquesController < ApplicationController
   end
 
   private
-  def videos(art, sort_class="Rank", format_type=Format::NO_FORMAT)
+  def videos(art, sort_class="Rank", format_type=Format::ANY_FORMAT)
     method = "#{art.downcase}_videos"
     selection = sort_class.constantize.send(method, format_type)
     first_selector = selection.keys.first

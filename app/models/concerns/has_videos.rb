@@ -22,8 +22,8 @@ module HasVideos
   end
 
   module ClassMethods
-    def aikido_videos(format_type=Format::NO_FORMAT)
-      videos = if format_type == Format::NO_FORMAT
+    def aikido_videos(format_type=Format::ANY_FORMAT)
+      videos = if format_type == Format::ANY_FORMAT
         self.default_order.map{|r| r.aikido_videos}.flatten
       else
         self.default_order.map{|r| r.aikido_videos_for_format(format_type)}.flatten
@@ -32,7 +32,7 @@ module HasVideos
     end
 
     # format_type ignored for iaido
-    def iaido_videos(format_type=Format::NO_FORMAT)
+    def iaido_videos(format_type=Format::ANY_FORMAT)
       videos = self.default_order.map{|r| r.iaido_videos}.flatten
       video_selection(videos)
     end

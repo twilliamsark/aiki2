@@ -2,7 +2,7 @@ class Format < ActiveRecord::Base
   include HasVideos
 
   # brittle
-  NO_FORMAT = "1"
+  ANY_FORMAT = "1"
 
   has_many :applied_techniques, inverse_of: :format
 

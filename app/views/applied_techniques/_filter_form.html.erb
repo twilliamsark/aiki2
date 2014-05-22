@@ -28,7 +28,7 @@
             <%= label_tag "format_type", "Format:" %>
           </div>
           <div class="col-md-8">
-            <%= select_tag "format_type", options_from_collection_for_select(Format.all, 'id', 'label', Format::NO_FORMAT) %>
+            <%= select_tag "format_type", options_from_collection_for_select(Format.all, 'id', 'label', Format::ANY_FORMAT) %>
           </div>
           <div class="col-md-2 filter_buttons">
             <button id="hide_filters">Hide</button>
