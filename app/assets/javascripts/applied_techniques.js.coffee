@@ -14,10 +14,12 @@ $(document).ready ->
 
 $(document).ready ->
   $('#show_filters').click (event) ->
+    event.preventDefault()
     $('#filter_selection').show('blind')
-    $('#filter_buttons').css('display','none')
+    $('#show_filters').css('display','none')
 
 $(document).ready ->
   $('#hide_filters').click (event) ->
+    event.preventDefault()
     $('#filter_selection').hide('blind')
-    $('#filter_buttons').show('blind')
+    $('#show_filters').show('blind')
