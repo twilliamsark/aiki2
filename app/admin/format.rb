@@ -14,5 +14,5 @@ ActiveAdmin.register Format do
   #  permitted
   # end
   permit_params :name, :description, :short_description
-
+  menu parent: "Attributes"
 end

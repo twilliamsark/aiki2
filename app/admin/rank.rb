@@ -13,6 +13,6 @@ ActiveAdmin.register Rank do
   #  permitted << :other if resource.something?
   #  permitted
   # end
-   permit_params :name, :description, :belt, :position
-
+  permit_params :name, :description, :belt, :position
+  menu parent: "Attributes"
 end

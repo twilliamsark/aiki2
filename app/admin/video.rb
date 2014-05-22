@@ -14,4 +14,5 @@ ActiveAdmin.register Video do
   #  permitted
   # end
   permit_params :applied_technique_id, :youtube_code
+  menu priority: 0
 end

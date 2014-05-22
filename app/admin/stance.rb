@@ -14,5 +14,5 @@ ActiveAdmin.register Stance do
   #  permitted
   # end
   permit_params :name, :description
-
+  menu parent: "Attributes"
 end
