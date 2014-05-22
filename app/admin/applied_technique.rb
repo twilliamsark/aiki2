@@ -15,4 +15,7 @@ ActiveAdmin.register AppliedTechnique do
   # end
   permit_params :name, :technique_id, :attack_id, :stance_id, :direction_id, :waza_id, :rank_id, :art_id, :kata_id, :testing_level_id, :format_id
   menu priority: 1
+  scope :all
+  scope :aikido_techniques
+  scope :iaido_techniques
 end
