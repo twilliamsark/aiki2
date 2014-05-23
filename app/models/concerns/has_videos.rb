@@ -64,7 +64,7 @@ module HasVideos
           list_name: video.applied_technique.name
         }
         if video.applied_technique.on_test?
-          entry[:list_name] += "(on test)"
+          entry[:list_name] += " (on test)"
         end
         selection[video.applied_technique.send(self.to_s.underscore)] << entry
       end
