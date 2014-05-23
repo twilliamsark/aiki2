@@ -3,6 +3,13 @@ class Video < ActiveRecord::Base
 
   scope :for_aikido,
    -> { joins(:applied_technique).merge(AppliedTechnique.aikido_techniques) }
+
+  scope :for_aikido_testable,
+   ->(testable) { joins(:applied_technique)
+                  .merge(AppliedTechnique.testable(testable))
+                  .merge(AppliedTechnique.aikido_techniques) }
+
+
   scope :for_aikido_format,
    ->(format) { joins(:applied_technique)
                   .merge(AppliedTechnique.for_format(format))
@@ -22,10 +29,6 @@ class Video < ActiveRecord::Base
   scope :for_aikido_waza,
    ->(waza) { joins(:applied_technique)
                     .merge(AppliedTechnique.for_waza(waza))
-                    .merge(AppliedTechnique.aikido_techniques) }
-  scope :for_aikido_testing_level,
-   ->(testing_level) { joins(:applied_technique)
-                    .merge(AppliedTechnique.for_testing_level(testing_level))
                     .merge(AppliedTechnique.aikido_techniques) }
   scope :for_aikido_attack,
    ->(attack) { joins(:applied_technique)

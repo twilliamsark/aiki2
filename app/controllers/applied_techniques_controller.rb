@@ -17,30 +17,23 @@ class AppliedTechniquesController < ApplicationController
     @type = params[:type]
     @default_sort = params[:sort_type].gsub(/[[:space:]]/,'') || "Rank"
     filters = {}
-    if params[:format_type].present?
-      filters[:format] = params[:format_type]
+
+    filters[:format] = params[:format_type] if params[:format_type].present?
+    filters[:technique] = params[:technique_type] if params[:technique_type].present?
+    filters[:direction] = params[:direction_type] if params[:direction_type].present?
+    filters[:stance] = params[:stance_type] if params[:stance_type].present?
+    filters[:waza] = params[:waza_type] if params[:waza_type].present?
+    filters[:attack] = params[:attack_type] if params[:attack_type].present?
+    filters[:rank] = params[:rank_type] if params[:rank_type].present?
+
+    if params[:testable] == 'true'
+      filters[:testable] = true
+    elsif params[:testable] == 'false'
+      filters[:testable] = false
+    else
+      filters[:testable] = 'all'
     end
-    if params[:technique_type].present?
-      filters[:technique] = params[:technique_type]
-    end
-    if params[:direction_type].present?
-      filters[:direction] = params[:direction_type]
-    end
-    if params[:stance_type].present?
-      filters[:stance] = params[:stance_type]
-    end
-    if params[:waza_type].present?
-      filters[:waza] = params[:waza_type]
-    end
-    if params[:testing_level_type].present?
-      filters[:testing_level] = params[:testing_level_type]
-    end
-    if params[:attack_type].present?
-      filters[:attack] = params[:attack_type]
-    end
-    if params[:rank_type].present?
-      filters[:rank] = params[:rank_type]
-    end
+
     @selection, @video = videos(@type, @default_sort, filters)
   end
 

@@ -1,11 +1,11 @@
 <div id="filter_form">
   <% if FILTERING %>
+    <% sort_by ||= 'Rank' %>
     <%= form_tag applied_techniques_video_list_url, method: :get, remote: true do %>
       <%
         sort_options = %w(Rank)
         if type == 'aikido'
           sort_options += %w(Technique Attack Stance Format)
-          sort_options += ['Testing Level']
         elsif type == 'iaido'
           sort_options += %w(Kata)
         end
@@ -17,8 +17,11 @@
         <div class="col-md-2">
           <%= label_tag "sort_type", "Attribute:" %>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-6">
           <%= select_tag "sort_type", options_for_select(sort_options, selected: sort_by) %>
+        </div>
+        <div class="col-md-2">
+          <%= submit_tag 'Go', id: 'top_go' %>
         </div>
         <div class="col-md-2 filter_buttons">
           <% if type == 'aikido' %>
@@ -37,7 +40,7 @@
         <div class="col-md-2">
         </div>
         <div class="col-md-10">
-          <%= submit_tag 'Go' %>
+          <%= submit_tag 'Go', id: 'bottom_go' %>
         </div>
       </div>
 

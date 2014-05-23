@@ -12,4 +12,8 @@ class Rank < ActiveRecord::Base
   def label
     "#{name}#{description.present? ? ' - ' + description : '' }#{belt.present? ? ' (' + belt + ')' : ''}"
   end
+
+  def miscellaneous?
+    name == 'Miscellaneous'
+  end
 end

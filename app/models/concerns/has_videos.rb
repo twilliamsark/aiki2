@@ -4,7 +4,6 @@ module HasVideos
   included do
     has_many :videos, through: :applied_techniques
 
-    # has_many :aikido_videos, through: :aikido_techniques, source: :videos
     has_many :aikido_techniques, -> { aikido_techniques }, class_name: 'AppliedTechnique'
 
     has_many :iaido_videos, through: :iaido_techniques, source: :videos
@@ -13,26 +12,16 @@ module HasVideos
     scope :default_order, -> { order(:name) }
   end
 
-  # def aikido_videos
-  #   videos.for_aikido
-  # end
-
-  # def aikido_videos_for_format(format)
-  #   videos.for_aikido_format(format)
-  # end
-
-  # def aikido_videos_for_technique(technique)
-  #   videos.for_aikido_technique(technique)
-  # end
-
-  # def aikido_videos_for_direction(direction)
-  #   videos.for_aikido_direction(direction)
-  # end
-
   # rank.aikido_vids([['format', 7], ['technique', 8]])
   def aikido_vids(filters={})
-    vids = videos.for_aikido
+    on_test = filters.has_key?(:testable) ? filters[:testable] : 'all'
+    if on_test == 'all'
+      vids = videos.for_aikido
+    else
+      vids = videos.for_aikido_testable(on_test)
+    end
     filters.each do |filter, value|
+      next if filter == :testable
       next if value == "1" #ugly, brittle, fix this
       vids = vids.send("for_aikido_#{filter.to_s}", value)
     end
@@ -47,9 +36,9 @@ module HasVideos
                                     direction: Direction::ANY_DIRECTION,
                                     stance: Stance::ANY_STANCE,
                                     waza: Waza::ANY_WAZA,
-                                    testing_level: TestingLevel::ANY_TESTING_LEVEL,
                                     attack: Attack::ANY_ATTACK,
-                                    rank: Rank::ANY_RANK
+                                    rank: Rank::ANY_RANK,
+                                    testable: 'all'
                                     )
 
       videos = self.default_order.map do |a|
@@ -74,8 +63,8 @@ module HasVideos
           video: video,
           list_name: video.applied_technique.name
         }
-        if SHOW_DEBUG
-          entry[:list_name] += "(#{video.youtube_code})"
+        if video.applied_technique.on_test?
+          entry[:list_name] += "(on test)"
         end
         selection[video.applied_technique.send(self.to_s.underscore)] << entry
       end
