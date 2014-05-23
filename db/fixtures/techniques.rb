@@ -37,8 +37,8 @@ Waza.seed(:id, [
 
 Direction.seed(:id, [
   {id: 1, name: 'Any', description: nil},
-  {id: 2, name: 'Omote', short_description: 'front', description: 'Entering in the front'},
-  {id: 3, name: 'Ura', short_description: 'back', description: 'Entering in the back'}
+  {id: 2, name: 'Omote', short_description: 'front', description: 'Entering in the front, throw is across the front'},
+  {id: 3, name: 'Ura', short_description: 'back', description: 'Entering in the back, throw is across the back'}
 ])
 
 Rank.seed(:id, [
@@ -88,18 +88,24 @@ Technique.seed(:id, [
   {id: 5, name: 'Ikkyo',        short_description: nil, description: 'Wrist technique, generally palm down'},
   {id: 6, name: 'Irimi Nage',   short_description: nil, description: 'Entering Throw'},
   {id: 7, name: 'Nikkyo',       short_description: nil, description: "Wrist technique, pressure applied on wrist towards Uke's body"},
-  {id: 8, name: 'Jo Kata',      short_description: nil, description: 'Sequential movements with a Jo'}
+  {id: 8, name: 'Jo Kata',      short_description: nil, description: 'Sequential movements with a Jo'},
+  {id: 9, name: 'Sankyo',       short_description: nil, description: "Wrist technique, pressure applied against the wrist in a twisting motion towards Uke"},
+  {id: 10, name: 'Yonkyo',      short_description: nil, description: "Wrist press, pressure is applied against Uke's forearm"},
+  {id: 11, name: 'Gokyo',       short_description: nil, description: "Aikido fifth principle, in which the wrist is held palm up; usually employed against a knife attack"},
+  {id: 12, name: 'Koshi Nage',  short_description: nil, description: 'Hip throw'},
+  {id: 13, name: 'Tenchi Nage', short_description: nil, description: 'Heaven and earth throw'},
+  {id: 14, name: 'Kokyu Nage',  short_description: nil, description: 'Breath throw, employing no joint locks'}
 ])
 
 AppliedTechnique.seed(:id, [
   {id: 1,   name: 'Gyaku Hanmi Kaiten Nage Omote',  art_id: 1, format_id: 2, technique_id: 2, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 6, direction_id: 2, on_test: true},
   {id: 2,   name: 'Gyaku Hanmi Kote Gaeshi <no grab>',        art_id: 1, format_id: 9, technique_id: 3, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 10},
-  {id: 4,   name: 'Shohatto Maegiri',               art_id: 2, kata_id: 2, rank_id: 6},
-  {id: 5,   name: 'Ukenagashi',                     art_id: 2, kata_id: 3, rank_id: 6},
-  {id: 6,   name: 'Ai Hanmi Kata Dori Ikkyo Omote Variation',           art_id: 2, kata_id: 1, rank_id: 6},
-  {id: 7,   name: 'Ushirogiri',                     art_id: 2, kata_id: 4, rank_id: 6},
-  {id: 8,   name: 'Variation to Kata 3',            art_id: 2, kata_id: 1, rank_id: 6},
-  {id: 9,   name: 'Kiriage',                        art_id: 2, kata_id: 1, rank_id: 6},
+  {id: 4,   name: 'Shohatto Maegiri',               art_id: 2, kata_id: 2, rank_id: 6, format_id: 8},
+  {id: 5,   name: 'Ukenagashi',                     art_id: 2, kata_id: 3, rank_id: 6, format_id: 8},
+  {id: 6,   name: 'Ai Hanmi Kata Dori Ikkyo Omote Variation',           art_id: 2, kata_id: 1, rank_id: 6, format_id: 8},
+  {id: 7,   name: 'Ushirogiri',                     art_id: 2, kata_id: 4, rank_id: 6, format_id: 8},
+  {id: 8,   name: 'Variation to Kata 3',            art_id: 2, kata_id: 1, rank_id: 6, format_id: 8},
+  {id: 9,   name: 'Kiriage',                        art_id: 2, kata_id: 1, rank_id: 6, format_id: 8},
   {id: 3,   name: 'Gyaku Hanmi Katate Dori Shiho Nage',         art_id: 1, format_id: 2, technique_id: 4, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 4, on_test: true},
   {id: 10,  name: 'Ai Hanmi Irimi Nage Backstretch',art_id: 1, format_id: 2, technique_id: 6, attack_id: 2, stance_id: 3, waza_id: 2, rank_id: 10},
   {id: 11,  name: 'Gyaku Hanmi Katata Dori Nikkyo Ura',         art_id: 1, format_id: 2, technique_id: 7, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 4, direction_id: 3, on_test: true},
