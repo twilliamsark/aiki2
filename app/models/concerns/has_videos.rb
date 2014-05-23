@@ -50,7 +50,7 @@ module HasVideos
 
     # format_type ignored for iaido
     def iaido_videos(filter_options={})
-      videos = self.default_order.map{|r| r.iaido_videos}.flatten
+      videos = self.default_order.map{|r| r.videos.for_iaido}.flatten
       video_selection(videos)
     end
 

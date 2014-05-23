@@ -12,8 +12,9 @@ class AppliedTechnique < ActiveRecord::Base
 
   has_many :videos, inverse_of: :applied_technique
 
-  scope :aikido_techniques, -> {where(art: Art.aikido).order(:name)}
-  scope :iaido_techniques, -> {where(art: Art.iaido).order(:name)}
+  scope :aikido_techniques, -> {joins(:format).merge(Format.aikido).order(:name)}
+  scope :iaido_techniques, -> {joins(:format).merge(Format.aiki_toho).order(:name)}
+
   scope :testable, ->(on_test) { where(on_test: on_test) }
   scope :for_format, ->(format) { where(format_id: format) }
   scope :for_direction, ->(direction) { where(direction_id: direction) }

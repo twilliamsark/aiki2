@@ -39,6 +39,9 @@ class Video < ActiveRecord::Base
                     .merge(AppliedTechnique.for_rank(rank))
                     .merge(AppliedTechnique.aikido_techniques) }
 
+  scope :for_iaido,
+   -> { joins(:applied_technique).merge(AppliedTechnique.iaido_techniques) }
+
   def show_video?
     youtube_code && youtube_code != 'n/a'
   end
