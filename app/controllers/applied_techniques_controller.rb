@@ -7,8 +7,8 @@ class AppliedTechniquesController < ApplicationController
 
   def iaido
     @type = "iaido"
-    @selection, @video = videos(@type.titleize, "Kata")
-    @default_sort = "Kata"
+    @selection, @video = videos(@type.titleize, "Rank")
+    @default_sort = "Rank"
     render :aikido
   end
 
@@ -43,8 +43,8 @@ class AppliedTechniquesController < ApplicationController
 
   private
   def videos(art, sort_class, filters={})
-    method = "#{art.downcase}_videos"
-    selection = sort_class.constantize.send(method, filters)
+    method = "get_videos"
+    selection = sort_class.constantize.send(method, art.downcase, filters)
     first_selector = selection.keys.first
     first_video = selection[first_selector].first[:video] rescue nil
     return [selection, first_video]

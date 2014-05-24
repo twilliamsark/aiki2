@@ -13,23 +13,25 @@ module HasVideos
   end
 
   # rank.aikido_vids([['format', 7], ['technique', 8]])
-  def aikido_vids(filters={})
+  def vids(art, filters={})
     on_test = filters.has_key?(:testable) ? filters[:testable] : 'all'
     if on_test == 'all'
-      vids = videos.for_aikido
+      method = "for_#{art}"
+      vids = videos.send(method)
     else
-      vids = videos.for_aikido_testable(on_test)
+      method = "for_#{art}_testable"
+      vids = videos.send(method, on_test)
     end
     filters.each do |filter, value|
       next if filter == :testable
       next if value == "1" #ugly, brittle, fix this
-      vids = vids.send("for_aikido_#{filter.to_s}", value)
+      vids = vids.send("for_#{art}_#{filter.to_s}", value)
     end
     vids.flatten
   end
 
   module ClassMethods
-    def aikido_videos(filter_options={})
+    def get_videos(art, filter_options={})
       filter_options.reverse_merge!(
                                     format: Format::ANY_FORMAT,
                                     technique: Technique::ANY_TECHNIQUE,
@@ -42,7 +44,7 @@ module HasVideos
                                     )
 
       videos = self.default_order.map do |a|
-        a.aikido_vids(filter_options)
+        a.vids(art, filter_options)
       end.flatten
 
       video_selection(videos)

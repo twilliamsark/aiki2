@@ -8,8 +8,6 @@ class Video < ActiveRecord::Base
    ->(testable) { joins(:applied_technique)
                   .merge(AppliedTechnique.testable(testable))
                   .merge(AppliedTechnique.aikido_techniques) }
-
-
   scope :for_aikido_format,
    ->(format) { joins(:applied_technique)
                   .merge(AppliedTechnique.for_format(format))
@@ -41,6 +39,36 @@ class Video < ActiveRecord::Base
 
   scope :for_iaido,
    -> { joins(:applied_technique).merge(AppliedTechnique.iaido_techniques) }
+
+  scope :for_iaido_testable,
+   ->(testable) { joins(:applied_technique)
+                  .merge(AppliedTechnique.testable(testable))
+                  .merge(AppliedTechnique.iaido_techniques) }
+  scope :for_iaido_format,
+   ->(format) { joins(:applied_technique)
+                  .merge(AppliedTechnique.for_format(format))
+                  .merge(AppliedTechnique.iaido_techniques) }
+  scope :for_iaido_direction,
+   ->(direction) { joins(:applied_technique)
+                    .merge(AppliedTechnique.for_direction(direction))
+                    .merge(AppliedTechnique.iaido_techniques) }
+  scope :for_iaido_technique,
+   ->(technique) { joins(:applied_technique)
+                    .merge(AppliedTechnique.for_technique(technique))
+                    .merge(AppliedTechnique.iaido_techniques) }
+  scope :for_iaido_stance,
+   ->(stance) { joins(:applied_technique)
+                    .merge(AppliedTechnique.for_stance(stance))
+                    .merge(AppliedTechnique.iaido_techniques) }
+  scope :for_iaido_attack,
+   ->(attack) { joins(:applied_technique)
+                    .merge(AppliedTechnique.for_attack(attack))
+                    .merge(AppliedTechnique.iaido_techniques) }
+  scope :for_iaido_rank,
+   ->(rank) { joins(:applied_technique)
+                    .merge(AppliedTechnique.for_rank(rank))
+                    .merge(AppliedTechnique.iaido_techniques) }
+
 
   def show_video?
     youtube_code && youtube_code != 'n/a'
