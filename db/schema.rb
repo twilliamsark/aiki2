@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140523235747) do
+ActiveRecord::Schema.define(version: 20140524050145) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -59,7 +59,10 @@ ActiveRecord::Schema.define(version: 20140523235747) do
     t.integer  "kata_id"
     t.integer  "format_id"
     t.integer  "attack_height_id"
-    t.boolean  "on_test",          default: false
+    t.boolean  "on_test",                      default: false
+    t.string   "short_description", limit: 20
+    t.string   "description"
+    t.integer  "related_id"
   end
 
   add_index "applied_techniques", ["attack_height_id"], name: "index_applied_techniques_on_attack_height_id"
@@ -68,6 +71,7 @@ ActiveRecord::Schema.define(version: 20140523235747) do
   add_index "applied_techniques", ["format_id"], name: "index_applied_techniques_on_format_id"
   add_index "applied_techniques", ["kata_id"], name: "index_applied_techniques_on_kata_id"
   add_index "applied_techniques", ["rank_id"], name: "index_applied_techniques_on_rank_id"
+  add_index "applied_techniques", ["related_id"], name: "index_applied_techniques_on_related_id"
   add_index "applied_techniques", ["stance_id"], name: "index_applied_techniques_on_stance_id"
   add_index "applied_techniques", ["technique_id"], name: "index_applied_techniques_on_technique_id"
   add_index "applied_techniques", ["waza_id"], name: "index_applied_techniques_on_waza_id"
@@ -102,6 +106,7 @@ ActiveRecord::Schema.define(version: 20140523235747) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "short_description"
+    t.integer  "position",          default: 0
   end
 
   create_table "kata", force: true do |t|

@@ -1,15 +1,22 @@
 class AppliedTechniquesController < ApplicationController
+  before_filter :action_params, only: [:aikido, :iaido]
+
   def aikido
     @type = "aikido"
-    @selection, @video = videos(@type.titleize, "Rank")
-    @default_sort = "Rank"
+    @default_sort ||= "Rank"
+    @selection, @video = videos(@type.titleize, @default_sort, @applied_technique_id)
   end
 
   def iaido
     @type = "iaido"
-    @selection, @video = videos(@type.titleize, "Rank")
-    @default_sort = "Rank"
+    @default_sort ||= "Format"
+    @selection, @video = videos(@type.titleize, @default_sort, @applied_technique_id)
     render :aikido
+  end
+
+  def action_params
+    @default_sort = params[:sort].titleize if params[:sort].present?
+    @applied_technique_id = params[:applied_technique]
   end
 
   # ajax calls
@@ -42,11 +49,26 @@ class AppliedTechniquesController < ApplicationController
   end
 
   private
-  def videos(art, sort_class, filters={})
+  def videos(art, sort_class, applied_technique_id)
     method = "get_videos"
-    selection = sort_class.constantize.send(method, art.downcase, filters)
+    selection = sort_class.constantize.send(method, art.downcase)
     first_selector = selection.keys.first
-    first_video = selection[first_selector].first[:video] rescue nil
+    if applied_technique_id.nil?
+      first_video = selection[first_selector].first[:video] rescue nil
+    else
+      selection.each do |selector, videos|
+        next unless videos.any?
+        first_video = videos.select {|vid| vid[:video].applied_technique_id.to_s == applied_technique_id}
+        if first_video
+          if first_video.any?
+            first_video = first_video.first[:video]
+            break
+          else
+            first_video = nil
+          end
+        end
+      end
+    end
     return [selection, first_video]
   end
 end

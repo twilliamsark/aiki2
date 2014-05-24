@@ -11,6 +11,9 @@ class AppliedTechnique < ActiveRecord::Base
 
   has_many :videos, inverse_of: :applied_technique
 
+  has_one :related, class_name: 'AppliedTechnique', foreign_key: :related_id
+  belongs_to :related, class_name: 'AppliedTechnique'
+
   scope :aikido_techniques, -> {joins(:format).merge(Format.aikido).order(:name)}
   scope :iaido_techniques, -> {joins(:format).merge(Format.aiki_toho).order(:name)}
 

@@ -42,10 +42,15 @@ module HasVideos
                                     rank: Rank::ANY_RANK,
                                     testable: 'all'
                                     )
-
-      videos = self.default_order.map do |a|
-        a.vids(art, filter_options)
-      end.flatten
+      if art == 'aikido' || (art == 'iaido' && self.to_s != 'Format')
+        videos = self.default_order.map do |a|
+          a.vids(art, filter_options)
+        end.flatten
+      else #Format
+        videos = Format.aiki_toho.map do |a|
+          a.vids(art, filter_options)
+        end.flatten
+      end
 
       video_selection(videos)
     end
@@ -65,6 +70,9 @@ module HasVideos
           video: video,
           list_name: video.applied_technique.name
         }
+        if video.applied_technique.short_description.present?
+          entry[:list_name] += " - #{video.applied_technique.short_description}"
+        end
         if video.applied_technique.on_test?
           entry[:list_name] += " (on test)"
         end

@@ -2,6 +2,9 @@
 <% if SHOW_DEBUG %>
   <h2>(<%= youtube_code %>)</h2>
 <% end %>
+<% if applied_technique.description.present? %>
+  <h4 class="left_align"><%= applied_technique.description %></h4>
+<% end %>
 <ul class="left_align">
   <% if applied_technique.stance %>
     <li class="no_bullet_list"><strong><%= applied_technique.stance.name %>:</strong> <%= applied_technique.stance.description %></li>
@@ -25,6 +28,17 @@
     <li class="no_bullet_list"><strong><%= applied_technique.waza.name %>:</strong> <%= applied_technique.waza.description %></li>
   <% end %>
   <% unless applied_technique.rank.miscellaneous? %>
+    <li class="no_bullet_list"><strong>Rank:</strong> <%= applied_technique.rank.label %></li>
     <li class="no_bullet_list"><strong>Testing:</strong> <%= "#{applied_technique.on_test? ? 'On Test' : 'Know For Rank'}" %></li>
+  <% end %>
+  <% if applied_technique.related %>
+    <% related = applied_technique.related %>
+    <li class="no_bullet_list"><strong>Related <%= related.format.name %>:</strong>
+      <% if related.format.name == Format::AIKI_TOHO %>
+        <%= link_to related.name, applied_techniques_iaido_path(sort: 'format', applied_technique: related) %>
+      <% else %>
+        <%= link_to related.name, applied_techniques_aikido_path(sort: 'format', applied_technique: related) %>
+      <% end %>
+    </li>
   <% end %>
 </ul>

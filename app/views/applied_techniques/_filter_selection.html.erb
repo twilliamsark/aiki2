@@ -10,7 +10,7 @@
       <%= label_tag "stance_type", "Stance:" %>
     </div>
     <div class="col-md-8">
-      <%= select_tag "stance_type", options_from_collection_for_select(Stance.default_order.all, 'id', 'label', Stance::ANY_STANCE) %>
+      <%= select_tag "stance_type", options_from_collection_for_select(Stance.default_order, 'id', 'label', Stance::ANY_STANCE) %>
     </div>
     <div class="col-md-2">
     </div>
@@ -20,7 +20,7 @@
       <%= label_tag "attack_type", "Attack:" %>
     </div>
     <div class="col-md-8">
-      <%= select_tag "attack_type", options_from_collection_for_select(Attack.default_order.all, 'id', 'label', Attack::ANY_ATTACK) %>
+      <%= select_tag "attack_type", options_from_collection_for_select(Attack.default_order, 'id', 'label', Attack::ANY_ATTACK) %>
     </div>
     <div class="col-md-2">
     </div>
@@ -30,7 +30,7 @@
       <%= label_tag "technique_type", "Technique:" %>
     </div>
     <div class="col-md-8">
-      <%= select_tag "technique_type", options_from_collection_for_select(Technique.default_order.all, 'id', 'label', Technique::ANY_TECHNIQUE) %>
+      <%= select_tag "technique_type", options_from_collection_for_select(Technique.default_order, 'id', 'label', Technique::ANY_TECHNIQUE) %>
     </div>
     <div class="col-md-2">
     </div>
@@ -40,7 +40,7 @@
       <%= label_tag "direction_type", "Direction:" %>
     </div>
     <div class="col-md-8">
-      <%= select_tag "direction_type", options_from_collection_for_select(Direction.default_order.all, 'id', 'label', Direction::ANY_DIRECTION) %>
+      <%= select_tag "direction_type", options_from_collection_for_select(Direction.default_order, 'id', 'label', Direction::ANY_DIRECTION) %>
     </div>
     <div class="col-md-2">
     </div>
@@ -61,7 +61,7 @@
         <%= label_tag "waza_type", "Waza:" %>
       </div>
       <div class="col-md-8">
-        <%= select_tag "waza_type", options_from_collection_for_select(Waza.default_order.all, 'id', 'label', Waza::ANY_WAZA) %>
+        <%= select_tag "waza_type", options_from_collection_for_select(Waza.default_order, 'id', 'label', Waza::ANY_WAZA) %>
       </div>
       <div class="col-md-2">
       </div>
@@ -72,7 +72,7 @@
       <%= label_tag "rank_type", "Rank:" %>
     </div>
     <div class="col-md-8">
-      <%= select_tag "rank_type", options_from_collection_for_select(Rank.default_order.all, 'id', 'label', Rank::ANY_RANK) %>
+      <%= select_tag "rank_type", options_from_collection_for_select(Rank.default_order, 'id', 'label', Rank::ANY_RANK) %>
     </div>
     <div class="col-md-2">
     </div>

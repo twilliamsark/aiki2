@@ -6,15 +6,15 @@ AttackHeight.seed(:id, [
 ])
 
 Format.seed(:id, [
-  {id: 1, name: 'Any', description: nil},
-  {id: 2, name: 'Tiado',          short_description: 'hand',             description: 'Way of the hand'},
-  {id: 3, name: 'Ken no Tebiki',  short_description: 'nage with sword',  description: 'With sword guidance (one person with boken)'},
-  {id: 4, name: 'Jo no Tebiki',   short_description: 'nage with jo',     description: 'With jo guidance (one person with jo)'},
-  {id: 5, name: 'Ken ti Ken',     short_description: 'sword vs sword',   description: 'Sword vs Sword (bokens)'},
-  {id: 6, name: 'Ken ti Jo',      short_description: 'sword vs jo',      description: 'Sword(boken) vs Jo'},
-  {id: 7, name: 'Suburi',         short_description: 'weapon (non-Iaido) kata',      description: 'A single movement using the ken or jo, done as a solo practice'},
-  {id: 8, name: 'Aiki Toho',      short_description: 'Iaido',            description: 'Japanese swordsmanship'},
-  {id: 9, name: 'Oyo Waza',       short_description: 'Advanced',         description: 'Advanced version or application of the technique'}
+  {id: 1, name: 'Any',            position: 0, short_description: nil, description: nil},
+  {id: 2, name: 'Tiado',          position: 1, short_description: 'hand',             description: 'Way of the hand'},
+  {id: 3, name: 'Ken no Tebiki',  position: 4, short_description: 'nage with sword',  description: 'With sword guidance (one person with boken)'},
+  {id: 4, name: 'Jo no Tebiki',   position: 3, short_description: 'nage with jo',     description: 'With jo guidance (one person with jo)'},
+  {id: 5, name: 'Ken ti Ken',     position: 6, short_description: 'sword vs sword',   description: 'Sword vs Sword (bokens)'},
+  {id: 6, name: 'Ken ti Jo',      position: 5, short_description: 'sword vs jo',      description: 'Sword(boken) vs Jo'},
+  {id: 7, name: 'Suburi',         position: 7, short_description: 'weapon (non-Iaido) kata',      description: 'A single movement using the ken or jo, done as a solo practice'},
+  {id: 8, name: 'Aiki Toho',      position: 2, short_description: 'Iaido',            description: 'Japanese swordsmanship'},
+  {id: 9, name: 'Oyo Waza',       position: 8, short_description: 'Advanced',         description: 'Advanced version or application of the technique'}
 ])
 
 Stance.seed(:id, [
@@ -93,24 +93,25 @@ Technique.seed(:id, [
 ])
 
 AppliedTechnique.seed(:id, [
-  {id: 4,   name: 'Shohatto Maegiri',               kata_id: 2, rank_id: 6, format_id: 8, on_test: true},
-  {id: 5,   name: 'Ukenagashi',                     kata_id: 3, rank_id: 6, format_id: 8, stance_id: 3, attack_id: 2, technique_id: 5, direction_id: 2, on_test: true},
-  {id: 6,   name: 'Ai Hanmi Kata Dori Ikkyo Omote Variation',           kata_id: 1, rank_id: 6, format_id: 8, stance_id: 3, attack_id: 2, technique_id: 5, direction_id: 2, on_test: true},
-  {id: 7,   name: 'Ushirogiri',                     kata_id: 4, rank_id: 6, format_id: 8, stance_id: 2, attack_id: 2, technique_id: 2, on_test: true},
-  {id: 8,   name: 'Variation to Kata 3',            kata_id: 1, rank_id: 6, format_id: 8, on_test: true},
-  {id: 9,   name: 'Kiriage',                        kata_id: 1, rank_id: 6, format_id: 8, attack_id: 4, technique_id: 5, direction_id: 2, on_test: true},
+  {id: 4,   name: 'Shohatto Maegiri',                           related_id: nil, short_description: 'Kata 1', description: 'Front Cut', kata_id: 2, rank_id: 6, format_id: 8, on_test: true},
+  {id: 5,   name: 'Ukenagashi',                                 related_id: 18, short_description: 'Kata 2', description: nil, kata_id: 3, rank_id: 6, format_id: 8, stance_id: 3, attack_id: 2, technique_id: 5, direction_id: 2, on_test: true},
+  {id: 6,   name: 'Ai Hanmi Kata Dori Ikkyo Omote Variation',   related_id: nil, short_description: nil, description: nil, kata_id: 1, rank_id: 6, format_id: 8, stance_id: 3, attack_id: 2, technique_id: 5, direction_id: 2, on_test: true},
+  {id: 7,   name: 'Ushirogiri',                                 related_id: nil, short_description: 'Kata 3', description: nil, kata_id: 4, rank_id: 6, format_id: 8, stance_id: 2, attack_id: 2, technique_id: 2, on_test: true},
+  {id: 8,   name: 'Variation to Kata 3',                        related_id: nil, short_description: nil, description: nil, kata_id: 1, rank_id: 6, format_id: 8, on_test: false},
+  {id: 9,   name: 'Kiriage',                                    related_id: nil, short_description: nil, description: nil, kata_id: 1, rank_id: 6, format_id: 8, attack_id: 4, technique_id: 5, direction_id: 2, on_test: true},
 
-  {id: 1,   name: 'Gyaku Hanmi Kaiten Nage Omote',  format_id: 2, technique_id: 2, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 6, direction_id: 2, on_test: true},
-  {id: 2,   name: 'Gyaku Hanmi Kote Gaeshi <no grab>',        format_id: 9, technique_id: 3, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 10},
-  {id: 3,   name: 'Gyaku Hanmi Katate Dori Shiho Nage',         format_id: 2, technique_id: 4, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 4, on_test: true},
-  {id: 10,  name: 'Ai Hanmi Irimi Nage Backstretch',format_id: 2, technique_id: 6, attack_id: 2, stance_id: 3, waza_id: 2, rank_id: 10},
-  {id: 11,  name: 'Gyaku Hanmi Katata Dori Nikkyo Ura',         format_id: 2, technique_id: 7, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 4, direction_id: 3, on_test: true},
-  {id: 12,  name: 'Gyaku Hanmi Kote Gaeshi Jodan',                       format_id: 9, technique_id: 3, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 10, attack_height_id: 2},
-  {id: 13,  name: 'Gyaku Hanmi Katata Dori Irimi Nage',         format_id: 2, technique_id: 6, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 4, on_test: true},
-  {id: 14,  name: 'Gyaku Hanmi Katata Dori Ikkyo Ura',          format_id: 2, technique_id: 5, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 4, direction_id: 3, on_test: true},
-  {id: 15,  name: 'Gyaku Hanmi Katata Dori Ikkyo Omote',        format_id: 2, technique_id: 5, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 4, direction_id: 2, on_test: true},
-  {id: 16,  name: 'Jo Kata 1 - Right side',         format_id: 7, technique_id: 8,                                         rank_id: 5, on_test: true},
-  {id: 17,  name: 'Jo Kata 1 - Left side',          format_id: 7, technique_id: 8,                                         rank_id: 4, on_test: true}
+  {id: 1,   name: 'Gyaku Hanmi Kaiten Nage Omote',              related_id: nil, short_description: nil, description: nil, format_id: 2, technique_id: 2, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 6, direction_id: 2, on_test: true},
+  {id: 2,   name: 'Gyaku Hanmi Kote Gaeshi <no grab>',          related_id: nil, short_description: nil, description: nil, format_id: 9, technique_id: 3, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 10},
+  {id: 3,   name: 'Gyaku Hanmi Katate Dori Shiho Nage',         related_id: nil, short_description: nil, description: nil, format_id: 2, technique_id: 4, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 4, on_test: true},
+  {id: 10,  name: 'Ai Hanmi Irimi Nage Backstretch',            related_id: nil, short_description: nil, description: nil, format_id: 2, technique_id: 6, attack_id: 2, stance_id: 3, waza_id: 2, rank_id: 10},
+  {id: 11,  name: 'Gyaku Hanmi Katate Dori Nikkyo Ura',         related_id: nil, short_description: nil, description: nil, format_id: 2, technique_id: 7, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 4, direction_id: 3, on_test: true},
+  {id: 12,  name: 'Gyaku Hanmi Kote Gaeshi Jodan',              related_id: nil, short_description: nil, description: nil, format_id: 9, technique_id: 3, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 10, attack_height_id: 2},
+  {id: 13,  name: 'Gyaku Hanmi Katate Dori Irimi Nage',         related_id: nil, short_description: nil, description: nil, format_id: 2, technique_id: 6, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 4, on_test: true},
+  {id: 14,  name: 'Gyaku Hanmi Katate Dori Ikkyo Ura',          related_id: nil, short_description: nil, description: nil, format_id: 2, technique_id: 5, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 4, direction_id: 3, on_test: true},
+  {id: 15,  name: 'Gyaku Hanmi Katate Dori Ikkyo Omote',        related_id: nil, short_description: nil, description: nil, format_id: 2, technique_id: 5, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 4, direction_id: 2, on_test: true},
+  {id: 16,  name: 'Jo Kata 1 - Right side',                     related_id: nil, short_description: nil, description: nil, format_id: 7, technique_id: 8,                                         rank_id: 5, on_test: true},
+  {id: 17,  name: 'Jo Kata 1 - Left side',                      related_id: nil, short_description: nil, description: nil, format_id: 7, technique_id: 8,                                         rank_id: 4, on_test: true},
+  {id: 18,  name: 'Ai Hanmi Katate Dori Ikkyo Omote',           related_id: 5, short_description: nil, description: nil, format_id: 2, technique_id: 5, attack_id: 2, stance_id: 3, waza_id: 2, rank_id: 5, direction_id: 2, on_test: true}
 ])
 
 Video.seed(:id, [
@@ -132,5 +133,6 @@ Video.seed(:id, [
   {id: 16,  applied_technique_id: 15, youtube_code: 'ZxuDokKK2w8'},
   {id: 17,  applied_technique_id: 15, youtube_code: 'Pf2yV0dJuRs'},
   {id: 18,  applied_technique_id: 16, youtube_code: 'n/a'},
-  {id: 19,  applied_technique_id: 17, youtube_code: 'n/a'}
+  {id: 19,  applied_technique_id: 17, youtube_code: 'n/a'},
+  {id: 20,  applied_technique_id: 18, youtube_code: 'n/a'}
 ])
