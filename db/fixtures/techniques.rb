@@ -93,14 +93,15 @@ Technique.seed(:id, [
 ])
 
 AppliedTechnique.seed(:id, [
+  {id: 4,   name: 'Shohatto Maegiri',               kata_id: 2, rank_id: 6, format_id: 8, on_test: true},
+  {id: 5,   name: 'Ukenagashi',                     kata_id: 3, rank_id: 6, format_id: 8, stance_id: 3, attack_id: 2, technique_id: 5, direction_id: 2, on_test: true},
+  {id: 6,   name: 'Ai Hanmi Kata Dori Ikkyo Omote Variation',           kata_id: 1, rank_id: 6, format_id: 8, stance_id: 3, attack_id: 2, technique_id: 5, direction_id: 2, on_test: true},
+  {id: 7,   name: 'Ushirogiri',                     kata_id: 4, rank_id: 6, format_id: 8, stance_id: 2, attack_id: 2, technique_id: 2, on_test: true},
+  {id: 8,   name: 'Variation to Kata 3',            kata_id: 1, rank_id: 6, format_id: 8, on_test: true},
+  {id: 9,   name: 'Kiriage',                        kata_id: 1, rank_id: 6, format_id: 8, attack_id: 4, technique_id: 5, direction_id: 2, on_test: true},
+
   {id: 1,   name: 'Gyaku Hanmi Kaiten Nage Omote',  format_id: 2, technique_id: 2, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 6, direction_id: 2, on_test: true},
   {id: 2,   name: 'Gyaku Hanmi Kote Gaeshi <no grab>',        format_id: 9, technique_id: 3, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 10},
-  {id: 4,   name: 'Shohatto Maegiri',               kata_id: 2, rank_id: 6, format_id: 8, on_test: true},
-  {id: 5,   name: 'Ukenagashi',                     kata_id: 3, rank_id: 6, format_id: 8, on_test: true},
-  {id: 6,   name: 'Ai Hanmi Kata Dori Ikkyo Omote Variation',           kata_id: 1, rank_id: 6, format_id: 8, on_test: true},
-  {id: 7,   name: 'Ushirogiri',                     kata_id: 4, rank_id: 6, format_id: 8, on_test: true},
-  {id: 8,   name: 'Variation to Kata 3',            kata_id: 1, rank_id: 6, format_id: 8, on_test: true},
-  {id: 9,   name: 'Kiriage',                        kata_id: 1, rank_id: 6, format_id: 8, on_test: true},
   {id: 3,   name: 'Gyaku Hanmi Katate Dori Shiho Nage',         format_id: 2, technique_id: 4, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 4, on_test: true},
   {id: 10,  name: 'Ai Hanmi Irimi Nage Backstretch',format_id: 2, technique_id: 6, attack_id: 2, stance_id: 3, waza_id: 2, rank_id: 10},
   {id: 11,  name: 'Gyaku Hanmi Katata Dori Nikkyo Ura',         format_id: 2, technique_id: 7, attack_id: 2, stance_id: 2, waza_id: 2, rank_id: 4, direction_id: 3, on_test: true},
