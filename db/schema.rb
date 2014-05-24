@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140523190120) do
+ActiveRecord::Schema.define(version: 20140523235747) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -56,14 +56,12 @@ ActiveRecord::Schema.define(version: 20140523190120) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "art_id"
     t.integer  "kata_id"
     t.integer  "format_id"
     t.integer  "attack_height_id"
     t.boolean  "on_test",          default: false
   end
 
-  add_index "applied_techniques", ["art_id"], name: "index_applied_techniques_on_art_id"
   add_index "applied_techniques", ["attack_height_id"], name: "index_applied_techniques_on_attack_height_id"
   add_index "applied_techniques", ["attack_id"], name: "index_applied_techniques_on_attack_id"
   add_index "applied_techniques", ["direction_id"], name: "index_applied_techniques_on_direction_id"
@@ -73,13 +71,6 @@ ActiveRecord::Schema.define(version: 20140523190120) do
   add_index "applied_techniques", ["stance_id"], name: "index_applied_techniques_on_stance_id"
   add_index "applied_techniques", ["technique_id"], name: "index_applied_techniques_on_technique_id"
   add_index "applied_techniques", ["waza_id"], name: "index_applied_techniques_on_waza_id"
-
-  create_table "arts", force: true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "attack_heights", force: true do |t|
     t.string   "name"

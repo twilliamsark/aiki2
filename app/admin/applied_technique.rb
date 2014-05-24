@@ -13,7 +13,7 @@ ActiveAdmin.register AppliedTechnique do
   #  permitted << :other if resource.something?
   #  permitted
   # end
-  permit_params :name, :technique_id, :attack_id, :stance_id, :direction_id, :waza_id, :rank_id, :art_id, :kata_id, :on_test, :format_id
+  permit_params :name, :technique_id, :attack_id, :stance_id, :direction_id, :waza_id, :rank_id, :kata_id, :on_test, :format_id
   menu priority: 1
   scope :all
   scope :aikido_techniques

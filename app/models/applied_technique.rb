@@ -5,7 +5,6 @@ class AppliedTechnique < ActiveRecord::Base
   belongs_to :direction, inverse_of: :applied_techniques
   belongs_to :waza, inverse_of: :applied_techniques
   belongs_to :rank, inverse_of: :applied_techniques
-  belongs_to :art, inverse_of: :applied_techniques
   belongs_to :kata, inverse_of: :applied_techniques
   belongs_to :format, inverse_of: :applied_techniques
   belongs_to :attack_height, inverse_of: :applied_techniques
