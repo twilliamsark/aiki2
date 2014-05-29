@@ -10,6 +10,7 @@ class AppliedTechnique < ActiveRecord::Base
   belongs_to :attack_height, inverse_of: :applied_techniques
 
   has_many :videos, inverse_of: :applied_technique
+  accepts_nested_attributes_for :videos
 
   has_one :related, class_name: 'AppliedTechnique', foreign_key: :related_id
   belongs_to :related, class_name: 'AppliedTechnique'

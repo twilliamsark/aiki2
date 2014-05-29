@@ -1,6 +1,13 @@
 Aiki::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
+  namespace :admin do
+    resources :applied_techniques do
+      resources :videos
+    end
+  end
+
   root 'applied_techniques#aikido'
   get "applied_techniques/aikido"
   get "applied_techniques/iaido"
