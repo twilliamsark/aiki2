@@ -25,4 +25,22 @@ ActiveAdmin.register AdminUser do
     f.actions
   end
 
+  show title: :email do |at|
+    panel 'Details' do
+      attributes_table_for at do
+        row :id
+        row :email
+        row :reset_password_token
+        row :reset_password_token_sent_at
+        row :remember_created_at
+        row :sign_in_count
+        row :current_sign_in_at
+        row :last_sign_in_at
+        row :current_sign_in_ip
+        row :last_sign_in_ip
+        row :created_at
+        row :updated_at
+      end
+    end
+  end
 end
