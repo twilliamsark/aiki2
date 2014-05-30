@@ -7,9 +7,6 @@
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
-    <% if Rails.env.production? %>
-      <%= render 'shared/tracking' %>
-    <% end %>
   </head>
   <body>
     <%= render 'layouts/header' %>
