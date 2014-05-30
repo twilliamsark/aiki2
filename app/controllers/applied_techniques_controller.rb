@@ -4,13 +4,13 @@ class AppliedTechniquesController < ApplicationController
   def aikido
     @type = "aikido"
     @default_sort ||= "Rank"
-    @selection, @video = videos(@type.titleize, @default_sort, @applied_technique_id)
+    @selection, @video = videos(@type.titleize, @default_sort, {}, @applied_technique_id)
   end
 
   def iaido
     @type = "iaido"
     @default_sort ||= "Format"
-    @selection, @video = videos(@type.titleize, @default_sort, @applied_technique_id)
+    @selection, @video = videos(@type.titleize, @default_sort, {}, @applied_technique_id)
     render :aikido
   end
 
@@ -49,9 +49,9 @@ class AppliedTechniquesController < ApplicationController
   end
 
   private
-  def videos(art, sort_class, applied_technique_id)
+  def videos(art, sort_class, filters={}, applied_technique_id = nil)
     method = "get_videos"
-    selection = sort_class.constantize.send(method, art.downcase)
+    selection = sort_class.constantize.send(method, art.downcase, filters)
     first_selector = selection.keys.first
     if applied_technique_id.nil?
       first_video = selection[first_selector].first[:video] rescue nil
