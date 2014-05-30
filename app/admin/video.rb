@@ -2,18 +2,23 @@ ActiveAdmin.register Video do
   menu false
   belongs_to :applied_technique
 
-  # See permitted parameters documentation:
-  # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #  permitted = [:permitted, :attributes]
-  #  permitted << :other if resource.something?
-  #  permitted
-  # end
   permit_params :applied_technique_id, :youtube_code
   menu priority: 0
+
+  show do |at|
+    panel 'Details' do
+      attributes_table_for at do
+        row :id
+        row :applied_technique
+        row :youtube_code
+      end
+    end
+
+    panel 'System' do
+      attributes_table_for at do
+        row :created_at
+        row :updated_at
+      end
+    end
+  end
 end

@@ -1,18 +1,4 @@
 ActiveAdmin.register Direction do
-
-
-  # See permitted parameters documentation:
-  # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #  permitted = [:permitted, :attributes]
-  #  permitted << :other if resource.something?
-  #  permitted
-  # end
   permit_params :name, :short_description, :description
   menu parent: "Attributes"
 
@@ -29,4 +15,23 @@ ActiveAdmin.register Direction do
     column :description
     actions
   end
+
+  show title: :name do |at|
+    panel 'Details' do
+      attributes_table_for at do
+        row :id
+        row :name
+        row :short_description
+        row :description
+      end
+    end
+
+    panel 'System' do
+      attributes_table_for at do
+        row :created_at
+        row :updated_at
+      end
+    end
+  end
+
 end

@@ -77,6 +77,13 @@ ActiveAdmin.register AppliedTechnique do
         row :related
       end
     end
+
+    panel 'System' do
+      attributes_table_for at do
+        row :created_at
+        row :updated_at
+      end
+    end
   end
 
   sidebar "Videos", only: [:show] do
