@@ -15,4 +15,16 @@ ActiveAdmin.register Attack do
   # end
   permit_params :name, :description
   menu parent: "Attributes"
+
+  config.sort_order = "name_asc"
+
+  filter :name
+  filter :description
+
+  index do
+    id_column
+    column :name
+    column :description
+    actions
+  end
 end

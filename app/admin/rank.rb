@@ -15,4 +15,19 @@ ActiveAdmin.register Rank do
   # end
   permit_params :name, :description, :belt, :position
   menu parent: "Attributes"
+
+  config.sort_order = "position_asc"
+
+  filter :name
+  filter :description
+  filter :belt
+
+  index do
+    id_column
+    column :name
+    column :description
+    column :belt
+    column :position
+    actions
+  end
 end

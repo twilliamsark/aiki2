@@ -13,6 +13,20 @@ ActiveAdmin.register Format do
   #  permitted << :other if resource.something?
   #  permitted
   # end
-  permit_params :name, :description, :short_description
+  permit_params :name, :description, :short_description, :position
   menu parent: "Attributes"
+  config.sort_order = "position_asc"
+
+  filter :name
+  filter :short_description
+  filter :description
+
+  index do
+    id_column
+    column :name
+    column :short_description
+    column :description
+    column :position
+    actions
+  end
 end

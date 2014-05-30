@@ -13,6 +13,17 @@ ActiveAdmin.register Waza do
   #  permitted << :other if resource.something?
   #  permitted
   # end
-  permit_params :name, :description
+  permit_params :name, :description, :short_description
   menu parent: "Attributes"
+  config.sort_order = "name_asc"
+
+  filter :name
+  filter :description
+
+  index do
+    id_column
+    column :name
+    column :description
+    actions
+  end
 end

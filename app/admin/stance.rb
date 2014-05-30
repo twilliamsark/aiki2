@@ -13,6 +13,18 @@ ActiveAdmin.register Stance do
   #  permitted << :other if resource.something?
   #  permitted
   # end
-  permit_params :name, :description
+  permit_params :name, :description, :short_description
   menu parent: "Attributes"
+
+  filter :name
+  filter :short_description
+  filter :description
+
+  index do
+    id_column
+    column :name
+    column :short_description
+    column :description
+    actions
+  end
 end
