@@ -14,12 +14,7 @@ class AppliedTechniquesController < ApplicationController
     render :aikido
   end
 
-  def action_params
-    @default_sort = params[:sort].titleize if params[:sort].present?
-    @applied_technique_id = params[:applied_technique]
-  end
-
-  # ajax calls
+  # ajax only
   def video_list
     @type = params[:type]
     @default_sort = params[:sort_type].gsub(/[[:space:]]/,'') || "Rank"
@@ -44,11 +39,13 @@ class AppliedTechniquesController < ApplicationController
     @selection, @video = videos(@type, @default_sort, filters)
   end
 
+  # ajax only
   def remote_show
     @video = Video.find(params[:id])
   end
 
   private
+
   def videos(art, sort_class, filters={}, applied_technique_id = nil)
     method = "get_videos"
     selection = sort_class.constantize.send(method, art.downcase, filters)
@@ -70,5 +67,10 @@ class AppliedTechniquesController < ApplicationController
       end
     end
     return [selection, first_video]
+  end
+
+  def action_params
+    @default_sort = params[:sort].titleize if params[:sort].present?
+    @applied_technique_id = params[:applied_technique]
   end
 end
