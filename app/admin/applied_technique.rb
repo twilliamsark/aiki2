@@ -56,7 +56,6 @@ ActiveAdmin.register AppliedTechnique do
         row :waza
         row :attack_height
         row :format
-        row :rank
         row "Rank" do |at|
           at.rank.nil? ? '' : link_to(at.rank.label, admin_rank_path(at.rank))
         end
