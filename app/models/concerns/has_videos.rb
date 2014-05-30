@@ -5,8 +5,6 @@ module HasVideos
     has_many :videos, through: :applied_techniques
 
     has_many :aikido_techniques, -> { aikido_techniques }, class_name: 'AppliedTechnique'
-
-    has_many :iaido_videos, through: :iaido_techniques, source: :videos
     has_many :iaido_techniques, -> { iaido_techniques }, class_name: 'AppliedTechnique'
 
     scope :default_order, -> { order(:name) }
@@ -55,13 +53,8 @@ module HasVideos
       video_selection(videos)
     end
 
-    # format_type ignored for iaido
-    def iaido_videos(filter_options={})
-      videos = self.default_order.map{|r| r.videos.for_iaido}.flatten
-      video_selection(videos)
-    end
-
     private
+
     def video_selection(videos)
       selection = {}
       videos.each do |video|
