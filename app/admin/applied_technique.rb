@@ -34,7 +34,7 @@ ActiveAdmin.register AppliedTechnique do
     column :format, sortable: 'formats.name'
     column :on_test, sortable: true
     column "Rank" do |applied_technique|
-      applied_technique.rank.label
+      applied_technique.rank.label rescue ''
     end
     actions
   end
