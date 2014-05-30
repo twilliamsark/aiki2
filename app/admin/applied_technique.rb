@@ -36,6 +36,13 @@ ActiveAdmin.register AppliedTechnique do
     column "Rank" do |at|
       at.rank.nil? ? '' : link_to(at.rank.label, admin_rank_path(at.rank))
     end
+    column "View in Library" do |at|
+      if at.format.name == Format::AIKI_TOHO
+        link_to 'View Video', applied_techniques_iaido_path(sort: 'format', applied_technique: at)
+      else
+        link_to 'View Video', applied_techniques_aikido_path(sort: 'format', applied_technique: at)
+      end
+    end
     actions
   end
 
@@ -80,6 +87,14 @@ ActiveAdmin.register AppliedTechnique do
       column "YouTube" do |video|
         link_to "#{video.youtube_code}", admin_applied_technique_video_path(applied_technique, video)
       end
+    end
+  end
+
+  sidebar "View in Library", only: [:show] do
+    if applied_technique.format.name == Format::AIKI_TOHO
+      link_to applied_technique.name, applied_techniques_iaido_path(sort: 'format', applied_technique: applied_technique)
+    else
+      link_to applied_technique.name, applied_techniques_aikido_path(sort: 'format', applied_technique: applied_technique)
     end
   end
 
