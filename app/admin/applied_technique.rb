@@ -28,15 +28,49 @@ ActiveAdmin.register AppliedTechnique do
   end
 
   index do
-    column "Name", sortable: :name do |applied_technique|
-      link_to(applied_technique.name, admin_applied_technique_path(applied_technique))
+    column "Name", sortable: :name do |at|
+      link_to(at.name, admin_applied_technique_path(at))
     end
     column :format, sortable: 'formats.name'
     column :on_test, sortable: true
-    column "Rank" do |applied_technique|
-      applied_technique.rank.label rescue ''
+    column "Rank" do |at|
+      at.rank.nil? ? '' : link_to(at.rank.label, admin_rank_path(at.rank))
     end
     actions
+  end
+
+  show title: :name do |at|
+    panel 'Technique' do
+      attributes_table_for at do
+        row :id
+        row :name
+        row :stance
+        row :attack
+        row :technique
+        row :direction
+      end
+    end
+
+    panel 'Attributes' do
+      attributes_table_for at do
+        row :waza
+        row :attack_height
+        row :format
+        row :rank
+        row "Rank" do |at|
+          at.rank.nil? ? '' : link_to(at.rank.label, admin_rank_path(at.rank))
+        end
+        row :on_test
+        row :short_description
+        row :description
+      end
+    end
+
+    panel 'Related' do
+      attributes_table_for at do
+        row :related
+      end
+    end
   end
 
   sidebar "Videos", only: [:show] do

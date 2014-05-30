@@ -16,4 +16,9 @@ class Rank < ActiveRecord::Base
   def miscellaneous?
     name == 'Miscellaneous'
   end
+
+  # for active_admin
+  def to_label
+    label
+  end
 end
