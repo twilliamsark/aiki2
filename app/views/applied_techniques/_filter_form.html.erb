@@ -4,6 +4,7 @@
     <%= form_tag applied_techniques_video_list_url, method: :get, remote: true do %>
       <%
         sort_options = %w(Rank Stance Attack Technique Format)
+        sort_options.push("Kata") if type == 'iaido'
       %>
       <div class="row">
         <div class="col-md-12"><h4>Sort</h4></div>

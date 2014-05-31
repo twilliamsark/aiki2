@@ -16,7 +16,7 @@ class AppliedTechnique < ActiveRecord::Base
   belongs_to :related, class_name: 'AppliedTechnique'
 
   scope :aikido_techniques, -> {joins(:format).merge(Format.aikido).order(:name)}
-  scope :iaido_techniques, -> {joins(:format).merge(Format.aiki_toho).order(:name)}
+  scope :iaido_techniques, -> {joins(:format).merge(Format.aiki_toho).order(:position)}
 
   scope :testable, ->(on_test) { where(on_test: on_test) }
   scope :for_format, ->(format) { where(format_id: format) }
@@ -26,4 +26,8 @@ class AppliedTechnique < ActiveRecord::Base
   scope :for_waza, ->(waza) { where(waza_id: waza) }
   scope :for_attack, ->(attack) { where(attack_id: attack) }
   scope :for_rank, ->(rank) { where(rank_id: rank) }
+
+  def aiki_toho?
+    format.name == Format::AIKI_TOHO rescue false
+  end
 end

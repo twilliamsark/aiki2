@@ -23,6 +23,10 @@
   <% end %>
   <% if applied_technique.format %>
     <li class="no_bullet_list"><strong><%= applied_technique.format.name %>:</strong> <%= applied_technique.format.description %></li>
+    <% if applied_technique.aiki_toho? && applied_technique.kata %>
+      <li class="no_bullet_list"><strong>Kata:</strong> <%= applied_technique.kata.name %></li>
+      <li class="no_bullet_list"><strong>Number:</strong> <%= applied_technique.position %></li>
+    <% end %>
   <% end %>
   <% if applied_technique.waza %>
     <li class="no_bullet_list"><strong><%= applied_technique.waza.name %>:</strong> <%= applied_technique.waza.description %></li>
@@ -34,7 +38,7 @@
   <% if applied_technique.related %>
     <% related = applied_technique.related %>
     <li class="no_bullet_list"><strong>Related <%= related.format.name %>:</strong>
-      <% if related.format.name == Format::AIKI_TOHO %>
+      <% if related.aiki_toho? %>
         <%= link_to related.name, applied_techniques_iaido_path(sort: 'format', applied_technique: related) %>
       <% else %>
         <%= link_to related.name, applied_techniques_aikido_path(sort: 'format', applied_technique: related) %>

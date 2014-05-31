@@ -40,12 +40,13 @@ module HasVideos
                                     rank: Rank::ANY_RANK,
                                     testable: 'all'
                                     )
-      if art == 'aikido' || (art == 'iaido' && self.to_s != 'Format')
-        videos = self.default_order.map do |a|
+      if art == 'iaido' && self.to_s == 'Format'
+        # There is only one iaido format, no need to loop through them all
+        videos = Format.aiki_toho.map do |a|
           a.vids(art, filter_options)
         end.flatten
-      else #Format
-        videos = Format.aiki_toho.map do |a|
+      else
+        videos = self.default_order.map do |a|
           a.vids(art, filter_options)
         end.flatten
       end

@@ -9,7 +9,7 @@ class AppliedTechniquesController < ApplicationController
 
   def iaido
     @type = "iaido"
-    @default_sort ||= "Format"
+    @default_sort ||= "Rank"
     @selection, @video = videos(@type.titleize, @default_sort, {}, @applied_technique_id)
     render :aikido
   end

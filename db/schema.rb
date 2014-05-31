@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140524050145) do
+ActiveRecord::Schema.define(version: 20140531000552) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20140524050145) do
     t.string   "short_description", limit: 20
     t.string   "description"
     t.integer  "related_id"
+    t.integer  "position"
   end
 
   add_index "applied_techniques", ["attack_height_id"], name: "index_applied_techniques_on_attack_height_id"

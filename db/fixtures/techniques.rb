@@ -69,10 +69,7 @@ Attack.seed(:id, [
 
 Kata.seed(:id, [
   {id: 1, name: 'Supplemental', description: 'Extra katas'},
-  {id: 2, name: 'Shohatto Maegiri', description: 'Kata 1'},
-  {id: 3, name: 'Ukenagashi', description: 'Kata 2'},
-  {id: 4, name: 'Ushirogiri', description: 'Kata 3'},
-  {id: 5, name: 'Zengogiri', description: 'Kata 4'}
+  {id: 2, name: 'Core', description: 'Core 15 katas'}
 ])
 
 Technique.seed(:id, [
@@ -94,9 +91,9 @@ Technique.seed(:id, [
 
 AppliedTechnique.seed(:id, [
   {id: 4,   name: 'Shohatto Maegiri',                           related_id: nil, short_description: 'Kata 1', description: 'Front Cut', kata_id: 2, rank_id: 6, format_id: 8, on_test: true},
-  {id: 5,   name: 'Ukenagashi',                                 related_id: 18, short_description: 'Kata 2', description: nil, kata_id: 3, rank_id: 6, format_id: 8, stance_id: 3, attack_id: 2, technique_id: 5, direction_id: 2, on_test: true},
+  {id: 5,   name: 'Ukenagashi',                                 related_id: 18, short_description: 'Kata 2', description: nil, kata_id: 2, rank_id: 6, format_id: 8, stance_id: 3, attack_id: 2, technique_id: 5, direction_id: 2, on_test: true},
   {id: 6,   name: 'Ai Hanmi Kata Dori Ikkyo Omote Variation',   related_id: nil, short_description: nil, description: nil, kata_id: 1, rank_id: 6, format_id: 8, stance_id: 3, attack_id: 2, technique_id: 5, direction_id: 2, on_test: true},
-  {id: 7,   name: 'Ushirogiri',                                 related_id: nil, short_description: 'Kata 3', description: nil, kata_id: 4, rank_id: 6, format_id: 8, stance_id: 2, attack_id: 2, technique_id: 2, on_test: true},
+  {id: 7,   name: 'Ushirogiri',                                 related_id: nil, short_description: 'Kata 3', description: nil, kata_id: 2, rank_id: 6, format_id: 8, stance_id: 2, attack_id: 2, technique_id: 2, on_test: true},
   {id: 8,   name: 'Variation to Kata 3',                        related_id: nil, short_description: nil, description: nil, kata_id: 1, rank_id: 6, format_id: 8, on_test: false},
   {id: 9,   name: 'Kiriage',                                    related_id: nil, short_description: nil, description: nil, kata_id: 1, rank_id: 6, format_id: 8, attack_id: 4, technique_id: 5, direction_id: 2, on_test: true},
 

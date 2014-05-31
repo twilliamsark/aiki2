@@ -12,7 +12,7 @@ ActiveAdmin.register AppliedTechnique do
   #  permitted << :other if resource.something?
   #  permitted
   # end
-  permit_params :name, :technique_id, :attack_id, :stance_id, :direction_id, :related_id, :waza_id, :rank_id, :kata_id, :on_test, :format_id, :attack_height_id, videos_attributes: [:id, :youtube_code]
+  permit_params :name, :technique_id, :attack_id, :stance_id, :direction_id, :related_id, :waza_id, :rank_id, :kata_id, :position, :on_test, :format_id, :attack_height_id, :description, :short_description, videos_attributes: [:id, :youtube_code]
   menu priority: 1
 
   scope :all
@@ -37,7 +37,7 @@ ActiveAdmin.register AppliedTechnique do
       at.rank.nil? ? '' : link_to(at.rank.label, admin_rank_path(at.rank))
     end
     column "View in Library" do |at|
-      if at.format.name == Format::AIKI_TOHO
+      if at.aiki_toho?
         link_to 'View Video', applied_techniques_iaido_path(sort: 'format', applied_technique: at)
       else
         link_to 'View Video', applied_techniques_aikido_path(sort: 'format', applied_technique: at)
@@ -60,9 +60,15 @@ ActiveAdmin.register AppliedTechnique do
 
     panel 'Attributes' do
       attributes_table_for at do
+        row :format
+        if at.aiki_toho?
+          row "Kata (Aiki Toho only)" do |at|
+            at.kata
+          end
+          row :position
+        end
         row :waza
         row :attack_height
-        row :format
         row "Rank" do |at|
           at.rank.nil? ? '' : link_to(at.rank.label, admin_rank_path(at.rank))
         end
@@ -87,9 +93,6 @@ ActiveAdmin.register AppliedTechnique do
   end
 
   sidebar "Videos", only: [:show] do
-    # ul do
-    #   li link_to "Videos", admin_applied_technique_videos_path(applied_technique)
-    # end
     table_for(applied_technique.videos) do
       column "YouTube" do |video|
         link_to "#{video.youtube_code}", admin_applied_technique_video_path(applied_technique, video)
@@ -98,10 +101,18 @@ ActiveAdmin.register AppliedTechnique do
   end
 
   sidebar "View in Library", only: [:show] do
-    if applied_technique.format.name == Format::AIKI_TOHO
+    if applied_technique.aiki_toho?
       link_to applied_technique.name, applied_techniques_iaido_path(sort: 'format', applied_technique: applied_technique)
     else
       link_to applied_technique.name, applied_techniques_aikido_path(sort: 'format', applied_technique: applied_technique)
+    end
+  end
+
+  sidebar "Applied Techniques", only: [:show] do
+    ul do
+      li link_to("Applied Techniques (All)", admin_applied_techniques_path)
+      li link_to("Applied Techniques (Aikido)", admin_applied_techniques_path(scope: 'aikido_techniques'))
+      li link_to("Applied Techniques (Aiki Toho)", admin_applied_techniques_path(scope: 'iaido_techniques'))
     end
   end
 
@@ -114,13 +125,17 @@ ActiveAdmin.register AppliedTechnique do
       f.input :direction
     end
     f.inputs "Attributes" do
+      f.input :format
       f.input :waza
       f.input :attack_height
-      f.input :format
       f.input :rank
       f.input :on_test
       f.input :short_description
       f.input :description
+    end
+    f.inputs "For Aiki Toho Only" do
+      f.input :kata
+      f.input :position
     end
     f.inputs "Related" do
       f.input :related
