@@ -5,13 +5,14 @@ class AppliedTechniquesController < ApplicationController
     @type = "aikido"
     @default_sort ||= "Rank"
     @selection, @video = videos(@type.titleize, @default_sort, {}, @applied_technique_id)
+    render :index
   end
 
   def iaido
     @type = "iaido"
     @default_sort ||= "Rank"
     @selection, @video = videos(@type.titleize, @default_sort, {}, @applied_technique_id)
-    render :aikido
+    render :index
   end
 
   # ajax only

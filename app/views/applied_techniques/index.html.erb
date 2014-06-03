@@ -1,4 +1,5 @@
 <div class="row">
   <%= render 'shared/lnav', type: @type, sort_by: @default_sort %>
-  <%= render 'shared/video', video: @video %>
+  <% vid = exhibit(@video, self) %>
+  <%= vid.render_body %>
 </div>
