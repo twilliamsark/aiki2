@@ -81,3 +81,13 @@ body {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
+
+#link_for_moble {
+  display: none;
+}
+
+@media only screen and (max-device-width : 320px) {
+  #link_for_moble {
+    display: inline;
+  }
+}
