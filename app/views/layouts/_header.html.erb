@@ -15,9 +15,15 @@
   <% if SHOW_MENU %>
     <ul class="nav nav-pills">
       <li><%= link_to "Dojo", "http://www.aikipeace.com/aikido/index.html" %></li>
-      <li id="nav_aikido"><%= link_to "Aikido", applied_techniques_aikido_path %></li>
-      <li id="nav_iaido"><%= link_to "Iaido", applied_techniques_iaido_path %></li>
-      <li><%= link_to "Admin", admin_root_path %></li>
+      <li id="nav_aikido"><%= link_to "Aikido", aikido_path %></li>
+      <li id="nav_iaido"><%= link_to "Iaido", iaido_path %></li>
+      <% if admin_signed_in? %>
+        <li><%= link_to "Admin", admin_root_path %></li>
+      <% end %>
+      <% if signed_in? %>
+        <li class="pull-right"><%= link_to "Sign out", signout_path, method: "delete" %></li>
+        <li class="pull-right nav_text"><%= current_user.email %></li>
+      <% end %>
     </ul>
   <% end %>
 </header>

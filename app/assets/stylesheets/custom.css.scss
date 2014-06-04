@@ -5,10 +5,54 @@ $base_font_size: 16px;
   @return $target / $context + 0em;
 }
 
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {
   background: asset-url('background1.jpg', image);
   font: normal 100% Helvetica, Arial, sans-serif;
   // padding-top: 240px;
+}
+
+%full_width_inputs {
+  border: 1px solid #bbb;
+  width: 100%;
+  @include box_sizing;
+}
+
+textarea, select, .uneditable-input {
+  @extend %full_width_inputs;
+}
+
+// don't mess with submit button inputs
+input:not([type="submit"]) {
+  @extend %full_width_inputs;
+  margin-bottom: 15px;
+}
+
+input[type="submit"] {
+  margin-bottom: 5px;
+}
+
+#error_explanation {
+  color: #f00;
+  border: 1px solid;
+  ul {
+    list-style: none;
+    margin: 5px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+}
+
+.nav_text {
+  padding: 10px 5px 0px;
 }
 
 .aiki_header {

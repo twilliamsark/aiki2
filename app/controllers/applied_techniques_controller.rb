@@ -1,4 +1,5 @@
 class AppliedTechniquesController < ApplicationController
+  before_action :signed_in_user, only: [:aikido, :iaido]
   before_filter :action_params, only: [:aikido, :iaido]
 
   def aikido
