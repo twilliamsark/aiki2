@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    @no_menu = true
   end
 
   def create

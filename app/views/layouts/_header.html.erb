@@ -12,7 +12,7 @@
       <%= image_tag 'Nishio_patch_dark.png', class: "header_image", size: "100x100" %>
     </div>
   </div>
-  <% if SHOW_MENU %>
+  <% if SHOW_MENU && !@no_menu %>
     <ul class="nav nav-pills">
       <li><%= link_to "Dojo", "http://www.aikipeace.com/aikido/index.html" %></li>
       <li id="nav_aikido"><%= link_to "Aikido", aikido_path %></li>
