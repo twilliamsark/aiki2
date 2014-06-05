@@ -33,7 +33,7 @@ module SessionsHelper
       remember_token = User.encrypt(cookies[:remember_token])
       if remember_token
         @current_user = User.find_by(remember_token: remember_token)
-        AppLogging.say("#{@current_user.nil? ? 'Did not find' : 'Found'} current_user #{current_user.id}", 1)
+        AppLogging.say("#{@current_user.nil? ? 'Did not find user' : 'Found' + @current_user.id}", 1)
       else
         AppLogging.say('Could not find unexpired remember_token cookie', 1)
       end
@@ -46,6 +46,7 @@ module SessionsHelper
   end
 
   def signed_in_user
+    AppLogging.say("Require signed in user for #{request.url}")
     unless signed_in?
       store_location
       redirect_to signin_url
@@ -58,6 +59,7 @@ module SessionsHelper
   end
 
   def store_location
+    AppLogging.say("Store location for return #{request.url}") if request.get?
     session[:return_to] = request.url if request.get?
   end
 end
