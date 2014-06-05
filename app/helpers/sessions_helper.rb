@@ -1,7 +1,10 @@
 module SessionsHelper
   def sign_in(user)
     remember_token = User.new_remember_token
-    cookies.permanent[:remember_token] = remember_token
+    cookies[:remember_token] = {
+      value: remember_token,
+      expires: 30.minutes.from_now
+    }
     user.sign_in(remember_token: remember_token, ip: request.remote_ip)
     self.current_user = user
   end
@@ -25,8 +28,17 @@ module SessionsHelper
 
   def current_user
     return @current_user if @current_user
-    remember_token = User.encrypt(cookies[:remember_token])
-    @current_user = User.find_by(remember_token: remember_token)
+    @current_user = nil
+    AppLogging.say('Using remember_token cookie to find current user') do
+      remember_token = User.encrypt(cookies[:remember_token])
+      if remember_token
+        @current_user = User.find_by(remember_token: remember_token)
+        AppLogging.say("#{@current_user.nil? ? 'Did not find' : 'Found'} current_user #{current_user.id}", 1)
+      else
+        AppLogging.say('Could not find unexpired remember_token cookie', 1)
+      end
+    end
+    @current_user
   end
 
   def current_user?(user)
