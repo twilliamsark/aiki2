@@ -38,9 +38,9 @@ ActiveAdmin.register AppliedTechnique do
     end
     column "View in Library" do |at|
       if at.aiki_toho?
-        link_to 'View Video', applied_techniques_iaido_path(sort: 'format', applied_technique: at)
+        link_to 'View Video', iaido_path(sort: 'format', applied_technique: at)
       else
-        link_to 'View Video', applied_techniques_aikido_path(sort: 'format', applied_technique: at)
+        link_to 'View Video', aikido_path(sort: 'format', applied_technique: at)
       end
     end
     actions
@@ -102,9 +102,9 @@ ActiveAdmin.register AppliedTechnique do
 
   sidebar "View in Library", only: [:show] do
     if applied_technique.aiki_toho?
-      link_to applied_technique.name, applied_techniques_iaido_path(sort: 'format', applied_technique: applied_technique)
+      link_to applied_technique.name, iaido_path(sort: 'format', applied_technique: applied_technique)
     else
-      link_to applied_technique.name, applied_techniques_aikido_path(sort: 'format', applied_technique: applied_technique)
+      link_to applied_technique.name, aikido_path(sort: 'format', applied_technique: applied_technique)
     end
   end
 

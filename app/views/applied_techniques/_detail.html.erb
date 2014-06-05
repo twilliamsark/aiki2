@@ -39,9 +39,9 @@
     <% related = applied_technique.related %>
     <li class="no_bullet_list"><strong>Related <%= related.format.name %>:</strong>
       <% if related.aiki_toho? %>
-        <%= link_to related.name, applied_techniques_iaido_path(sort: 'format', applied_technique: related) %>
+        <%= link_to related.name, iaido_path(sort: 'format', applied_technique: related) %>
       <% else %>
-        <%= link_to related.name, applied_techniques_aikido_path(sort: 'format', applied_technique: related) %>
+        <%= link_to related.name, aikido_path(sort: 'format', applied_technique: related) %>
       <% end %>
     </li>
   <% end %>
