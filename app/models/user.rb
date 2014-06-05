@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   end
 
   def User.encrypt(token)
+    return nil if token.nil?
     Digest::SHA1.hexdigest(token.to_s)
   end
 
