@@ -37,6 +37,10 @@ input[type="submit"] {
   margin-bottom: 5px;
 }
 
+ul {
+  font-size: larger;
+}
+
 #error_explanation {
   color: #f00;
   border: 1px solid;
@@ -128,6 +132,10 @@ input[type="submit"] {
 
 #link_for_moble {
   display: none;
+}
+
+.other_videos {
+  font-size: inherit;
 }
 
 @media only screen and (max-device-width : 320px) {

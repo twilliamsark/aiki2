@@ -69,6 +69,16 @@ class Video < ActiveRecord::Base
                     .merge(AppliedTechnique.for_rank(rank))
                     .merge(AppliedTechnique.iaido_techniques) }
 
+  scope :primary, -> { where(primary: true) }
+  scope :secondary, -> { where(primary: false) }
+
+  def name
+    vid_name = "#{applied_technique.name}#{primary? ? ' (primary)' : ''}"
+    if description.present?
+      vid_name += " (#{description})"
+    end
+    vid_name
+  end
 
   def show_video?
     youtube_code && youtube_code != 'n/a'

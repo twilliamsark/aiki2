@@ -1,6 +1,6 @@
 <h1><%= applied_technique.name %></h1>
 <% if SHOW_DEBUG %>
-  <h2>(<%= youtube_code %>)</h2>
+  <h2>(<%= !video.nil? ? video.youtube_code : 'n/a' %>)</h2>
 <% end %>
 <% if applied_technique.description.present? %>
   <h4 class="left_align"><%= applied_technique.description %></h4>
@@ -44,5 +44,14 @@
         <%= link_to related.name, aikido_path(sort: 'format', applied_technique: related) %>
       <% end %>
     </li>
+  <% end %>
+  <% if applied_technique.videos.size > 1 %>
+    <li class="no_bullet_list"><strong>Other Videos:</strong></li>
+    <% applied_technique.videos.each do |vid| %>
+      <% next if vid.id == video.id %>
+      <li class="no_bullet_list_indented other_videos">
+        <%= link_to vid.name, remote_show_url(vid.id), remote: true %>
+      </li>
+    <% end %>
   <% end %>
 </ul>

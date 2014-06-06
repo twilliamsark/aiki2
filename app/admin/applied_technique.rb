@@ -12,7 +12,7 @@ ActiveAdmin.register AppliedTechnique do
   #  permitted << :other if resource.something?
   #  permitted
   # end
-  permit_params :name, :technique_id, :attack_id, :stance_id, :direction_id, :related_id, :waza_id, :rank_id, :kata_id, :position, :on_test, :format_id, :attack_height_id, :description, :short_description, videos_attributes: [:id, :youtube_code]
+  permit_params :name, :technique_id, :attack_id, :stance_id, :direction_id, :related_id, :waza_id, :rank_id, :kata_id, :position, :on_test, :format_id, :attack_height_id, :description, :short_description, videos_attributes: [:id, :youtube_code, :primary, :description]
   menu priority: 1
 
   scope :all
@@ -95,7 +95,7 @@ ActiveAdmin.register AppliedTechnique do
   sidebar "Videos", only: [:show] do
     table_for(applied_technique.videos) do
       column "YouTube" do |video|
-        link_to "#{video.youtube_code}", admin_applied_technique_video_path(applied_technique, video)
+        link_to "#{video.youtube_code}#{video.primary? ? ' primary' : ''}#{video.description.present? ? ' ' + video.description : ''}", admin_applied_technique_video_path(applied_technique, video)
       end
     end
   end
@@ -143,6 +143,8 @@ ActiveAdmin.register AppliedTechnique do
     f.inputs do
       f.has_many :videos, :allow_destroy => true, :heading => 'Videos' do |cf|
         cf.input :youtube_code
+        cf.input :description
+        cf.input :primary
       end
     end
     f.actions

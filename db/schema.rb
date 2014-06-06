@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140604200122) do
+ActiveRecord::Schema.define(version: 20140606145811) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -147,6 +147,8 @@ ActiveRecord::Schema.define(version: 20140604200122) do
     t.string   "youtube_code",         default: "n/a"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "primary",              default: false
+    t.string   "description"
   end
 
   add_index "videos", ["applied_technique_id"], name: "index_videos_on_applied_technique_id"

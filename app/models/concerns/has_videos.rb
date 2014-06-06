@@ -15,10 +15,10 @@ module HasVideos
     on_test = filters.has_key?(:testable) ? filters[:testable] : 'all'
     if on_test == 'all'
       method = "for_#{art}"
-      vids = videos.send(method)
+      vids = videos.primary.send(method)
     else
       method = "for_#{art}_testable"
-      vids = videos.send(method, on_test)
+      vids = videos.primary.send(method, on_test)
     end
     filters.each do |filter, value|
       next if filter == :testable
