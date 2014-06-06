@@ -12,7 +12,7 @@ $base_font_size: 16px;
 }
 
 body {
-  background: asset-url('background1.jpg', image);
+  background: asset-url('background1.jpg');
   font: normal 100% Helvetica, Arial, sans-serif;
   // padding-top: 240px;
 }
@@ -51,8 +51,8 @@ ul {
 }
 
 .field_with_errors {
-  @extend .control-group;
-  @extend .error;
+  @extend .control-group !optional;
+  @extend .error !optional;
 }
 
 .nav_text {
