@@ -95,8 +95,10 @@ ActiveAdmin.register AppliedTechnique do
   sidebar "Videos", only: [:show] do
     table_for(applied_technique.videos) do
       column "YouTube" do |video|
-        link_to "#{video.youtube_code}#{video.primary? ? ' primary' : ''}#{video.description.present? ? ' ' + video.description : ''}", admin_applied_technique_video_path(applied_technique, video)
+        link_to "#{video.youtube_code}", admin_applied_technique_video_path(applied_technique, video)
       end
+      column :primary
+      column :description
     end
   end
 
