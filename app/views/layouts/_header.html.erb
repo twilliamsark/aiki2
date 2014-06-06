@@ -22,7 +22,7 @@
           <li><%= link_to "Admin", admin_root_path %></li>
         <% end %>
         <li class="pull-right"><%= link_to "Sign out", signout_path, method: "delete" %></li>
-        <li class="pull-right nav_text"><%= current_user.email %></li>
+        <li class="pull-right nav_text"><strong>Welcome:</strong> <%= current_user.email %></li>
       <% end %>
     </ul>
   <% end %>
