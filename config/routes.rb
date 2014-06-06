@@ -23,6 +23,6 @@ Aiki::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: 'delete'
 
   #AJAX Calls
-  get "applied_techniques/video_list"
-  get "applied_techniques/remote_show/:id" => "applied_techniques#remote_show", as: :remote_show
+  get "/video_list" => "applied_techniques#video_list", as: :video_list
+  get "/remote_show/:id" => "applied_techniques#remote_show", as: :remote_show
 end
