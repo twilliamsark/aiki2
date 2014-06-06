@@ -11,7 +11,7 @@ class AppliedTechniquesController < ApplicationController
 
   def iaido
     @type = "iaido"
-    @default_sort ||= "Rank"
+    @default_sort ||= "Kata"
     @selection, @video = videos(@type.titleize, @default_sort, {}, @applied_technique_id)
     render :index
   end
