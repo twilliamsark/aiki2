@@ -12,8 +12,8 @@ module Aiki
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    #lib
-    config.autoload_paths += Dir[Rails.root.join('lib', '{**/}')]
+    #lib - don't do this to load custom lib modules, it freaks out active_admin
+    # config.autoload_paths += Dir[Rails.root.join('lib', '{**/}')]
     #exhibits
     # config.autoload_paths += Dir[Rails.root.join('app/exhibits', '{**/}')]
 
