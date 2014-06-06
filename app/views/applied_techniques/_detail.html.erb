@@ -6,6 +6,13 @@
   <h4 class="left_align"><%= applied_technique.description %></h4>
 <% end %>
 <ul class="left_align">
+  <% if current_user.admin? %>
+    <li class="no_bullet_list">
+      <strong>Admin Page:</strong>
+      <%= link_to "#{applied_technique.name}", admin_applied_technique_path(applied_technique), class: 'btn btn-default btn-xs', role: 'button' %>
+    </li>
+    <li class="no_bullet_list">&nbsp;</li>
+  <% end %>
   <% if applied_technique.stance %>
     <li class="no_bullet_list"><strong><%= applied_technique.stance.name %>:</strong> <%= applied_technique.stance.description %></li>
   <% end %>
