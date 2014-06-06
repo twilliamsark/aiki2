@@ -11,7 +11,7 @@ ActiveAdmin.register Video do
         row :id
         row :applied_technique
         row :youtube_code
-        row :pirmary
+        row :primary
         row :description
       end
     end
