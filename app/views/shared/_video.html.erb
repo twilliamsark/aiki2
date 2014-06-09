@@ -8,6 +8,7 @@
     <div class="videowrapper">
       <iframe id="player" class="movie" width="560" height="315" src="http://www.youtube.com/embed/<%= video.youtube_code %>?rel=0" frameborder="1" html5="1" allowfullscreen></iframe>
     </div>
+    <div><%= link_to "Reload", remote_show_url(video), remote: true %></div>
     <div id="link_for_moble"><a href="http://www.youtube.com/watch?v=<%= video.youtube_code %>">View on Youtube</a></div>
   <% else %>
     <%= image_tag 'Nishio_patch_dark.png' %>
