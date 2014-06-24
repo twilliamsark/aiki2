@@ -57,22 +57,7 @@ module HasVideos
     private
 
     def video_selection(videos)
-      selection = {}
-      videos.each do |video|
-        selection[video.applied_technique.send(self.to_s.underscore)] ||= []
-        entry = {
-          video: video,
-          list_name: video.applied_technique.name
-        }
-        if video.applied_technique.short_description.present?
-          entry[:list_name] += " - #{video.applied_technique.short_description}"
-        end
-        if video.applied_technique.on_test?
-          entry[:list_name] += " (on test)"
-        end
-        selection[video.applied_technique.send(self.to_s.underscore)] << entry
-      end
-      selection
+      VideoUtils.video_collection(videos, self)
     end
   end
 

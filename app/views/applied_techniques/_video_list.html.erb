@@ -8,21 +8,30 @@
       <%
         first = true
         selection.each do |key, techniques|
+          if key == 'Search Results'
+            id = 'search_results'
+            name = "Search Results"
+            description = @search_term || ''
+          else
+            id = key.id
+            name = key.name
+            description = key.description
+          end
       %>
         <div class="panel panel-default">
 
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= key.id %>">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= id %>">
                 <ul>
-                  <li class="no_bullet_list"><%= key.name %></li>
-                  <li class="no_bullet_list_indented"><%= key.description %></li>
+                  <li class="no_bullet_list"><%= name %></li>
+                  <li class="no_bullet_list_indented"><%= description %></li>
                 </ul>
               </a>
             </h4>
           </div>
 
-          <div id="collapse<%= key.id %>" class="panel-collapse collapse<%= first ? ' in' : '' %>">
+          <div id="collapse<%= id %>" class="panel-collapse collapse<%= first ? ' in' : '' %>">
             <% first = false %>
             <div class="panel-body">
               <ul>

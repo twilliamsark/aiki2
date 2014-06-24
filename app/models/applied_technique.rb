@@ -15,6 +15,8 @@ class AppliedTechnique < ActiveRecord::Base
   has_one :related, class_name: 'AppliedTechnique', foreign_key: :related_id
   belongs_to :related, class_name: 'AppliedTechnique'
 
+  after_save :set_keywords
+
   scope :aikido_techniques, -> {joins(:format).merge(Format.aikido).order(:name)}
   scope :iaido_techniques, -> {joins(:format).merge(Format.aiki_toho).order(:position)}
 
@@ -27,7 +29,27 @@ class AppliedTechnique < ActiveRecord::Base
   scope :for_attack, ->(attack) { where(attack_id: attack) }
   scope :for_rank, ->(rank) { where(rank_id: rank) }
 
+  scope :search, ->(keyword) { where('keywords like ?', "%#{keyword.downcase}%") if keyword.present? }
+
+
   def aiki_toho?
     format.name == Format::AIKI_TOHO rescue false
+  end
+
+  def set_keywords()
+    keywords = []
+
+    attribs = [:technique, :attack, :stance,
+               :direction, :waza, :rank,
+               :format, :kata, :attack_height]
+
+    attribs.each do |attrib|
+      keyword_list = self.send(attrib).keywords || "" rescue ""
+      keywords << keyword_list if keyword_list.present?
+    end
+    keywords = keywords.join(' ')
+
+    self.update_column(:keywords, keywords)
+    AppLogging.say("Update keywords for AT:#{id} to #{self.keywords}")
   end
 end

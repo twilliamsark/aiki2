@@ -20,25 +20,31 @@ class AppliedTechniquesController < ApplicationController
   def video_list
     @type = params[:type]
     @default_sort = params[:sort_type].gsub(/[[:space:]]/,'') || "Rank"
-    filters = {}
 
-    filters[:format] = params[:format_type] if params[:format_type].present?
-    filters[:technique] = params[:technique_type] if params[:technique_type].present?
-    filters[:direction] = params[:direction_type] if params[:direction_type].present?
-    filters[:stance] = params[:stance_type] if params[:stance_type].present?
-    filters[:waza] = params[:waza_type] if params[:waza_type].present?
-    filters[:attack] = params[:attack_type] if params[:attack_type].present?
-    filters[:rank] = params[:rank_type] if params[:rank_type].present?
-
-    if params[:testable] == 'true'
-      filters[:testable] = true
-    elsif params[:testable] == 'false'
-      filters[:testable] = false
+    if params[:search].present?
+      @search_term = params[:search]
+      @selection, @video = search_videos(@type, @search_term)
     else
-      filters[:testable] = 'all'
-    end
+      filters = {}
 
-    @selection, @video = videos(@type, @default_sort, filters)
+      filters[:format] = params[:format_type] if params[:format_type].present?
+      filters[:technique] = params[:technique_type] if params[:technique_type].present?
+      filters[:direction] = params[:direction_type] if params[:direction_type].present?
+      filters[:stance] = params[:stance_type] if params[:stance_type].present?
+      filters[:waza] = params[:waza_type] if params[:waza_type].present?
+      filters[:attack] = params[:attack_type] if params[:attack_type].present?
+      filters[:rank] = params[:rank_type] if params[:rank_type].present?
+
+      if params[:testable] == 'true'
+        filters[:testable] = true
+      elsif params[:testable] == 'false'
+        filters[:testable] = false
+      else
+        filters[:testable] = 'all'
+      end
+
+      @selection, @video = videos(@type, @default_sort, filters)
+    end
   end
 
   # ajax only
@@ -49,8 +55,7 @@ class AppliedTechniquesController < ApplicationController
   private
 
   def videos(art, sort_class, filters={}, applied_technique_id = nil)
-    method = "get_videos"
-    selection = sort_class.constantize.send(method, art.downcase, filters)
+    selection = sort_class.constantize.send(:get_videos, art.downcase, filters)
     first_selector = selection.keys.first
     if applied_technique_id.nil?
       first_video = selection[first_selector].first[:video] rescue nil
@@ -68,6 +73,13 @@ class AppliedTechniquesController < ApplicationController
         end
       end
     end
+    return [selection, first_video]
+  end
+
+  def search_videos(art, search)
+    vids = AppliedTechnique.send("#{art.downcase}_techniques").search(search).map(&:videos).flatten
+    first_video = vids.first
+    selection = VideoUtils.video_collection(vids)
     return [selection, first_video]
   end
 

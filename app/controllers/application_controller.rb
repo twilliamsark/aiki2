@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   include App
   require 'app_logging'
   include AppLogging
+  require 'video_utils'
+  include VideoUtils
 
   helper :exhibits
 
