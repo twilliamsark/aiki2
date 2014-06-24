@@ -77,7 +77,9 @@ class AppliedTechniquesController < ApplicationController
   end
 
   def search_videos(art, search)
-    vids = AppliedTechnique.send("#{art.downcase}_techniques").search(search).map(&:videos).flatten
+    vids = AppliedTechnique.send("#{art.downcase}_techniques").search(search).map do |at|
+      at.videos.primary
+    end.flatten
     first_video = vids.first
     selection = VideoUtils.video_collection(vids)
     return [selection, first_video]
