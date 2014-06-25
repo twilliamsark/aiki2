@@ -72,6 +72,9 @@ class Video < ActiveRecord::Base
   scope :primary, -> { where(primary: true) }
   scope :secondary, -> { where(primary: false) }
 
+  scope :active, ->(state=true) { where(active: state) }
+  scope :demo, ->(state=true) { where(for_demo: state) }
+
   def name
     vid_name = "#{applied_technique.name}#{primary? ? ' (primary)' : ''}"
     if description.present?

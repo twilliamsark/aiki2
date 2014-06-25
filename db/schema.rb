@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140620220232) do
+ActiveRecord::Schema.define(version: 20140625191244) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -130,18 +130,18 @@ ActiveRecord::Schema.define(version: 20140620220232) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "admin",              default: false
-    t.integer  "sign_in_count",      default: 0
+    t.boolean  "admin"
+    t.integer  "sign_in_count"
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "expires_at"
+    t.boolean  "demo",               default: false
+    t.date     "expires_on"
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
   create_table "videos", force: true do |t|
     t.integer  "applied_technique_id"
@@ -150,6 +150,8 @@ ActiveRecord::Schema.define(version: 20140620220232) do
     t.datetime "updated_at"
     t.boolean  "primary",              default: false
     t.string   "description"
+    t.boolean  "active",               default: false
+    t.boolean  "for_demo",             default: false
   end
 
   add_index "videos", ["applied_technique_id"], name: "index_videos_on_applied_technique_id"

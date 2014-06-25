@@ -45,6 +45,10 @@ module SessionsHelper
     user == current_user
   end
 
+  def demo_user?
+    current_user.demo?
+  end
+
   def signed_in_user
     AppLogging.say("Require signed in user for #{request.url}")
     unless signed_in?

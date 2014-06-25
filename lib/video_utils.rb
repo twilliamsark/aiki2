@@ -1,6 +1,7 @@
 module VideoUtils
   def self.video_collection(videos, klass=nil)
     selection = {}
+    videos.compact!
     videos.each do |video|
       selection_key = if !klass.nil?
         video.applied_technique.send(klass.to_s.underscore)

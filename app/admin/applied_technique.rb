@@ -90,15 +90,21 @@ ActiveAdmin.register AppliedTechnique do
         row :updated_at
       end
     end
-  end
 
-  sidebar "Videos", only: [:show] do
-    table_for(applied_technique.videos) do
-      column "YouTube" do |video|
-        link_to "#{video.youtube_code}", admin_applied_technique_video_path(applied_technique, video)
+    panel 'Videos' do
+      table_for(applied_technique.videos) do
+        column :youtube_code
+        column :active
+        column :primary
+        column :for_demo
+        column :description
+        column "View" do |video|
+          link_to "View", admin_applied_technique_video_path(applied_technique, video)
+        end
+        column "Edit" do |video|
+          link_to "Edit", edit_admin_applied_technique_video_path(applied_technique, video)
+        end
       end
-      column :primary
-      column :description
     end
   end
 
