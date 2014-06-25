@@ -1,9 +1,16 @@
 ActiveAdmin.register User do
-  permit_params :email, :password, :password_confirmation, :admin, :demo, :expires_on #, :expires_at_date, :expires_at_time_hour, :expires_at_time_minute
+  permit_params :email, :password, :password_confirmation, :admin, :demo, :expires_on
 
   batch_action :toggle_admin do |selection|
     User.find(selection).each do |user|
       user.toggle!(:admin)
+    end
+    redirect_to :back
+  end
+
+  batch_action :toggle_demo do |selection|
+    User.find(selection).each do |user|
+      user.toggle!(:demo)
     end
     redirect_to :back
   end
