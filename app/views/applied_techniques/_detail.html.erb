@@ -110,10 +110,11 @@
 
 </div>
 <ul class="left_align">
-  <% if applied_technique.videos.visible.size > 1 %>
+  <% if applied_technique.videos.size > 1 %>
     <li class="no_bullet_list"><strong>Other Videos:</strong></li>
-    <% applied_technique.videos.visible.each do |vid| %>
+    <% applied_technique.videos.each do |vid| %>
       <% next if vid.id == video.id %>
+      <% next unless VideoUtils.show_video?(vid, current_user) %>
       <li class="no_bullet_list_indented other_videos">
         <%= link_to vid.name, remote_show_url(vid.id), remote: true %>
       </li>

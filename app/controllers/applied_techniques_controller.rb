@@ -55,7 +55,7 @@ class AppliedTechniquesController < ApplicationController
   private
 
   def videos(art, sort_class, filters={}, applied_technique_id = nil)
-    selection = sort_class.constantize.send(:get_videos, art.downcase, filters, demo_user?)
+    selection = sort_class.constantize.send(:get_videos, art.downcase, filters, current_user)
     first_selector = selection.keys.first
     if applied_technique_id.nil?
       first_video = selection[first_selector].first[:video] rescue nil
@@ -78,11 +78,11 @@ class AppliedTechniquesController < ApplicationController
 
   def search_videos(art, search)
     vids = AppliedTechnique.send("#{art.downcase}_techniques").search(search).map do |at|
-      at.videos.visible.primary
+      at.videos.primary
     end.flatten
 
     vids.compact!
-    vids = vids.select {|vid| vid.for_demo?} if demo_user?
+    vids = vids.select {|vid| VideoUtils.show_video?(vid, current_user)}
 
     first_video = vids.first
     selection = VideoUtils.video_collection(vids)

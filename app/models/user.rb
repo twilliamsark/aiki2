@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  def regular?
+    !admin? && !demo?
+  end
+
   def sign_in(options={})
     options.reverse_merge!(remember_token: nil, ip: nil)
 

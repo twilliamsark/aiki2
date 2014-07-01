@@ -24,4 +24,12 @@ module VideoUtils
     end
     selection
   end
+
+  def self.show_video?(video, user)
+    return false unless user && !video.nil?
+    return true if user.admin?
+    return true if video.visible? && user.regular?
+    return true if video.for_demo? && user.demo?
+    return false
+  end
 end
