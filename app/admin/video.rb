@@ -2,7 +2,7 @@ ActiveAdmin.register Video do
   menu false
   belongs_to :applied_technique
 
-  permit_params :applied_technique_id, :youtube_code, :primary, :active, :for_demo, :description
+  permit_params :applied_technique_id, :youtube_code, :primary, :visible, :for_demo, :description
   menu priority: 0
 
   show do |at|
@@ -12,7 +12,7 @@ ActiveAdmin.register Video do
         row :applied_technique
         row :youtube_code
         row :primary
-        row :active
+        row :visible
         row :for_demo
         row :description
       end

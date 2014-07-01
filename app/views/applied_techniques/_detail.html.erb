@@ -14,7 +14,7 @@
     </div>
     <div class="row">
       <div class="col-md-3"><label>Visible To Non-Admin:</label></div>
-      <div class="col-md-9 bold"><%= !video.nil? ? video.active? : 'n/a' %></div>
+      <div class="col-md-9 bold"><%= !video.nil? ? video.visible? : 'n/a' %></div>
     </div>
     <div class="row">
       <div class="col-md-3"><label>Available For Demo:</label></div>
@@ -93,7 +93,7 @@
     </div>
   <% end %>
 
-  <% if applied_technique.related %>
+  <% if applied_technique.related && applied_technique.related.videos.visible.any? %>
     <% related = applied_technique.related %>
     <div class="row">
       <div class="col-md-3"><label>Related <%= related.format.name %>:</label></div>
@@ -110,9 +110,9 @@
 
 </div>
 <ul class="left_align">
-  <% if applied_technique.videos.active.size > 1 %>
+  <% if applied_technique.videos.visible.size > 1 %>
     <li class="no_bullet_list"><strong>Other Videos:</strong></li>
-    <% applied_technique.videos.active.each do |vid| %>
+    <% applied_technique.videos.visible.each do |vid| %>
       <% next if vid.id == video.id %>
       <li class="no_bullet_list_indented other_videos">
         <%= link_to vid.name, remote_show_url(vid.id), remote: true %>

@@ -94,7 +94,7 @@ ActiveAdmin.register AppliedTechnique do
     panel 'Videos' do
       table_for(applied_technique.videos) do
         column :youtube_code
-        column :active
+        column :visible
         column :primary
         column :for_demo
         column :description

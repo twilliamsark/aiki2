@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625191244) do
+ActiveRecord::Schema.define(version: 20140701171154) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -138,8 +138,7 @@ ActiveRecord::Schema.define(version: 20140625191244) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "expires_at"
-    t.boolean  "demo",               default: false
+    t.boolean  "demo"
     t.date     "expires_on"
   end
 
@@ -150,7 +149,7 @@ ActiveRecord::Schema.define(version: 20140625191244) do
     t.datetime "updated_at"
     t.boolean  "primary",              default: false
     t.string   "description"
-    t.boolean  "active",               default: false
+    t.boolean  "visible",              default: false
     t.boolean  "for_demo",             default: false
   end
 

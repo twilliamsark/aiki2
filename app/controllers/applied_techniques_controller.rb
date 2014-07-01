@@ -78,7 +78,7 @@ class AppliedTechniquesController < ApplicationController
 
   def search_videos(art, search)
     vids = AppliedTechnique.send("#{art.downcase}_techniques").search(search).map do |at|
-      at.videos.active.primary
+      at.videos.visible.primary
     end.flatten
 
     vids.compact!
