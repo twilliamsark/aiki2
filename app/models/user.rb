@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }
 
+  scope :admin, -> { where(admin: true) }
+  scope :demo, -> { where(demo: true) }
+  scope :regular, -> { where("admin = ? and demo = ?", false, false) }
+
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end
