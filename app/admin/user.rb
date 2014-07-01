@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params :email, :password, :password_confirmation, :admin, :demo, :expires_on
+  permit_params :email, :password, :password_confirmation, :admin, :demo, :demo_user_expires_on
 
   batch_action :toggle_admin do |selection|
     User.find(selection).each do |user|
@@ -21,7 +21,7 @@ ActiveAdmin.register User do
     column :email
     column :admin
     column :demo
-    column :expires_on
+    column :demo_user_expires_on
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
@@ -42,7 +42,7 @@ ActiveAdmin.register User do
       f.input :password_confirmation
       f.input :admin
       f.input :demo
-      f.input :expires_on
+      f.input :demo_user_expires_on
     end
     f.actions
   end
@@ -54,7 +54,7 @@ ActiveAdmin.register User do
         row :email
         row :admin
         row :demo
-        row :expires_on
+        row :demo_user_expires_on
         row :sign_in_count
         row :current_sign_in_at
         row :last_sign_in_at

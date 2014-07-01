@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
 
   def authenticate(user)
     authentic = user && user.authenticate(params[:session][:password])
-    authentic = false if user.demo? && !user.expires_on.nil? && user.expires_on.at_end_of_day.past?
+    authentic = false if user.demo? && !user.demo_user_expires_on.nil? && user.demo_user_expires_on.at_end_of_day.past?
     return authentic
   end
 end
