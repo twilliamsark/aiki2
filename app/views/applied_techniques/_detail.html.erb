@@ -1,7 +1,4 @@
 <h1 class="center"><%= applied_technique.name %></h1>
-<% if SHOW_DEBUG %>
-  <h2 class="center">(<%= !video.nil? ? video.youtube_code : 'n/a' %>)</h2>
-<% end %>
 <% if applied_technique.description.present? %>
   <h4 class="left_align"><%= applied_technique.description %></h4>
 <% end %>
@@ -12,12 +9,16 @@
       <div class="col-md-9"><%= link_to "Admin For #{applied_technique.name}", admin_applied_technique_path(applied_technique) %></div>
     </div>
     <div class="row">
+      <div class="col-md-3"><label>YouTube Code:</label></div>
+      <div class="col-md-9"><%= !video.nil? ? video.youtube_code : 'n/a' %></div>
+    </div>
+    <div class="row">
       <div class="col-md-3"><label>Visible To Non-Admin:</label></div>
-      <div class="col-md-9 bold"><%= video.active? %></div>
+      <div class="col-md-9 bold"><%= !video.nil? ? video.active? : 'n/a' %></div>
     </div>
     <div class="row">
       <div class="col-md-3"><label>Available For Demo:</label></div>
-      <div class="col-md-9 bold"><%= video.for_demo? %></div>
+      <div class="col-md-9 bold"><%= !video.nil? ? video.for_demo? : 'n/a' %></div>
     </div>
   <br/>
   <% end %>
