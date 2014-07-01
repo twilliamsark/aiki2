@@ -1,57 +1,114 @@
-<h1><%= applied_technique.name %></h1>
+<h1 class="center"><%= applied_technique.name %></h1>
 <% if SHOW_DEBUG %>
-  <h2>(<%= !video.nil? ? video.youtube_code : 'n/a' %>)</h2>
+  <h2 class="center">(<%= !video.nil? ? video.youtube_code : 'n/a' %>)</h2>
 <% end %>
 <% if applied_technique.description.present? %>
   <h4 class="left_align"><%= applied_technique.description %></h4>
 <% end %>
-<ul class="left_align">
+<div class="section detail">
   <% if current_user.admin? %>
-    <li class="no_bullet_list">
-      <strong>Admin Page:</strong>
-      <%= link_to "#{applied_technique.name}", admin_applied_technique_path(applied_technique), class: 'btn btn-default btn-xs', role: 'button' %>
-    </li>
-    <li class="no_bullet_list">&nbsp;</li>
+    <div class="row">
+      <div class="col-md-3"><label>Admin Page:</label></div>
+      <div class="col-md-9"><%= link_to "Admin For #{applied_technique.name}", admin_applied_technique_path(applied_technique) %></div>
+    </div>
+    <div class="row">
+      <div class="col-md-3"><label>Visible To Non-Admin:</label></div>
+      <div class="col-md-9 bold"><%= video.active? %></div>
+    </div>
+    <div class="row">
+      <div class="col-md-3"><label>Available For Demo:</label></div>
+      <div class="col-md-9 bold"><%= video.for_demo? %></div>
+    </div>
+  <br/>
   <% end %>
+
   <% if applied_technique.stance %>
-    <li class="no_bullet_list"><strong><%= applied_technique.stance.name %>:</strong> <%= applied_technique.stance.description %></li>
+    <div class="row">
+      <div class="col-md-3"><label><%= applied_technique.stance.name %>:</label></div>
+      <div class="col-md-9"><%= applied_technique.stance.description %></div>
+    </div>
   <% end %>
+
   <% if applied_technique.attack %>
-    <li class="no_bullet_list"><strong><%= applied_technique.attack.name %>:</strong> <%= applied_technique.attack.description %></li>
+    <div class="row">
+      <div class="col-md-3"><label><%= applied_technique.attack.name %>:</label></div>
+      <div class="col-md-9"><%= applied_technique.attack.description %></div>
+    </div>
   <% end %>
+
   <% if applied_technique.technique %>
-    <li class="no_bullet_list"><strong><%= applied_technique.technique.name %>:</strong> <%= applied_technique.technique.description %></li>
+    <div class="row">
+      <div class="col-md-3"><label><%= applied_technique.technique.name %>:</label></div>
+      <div class="col-md-9"><%= applied_technique.technique.description %></div>
+    </div>
   <% end %>
+
   <% if applied_technique.direction %>
-    <li class="no_bullet_list"><strong><%= applied_technique.direction.name %>:</strong> <%= applied_technique.direction.description %></li>
+    <div class="row">
+      <div class="col-md-3"><label><%= applied_technique.direction.name %>:</label></div>
+      <div class="col-md-9"><%= applied_technique.direction.description %></div>
+    </div>
   <% end %>
+
   <% if applied_technique.attack_height %>
-    <li class="no_bullet_list"><strong><%= applied_technique.attack_height.name %>:</strong> <%= applied_technique.attack_height.description %></li>
+    <div class="row">
+      <div class="col-md-3"><label><%= applied_technique.attack_height.name %>:</label></div>
+      <div class="col-md-9"><%= applied_technique.attack_height.description %></div>
+    </div>
   <% end %>
+
   <% if applied_technique.format %>
-    <li class="no_bullet_list"><strong><%= applied_technique.format.name %>:</strong> <%= applied_technique.format.description %></li>
+    <div class="row">
+      <div class="col-md-3"><label><%= applied_technique.format.name %>:</label></div>
+      <div class="col-md-9"><%= applied_technique.format.description %></div>
+    </div>
     <% if applied_technique.aiki_toho? && applied_technique.kata %>
-      <li class="no_bullet_list"><strong>Kata:</strong> <%= applied_technique.kata.name %></li>
-      <li class="no_bullet_list"><strong>Number:</strong> <%= applied_technique.position %></li>
+      <div class="row">
+        <div class="col-md-3"><label>Kata:</label></div>
+        <div class="col-md-9"><%= applied_technique.kata.name %></div>
+      </div>
+      <div class="row">
+        <div class="col-md-3"><label>Kata Number:</label></div>
+        <div class="col-md-9"><%= applied_technique.position %></div>
+      </div>
     <% end %>
   <% end %>
+
   <% if applied_technique.waza %>
-    <li class="no_bullet_list"><strong><%= applied_technique.waza.name %>:</strong> <%= applied_technique.waza.description %></li>
+    <div class="row">
+      <div class="col-md-3"><label><%= applied_technique.waza.name %>:</label></div>
+      <div class="col-md-9"><%= applied_technique.waza.description %></div>
+    </div>
   <% end %>
+
   <% unless applied_technique.rank.miscellaneous? %>
-    <li class="no_bullet_list"><strong>Rank:</strong> <%= applied_technique.rank.label %></li>
-    <li class="no_bullet_list"><strong>Testing:</strong> <%= "#{applied_technique.on_test? ? 'On Test' : 'Know For Rank'}" %></li>
+    <div class="row">
+      <div class="col-md-3"><label>Rank:</label></div>
+      <div class="col-md-9"><%= applied_technique.rank.label %></div>
+    </div>
+    <div class="row">
+      <div class="col-md-3"><label>Testing:</label></div>
+      <div class="col-md-9"><%= "#{applied_technique.on_test? ? 'On Test' : 'Know For Rank'}" %></div>
+    </div>
   <% end %>
+
   <% if applied_technique.related %>
     <% related = applied_technique.related %>
-    <li class="no_bullet_list"><strong>Related <%= related.format.name %>:</strong>
-      <% if related.aiki_toho? %>
-        <%= link_to related.name, iaido_path(sort: 'format', applied_technique: related) %>
-      <% else %>
-        <%= link_to related.name, aikido_path(sort: 'format', applied_technique: related) %>
-      <% end %>
-    </li>
+    <div class="row">
+      <div class="col-md-3"><label>Related <%= related.format.name %>:</label></div>
+      <div class="col-md-9">
+        <% if related.aiki_toho? %>
+          <%= link_to related.name, iaido_path(sort: 'format', applied_technique: related) %>
+        <% else %>
+          <%= link_to related.name, aikido_path(sort: 'format', applied_technique: related) %>
+        <% end %>
+      </div>
+    </div>
   <% end %>
+
+
+</div>
+<ul class="left_align">
   <% if applied_technique.videos.active.size > 1 %>
     <li class="no_bullet_list"><strong>Other Videos:</strong></li>
     <% applied_technique.videos.active.each do |vid| %>

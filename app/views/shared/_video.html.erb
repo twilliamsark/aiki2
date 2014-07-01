@@ -1,9 +1,10 @@
-<div id="vid" class="col-md-8 vid_area">
+<div id="vid" class="col-md-8">
   <% if video %>
     <%= render 'applied_techniques/detail', applied_technique: video.applied_technique, video: video %>
   <% else %>
     <h1><em>Please select a video</em></h1>
   <% end %>
+<div class="vid_area">
   <% if Video.show_video?(video) %>
     <div class="videowrapper">
       <iframe id="player" class="movie" width="560" height="315" src="http://www.youtube.com/embed/<%= video.youtube_code %>?rel=0" frameborder="1" html5="1" allowfullscreen></iframe>
@@ -16,6 +17,7 @@
       <h2>Video not yet uploaded</h2>
     <% end %>
   <% end %>
+</div>
 </div>
 
 
