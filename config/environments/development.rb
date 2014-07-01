@@ -3,6 +3,8 @@ FILTERING = true
 SHOW_MENU = true
 SHOW_DEBUG = true
 CHECK_YOUTUBE = false
+DEVELOPMENT_REQUIRE_LOGIN = false
+DEVELOPMENT_LOGIN = 'example@example.com'
 
 Aiki::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.

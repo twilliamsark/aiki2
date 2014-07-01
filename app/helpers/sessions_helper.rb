@@ -1,9 +1,9 @@
 module SessionsHelper
-  def sign_in(user)
+  def sign_in(user, timeout_minutes=30)
     remember_token = User.new_remember_token
     cookies[:remember_token] = {
       value: remember_token,
-      expires: 30.minutes.from_now
+      expires: timeout_minutes.minutes.from_now
     }
     user.sign_in(remember_token: remember_token, ip: request.remote_ip)
     self.current_user = user
@@ -50,10 +50,16 @@ module SessionsHelper
   end
 
   def signed_in_user
-    AppLogging.say("Require signed in user for #{request.url}")
-    unless signed_in?
-      store_location
-      redirect_to signin_url
+    if Rails.env.production? || (Rails.env.development? && DEVELOPMENT_REQUIRE_LOGIN)
+      AppLogging.say("Require signed in user for #{request.url}")
+      signin_check
+    elsif Rails.env.development? && !DEVELOPMENT_REQUIRE_LOGIN
+      user = User.find_by_email(DEVELOPMENT_LOGIN)
+      if user
+        sign_in(user, 3000)
+      else
+        signin_check
+      end
     end
   end
 
@@ -67,5 +73,12 @@ module SessionsHelper
   def store_location
     AppLogging.say("Store location for future redirect #{request.url}") if request.get?
     session[:return_to] = request.url if request.get?
+  end
+
+  def signin_check
+    unless signed_in?
+      store_location
+      redirect_to signin_url
+    end
   end
 end
