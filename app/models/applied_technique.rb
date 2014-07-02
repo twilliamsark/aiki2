@@ -37,8 +37,7 @@ class AppliedTechnique < ActiveRecord::Base
 
   def set_keywords()
     technique_name = name.downcase
-    keywords = technique_name.split(' ')
-    keywords << technique_name.gsub(/\s/,'')
+    keywords = [technique_name, technique_name.gsub(/\s/,'')]
 
     attribs = [:technique, :attack, :stance,
                :direction, :waza, :rank,
@@ -46,10 +45,10 @@ class AppliedTechnique < ActiveRecord::Base
 
     attribs.each do |attrib|
       keyword_list = self.send(attrib).keywords || "" rescue ""
-      keywords << keyword_list.split(' ') if keyword_list.present?
+      keywords << keyword_list if keyword_list.present?
     end
 
-    keywords = keywords.flatten.uniq.join(' ')
+    keywords = keywords.flatten.join(' ')
 
     self.update_column(:keywords, keywords)
     AppLogging.say("Update keywords for AT:#{id} to #{self.keywords}")
