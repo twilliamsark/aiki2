@@ -53,4 +53,8 @@ class AppliedTechnique < ActiveRecord::Base
     self.update_column(:keywords, keywords)
     AppLogging.say("Update keywords for AT:#{id} to #{self.keywords}")
   end
+
+  def to_hash
+    {id: id, technique_id: technique_id, attack_id: attack_id, stance_id: stance_id, waza_id: waza_id, rank_id: rank_id, direction_id: direction_id, name: name, kata_id: kata_id, format_id: format_id, attack_height_id: attack_height_id, on_test: on_test, short_description: short_description, description: description, related_id: related_id, position: position}
+  end
 end

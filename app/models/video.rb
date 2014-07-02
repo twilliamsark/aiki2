@@ -90,4 +90,8 @@ class Video < ActiveRecord::Base
   def self.show_video?(video=nil)
     VIDEOS_ONLINE && !video.nil? && video.show_video? && App.connected_to_youtube?
   end
+
+  def to_hash
+    {id: id, applied_technique_id: applied_technique_id, youtube_code: youtube_code, primary: primary, description: description, visible: visible, for_demo: for_demo}
+  end
 end

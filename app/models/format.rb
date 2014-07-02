@@ -21,4 +21,8 @@ class Format < ActiveRecord::Base
         options_hash
       end
   end
+
+  def to_hash
+    {id: id, name: name, position: position, short_description: short_description, description: description}
+  end
 end

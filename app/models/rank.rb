@@ -17,6 +17,10 @@ class Rank < ActiveRecord::Base
     name == 'Miscellaneous'
   end
 
+  def to_hash
+    {id: id, name: name, position: position, belt: belt, description: description, short_description: short_description}
+  end
+
   # for active_admin
   def to_label
     label
