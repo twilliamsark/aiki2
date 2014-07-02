@@ -36,7 +36,8 @@ class AppliedTechnique < ActiveRecord::Base
   end
 
   def set_keywords()
-    keywords = [name, name.gsub(/\s/,'')]
+    technique_name = name.downcase
+    keywords = [technique_name, technique_name.gsub(/\s/,'')]
 
     attribs = [:technique, :attack, :stance,
                :direction, :waza, :rank,
