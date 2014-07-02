@@ -1,6 +1,7 @@
 class Attack < ActiveRecord::Base
   include HasVideos
   include Filterable
+  include SeedFuSerializeable
 
   # brittle
   ANY_ATTACK = "1"

@@ -29,11 +29,4 @@ module Filterable
   def update_applied_technuque_keywords
     applied_techniques.each(&:set_keywords)
   end
-
-  def to_hash
-    hash = {id: id, name: name}
-    hash[:short_description] = short_description if self.respond_to? :short_description
-    hash[:description] = description if self.respond_to? :description
-    hash
-  end
 end

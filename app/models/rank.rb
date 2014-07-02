@@ -1,6 +1,7 @@
 class Rank < ActiveRecord::Base
   include HasVideos
   include Filterable
+  include SeedFuSerializeable
 
   # brittle
   ANY_RANK = "1"
@@ -15,10 +16,6 @@ class Rank < ActiveRecord::Base
 
   def miscellaneous?
     name == 'Miscellaneous'
-  end
-
-  def to_hash
-    {id: id, name: name, position: position, belt: belt, description: description, short_description: short_description}
   end
 
   # for active_admin

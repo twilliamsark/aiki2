@@ -1,6 +1,7 @@
 class AttackHeight < ActiveRecord::Base
   include HasVideos
   include Filterable
+  include SeedFuSerializeable
 
   # brittle
   ANY_ATTACK_HEIGHT = "1"

@@ -1,6 +1,7 @@
 class Stance < ActiveRecord::Base
   include HasVideos
   include Filterable
+  include SeedFuSerializeable
 
   # brittle
   ANY_STANCE = "1"

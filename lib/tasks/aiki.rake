@@ -11,11 +11,7 @@ namespace :aiki do
   task dump_to_seed_fu: :environment do
     klasses = %w(AttackHeight Format Stance Waza Direction Rank Attack Kata Technique AppliedTechnique Video)
     klasses.each do |klass|
-      SeedFu::Writer.write($stdout, { class_name: klass, constraints: [:id]}) do |writer|
-        klass.constantize.all.order(:id).each do |obj|
-          writer.add(obj.to_hash)
-        end
-      end
+      klass.constantize.to_seed_fu
     end
   end
 end

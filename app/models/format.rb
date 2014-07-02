@@ -1,6 +1,7 @@
 class Format < ActiveRecord::Base
   include HasVideos
   include Filterable
+  include SeedFuSerializeable
 
   # brittle
   ANY_FORMAT = "1"
@@ -20,9 +21,5 @@ class Format < ActiveRecord::Base
         options_hash[format.label] = format.id
         options_hash
       end
-  end
-
-  def to_hash
-    {id: id, name: name, position: position, short_description: short_description, description: description}
   end
 end
