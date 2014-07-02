@@ -31,13 +31,12 @@ class AppliedTechnique < ActiveRecord::Base
 
   scope :search, ->(keyword) { where('keywords like ?', "%#{keyword.downcase}%") if keyword.present? }
 
-
   def aiki_toho?
     format.name == Format::AIKI_TOHO rescue false
   end
 
   def set_keywords()
-    keywords = []
+    keywords = [name, name.gsub(/\s/,'')]
 
     attribs = [:technique, :attack, :stance,
                :direction, :waza, :rank,
@@ -47,7 +46,7 @@ class AppliedTechnique < ActiveRecord::Base
       keyword_list = self.send(attrib).keywords || "" rescue ""
       keywords << keyword_list if keyword_list.present?
     end
-    keywords = keywords.join(' ')
+    keywords = keywords.uniq.join(' ')
 
     self.update_column(:keywords, keywords)
     AppLogging.say("Update keywords for AT:#{id} to #{self.keywords}")
