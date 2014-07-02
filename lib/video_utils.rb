@@ -32,4 +32,8 @@ module VideoUtils
     return true if video.for_demo? && user.demo?
     return false
   end
+
+  def self.visible_videos(videos, user)
+    videos.select{|vid| show_video?(vid, user)}
+  end
 end

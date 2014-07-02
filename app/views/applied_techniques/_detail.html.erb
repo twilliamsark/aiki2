@@ -93,8 +93,9 @@
     </div>
   <% end %>
 
-  <% if applied_technique.related && applied_technique.related.videos.visible.any? %>
-    <% related = applied_technique.related %>
+
+  <% related = applied_technique.related %>
+  <% if related && VideoUtils.visible_videos(related.videos, current_user).any? %>
     <div class="row">
       <div class="col-md-3"><label>Related <%= related.format.name %>:</label></div>
       <div class="col-md-9">
@@ -107,14 +108,14 @@
     </div>
   <% end %>
 
-
 </div>
+
 <ul class="left_align">
-  <% if applied_technique.videos.size > 1 %>
+  <% visible = VideoUtils.visible_videos(applied_technique.videos, current_user) %>
+  <% if visible.size > 1 %>
     <li class="no_bullet_list"><strong>Other Videos:</strong></li>
-    <% applied_technique.videos.each do |vid| %>
+    <% visible.each do |vid| %>
       <% next if vid.id == video.id %>
-      <% next unless VideoUtils.show_video?(vid, current_user) %>
       <li class="no_bullet_list_indented other_videos">
         <%= link_to vid.name, remote_show_url(vid.id), remote: true %>
       </li>
