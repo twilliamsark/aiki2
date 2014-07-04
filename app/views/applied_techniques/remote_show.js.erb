@@ -1,1 +1,5 @@
-$("#vid").replaceWith("<%= escape_javascript(render('shared/video', video: @video)) %>")
+<% if @video %>
+  $("#vid").replaceWith("<%= escape_javascript(render('shared/video', video: @video)) %>")
+<% else %>
+  $("#vid").replaceWith("<%= escape_javascript(render('shared/no_video')) %>")
+<% end %>
