@@ -92,4 +92,8 @@ class Video < ActiveRecord::Base
   def self.show_video?(video=nil)
     VIDEOS_ONLINE && !video.nil? && video.show_video? && App.connected_to_youtube?
   end
+
+  def self.demo_videos
+    demo.select{|v| v.show_video?}
+  end
 end
