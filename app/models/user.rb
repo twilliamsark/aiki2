@@ -44,6 +44,10 @@ class User < ActiveRecord::Base
     save(validate: false)
   end
 
+  def to_h
+    {id: id, email: email, admin: admin?, demo: demo?, regular: regular?}
+  end
+
   private
 
   def create_remember_token
