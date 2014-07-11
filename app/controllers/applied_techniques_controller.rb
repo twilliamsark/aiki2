@@ -5,14 +5,14 @@ class AppliedTechniquesController < ApplicationController
   def aikido
     @type = "aikido"
     @default_sort ||= "Rank"
-    @selection, @video = videos(@type.titleize, @default_sort, {}, @applied_technique_id)
+    @selection, @video = videos(@type.titleize, @default_sort, {}, @applied_technique_id, @video_id)
     render :index
   end
 
   def iaido
     @type = "iaido"
     @default_sort ||= "Kata"
-    @selection, @video = videos(@type.titleize, @default_sort, {}, @applied_technique_id)
+    @selection, @video = videos(@type.titleize, @default_sort, {}, @applied_technique_id, @video_id)
     render :index
   end
 
@@ -54,12 +54,23 @@ class AppliedTechniquesController < ApplicationController
 
   private
 
-  def videos(art, sort_class, filters={}, applied_technique_id = nil)
+  def videos(art, sort_class, filters={}, applied_technique_id = nil, video_id = nil)
     selection = sort_class.constantize.send(:get_videos, art.downcase, filters, current_user)
     first_selector = selection.keys.first
+
+    if !applied_technique_id.nil?
+      applied_technique = AppliedTechnique.find_by_id(applied_technique_id)
+      applied_technique_id = nil unless applied_technique
+    end
+
+    if !applied_technique_id.nil? && !video_id.nil?
+      first_video = Video.find_by_id(video_id) if !video_id.nil?
+      video_id = nil unless first_video.applied_technique == applied_technique
+    end
+
     if applied_technique_id.nil?
       first_video = selection[first_selector].first[:video] rescue nil
-    else
+    elsif video_id.nil?
       selection.each do |selector, videos|
         next unless videos.any?
         first_video = videos.select {|vid| vid[:video].applied_technique_id.to_s == applied_technique_id}
@@ -92,5 +103,6 @@ class AppliedTechniquesController < ApplicationController
   def action_params
     @default_sort = params[:sort].titleize if params[:sort].present?
     @applied_technique_id = params[:applied_technique]
+    @video_id = params[:video]
   end
 end

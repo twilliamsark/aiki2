@@ -15,6 +15,13 @@ Aiki::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :applied_techniques
 
+# shows the primary video associated with the applied technique
+# /aikido?applied_technique=15
+# /aikido?applied_technique=15&sort=format
+
+# shows the specified video associated with the applied technique
+# /aikido?applied_technique=15&video=17
+# /aikido?applied_technique=15&video=17&sort=format
   match '/aikido', to: 'applied_techniques#aikido', via: 'get'
   match '/iaido', to: 'applied_techniques#iaido', via: 'get'
 
