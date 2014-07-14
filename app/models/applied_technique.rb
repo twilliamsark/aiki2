@@ -50,17 +50,7 @@ class AppliedTechnique < ActiveRecord::Base
       end
 
       selection[selection_key] ||= []
-      entry = {
-        applied_technique: at,
-        list_name: at.name
-      }
-      if at.short_description.present?
-        entry[:list_name] += " - #{at.short_description}"
-      end
-      if at.on_test?
-        entry[:list_name] += " (on test)"
-      end
-      selection[selection_key] << entry
+      selection[selection_key] << at
     end
     selection
   end
@@ -100,5 +90,16 @@ class AppliedTechnique < ActiveRecord::Base
 
     self.update_column(:keywords, keywords)
     AppLogging.say("Update keywords for AT:#{id} to #{self.keywords}")
+  end
+
+  def list_name
+    lname = name
+    if short_description.present?
+      lname += " - #{short_description}"
+    end
+    if on_test?
+      lname += " (on test)"
+    end
+    lname
   end
 end

@@ -89,11 +89,11 @@ class AppliedTechniquesController < ApplicationController
     if video.nil?
       first_selector = selection.keys.first
       if applied_technique_id.nil?
-        video = selection[first_selector].first[:applied_technique].first_video
+        video = selection[first_selector].first.first_video
       else
         selection.each do |selector, ats|
           ats.each do |at|
-            video = at[:applied_technique].first_video
+            video = at.first_video
             break if video
           end
           break if video
