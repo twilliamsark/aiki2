@@ -33,6 +33,52 @@ class AppliedTechnique < ActiveRecord::Base
 
   scope :search, ->(keyword) { where('keywords like ?', "%#{keyword.downcase}%") if keyword.present? }
 
+  scope :visible,
+   -> { joins(:videos).merge(Video.visible) }
+
+  scope :demo,
+   -> { joins(:videos).merge(Video.demo) }
+
+  def self.build_selection(applied_techniques, klass=nil)
+    selection = {}
+
+    applied_techniques.each do |at|
+      selection_key = if !klass.nil?
+        at.send(klass.to_s.underscore)
+      else
+        'Search Results'
+      end
+
+      selection[selection_key] ||= []
+      entry = {
+        applied_technique: at,
+        list_name: at.name
+      }
+      if at.short_description.present?
+        entry[:list_name] += " - #{at.short_description}"
+      end
+      if at.on_test?
+        entry[:list_name] += " (on test)"
+      end
+      selection[selection_key] << entry
+    end
+    selection
+  end
+
+  def first_video
+    video = videos.primary.first
+    video = videos.visible.first unless video
+    video
+  end
+
+  def demo_videos?
+    videos.demo.any?
+  end
+
+  def visible_videos?
+    videos.visible.any?
+  end
+
   def aiki_toho?
     format.name == Format::AIKI_TOHO rescue false
   end

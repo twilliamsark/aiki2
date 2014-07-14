@@ -1,8 +1,9 @@
 <div class="row">
-  <%= render 'shared/lnav', type: @type, sort_by: @default_sort %>
-  <% vid = exhibit(@video, self) %>
-  <% if vid %>
-    <%= vid.render_body %>
+  <%= render 'shared/lnav', type: @type, sort_by: @default_sort, selection: @selection %>
+  <% if @applied_technique
+    @video = @applied_technique.first_video unless @video
+  %>
+    <%= render 'show', applied_technique: @applied_technique, video: @video %>
   <% else %>
     <%= render 'shared/no_video' %>
   <% end %>

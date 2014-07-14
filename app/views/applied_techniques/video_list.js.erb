@@ -1,3 +1,3 @@
 $("#video_list").replaceWith("<%= escape_javascript(render('video_list', selection: @selection, sort_by: @default_sort, type: @type)) %>")
-$("#vid").replaceWith("<%= escape_javascript(render('shared/video', video: @video)) %>")
+$("#vid").replaceWith("<%= escape_javascript(render('show', applied_technique: @applied_technique, video: @video)) %>")
 $("#filter_form").find('input[type=text]').val('')
