@@ -12,14 +12,19 @@ class User < ActiveRecord::Base
   validate :check_user_flags
 
   scope :admin, -> { where(admin: true) }
+  scope :not_admin, -> { where(arel_table[:admin].eq(nil).or(arel_table[:admin].eq(false))) }
   scope :demo, -> { where(demo: true) }
-  scope :regular, -> { where("admin = ? and demo = ?", false, false) }
+  scope :not_demo, -> { where(arel_table[:demo].eq(nil).or(arel_table[:demo].eq(false))) }
 
-  def User.new_remember_token
+  def self.regular
+    not_admin.not_demo
+  end
+
+  def self.new_remember_token
     SecureRandom.urlsafe_base64
   end
 
-  def User.encrypt(token)
+  def self.encrypt(token)
     return nil if token.nil?
     Digest::SHA1.hexdigest(token.to_s)
   end

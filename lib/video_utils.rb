@@ -34,6 +34,12 @@ module VideoUtils
   end
 
   def self.visible_videos(videos, user)
+    return [] unless videos.any?
     videos.select{|vid| show_video?(vid, user)}
+  end
+
+  def self.show_videos?(videos, user)
+    return false unless videos.any?
+    videos.select{|vid| show_video?(vid, user)}.any?
   end
 end

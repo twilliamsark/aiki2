@@ -14,6 +14,10 @@ class Format < ActiveRecord::Base
 
   scope :default_order, -> { order(:position) }
 
+  def self.iaido
+    aiki_toho.first rescue nil
+  end
+
   def self.options_for_select
     format_any = Format.find(ANY_FORMAT)
     Format.where("name != 'Any' and name != '#{AIKI_TOHO}'").default_order.to_a

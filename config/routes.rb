@@ -32,4 +32,5 @@ Aiki::Application.routes.draw do
   #AJAX Calls
   get "/video_list" => "applied_techniques#video_list", as: :video_list
   get "/remote_show/:id" => "applied_techniques#remote_show", as: :remote_show
+  get "/remote_applied_technique" => "applied_techniques#remote_applied_technique", as: :remote_applied_technique
 end

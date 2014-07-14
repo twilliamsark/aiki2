@@ -38,9 +38,7 @@
                 <% techniques.each do |t| %>
                   <li class="no_bullet_list">
                     <%=
-                      link_to "#{t[:list_name]}",
-                        remote_show_url(t[:video].id),
-                        remote: true
+                      link_to "#{t[:list_name]}", remote_applied_technique_url(applied_technique: t[:applied_technique]), remote: true
                     %>
                   </li>
                 <% end %>
