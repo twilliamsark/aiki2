@@ -93,7 +93,6 @@
     </div>
   <% end %>
 
-
   <% related = applied_technique.related %>
   <% if related && VideoUtils.visible_videos(related.videos, current_user).any? %>
     <div class="row">
@@ -117,7 +116,7 @@
     <% visible.each do |vid| %>
       <% next if vid.id == video.id %>
       <li class="no_bullet_list_indented other_videos">
-        <%= link_to vid.name, remote_show_url(vid.id), remote: true %>
+        <%= link_to vid.name, remote_applied_technique_url(applied_technique: applied_technique, video: vid), remote: true %>
       </li>
     <% end %>
   <% end %>

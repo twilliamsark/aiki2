@@ -5,7 +5,6 @@ class AppliedTechniquesController < ApplicationController
   def aikido
     @type = "aikido"
     @default_sort ||= "Rank"
-    # @selection, @video = videos(@type.titleize, @default_sort, {}, @applied_technique_id, @video_id)
     @selection, @video = applied_techniques(@type.titleize, @default_sort, {}, @applied_technique_id, @video_id)
     @applied_technique = @video.applied_technique if @video
     render :index
@@ -14,7 +13,8 @@ class AppliedTechniquesController < ApplicationController
   def iaido
     @type = "iaido"
     @default_sort ||= "Kata"
-    @selection, @video = videos(@type.titleize, @default_sort, {}, @applied_technique_id, @video_id)
+    @selection, @video = applied_techniques(@type.titleize, @default_sort, {}, @applied_technique_id, @video_id)
+    @applied_technique = @video.applied_technique if @video
     render :index
   end
 
@@ -22,6 +22,8 @@ class AppliedTechniquesController < ApplicationController
   def video_list
     @type = params[:type]
     @default_sort = params[:sort_type].gsub(/[[:space:]]/,'') || "Rank"
+    @selection = nil
+    @video = nil
 
     if params[:search].present?
       @search_term = params[:search]
@@ -45,13 +47,9 @@ class AppliedTechniquesController < ApplicationController
         filters[:testable] = 'all'
       end
 
-      @selection, @video = videos(@type, @default_sort, filters)
+      @selection, @video = applied_techniques(@type.titleize, @default_sort, filters)
     end
-  end
-
-  # ajax only
-  def remote_show
-    @video = Video.find(params[:id])
+    @applied_technique = @video.applied_technique if @video
   end
 
   # ajax only
@@ -74,8 +72,13 @@ class AppliedTechniquesController < ApplicationController
       applied_technique_id = nil unless applied_technique
     end
 
-    if !applied_technique_id.nil? && !video_id.nil?
-      video = Video.find_by_id(video_id) if !video_id.nil?
+    if !applied_technique_id.nil?
+      if !video_id.nil?
+        video = Video.find_by_id(video_id)
+      else
+        video = applied_technique.first_video
+      end
+
       unless video.applied_technique == applied_technique && VideoUtils.show_video?(video, current_user)
         video_id = nil
         video = nil
@@ -90,7 +93,7 @@ class AppliedTechniquesController < ApplicationController
       else
         selection.each do |selector, ats|
           ats.each do |at|
-            video = at.first_video
+            video = at[:applied_technique].first_video
             break if video
           end
           break if video
@@ -101,49 +104,18 @@ class AppliedTechniquesController < ApplicationController
     return [selection, video]
   end
 
-  def videos(art, sort_class, filters={}, applied_technique_id = nil, video_id = nil)
-    selection = sort_class.constantize.send(:get_videos, art.downcase, filters, current_user)
-    first_selector = selection.keys.first
-
-    if !applied_technique_id.nil?
-      applied_technique = AppliedTechnique.find_by_id(applied_technique_id)
-      applied_technique_id = nil unless applied_technique
-    end
-
-    if !applied_technique_id.nil? && !video_id.nil?
-      first_video = Video.find_by_id(video_id) if !video_id.nil?
-      video_id = nil unless first_video.applied_technique == applied_technique && VideoUtils.show_video?(first_video, current_user)
-    end
-
-    if applied_technique_id.nil?
-      first_video = selection[first_selector].first[:video] rescue nil
-    elsif video_id.nil?
-      selection.each do |selector, videos|
-        next unless videos.any?
-        first_video = videos.select {|vid| vid[:video].applied_technique_id.to_s == applied_technique_id}
-        if first_video
-          if first_video.any?
-            first_video = first_video.first[:video]
-            break
-          else
-            first_video = nil
-          end
-        end
-      end
-    end
-    return [selection, first_video]
-  end
-
   def search_videos(art, search)
-    vids = AppliedTechnique.send("#{art.downcase}_techniques").search(search).map do |at|
-      at.videos.primary
-    end.flatten
+    ats = AppliedTechnique.send("#{art.downcase}_techniques").search(search)
+    ats.compact!
 
-    vids.compact!
-    vids = vids.select {|vid| VideoUtils.show_video?(vid, current_user)}
+    ats = ats.select {|at| VideoUtils.show_videos?(at.videos, current_user)}
+    first_video = nil
+    ats.each do |at|
+      first_video = at.first_video
+      break if first_video
+    end
 
-    first_video = vids.first
-    selection = VideoUtils.video_collection(vids)
+    selection = AppliedTechnique.build_selection(ats)
     return [selection, first_video]
   end
 
