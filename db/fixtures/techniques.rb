@@ -1,6 +1,6 @@
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-07-23 22:35:26 +0000
+# Date: 2014-07-24 03:50:27 +0000
 # Seeding AttackHeight
 # Written with the command:
 #
@@ -15,7 +15,7 @@ AttackHeight.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-07-23 22:35:27 +0000
+# Date: 2014-07-24 03:50:27 +0000
 # Seeding Format
 # Written with the command:
 #
@@ -35,7 +35,7 @@ Format.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-07-23 22:35:28 +0000
+# Date: 2014-07-24 03:50:27 +0000
 # Seeding Stance
 # Written with the command:
 #
@@ -49,7 +49,7 @@ Stance.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-07-23 22:35:28 +0000
+# Date: 2014-07-24 03:50:27 +0000
 # Seeding Waza
 # Written with the command:
 #
@@ -64,7 +64,7 @@ Waza.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-07-23 22:35:28 +0000
+# Date: 2014-07-24 03:50:27 +0000
 # Seeding Direction
 # Written with the command:
 #
@@ -78,7 +78,7 @@ Direction.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-07-23 22:35:28 +0000
+# Date: 2014-07-24 03:50:27 +0000
 # Seeding Rank
 # Written with the command:
 #
@@ -99,7 +99,7 @@ Rank.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-07-23 22:35:28 +0000
+# Date: 2014-07-24 03:50:27 +0000
 # Seeding Attack
 # Written with the command:
 #
@@ -125,7 +125,7 @@ Attack.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-07-23 22:35:28 +0000
+# Date: 2014-07-24 03:50:27 +0000
 # Seeding Kata
 # Written with the command:
 #
@@ -138,7 +138,7 @@ Kata.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-07-23 22:35:29 +0000
+# Date: 2014-07-24 03:50:27 +0000
 # Seeding Technique
 # Written with the command:
 #
@@ -165,7 +165,7 @@ Technique.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-07-23 22:35:29 +0000
+# Date: 2014-07-24 03:50:27 +0000
 # Seeding AppliedTechnique
 # Written with the command:
 #
@@ -203,7 +203,7 @@ AppliedTechnique.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-07-23 22:35:29 +0000
+# Date: 2014-07-24 03:50:27 +0000
 # Seeding Video
 # Written with the command:
 #
@@ -239,6 +239,7 @@ Video.seed(:id,
   {:id=>28, :applied_technique_id=>26, :youtube_code=>"tiAntIn4H4c", :primary=>true, :description=>"", :visible=>true, :for_demo=>false},
   {:id=>29, :applied_technique_id=>9, :youtube_code=>"ABe5mXrWvJg", :primary=>false, :description=>"Discussion", :visible=>true, :for_demo=>false},
   {:id=>30, :applied_technique_id=>22, :youtube_code=>"kFkegO6JPvg", :primary=>false, :description=>"Discussion", :visible=>true, :for_demo=>false},
-  {:id=>31, :applied_technique_id=>27, :youtube_code=>"bEx3dfiopfg", :primary=>true, :description=>"", :visible=>true, :for_demo=>false}
+  {:id=>31, :applied_technique_id=>27, :youtube_code=>"bEx3dfiopfg", :primary=>true, :description=>"", :visible=>true, :for_demo=>false},
+  {:id=>32, :applied_technique_id=>28, :youtube_code=>"C4cXvwoLASs", :primary=>true, :description=>"", :visible=>true, :for_demo=>false}
 )
 # End auto-generated file.
