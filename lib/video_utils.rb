@@ -13,7 +13,7 @@ module VideoUtils
   end
 
   def self.show_videos?(videos, user)
-    return false unless videos.any?
+    return true if videos.none? && (user.nil? || !user.demo?)
     videos.select{|vid| show_video?(vid, user)}.any?
   end
 end

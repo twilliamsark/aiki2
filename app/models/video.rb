@@ -23,8 +23,9 @@ class Video < ActiveRecord::Base
     vid_name
   end
 
+  #TODO clean this up
   def show_video?
-    youtube_code && youtube_code != 'n/a'
+    true #youtube_code && youtube_code != 'n/a'
   end
 
   def self.show_video?(video=nil)

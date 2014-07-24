@@ -6,7 +6,7 @@ class AppliedTechniquesController < ApplicationController
     @type = "aikido"
     @default_sort ||= "Rank"
     @selection, @video = applied_techniques(@type.titleize, @default_sort, {}, @applied_technique_id, @video_id)
-    @applied_technique = @video.applied_technique if @video
+    @applied_technique = @video.applied_technique if @video && @applied_technique.nil?
     render :index
   end
 
@@ -14,7 +14,7 @@ class AppliedTechniquesController < ApplicationController
     @type = "iaido"
     @default_sort ||= "Kata"
     @selection, @video = applied_techniques(@type.titleize, @default_sort, {}, @applied_technique_id, @video_id)
-    @applied_technique = @video.applied_technique if @video
+    @applied_technique = @video.applied_technique if @video && @applied_technique.nil?
     render :index
   end
 
@@ -49,7 +49,7 @@ class AppliedTechniquesController < ApplicationController
 
       @selection, @video = applied_techniques(@type.titleize, @default_sort, filters)
     end
-    @applied_technique = @video.applied_technique if @video
+    @applied_technique = @video.applied_technique if @video && @applied_technique.nil?
   end
 
   # ajax only
@@ -68,35 +68,35 @@ class AppliedTechniquesController < ApplicationController
 
   def applied_techniques(art, sort_class, filters={}, applied_technique_id = nil, video_id = nil)
     if !applied_technique_id.nil?
-      applied_technique = AppliedTechnique.find_by_id(applied_technique_id)
-      applied_technique_id = nil unless applied_technique
+      @applied_technique = AppliedTechnique.find_by_id(applied_technique_id)
+      unless @applied_technique
+        applied_technique_id = nil
+        @applied_technique = nil #being explicit
+      end
     end
 
     if !applied_technique_id.nil?
       if !video_id.nil?
         video = Video.find_by_id(video_id)
       else
-        video = applied_technique.first_video
+        video = @applied_technique.first_video
       end
 
-      unless video.applied_technique == applied_technique && VideoUtils.show_video?(video, current_user)
+      unless !video.nil? && video.applied_technique == @applied_technique && VideoUtils.show_video?(video, current_user)
         video_id = nil
         video = nil
       end
     end
 
     selection = sort_class.constantize.send(:get_applied_techniques, art.downcase, filters, current_user)
-    if video.nil?
+    if video.nil? && applied_technique_id.nil?
       first_selector = selection.keys.first
-      if applied_technique_id.nil?
-        video = selection[first_selector].first.first_video
-      else
-        selection.each do |selector, ats|
-          ats.each do |at|
-            video = at.first_video
-            break if video
-          end
-          break if video
+      ats = selection[first_selector]
+      ats.each do |at|
+        video = at.first_video
+        if !video.nil?
+          @applied_technique = at
+          break
         end
       end
     end

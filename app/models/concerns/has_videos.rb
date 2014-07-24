@@ -32,6 +32,9 @@ module HasVideos
   end
 
   module ClassMethods
+    # selection = "Rank".constantize.send(:get_applied_techniques, "Aikido".downcase, {}, User.first)
+    # to see the list of videos returned
+    # videos = selection.values.map{|ats| ats.map(&:videos)}.flatten
     def get_applied_techniques(art, filter_options={}, current_user)
       filter_options.reverse_merge!(
                                     format: Format::ANY_FORMAT,
