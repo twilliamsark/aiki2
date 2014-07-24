@@ -18,6 +18,10 @@
         <div class="col-md-9 bold"><%= !video.nil? ? video.visible? : 'n/a' %></div>
       </div>
       <div class="row">
+        <div class="col-md-3"><label>Primary Video:</label></div>
+        <div class="col-md-9 bold"><%= !video.nil? ? video.primary? : 'n/a' %></div>
+      </div>
+      <div class="row">
         <div class="col-md-3"><label>Available For Demo:</label></div>
         <div class="col-md-9 bold"><%= !video.nil? ? video.for_demo? : 'n/a' %></div>
       </div>
