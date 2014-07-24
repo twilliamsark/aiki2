@@ -1,9 +1,20 @@
 ActiveAdmin.register Video do
-  menu false
-  belongs_to :applied_technique
+  config.clear_action_items!
 
   permit_params :applied_technique_id, :youtube_code, :primary, :visible, :for_demo, :description
-  menu priority: 0
+  menu priority: 2
+
+  index do
+    column :id
+    column "Applied Technique" do |video|
+      link_to(video.applied_technique.name, admin_applied_technique_path(video.applied_technique))
+    end
+    column :youtube_code
+    column :visible
+    column :primary
+    column :for_demo
+    actions
+  end
 
   show do |at|
     panel 'Details' do
@@ -11,8 +22,8 @@ ActiveAdmin.register Video do
         row :id
         row :applied_technique
         row :youtube_code
-        row :primary
         row :visible
+        row :primary
         row :for_demo
         row :description
       end
