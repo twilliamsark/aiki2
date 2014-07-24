@@ -28,8 +28,12 @@ class Video < ActiveRecord::Base
     true #youtube_code && youtube_code != 'n/a'
   end
 
+  def valid_youtube_code?
+    youtube_code.present? && youtube_code != 'n/a'
+  end
+
   def self.show_video?(video=nil)
-    VIDEOS_ONLINE && !video.nil? && video.show_video? && App.connected_to_youtube?
+    VIDEOS_ONLINE && !video.nil? && video.valid_youtube_code? && App.connected_to_youtube?
   end
 
   def self.demo_videos
