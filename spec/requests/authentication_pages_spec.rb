@@ -8,6 +8,35 @@ describe "AuthenticationPages" do
     it { should have_content('Sign in') }
   end
 
+  describe "signin" do
+    describe "with invalid information" do
+      before do
+        visit signin_path
+        click_button "Sign in"
+      end
+
+      it { should have_content('Sign in') }
+      it { should have_error_message("Login invalid") }
+    end
+
+    describe "with valid information" do
+      let(:user) { FactoryGirl.create(:user) }
+      let(:video) { fake_video_with_applied_technique }
+
+      before do
+        video.youtube_code #force the creation
+        valid_signin(user)
+      end
+
+      it { should have_content(user.email) }
+
+      describe "followed by signout" do
+        before { click_link "Sign out" }
+        it { should have_content('Sign in') }
+      end
+    end
+  end
+
   describe "authorization" do
     describe "for non-signed in users" do
       describe "root" do
