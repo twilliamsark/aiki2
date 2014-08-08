@@ -5,6 +5,8 @@ class Format < ActiveRecord::Base
 
   # brittle
   ANY_FORMAT = "1"
+
+  TIADO = 'Tiado'
   AIKI_TOHO = 'Aiki Toho'
 
   has_many :applied_techniques, inverse_of: :format

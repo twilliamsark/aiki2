@@ -15,7 +15,7 @@ def fake_video_with_applied_technique
   FactoryGirl.create(:visible_video,
         applied_technique: FactoryGirl.create(:applied_technique,
                                               technique: FactoryGirl.create(:technique),
-                                              format: FactoryGirl.create(:format),
+                                              format: FactoryGirl.create(:format, name: Format::TIADO),
                                               rank: FactoryGirl.create(:rank)))
 end
 
