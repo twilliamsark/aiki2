@@ -3,6 +3,12 @@ class Video < ActiveRecord::Base
 
   belongs_to :applied_technique, inverse_of: :videos
 
+  validates :youtube_code, presence: true
+
+  after_initialize do |video|
+    video.youtube_code = 'n/a' unless video.youtube_code.present?
+  end
+
   scope :for_aikido,
    -> { joins(:applied_technique).merge(AppliedTechnique.aikido_techniques) }
 
@@ -16,7 +22,13 @@ class Video < ActiveRecord::Base
   scope :demo, ->(state=true) { where(for_demo: state) }
 
   def name
-    vid_name = "#{applied_technique.name}#{primary? ? ' (primary)' : ''}"
+    vid_name = ''
+    if !applied_technique.nil? && applied_technique.name.present?
+      vid_name = applied_technique.name
+    end
+
+    vid_name += "#{primary? ? ' (primary)' : ''}"
+
     if description.present?
       vid_name += " (#{description})"
     end

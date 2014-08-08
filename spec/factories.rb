@@ -20,7 +20,7 @@ FactoryGirl.define do
   end
 
   factory :format do
-    name "Tiado"
+    name "bob"
   end
 
   factory :technique do
@@ -38,17 +38,5 @@ FactoryGirl.define do
   factory :video, class: Video do
     youtube_code = "nonsense"
     applied_technique
-
-    factory :visible_video, class: Video do
-      visible true
-    end
-
-    factory :primary_video, class: Video do
-      primary true
-    end
-
-    factory :for_demo_video, class: Video do
-      for_demo true
-    end
   end
 end

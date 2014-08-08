@@ -11,11 +11,19 @@ def valid_signin(user, options={})
   end
 end
 
-def fake_video_with_applied_technique
-  FactoryGirl.create(:visible_video,
+def fake_video_with_applied_technique(options={})
+  options.reverse_merge!(visible: true,
+                         primary: true,
+                         for_demo: false,
+                         format: Format::TIADO)
+
+  FactoryGirl.create(:video,
+        visible: options[:visible],
+        primary: options[:primary],
+        for_demo: options[:for_demo],
         applied_technique: FactoryGirl.create(:applied_technique,
                                               technique: FactoryGirl.create(:technique),
-                                              format: FactoryGirl.create(:format, name: Format::TIADO),
+                                              format: FactoryGirl.create(:format, name: options[:format]),
                                               rank: FactoryGirl.create(:rank)))
 end
 
