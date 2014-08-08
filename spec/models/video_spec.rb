@@ -14,6 +14,8 @@ describe Video do
   it { should respond_to(:primary) }
   it { should respond_to(:description) }
 
+  it { should respond_to(:to_h) }
+
   it { should be_valid }
 
   it { should_not be_visible }
