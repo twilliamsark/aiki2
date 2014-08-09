@@ -13,8 +13,6 @@ describe Format do
   it { should respond_to(:short_description) }
   it { should respond_to(:position) }
 
-  it { should respond_to(:to_h) }
-
   it { should be_valid }
 
   describe "Format.iaido" do
@@ -43,26 +41,41 @@ describe Format do
     end
   end
 
-  describe "applied technique keywords" do
-    let(:applied_technique) { fake_applied_technique }
-    let(:at_format) { applied_technique.format }
-
-    it "should contain format name" do
-      expect(applied_technique.keywords).to include(at_format.name.downcase)
+  describe "test concerns" do
+    describe "seed_fu_serializable" do
+      it { should respond_to(:to_h) }
     end
 
-    it "should contain format short_description" do
-      expect(applied_technique.keywords).to include(at_format.short_description.downcase)
+    describe "has_videos" do
+      let(:video) { fake_video_with_applied_technique }
+      let(:vid_format) { video.applied_technique.format }
+
+      it "should include video" do
+        expect(vid_format.videos).to include(video)
+      end
     end
 
-    describe "changing format short_description should change keywords" do
-      before do
-        at_format.short_description = 'foo'
-        at_format.save!
+    describe "filterable" do
+      let(:applied_technique) { fake_applied_technique }
+      let(:at_format) { applied_technique.format }
+
+      it "should contain format name" do
+        expect(applied_technique.keywords).to include(at_format.name.downcase)
       end
 
       it "should contain format short_description" do
-        expect(applied_technique.keywords).to include('foo')
+        expect(applied_technique.keywords).to include(at_format.short_description.downcase)
+      end
+
+      describe "changing format short_description should change keywords" do
+        before do
+          at_format.short_description = 'foo'
+          at_format.save!
+        end
+
+        it "should contain format short_description" do
+          expect(applied_technique.keywords).to include('foo')
+        end
       end
     end
   end
