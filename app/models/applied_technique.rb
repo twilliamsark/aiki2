@@ -56,7 +56,7 @@ class AppliedTechnique < ActiveRecord::Base
   end
 
   def first_video
-    video = videos.primary.first
+    video = videos.visible.primary.first
     video = videos.visible.first unless video
     video
   end
@@ -73,7 +73,7 @@ class AppliedTechnique < ActiveRecord::Base
     format.name == Format::AIKI_TOHO rescue false
   end
 
-  def set_keywords()
+  def set_keywords
     technique_name = name.downcase
     keywords = [technique_name, technique_name.gsub(/\s/,'')]
 
