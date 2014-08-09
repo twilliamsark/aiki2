@@ -11,6 +11,8 @@ class Format < ActiveRecord::Base
 
   has_many :applied_techniques, inverse_of: :format
 
+  validates :name, presence: true
+
   scope :aiki_toho, -> { where(name: AIKI_TOHO) }
   scope :aikido, -> { where(arel_table[:name].not_eq(AIKI_TOHO)) }
 

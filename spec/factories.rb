@@ -20,7 +20,9 @@ FactoryGirl.define do
   end
 
   factory :format do
-    name "bob"
+    name Format::TIADO
+    short_description "hand"
+    position 1
   end
 
   factory :technique do
