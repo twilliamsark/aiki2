@@ -2,7 +2,7 @@ module Filterable
   extend ActiveSupport::Concern
 
   included do
-    after_save :update_applied_technuque_keywords
+    after_save :update_applied_technique_keywords
   end
 
   def label
@@ -26,7 +26,7 @@ module Filterable
     words.join(' ')
   end
 
-  def update_applied_technuque_keywords
+  def update_applied_technique_keywords
     applied_techniques.each(&:set_keywords)
   end
 end
