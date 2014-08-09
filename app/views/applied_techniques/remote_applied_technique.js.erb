@@ -1,7 +1,7 @@
 <% if @applied_technique
-  @video = @applied_technique.first_video unless @video
+  at = exhibit(@applied_technique, self)
 %>
-  $("#vid").replaceWith("<%= escape_javascript(render('show', applied_technique: @applied_technique, video: @video)) %>")
+  $("#vid").replaceWith("<%= escape_javascript(at.render_body(@video)) %>")
 <% else %>
   $("#vid").replaceWith("<%= escape_javascript(render('shared/no_video')) %>")
 <% end %>
