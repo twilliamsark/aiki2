@@ -8,13 +8,13 @@ describe Video do
 
   subject { @video }
 
+  it_behaves_like "seed fu serializable"
+
   it { should respond_to(:youtube_code) }
   it { should respond_to(:visible) }
   it { should respond_to(:for_demo) }
   it { should respond_to(:primary) }
   it { should respond_to(:description) }
-
-  it { should respond_to(:to_h) }
 
   it { should be_valid }
 
