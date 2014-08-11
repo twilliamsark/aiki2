@@ -3,9 +3,6 @@ class Rank < ActiveRecord::Base
   include Filterable
   include SeedFuSerializeable
 
-  # brittle
-  ANY_RANK = "1"
-
   has_many :applied_techniques, inverse_of: :rank
 
   scope :default_order, -> { order(:position) }

@@ -3,9 +3,6 @@ class Format < ActiveRecord::Base
   include Filterable
   include SeedFuSerializeable
 
-  # brittle
-  ANY_FORMAT = "1"
-
   TIADO = 'Tiado'
   AIKI_TOHO = 'Aiki Toho'
 
@@ -20,14 +17,5 @@ class Format < ActiveRecord::Base
 
   def self.iaido
     aiki_toho.first rescue nil
-  end
-
-  def self.options_for_select
-    format_any = Format.find(ANY_FORMAT)
-    Format.where("name != 'Any' and name != '#{AIKI_TOHO}'").default_order.to_a
-      .inject({ format_any.label => format_any.id }) do |options_hash, format|
-        options_hash[format.label] = format.id
-        options_hash
-      end
   end
 end

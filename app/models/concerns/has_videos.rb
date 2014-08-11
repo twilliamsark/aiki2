@@ -1,6 +1,8 @@
 module HasVideos
   extend ActiveSupport::Concern
 
+  SELECT_ANY = 1
+
   included do
     has_many :videos, through: :applied_techniques
 
@@ -22,9 +24,10 @@ module HasVideos
 
     filters.each do |filter, value|
       next if filter == :testable
-      next if value == "1" #ugly, brittle, get rid of the 'Any'
+      next if value == SELECT_ANY
       ats = ats.send("for_#{filter.to_s}", value)
     end
+
     ats.compact!
     ats = ats.select {|at| VideoUtils.show_videos?(at.videos, current_user)} if current_user
 
@@ -37,13 +40,13 @@ module HasVideos
     # videos = selection.values.map{|ats| ats.map(&:videos)}.flatten
     def get_applied_techniques(art, filter_options={}, current_user)
       filter_options.reverse_merge!(
-                                    format: Format::ANY_FORMAT,
-                                    technique: Technique::ANY_TECHNIQUE,
-                                    direction: Direction::ANY_DIRECTION,
-                                    stance: Stance::ANY_STANCE,
-                                    waza: Waza::ANY_WAZA,
-                                    attack: Attack::ANY_ATTACK,
-                                    rank: Rank::ANY_RANK,
+                                    format: Format::SELECT_ANY,
+                                    technique: Technique::SELECT_ANY,
+                                    direction: Direction::SELECT_ANY,
+                                    stance: Stance::SELECT_ANY,
+                                    waza: Waza::SELECT_ANY,
+                                    attack: Attack::SELECT_ANY,
+                                    rank: Rank::SELECT_ANY,
                                     testable: 'all'
                                     )
       if art == 'iaido' && self.to_s == 'Format'
@@ -55,6 +58,20 @@ module HasVideos
       end
       ats.compact!
       AppliedTechnique.build_selection(ats, self)
+    end
+
+    def options_for_select(options={})
+      options.reverse_merge!(include_any: true, exclusion_names: [])
+      options[:exclusion_names] = [ options[:exclusion_names] ] if options[:exclusion_names].is_a? String
+
+      initial_hash = options[:include_any] ? {'Any' => SELECT_ANY} : {}
+
+      where = options[:exclusion_names].map{|n| "name != '#{n}'"}.join(' and ')
+      self.where(where).default_order.to_a
+        .inject(initial_hash) do |options_hash, format|
+          options_hash[format.label] = format.id
+          options_hash
+        end
     end
   end
 
