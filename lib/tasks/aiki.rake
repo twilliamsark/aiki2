@@ -9,7 +9,7 @@ namespace :aiki do
   end
 
   task dump_to_seed_fu: :environment do
-    klasses = %w(AttackHeight Format Stance Waza Direction Rank Attack Kata Technique AppliedTechnique Video)
+    klasses = %w(AttackHeight Format Stance Waza Direction Rank Attack Kata Technique AppliedTechnique)
     klasses.each do |klass|
       klass.constantize.to_seed_fu
     end
