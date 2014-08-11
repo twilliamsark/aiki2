@@ -14,4 +14,8 @@ namespace :aiki do
       klass.constantize.to_seed_fu
     end
   end
+
+  task dump_video_seed_fu: :environment do
+    Video.to_seed_fu
+  end
 end
