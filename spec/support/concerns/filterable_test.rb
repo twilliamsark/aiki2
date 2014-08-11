@@ -1,6 +1,5 @@
 shared_examples "filterable" do
   it { should respond_to(:name) }
-  it { should respond_to(:label) }
   it { should respond_to(:keywords) }
   it { should respond_to(:update_applied_technique_keywords) }
 

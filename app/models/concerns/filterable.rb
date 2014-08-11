@@ -5,10 +5,6 @@ module Filterable
     after_save :update_applied_technique_keywords
   end
 
-  def label
-    "#{name}#{short_description.present? ? ' - ' + short_description : '' }"
-  end
-
   def keywords
     words = []
     fields = [:name]

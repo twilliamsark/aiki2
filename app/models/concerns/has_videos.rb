@@ -12,6 +12,10 @@ module HasVideos
     scope :default_order, -> { order(:name) }
   end
 
+  def label
+    "#{name}#{(self.respond_to?(:short_description) && short_description.present?) ? ' - ' + short_description : '' }"
+  end
+
   def get_applied_techniques(art, filters={}, current_user=nil)
     on_test = filters.has_key?(:testable) ? filters[:testable] : 'all'
     if on_test == 'all'
@@ -64,7 +68,7 @@ module HasVideos
       options.reverse_merge!(include_any: true, exclusion_names: [])
       options[:exclusion_names] = [ options[:exclusion_names] ] if options[:exclusion_names].is_a? String
 
-      initial_hash = options[:include_any] ? {'Any' => SELECT_ANY} : {}
+      initial_hash = (options[:include_any] && self != Kata) ? {'Any' => SELECT_ANY} : {}
 
       where = options[:exclusion_names].map{|n| "name != '#{n}'"}.join(' and ')
       self.where(where).default_order.to_a
