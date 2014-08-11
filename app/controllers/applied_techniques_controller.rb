@@ -31,13 +31,13 @@ class AppliedTechniquesController < ApplicationController
     else
       filters = {}
 
-      filters[:format] = params[:format_type] if params[:format_type].present?
-      filters[:technique] = params[:technique_type] if params[:technique_type].present?
-      filters[:direction] = params[:direction_type] if params[:direction_type].present?
-      filters[:stance] = params[:stance_type] if params[:stance_type].present?
-      filters[:waza] = params[:waza_type] if params[:waza_type].present?
-      filters[:attack] = params[:attack_type] if params[:attack_type].present?
-      filters[:rank] = params[:rank_type] if params[:rank_type].present?
+      filters[:format] = params[:format_type].to_i if params[:format_type].present?
+      filters[:technique] = params[:technique_type].to_i if params[:technique_type].present?
+      filters[:direction] = params[:direction_type].to_i if params[:direction_type].present?
+      filters[:stance] = params[:stance_type].to_i if params[:stance_type].present?
+      filters[:waza] = params[:waza_type].to_i if params[:waza_type].present?
+      filters[:attack] = params[:attack_type].to_i if params[:attack_type].present?
+      filters[:rank] = params[:rank_type].to_i if params[:rank_type].present?
 
       if params[:testable] == 'true'
         filters[:testable] = true
