@@ -1,38 +1,4 @@
-<h1 class="center"><%= applied_technique.name %></h1>
-<% if applied_technique.description.present? %>
-  <h4 class="left_align"><%= applied_technique.description %></h4>
-<% end %>
 <div class="section detail">
-  <% if current_user.admin? %>
-    <div class="row">
-      <div class="col-md-3"><label>Admin Page:</label></div>
-      <div class="col-md-9"><%= link_to "Admin For #{applied_technique.name}", admin_applied_technique_path(applied_technique) %></div>
-    </div>
-    <% if video %>
-      <div class="row">
-        <div class="col-md-3"><label>YouTube Code:</label></div>
-        <div class="col-md-9"><%= !video.nil? ? video.youtube_code : 'n/a' %></div>
-      </div>
-      <div class="row">
-        <div class="col-md-3"><label>Visible To Non-Admin:</label></div>
-        <div class="col-md-9 bold"><%= !video.nil? ? video.visible? : 'n/a' %></div>
-      </div>
-      <div class="row">
-        <div class="col-md-3"><label>Primary Video:</label></div>
-        <div class="col-md-9 bold"><%= !video.nil? ? video.primary? : 'n/a' %></div>
-      </div>
-      <div class="row">
-        <div class="col-md-3"><label>Available For Demo:</label></div>
-        <div class="col-md-9 bold"><%= !video.nil? ? video.for_demo? : 'n/a' %></div>
-      </div>
-    <% else %>
-      <div class="row">
-        <div class="col-md-9 col-md-offset-3 bold">No Video Record</div>
-      </div>
-    <% end %>
-  <br/>
-  <% end %>
-
   <% if applied_technique.stance %>
     <div class="row">
       <div class="col-md-3"><label><%= applied_technique.stance.name %>:</label></div>

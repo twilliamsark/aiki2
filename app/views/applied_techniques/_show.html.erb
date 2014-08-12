@@ -1,5 +1,5 @@
 <div id="vid" class="col-md-8">
-  <%= render 'applied_techniques/detail', applied_technique: applied_technique, video: video %>
+  <%= render 'applied_techniques/title', applied_technique: applied_technique, video: video %>
   <div class="vid_area">
     <div class="videowrapper">
       <% if Video.show_video?(video) %>
@@ -11,4 +11,5 @@
       <% end %>
     </div>
   </div>
+  <%= render 'applied_techniques/detail', applied_technique: applied_technique, video: video %>
 </div>
