@@ -5,6 +5,8 @@ class Video < ActiveRecord::Base
 
   validates :youtube_code, presence: true
 
+  after_save :update_applied_technique_keywords
+
   after_initialize do |video|
     video.youtube_code = 'n/a' unless video.youtube_code.present?
   end
@@ -42,4 +44,15 @@ class Video < ActiveRecord::Base
   def self.show_video?(video=nil)
     VIDEOS_ONLINE && !video.nil? && video.valid_youtube_code? && App.connected_to_youtube?
   end
+
+  def self.keywords(videos)
+    videos.map{|v| [v.sensei, v.description] }.flatten.uniq.select{|k| k.present? }.map(&:downcase)
+  end
+
+  private
+
+  def update_applied_technique_keywords
+    applied_technique.set_keywords
+  end
+
 end

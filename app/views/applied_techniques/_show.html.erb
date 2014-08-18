@@ -11,5 +11,6 @@
       <% end %>
     </div>
   </div>
-  <%= render 'applied_techniques/detail', applied_technique: applied_technique, video: video %>
+  <%= render 'videos/detail', video: video if Video.show_video?(video) %>
+  <%= render 'applied_techniques/detail', applied_technique: applied_technique, video_id: video.id %>
 </div>

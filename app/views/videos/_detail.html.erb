@@ -1,0 +1,15 @@
+<div class="section detail">
+  <% if video.sensei.present? %>
+    <div class="row">
+      <div class="col-md-3"><label>Sensei:</label></div>
+      <div class="col-md-9"><%= video.sensei %></div>
+    </div>
+  <% end %>
+
+  <% if video.description.present? %>
+    <div class="row">
+      <div class="col-md-3"><label>Video Description:</label></div>
+      <div class="col-md-9"><%= video.description %></div>
+    </div>
+  <% end %>
+</div>

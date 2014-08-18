@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701172116) do
+ActiveRecord::Schema.define(version: 20140818013316) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(version: 20140701172116) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "demo"
-    t.boolean  "demo_user_expires_on"
+    t.date     "demo_user_expires_on"
   end
 
   create_table "videos", force: true do |t|
@@ -151,6 +151,8 @@ ActiveRecord::Schema.define(version: 20140701172116) do
     t.string   "description"
     t.boolean  "visible",              default: false
     t.boolean  "for_demo",             default: false
+    t.string   "sensei"
+    t.string   "copyright"
   end
 
   add_index "videos", ["applied_technique_id"], name: "index_videos_on_applied_technique_id"

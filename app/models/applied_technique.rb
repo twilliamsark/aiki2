@@ -86,7 +86,9 @@ class AppliedTechnique < ActiveRecord::Base
       keywords << keyword_list if keyword_list.present?
     end
 
-    keywords = keywords.flatten.join(' ')
+    keywords << Video.keywords(videos) if videos.any?
+
+    keywords = keywords.flatten.join(' ').strip
 
     self.update_column(:keywords, keywords)
     AppLogging.say("Update keywords for AT:#{id} to #{self.keywords}")

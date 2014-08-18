@@ -90,7 +90,7 @@
   <% if visible.size > 1 %>
     <li class="no_bullet_list"><strong>Other Videos:</strong></li>
     <% visible.each do |vid| %>
-      <% next if vid.id == video.id %>
+      <% next if vid.id == video_id %>
       <li class="no_bullet_list_indented other_videos">
         <%= link_to vid.name, remote_applied_technique_url(applied_technique: applied_technique, video: vid), remote: true %>
       </li>

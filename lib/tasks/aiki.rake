@@ -18,4 +18,19 @@ namespace :aiki do
   task dump_video_seed_fu: :environment do
     Video.to_seed_fu
   end
+
+  namespace :release do
+    namespace :decorate_videos do
+
+      task all: [:add_sensei_to_video, :add_copyright_to_video]
+
+      task add_sensei_to_video: :environment do
+        Video.where("sensei = '' or sensei is null").update_all(sensei: 'John Bollinger')
+      end
+
+      task add_copyright_to_video: :environment do
+        Video.where("copyright = '' or copyright is null").update_all(copyright: 'Aikido Center of San Antonio, Copyright 2014')
+      end
+    end
+  end
 end
