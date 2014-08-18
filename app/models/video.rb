@@ -35,20 +35,11 @@ class Video < ActiveRecord::Base
     vid_name
   end
 
-  #TODO clean this up
-  def show_video?
-    true #youtube_code && youtube_code != 'n/a'
-  end
-
   def valid_youtube_code?
     youtube_code.present? && youtube_code != 'n/a'
   end
 
   def self.show_video?(video=nil)
     VIDEOS_ONLINE && !video.nil? && video.valid_youtube_code? && App.connected_to_youtube?
-  end
-
-  def self.demo_videos
-    demo.select{|v| v.show_video?}
   end
 end
