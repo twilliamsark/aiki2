@@ -1,7 +1,7 @@
 module HasVideos
   extend ActiveSupport::Concern
 
-  SELECT_ANY = 1
+  SELECT_ANY = -1
 
   included do
     has_many :videos, through: :applied_techniques
