@@ -1,5 +1,6 @@
 ActiveAdmin.register User do
   permit_params :email, :password, :password_confirmation, :admin, :demo, :demo_user_expires_on
+  menu priority: 3
 
   batch_action :toggle_admin do |selection|
     User.find(selection).each do |user|
