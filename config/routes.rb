@@ -11,7 +11,12 @@ Aiki::Application.routes.draw do
   #Aiki Video Library
   root 'applied_techniques#aikido'
 
-  resources :users
+  resources :users do
+    member do
+      get 'change_password'
+      put 'save_password'
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
   resources :applied_techniques
 

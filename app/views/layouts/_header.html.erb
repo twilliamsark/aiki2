@@ -21,8 +21,22 @@
         <% if current_user.admin? %>
           <li><%= link_to "Admin", admin_root_path %></li>
         <% end %>
-        <li class="pull-right"><%= link_to "Sign out", signout_path, method: "delete" %></li>
-        <li class="pull-right nav_text"><strong>Welcome:</strong> <%= current_user.email %></li>
+
+
+        <li id="fat-menu" class="dropdown pull-right">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <%= current_user.email %> <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <% unless current_user.restricted? %>
+              <li><%= link_to "Change Password", change_password_user_path(current_user) %></li>
+              <li class="divider"></li>
+            <% end %>
+            <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+          </ul>
+        </li>
+
+
       <% end %>
     </ul>
   <% end %>

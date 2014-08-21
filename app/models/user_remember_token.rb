@@ -5,6 +5,10 @@ class UserRememberToken < ActiveRecord::Base
 
   attr_reader :token
 
+  #TODO: Change signed_out:boolean to signed_out_at:datetime.
+  #do in 2 stages, first add singed_out_at and populate according to singed_out boolean and updated_at
+  #then nuke signed_out boolean
+
   scope :signed_in, -> { where(signed_out: false) }
   scope :signed_out, -> { where(arel_table[:signed_out].eq(nil).or(arel_table[:signed_out].eq(true))) }
   scope :not_expired, -> { where(arel_table[:expires_at].gteq(DateTime.current)) }
