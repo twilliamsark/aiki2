@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   end
 
   def restricted?
-    demo? or email == 'aikido@aikipeace.com'
+    demo? || email == 'aikido@aikipeace.com'
   end
 
   def sign_in(options={})
