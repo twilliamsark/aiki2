@@ -35,6 +35,10 @@ class User < ActiveRecord::Base
     !admin? && !demo?
   end
 
+  def restricted?
+    demo? or email == 'aikido@aikipeace.com'
+  end
+
   def sign_in(options={})
     options.reverse_merge!(remember_token: nil, ip: nil)
 

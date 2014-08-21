@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140820212634) do
+ActiveRecord::Schema.define(version: 20140821150002) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -132,11 +132,10 @@ ActiveRecord::Schema.define(version: 20140820212634) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ip"
-    t.boolean  "signed_out",     default: false
     t.datetime "expires_at"
+    t.datetime "signed_out_at"
   end
 
-  add_index "user_remember_tokens", ["signed_out"], name: "index_user_remember_tokens_on_signed_out"
   add_index "user_remember_tokens", ["user_id"], name: "index_user_remember_tokens_on_user_id"
 
   create_table "users", force: true do |t|

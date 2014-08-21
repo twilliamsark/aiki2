@@ -5,16 +5,19 @@ class UserRememberToken < ActiveRecord::Base
 
   attr_reader :token
 
-  scope :signed_in, -> { where(signed_out: false) }
-  scope :signed_out, -> { where(arel_table[:signed_out].eq(nil).or(arel_table[:signed_out].eq(true))) }
+  scope :signed_in, -> { where(signed_out_at: nil) }
+  scope :signed_out, -> { where(arel_table[:signed_out_at].not_eq(nil)) }
+
   scope :not_expired, -> { where(arel_table[:expires_at].gteq(DateTime.current)) }
   scope :expired, -> { where(arel_table[:expires_at].lt(DateTime.current)) }
+
+  scope :good, -> { signed_in.merge(not_expired) }
 
   def initialize(args)
     super(args)
     @token = SecureRandom.urlsafe_base64
     self.remember_token = UserRememberToken.encrypt(@token)
-    self.signed_out = false
+    self.signed_out_at = nil
   end
 
   def self.sign_in(user, options={})
@@ -29,12 +32,12 @@ class UserRememberToken < ActiveRecord::Base
   end
 
   def self.find_user(token)
-    urt = signed_in.not_expired.find_by(remember_token: encrypt(token))
+    urt = good.find_by(remember_token: encrypt(token))
     urt.nil? ? nil : urt.user
   end
 
   def self.logout(token)
     urt = find_by(remember_token: encrypt(token))
-    urt.update_column(:signed_out, true) unless urt.nil?
+    urt.update_column(:signed_out_at, DateTime.current) unless urt.nil?
   end
 end

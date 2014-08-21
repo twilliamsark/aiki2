@@ -16,7 +16,7 @@ ActiveAdmin.register User do
     redirect_to :back
   end
 
-  index do
+  index download_links: false do
     selectable_column
     id_column
     column :email
