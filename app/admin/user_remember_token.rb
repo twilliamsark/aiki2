@@ -1,12 +1,12 @@
 ActiveAdmin.register UserRememberToken do
   config.clear_action_items!
 
-  permit_params :signed_out, :expires_at
+  permit_params :signed_out_at, :expires_at
   menu priority: 9
 
-  scope :signed_in
+  scope :all
+  scope :good
   scope :signed_out
-  scope :not_expired
   scope :expired
 
   index do
@@ -15,7 +15,7 @@ ActiveAdmin.register UserRememberToken do
     column :user
     column :created_at
     column :expires_at
-    column :signed_out
+    column :signed_out_at
     actions
   end
 end

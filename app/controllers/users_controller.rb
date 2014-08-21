@@ -20,10 +20,12 @@ class UsersController < ApplicationController
   end
 
   def save_password
-    debugger
-    debugger
-    debugger
-    redirect_to aikido_path
+    if @user.update_attributes(user_params)
+      flash[:success] = "Password updated"
+      redirect_to aikido_path
+    else
+      render :change_password
+    end
   end
 
   private
