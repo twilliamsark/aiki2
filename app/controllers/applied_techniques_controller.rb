@@ -31,7 +31,6 @@ class AppliedTechniquesController < ApplicationController
     else
       filters = {}
 
-      filters[:format] = params[:format_type].to_i if params[:format_type].present?
       filters[:technique] = params[:technique_type].to_i if params[:technique_type].present?
       filters[:direction] = params[:direction_type].to_i if params[:direction_type].present?
       filters[:stance] = params[:stance_type].to_i if params[:stance_type].present?
@@ -105,7 +104,8 @@ class AppliedTechniquesController < ApplicationController
   end
 
   def search_videos(art, search)
-    ats = AppliedTechnique.send("#{art.downcase}_techniques").search(search)
+    # ats = AppliedTechnique.send("#{art.downcase}_techniques").search(search)
+    ats = AppliedTechnique.search(search)
     ats.compact!
 
     ats = ats.select {|at| VideoUtils.show_videos?(at.videos, current_user)}

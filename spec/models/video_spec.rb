@@ -102,28 +102,28 @@ describe Video do
     end
   end
 
-  describe "video in applied technique collections" do
-    describe "#{Format::TIADO}" do
-      let(:video) { fake_video_with_applied_technique(format: Format::TIADO) }
+  # describe "video in applied technique collections" do
+  #   describe "#{Format::TIADO}" do
+  #     let(:video) { fake_video_with_applied_technique(format: Format::TIADO) }
 
-      it "should be in aikido videos" do
-        expect(Video.for_aikido).to include(video)
-      end
-      it "should not be in iaido videos" do
-        expect(Video.for_iaido).not_to include(video)
-      end
-    end
+  #     it "should be in aikido videos" do
+  #       expect(Video.for_aikido).to include(video)
+  #     end
+  #     it "should not be in iaido videos" do
+  #       expect(Video.for_iaido).not_to include(video)
+  #     end
+  #   end
 
-    describe "#{Format::AIKI_TOHO}" do
-      let(:video) { fake_video_with_applied_technique(format: Format::AIKI_TOHO) }
+  #   describe "#{Format::AIKI_TOHO}" do
+  #     let(:video) { fake_video_with_applied_technique(format: Format::AIKI_TOHO) }
 
-      it "should not be in aikido videos" do
-        expect(Video.for_aikido).not_to include(video)
-      end
-      it "should be in iaido videos" do
-        expect(Video.for_iaido).to include(video)
-      end
-    end
-  end
+  #     it "should not be in aikido videos" do
+  #       expect(Video.for_aikido).not_to include(video)
+  #     end
+  #     it "should be in iaido videos" do
+  #       expect(Video.for_iaido).to include(video)
+  #     end
+  #   end
+  # end
 
 end

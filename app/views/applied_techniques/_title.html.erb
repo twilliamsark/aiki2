@@ -10,6 +10,10 @@
     </div>
     <% if video %>
       <div class="row">
+        <div class="col-md-3"><label>ID:</label></div>
+        <div class="col-md-9"><%= !video.nil? ? video.id : 'n/a' %></div>
+      </div>
+      <div class="row">
         <div class="col-md-3"><label>YouTube Code:</label></div>
         <div class="col-md-9"><%= !video.nil? ? video.youtube_code : 'n/a' %></div>
       </div>

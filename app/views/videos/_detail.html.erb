@@ -6,6 +6,13 @@
     </div>
   <% end %>
 
+  <% if video.name.present? %>
+    <div class="row">
+      <div class="col-md-3"><label>Video Name:</label></div>
+      <div class="col-md-9"><%= video.name %></div>
+    </div>
+  <% end %>
+
   <% if video.description.present? %>
     <div class="row">
       <div class="col-md-3"><label>Video Description:</label></div>

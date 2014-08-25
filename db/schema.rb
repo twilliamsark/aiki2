@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140825135205) do
+ActiveRecord::Schema.define(version: 20140825195754) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -173,6 +173,8 @@ ActiveRecord::Schema.define(version: 20140825135205) do
     t.boolean  "for_demo",             default: false
     t.string   "copyright"
     t.integer  "sensei_id"
+    t.integer  "format_id"
+    t.string   "name"
   end
 
   add_index "videos", ["applied_technique_id"], name: "index_videos_on_applied_technique_id"

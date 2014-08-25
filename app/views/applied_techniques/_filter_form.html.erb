@@ -3,7 +3,7 @@
     <% sort_by ||= 'Rank' %>
     <%= form_tag video_list_url, method: :get, remote: true do %>
       <%
-        sort_options = %w(Rank Stance Attack Technique Format)
+        sort_options = %w(Rank Stance Attack Technique)
         sort_options.push("Kata") if type == 'iaido'
       %>
       <div class="row">

@@ -34,23 +34,6 @@
     </div>
   <% end %>
 
-  <% if applied_technique.format %>
-    <div class="row">
-      <div class="col-md-3"><label><%= applied_technique.format.name %>:</label></div>
-      <div class="col-md-9"><%= applied_technique.format.description %></div>
-    </div>
-    <% if applied_technique.aiki_toho? && applied_technique.kata %>
-      <div class="row">
-        <div class="col-md-3"><label>Kata:</label></div>
-        <div class="col-md-9"><%= applied_technique.kata.name %></div>
-      </div>
-      <div class="row">
-        <div class="col-md-3"><label>Kata Number:</label></div>
-        <div class="col-md-9"><%= applied_technique.position %></div>
-      </div>
-    <% end %>
-  <% end %>
-
   <% if applied_technique.waza %>
     <div class="row">
       <div class="col-md-3"><label><%= applied_technique.waza.name %>:</label></div>
@@ -66,20 +49,6 @@
     <div class="row">
       <div class="col-md-3"><label>Testing:</label></div>
       <div class="col-md-9"><%= "#{applied_technique.on_test? ? 'On Test' : 'Know For Rank'}" %></div>
-    </div>
-  <% end %>
-
-  <% related = applied_technique.related %>
-  <% if related && VideoUtils.visible_videos(related.videos, current_user).any? %>
-    <div class="row">
-      <div class="col-md-3"><label>Related <%= related.format.name %>:</label></div>
-      <div class="col-md-9">
-        <% if related.aiki_toho? %>
-          <%= link_to related.name, iaido_path(sort: 'format', applied_technique: related) %>
-        <% else %>
-          <%= link_to related.name, aikido_path(sort: 'format', applied_technique: related) %>
-        <% end %>
-      </div>
     </div>
   <% end %>
 

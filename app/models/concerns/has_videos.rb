@@ -6,8 +6,8 @@ module HasVideos
   included do
     has_many :videos, through: :applied_techniques
 
-    has_many :aikido_techniques, -> { aikido_techniques }, class_name: 'AppliedTechnique'
-    has_many :iaido_techniques, -> { iaido_techniques }, class_name: 'AppliedTechnique'
+    # has_many :aikido_techniques, -> { aikido_techniques }, class_name: 'AppliedTechnique'
+    # has_many :iaido_techniques, -> { iaido_techniques }, class_name: 'AppliedTechnique'
 
     scope :default_order, -> { order(:name) }
   end
@@ -19,11 +19,13 @@ module HasVideos
   def get_applied_techniques(art, filters={}, current_user=nil)
     on_test = filters.has_key?(:testable) ? filters[:testable] : 'all'
     if on_test == 'all'
-      method = "#{art}_techniques"
-      ats = applied_techniques.send(method)
+      # method = "#{art}_techniques"
+      # ats = applied_techniques.send(method)
+      ats = self.applied_techniques
     else
-      method = "#{art}_techniques"
-      ats = applied_techniques.testable(on_test).send(method)
+      # method = "#{art}_techniques"
+      # ats = applied_techniques.testable(on_test).send(method)
+      ats = self.applied_techniques.testable(on_test)
     end
 
     filters.each do |filter, value|
@@ -44,7 +46,6 @@ module HasVideos
     # videos = selection.values.map{|ats| ats.map(&:videos)}.flatten
     def get_applied_techniques(art, filter_options={}, current_user)
       filter_options.reverse_merge!(
-                                    format: Format::SELECT_ANY,
                                     technique: Technique::SELECT_ANY,
                                     direction: Direction::SELECT_ANY,
                                     stance: Stance::SELECT_ANY,
@@ -53,7 +54,7 @@ module HasVideos
                                     rank: Rank::SELECT_ANY,
                                     testable: 'all'
                                     )
-      if art == 'iaido' && self.to_s == 'Format'
+      if art == 'iaido'
         ats = Format.iaido.get_applied_techniques(art, filter_options, current_user)
       else
         ats = self.default_order.map do |a|
@@ -68,12 +69,16 @@ module HasVideos
       options.reverse_merge!(include_any: true, exclusion_names: [])
       options[:exclusion_names] = [ options[:exclusion_names] ] if options[:exclusion_names].is_a? String
 
-      initial_hash = (options[:include_any] && self != Kata) ? {'Any' => SELECT_ANY} : {}
+      initial_hash = options[:include_any] ? {'Any' => SELECT_ANY} : {}
 
-      where = options[:exclusion_names].map{|n| "name != '#{n}'"}.join(' and ')
+      where = nil
+      if options[:exclusion_names].any?
+        where = options[:exclusion_names].map{|n| "name != '#{n}'"}.join(' and ')
+      end
+
       self.where(where).default_order.to_a
-        .inject(initial_hash) do |options_hash, format|
-          options_hash[format.label] = format.id
+        .inject(initial_hash) do |options_hash, attribute|
+          options_hash[attribute.label] = attribute.id
           options_hash
         end
     end

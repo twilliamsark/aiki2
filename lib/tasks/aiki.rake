@@ -33,12 +33,30 @@ namespace :aiki do
     end
 
     namespace :ni do
-      task all: [:associate_sensei_records_with_videos]
+      task all: [:associate_sensei_records_with_videos, :move_format_to_videos]
 
       task associate_sensei_records_with_videos: :environment do
         s = Sensei.where(name: 'John Bollinger', dojo: 'Aikido Center of San Antonio').first_or_create
         Video.where(sensei_id: nil).update_all(sensei_id: s)
       end
+
+      task move_format_to_videos: :environment do
+        Video.where(format_id: nil).each do |video|
+          format_id = video.applied_technique.format_id
+          video.update_column('format_id', format_id) if format_id
+        end
+      end
+
+      task iaido_move_applied_technique_name_to_video: :move_format_to_videos do
+        Video.where(format: Format.iaido).where(name: nil).each do |video|
+          video.update_column('name', video.applied_technique.name)
+        end
+      end
     end
+
+    # namespace :san do
+
+    # end
+
   end
 end

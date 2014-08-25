@@ -6,7 +6,7 @@ class Format < ActiveRecord::Base
   TIADO = 'Tiado'
   AIKI_TOHO = 'Aiki Toho'
 
-  has_many :applied_techniques, inverse_of: :format
+  has_many :videos, inverse_of: :format
 
   validates :name, presence: true
 
