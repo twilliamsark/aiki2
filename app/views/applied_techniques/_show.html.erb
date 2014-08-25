@@ -13,5 +13,5 @@
   </div>
   <%= render 'applied_techniques/detail', applied_technique: applied_technique %>
   <%= render 'videos/detail', video: video if Video.show_video?(video) %>
-  <%= render 'applied_techniques/other_videos', applied_technique: applied_technique, video_id: video.id %>
+  <%= render 'applied_techniques/other_videos', applied_technique: applied_technique, video_id: video.id unless video.nil? %>
 </div>
