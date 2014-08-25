@@ -1,8 +1,8 @@
 <div class="section detail">
-  <% if video.sensei.present? %>
+  <% if video.sensei %>
     <div class="row">
       <div class="col-md-3"><label>Sensei:</label></div>
-      <div class="col-md-9"><%= video.sensei %></div>
+      <div class="col-md-9"><%= video.sensei.name %></div>
     </div>
   <% end %>
 

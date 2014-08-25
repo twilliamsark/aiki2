@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140821160851) do
+ActiveRecord::Schema.define(version: 20140825135205) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -110,6 +110,13 @@ ActiveRecord::Schema.define(version: 20140821160851) do
     t.string   "short_description", limit: 20
   end
 
+  create_table "senseis", force: true do |t|
+    t.string   "name"
+    t.string   "dojo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "stances", force: true do |t|
     t.string   "name"
     t.string   "description"
@@ -164,11 +171,12 @@ ActiveRecord::Schema.define(version: 20140821160851) do
     t.string   "description"
     t.boolean  "visible",              default: false
     t.boolean  "for_demo",             default: false
-    t.string   "sensei"
     t.string   "copyright"
+    t.integer  "sensei_id"
   end
 
   add_index "videos", ["applied_technique_id"], name: "index_videos_on_applied_technique_id"
+  add_index "videos", ["sensei_id"], name: "index_videos_on_sensei_id"
 
   create_table "wazas", force: true do |t|
     t.string   "name"

@@ -2,6 +2,7 @@ class Video < ActiveRecord::Base
   include SeedFuSerializeable
 
   belongs_to :applied_technique, inverse_of: :videos
+  belongs_to :sensei, inverse_of: :videos
 
   validates :youtube_code, presence: true
 
