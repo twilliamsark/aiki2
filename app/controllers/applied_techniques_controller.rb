@@ -98,7 +98,7 @@ class AppliedTechniquesController < ApplicationController
           @applied_technique = at
           break
         end
-      end
+      end unless ats.nil?
     end
 
     return [selection, video]
