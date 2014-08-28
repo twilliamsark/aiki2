@@ -13,6 +13,34 @@
     </div>
   <% end %>
 
+  <% if video.name.present? %>
+    <div class="row">
+      <div class="col-md-3"><label>Video Name:</label></div>
+      <div class="col-md-9"><%= video.name %></div>
+    </div>
+  <% end %>
+
+  <% if video.format %>
+    <div class="row">
+      <div class="col-md-3"><label>Video Format:</label></div>
+      <div class="col-md-9"><%= video.format.name %></div>
+    </div>
+  <% end %>
+
+  <% if video.style %>
+    <div class="row">
+      <div class="col-md-3"><label>Video Style:</label></div>
+      <div class="col-md-9"><%= video.style.name %></div>
+    </div>
+  <% end %>
+
+  <% if video.attack_height %>
+    <div class="row">
+      <div class="col-md-3"><label>Video Attack Height:</label></div>
+      <div class="col-md-9"><%= video.attack_height.name %></div>
+    </div>
+  <% end %>
+
   <% if video.copyright.present? %>
     <div class="row">
       <div class="col-md-3"><label>Video Copyright:</label></div>

@@ -1,6 +1,6 @@
 $("#video_list").replaceWith("<%= escape_javascript(render('video_list', selection: @selection, sort_by: @default_sort, type: @type)) %>")
-<% if @applied_technique
-  at = exhibit(@applied_technique, self)
+<% if @waza
+  at = exhibit(@waza, self)
 %>
   $("#vid").replaceWith("<%= escape_javascript(at.render_body(@video)) %>")
 <% else %>

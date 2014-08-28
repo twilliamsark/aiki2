@@ -3,5 +3,5 @@ class AttackHeight < ActiveRecord::Base
   include Filterable
   include SeedFuSerializeable
 
-  has_many :applied_techniques, inverse_of: :attack_height
+  has_many :videos, inverse_of: :attack_height
 end

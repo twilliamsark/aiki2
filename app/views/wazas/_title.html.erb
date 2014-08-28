@@ -1,14 +1,18 @@
-<h1 class="center"><%= applied_technique.name %></h1>
-<% if applied_technique.description.present? %>
-  <h4 class="left_align"><%= applied_technique.description %></h4>
+<h1 class="center"><%= waza.name %></h1>
+<% if waza.description.present? %>
+  <h4 class="left_align"><%= waza.description %></h4>
 <% end %>
 <div class="section detail">
   <% if current_user.admin? %>
     <div class="row">
       <div class="col-md-3"><label>Admin Page:</label></div>
-      <div class="col-md-9"><%= link_to "Admin For #{applied_technique.name}", admin_applied_technique_path(applied_technique) %></div>
+      <div class="col-md-9"><%= link_to "Admin For #{waza.name}", admin_waza_path(waza) %></div>
     </div>
     <% if video %>
+      <div class="row">
+        <div class="col-md-3"><label>ID:</label></div>
+        <div class="col-md-9"><%= !video.nil? ? video.id : 'n/a' %></div>
+      </div>
       <div class="row">
         <div class="col-md-3"><label>YouTube Code:</label></div>
         <div class="col-md-9"><%= !video.nil? ? video.youtube_code : 'n/a' %></div>

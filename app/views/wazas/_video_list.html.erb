@@ -38,7 +38,7 @@
                 <% techniques.each do |t| %>
                   <li class="no_bullet_list">
                     <%=
-                      link_to "#{t.list_name}", remote_applied_technique_url(applied_technique: t), remote: true
+                      link_to "#{t.list_name}", remote_waza_url(waza: t), remote: true
                     %>
                   </li>
                 <% end %>

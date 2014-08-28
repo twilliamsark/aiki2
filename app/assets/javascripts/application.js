@@ -18,5 +18,5 @@
 //= require jquery.turbolinks
 
 //= require bootstrap
-//= require applied_techniques
+//= require wazas
 //= require_tree .

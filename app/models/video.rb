@@ -1,42 +1,29 @@
 class Video < ActiveRecord::Base
   include SeedFuSerializeable
 
-  belongs_to :applied_technique, inverse_of: :videos
+  belongs_to :waza_format, inverse_of: :videos
+  belongs_to :attack_height, inverse_of: :videos
+  belongs_to :style, inverse_of: :videos
   belongs_to :sensei, inverse_of: :videos
+
+  has_one :waza, through: :waza_format
+  has_one :format, through: :waza_format
+  has_one :rank, through: :waza_format
+  has_one :kata, through: :waza_format
 
   validates :youtube_code, presence: true
 
-  after_save :update_applied_technique_keywords
+  # after_save :update_waza_keywords
 
   after_initialize do |video|
     video.youtube_code = 'n/a' unless video.youtube_code.present?
   end
-
-  scope :for_aikido,
-   -> { joins(:applied_technique).merge(AppliedTechnique.aikido_techniques) }
-
-  scope :for_iaido,
-   -> { joins(:applied_technique).merge(AppliedTechnique.iaido_techniques) }
 
   scope :primary, -> { where(primary: true) }
   scope :secondary, -> { where(primary: false) }
 
   scope :visible, ->(state=true) { where(visible: state) }
   scope :demo, ->(state=true) { where(for_demo: state) }
-
-  def name
-    vid_name = ''
-    if !applied_technique.nil? && applied_technique.name.present?
-      vid_name = applied_technique.name
-    end
-
-    vid_name += "#{primary? ? ' (primary)' : ''}"
-
-    if description.present?
-      vid_name += " (#{description})"
-    end
-    vid_name
-  end
 
   def valid_youtube_code?
     youtube_code.present? && youtube_code != 'n/a'
@@ -46,14 +33,14 @@ class Video < ActiveRecord::Base
     VIDEOS_ONLINE && !video.nil? && video.valid_youtube_code? && App.connected_to_youtube?
   end
 
-  def self.keywords(videos)
-    videos.map{|v| [v.sensei.name, v.description] }.flatten.uniq.select{|k| k.present? }.map(&:downcase)
-  end
+  # def self.keywords(videos)
+  #   videos.map{|v| [v.sensei.name, v.description] }.flatten.uniq.select{|k| k.present? }.map(&:downcase)
+  # end
 
   private
 
-  def update_applied_technique_keywords
-    applied_technique.set_keywords
-  end
+  # def update_waza_keywords
+  #   waza.set_keywords
+  # end
 
 end

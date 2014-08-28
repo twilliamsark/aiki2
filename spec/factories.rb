@@ -30,8 +30,8 @@ FactoryGirl.define do
     description "bar"
   end
 
-  factory :applied_technique, class: AppliedTechnique do
-    name "foo_applied_technique"
+  factory :waza, class: Waza do
+    name "foo_waza"
     technique
     rank
     format
@@ -39,6 +39,6 @@ FactoryGirl.define do
 
   factory :video, class: Video do
     youtube_code = "nonsense"
-    applied_technique
+    waza
   end
 end

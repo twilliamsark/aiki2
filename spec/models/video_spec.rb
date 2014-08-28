@@ -104,7 +104,7 @@ describe Video do
 
   describe "video in applied technique collections" do
     describe "#{Format::TIADO}" do
-      let(:video) { fake_video_with_applied_technique(format: Format::TIADO) }
+      let(:video) { fake_video_with_waza(format: Format::TIADO) }
 
       it "should be in aikido videos" do
         expect(Video.for_aikido).to include(video)
@@ -115,7 +115,7 @@ describe Video do
     end
 
     describe "#{Format::AIKI_TOHO}" do
-      let(:video) { fake_video_with_applied_technique(format: Format::AIKI_TOHO) }
+      let(:video) { fake_video_with_waza(format: Format::AIKI_TOHO) }
 
       it "should not be in aikido videos" do
         expect(Video.for_aikido).not_to include(video)

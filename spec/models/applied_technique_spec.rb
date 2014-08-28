@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe AppliedTechnique do
+describe Waza do
 
   before do
-    @applied_technique = fake_video_with_applied_technique.applied_technique
+    @waza = fake_video_with_waza.waza
   end
 
-  subject { @applied_technique }
+  subject { @waza }
 
   it_behaves_like "seed fu serializable"
 
@@ -21,7 +21,7 @@ describe AppliedTechnique do
 
   describe "test search on keyword" do
     before do
-      @keyword = @applied_technique.keywords.split.first
+      @keyword = @waza.keywords.split.first
     end
 
     it "expect subject returned in search on known keyword" do

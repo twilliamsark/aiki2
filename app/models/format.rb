@@ -6,7 +6,8 @@ class Format < ActiveRecord::Base
   TIADO = 'Tiado'
   AIKI_TOHO = 'Aiki Toho'
 
-  has_many :applied_techniques, inverse_of: :format
+  has_many :waza_formats, inverse_of: :format
+  has_many :wazas, through: :waza_formats
 
   validates :name, presence: true
 

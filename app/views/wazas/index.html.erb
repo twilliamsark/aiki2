@@ -1,7 +1,7 @@
 <div class="row">
   <%= render 'shared/lnav', type: @type, sort_by: @default_sort, selection: @selection %>
-  <% if @applied_technique
-    at = exhibit(@applied_technique, self)
+  <% if @waza
+    at = exhibit(@waza, self)
   %>
     <%= at.render_body(@video) %>
   <% else %>

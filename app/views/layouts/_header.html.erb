@@ -16,7 +16,6 @@
     <ul class="nav nav-pills">
       <li><%= link_to "Dojo", "http://www.aikipeace.com/aikido/index.html" %></li>
       <li id="nav_aikido"><%= link_to "Aikido", aikido_path %></li>
-      <li id="nav_iaido"><%= link_to "Iaido", iaido_path %></li>
       <% if signed_in? %>
         <% if current_user.admin? %>
           <li><%= link_to "Admin", admin_root_path %></li>

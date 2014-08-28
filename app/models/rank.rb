@@ -3,7 +3,8 @@ class Rank < ActiveRecord::Base
   include Filterable
   include SeedFuSerializeable
 
-  has_many :applied_techniques, inverse_of: :rank
+  has_many :waza_formats, inverse_of: :rank
+  has_many :wazas, through: :waza_formats
 
   scope :default_order, -> { order(:position) }
 

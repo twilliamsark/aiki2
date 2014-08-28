@@ -1,0 +1,30 @@
+<div class="section detail">
+  <% if waza.stance %>
+    <div class="row">
+      <div class="col-md-3"><label><%= waza.stance.name %>:</label></div>
+      <div class="col-md-9"><%= waza.stance.description %></div>
+    </div>
+  <% end %>
+
+  <% if waza.attack %>
+    <div class="row">
+      <div class="col-md-3"><label><%= waza.attack.name %>:</label></div>
+      <div class="col-md-9"><%= waza.attack.description %></div>
+    </div>
+  <% end %>
+
+  <% if waza.technique %>
+    <div class="row">
+      <div class="col-md-3"><label><%= waza.technique.name %>:</label></div>
+      <div class="col-md-9"><%= waza.technique.description %></div>
+    </div>
+  <% end %>
+
+  <% if waza.direction %>
+    <div class="row">
+      <div class="col-md-3"><label><%= waza.direction.name %>:</label></div>
+      <div class="col-md-9"><%= waza.direction.description %></div>
+    </div>
+  <% end %>
+
+</div>

@@ -1,17 +1,17 @@
 <div id="vid" class="col-md-8">
-  <%= render 'applied_techniques/title', applied_technique: applied_technique, video: video %>
+  <%= render 'wazas/title', waza: waza, video: video %>
   <div class="vid_area">
     <div class="videowrapper">
       <% if Video.show_video?(video) %>
         <iframe id="player" class="movie" width="560" height="315" src="http://www.youtube.com/embed/<%= video.youtube_code %>?rel=0" frameborder="1" html5="1" allowfullscreen></iframe>
-        <div><%= link_to "Reload", remote_applied_technique_url(applied_technique: applied_technique, video: video), remote: true %></div>
+        <div><%= link_to "Reload", remote_waza_url(waza: waza, video: video), remote: true %></div>
         <div id="link_for_moble"><a href="http://www.youtube.com/watch?v=<%= video.youtube_code %>">View on Youtube</a></div>
       <% else %>
         <%= render 'shared/video_not_uploaded' %>
       <% end %>
     </div>
   </div>
-  <%= render 'applied_techniques/detail', applied_technique: applied_technique %>
+  <%= render 'wazas/detail', waza: waza %>
   <%= render 'videos/detail', video: video if Video.show_video?(video) %>
-  <%= render 'applied_techniques/other_videos', applied_technique: applied_technique, video_id: video.id unless video.nil? %>
+  <%= render 'wazas/other_videos', waza: waza, video_id: video.id unless video.nil? %>
 </div>

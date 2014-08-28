@@ -3,5 +3,5 @@ class Technique < ActiveRecord::Base
   include Filterable
   include SeedFuSerializeable
 
-  has_many :applied_techniques, inverse_of: :technique
+  has_many :wazas, inverse_of: :technique
 end

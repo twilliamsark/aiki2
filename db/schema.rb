@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140825135205) do
+ActiveRecord::Schema.define(version: 20140828193601) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -27,38 +27,6 @@ ActiveRecord::Schema.define(version: 20140825135205) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
-
-  create_table "applied_techniques", force: true do |t|
-    t.integer  "technique_id"
-    t.integer  "attack_id"
-    t.integer  "stance_id"
-    t.integer  "waza_id"
-    t.integer  "rank_id"
-    t.integer  "direction_id"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "kata_id"
-    t.integer  "format_id"
-    t.integer  "attack_height_id"
-    t.boolean  "on_test",                      default: false
-    t.string   "short_description", limit: 20
-    t.string   "description"
-    t.integer  "related_id"
-    t.integer  "position"
-    t.text     "keywords"
-  end
-
-  add_index "applied_techniques", ["attack_height_id"], name: "index_applied_techniques_on_attack_height_id"
-  add_index "applied_techniques", ["attack_id"], name: "index_applied_techniques_on_attack_id"
-  add_index "applied_techniques", ["direction_id"], name: "index_applied_techniques_on_direction_id"
-  add_index "applied_techniques", ["format_id"], name: "index_applied_techniques_on_format_id"
-  add_index "applied_techniques", ["kata_id"], name: "index_applied_techniques_on_kata_id"
-  add_index "applied_techniques", ["rank_id"], name: "index_applied_techniques_on_rank_id"
-  add_index "applied_techniques", ["related_id"], name: "index_applied_techniques_on_related_id"
-  add_index "applied_techniques", ["stance_id"], name: "index_applied_techniques_on_stance_id"
-  add_index "applied_techniques", ["technique_id"], name: "index_applied_techniques_on_technique_id"
-  add_index "applied_techniques", ["waza_id"], name: "index_applied_techniques_on_waza_id"
 
   create_table "attack_heights", force: true do |t|
     t.string   "name"
@@ -125,6 +93,14 @@ ActiveRecord::Schema.define(version: 20140825135205) do
     t.string   "short_description", limit: 20
   end
 
+  create_table "styles", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "short_description", limit: 20
+  end
+
   create_table "techniques", force: true do |t|
     t.string   "name"
     t.string   "description"
@@ -163,27 +139,58 @@ ActiveRecord::Schema.define(version: 20140825135205) do
   end
 
   create_table "videos", force: true do |t|
-    t.integer  "applied_technique_id"
-    t.string   "youtube_code",         default: "n/a"
+    t.string   "youtube_code",     default: "n/a"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "primary",              default: false
+    t.boolean  "primary",          default: false
     t.string   "description"
-    t.boolean  "visible",              default: false
-    t.boolean  "for_demo",             default: false
+    t.boolean  "visible",          default: false
+    t.boolean  "for_demo",         default: false
     t.string   "copyright"
     t.integer  "sensei_id"
+    t.integer  "style_id"
+    t.integer  "attack_height_id"
+    t.string   "name"
+    t.integer  "waza_format_id"
   end
 
-  add_index "videos", ["applied_technique_id"], name: "index_videos_on_applied_technique_id"
+  add_index "videos", ["attack_height_id"], name: "index_videos_on_attack_height_id"
   add_index "videos", ["sensei_id"], name: "index_videos_on_sensei_id"
+  add_index "videos", ["style_id"], name: "index_videos_on_style_id"
+  add_index "videos", ["waza_format_id"], name: "index_videos_on_waza_format_id"
+
+  create_table "waza_formats", force: true do |t|
+    t.integer  "waza_id"
+    t.integer  "format_id"
+    t.integer  "rank_id"
+    t.integer  "kata_id"
+    t.boolean  "on_test",    default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "waza_formats", ["format_id"], name: "index_waza_formats_on_format_id"
+  add_index "waza_formats", ["kata_id"], name: "index_waza_formats_on_kata_id"
+  add_index "waza_formats", ["rank_id"], name: "index_waza_formats_on_rank_id"
+  add_index "waza_formats", ["waza_id"], name: "index_waza_formats_on_waza_id"
 
   create_table "wazas", force: true do |t|
+    t.integer  "technique_id"
+    t.integer  "attack_id"
+    t.integer  "stance_id"
+    t.integer  "direction_id"
     t.string   "name"
-    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "short_description", limit: 20
+    t.string   "description"
+    t.integer  "position"
+    t.text     "keywords"
   end
+
+  add_index "wazas", ["attack_id"], name: "index_wazas_on_attack_id"
+  add_index "wazas", ["direction_id"], name: "index_wazas_on_direction_id"
+  add_index "wazas", ["stance_id"], name: "index_wazas_on_stance_id"
+  add_index "wazas", ["technique_id"], name: "index_wazas_on_technique_id"
 
 end

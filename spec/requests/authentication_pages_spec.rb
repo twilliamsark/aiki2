@@ -21,7 +21,7 @@ describe "AuthenticationPages" do
 
     describe "with valid information" do
       let(:user) { FactoryGirl.create(:user) }
-      let(:video) { fake_video_with_applied_technique }
+      let(:video) { fake_video_with_waza }
 
       before do
         video.youtube_code #force the creation

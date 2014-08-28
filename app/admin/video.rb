@@ -1,13 +1,13 @@
 ActiveAdmin.register Video do
   config.clear_action_items!
 
-  permit_params :applied_technique_id, :youtube_code, :primary, :visible, :for_demo, :description
+  permit_params :waza_id, :youtube_code, :primary, :visible, :for_demo, :description
   menu priority: 2
 
   index do
     column :id
     column "Applied Technique" do |video|
-      link_to(video.applied_technique.name, admin_applied_technique_path(video.applied_technique))
+      link_to(video.waza.name, admin_waza_path(video.waza))
     end
     column :youtube_code
     column :visible
@@ -20,7 +20,7 @@ ActiveAdmin.register Video do
     panel 'Details' do
       attributes_table_for at do
         row :id
-        row :applied_technique
+        row :waza
         row :youtube_code
         row :visible
         row :primary

@@ -11,7 +11,7 @@ def valid_signin(user, options={})
   end
 end
 
-def fake_video_with_applied_technique(options={})
+def fake_video_with_waza(options={})
   options.reverse_merge!(visible: true,
                          primary: true,
                          for_demo: false,
@@ -21,13 +21,13 @@ def fake_video_with_applied_technique(options={})
         visible: options[:visible],
         primary: options[:primary],
         for_demo: options[:for_demo],
-        applied_technique: fake_applied_technique(options))
+        waza: fake_waza(options))
 end
 
-def fake_applied_technique(options={})
+def fake_waza(options={})
   options.reverse_merge!(format: 'Tiado')
 
-  FactoryGirl.create(:applied_technique,
+  FactoryGirl.create(:waza,
                      technique: FactoryGirl.create(:technique),
                      format: FactoryGirl.create(:format, name: options[:format]),
                      rank: FactoryGirl.create(:rank))
