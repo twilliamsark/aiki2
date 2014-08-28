@@ -47,7 +47,7 @@ class Video < ActiveRecord::Base
   end
 
   def self.keywords(videos)
-    videos.map{|v| [v.sensei, v.description] }.flatten.uniq.select{|k| k.present? }.map(&:downcase)
+    videos.map{|v| [v.sensei.name, v.description] }.flatten.uniq.select{|k| k.present? }.map(&:downcase)
   end
 
   private
