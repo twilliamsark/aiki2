@@ -1,4 +1,11 @@
 <div class="section detail">
+  <% if video.format %>
+    <div class="row">
+      <div class="col-md-3"><label><%= video.format.name %>:</label></div>
+      <div class="col-md-9"><%= video.format.description %></div>
+    </div>
+  <% end %>
+
   <% if video.sensei %>
     <div class="row">
       <div class="col-md-3"><label>Sensei:</label></div>
@@ -8,7 +15,7 @@
 
   <% if video.name.present? %>
     <div class="row">
-      <div class="col-md-3"><label>Video Name:</label></div>
+      <div class="col-md-3"><label>Video:</label></div>
       <div class="col-md-9"><%= video.name %></div>
     </div>
   <% end %>
