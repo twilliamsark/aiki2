@@ -26,23 +26,13 @@ class Video < ActiveRecord::Base
   scope :demo, ->(state=true) { where(for_demo: state) }
 
   def name
-    # vid_name = if attributes['name'].present?
-    #   attributes['name']
-    # elsif !applied_technique.nil? && applied_technique.name.present?
-    #   applied_technique.name
-    # else
-    #   ''
-    # end
-
-    # vid_name += ' - ' if vid_name.present?
-
     if description.present?
-      vid_name = description
+      description
+    elsif !format.nil?
+      format.name
     else
-      vid_name = format.name
+      nil
     end
-
-    vid_name
   end
 
   def valid_youtube_code?
