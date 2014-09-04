@@ -27,9 +27,10 @@ class Video < ActiveRecord::Base
 
   def name(options={})
     options.reverse_merge!(more_info: false)
-    return attributes['name'] unless options[:more_info]
 
-    base_name = attributes['name']
+    base_name = attributes['name'] || waza.name
+
+    return base_name unless options[:more_info]
 
     if format.name.present? || discription.present?
       name_parts = []
