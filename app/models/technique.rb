@@ -4,4 +4,5 @@ class Technique < ActiveRecord::Base
   include SeedFuSerializeable
 
   has_many :wazas, inverse_of: :technique
+  has_many :videos, through: :wazas
 end

@@ -1,12 +1,11 @@
 namespace :aiki do
 
-  # task add_keywords: :environment do
-  #   ats = Waza.all
-  #   ats.each do |at|
-  #     at.set_keywords
-  #     puts
-  #   end
-  # end
+  task add_keywords: :environment do
+    Waza.all.each do |waza|
+      words = waza.set_keywords
+      puts "Update keywords for Waza:#{waza.id}:#{waza.name} to #{words}"
+    end
+  end
 
   task dump_to_seed_fu: :environment do
     klasses = %w(Stance Attack Technique Direction Waza Format AttackHeight Style Sensei Rank Kata WazaFormat)

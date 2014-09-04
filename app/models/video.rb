@@ -25,6 +25,22 @@ class Video < ActiveRecord::Base
   scope :visible, ->(state=true) { where(visible: state) }
   scope :demo, ->(state=true) { where(for_demo: state) }
 
+  def name(options={})
+    options.reverse_merge!(more_info: false)
+    return attributes['name'] unless options[:more_info]
+
+    base_name = attributes['name']
+
+    if format.name.present? || discription.present?
+      name_parts = []
+      name_parts << format.name if format.name.present?
+      name_parts << description if description.present?
+      base_name += " (#{name_parts.join(' - ')})"
+    end
+
+    base_name
+  end
+
   def valid_youtube_code?
     youtube_code.present? && youtube_code != 'n/a'
   end

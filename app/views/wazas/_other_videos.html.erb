@@ -5,7 +5,7 @@
     <% visible.each do |vid| %>
       <% next if vid.id == video_id %>
       <li class="no_bullet_list_indented other_videos">
-        <%= link_to vid.name, remote_waza_url(waza: waza, video: vid), remote: true %>
+        <%= link_to vid.name(more_info: true), remote_waza_url(waza: waza, video: vid), remote: true %>
       </li>
     <% end %>
   <% end %>

@@ -4,4 +4,5 @@ class Attack < ActiveRecord::Base
   include SeedFuSerializeable
 
   has_many :wazas, inverse_of: :attack
+  has_many :videos, through: :wazas
 end

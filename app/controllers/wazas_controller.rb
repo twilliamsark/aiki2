@@ -22,6 +22,19 @@ class WazasController < ApplicationController
   end
 
   # ajax only
+  def search
+    @type = params[:type]
+    @default_sort = params[:sort_type].gsub(/[[:space:]]/,'') || "Rank"
+    @selection = nil
+    @video = nil
+
+    @search_term = params[:search]
+    @selection, @video = search_videos(@type, @search_term)
+    @waza = @video.waza if @video && @waza.nil?
+    render :video_list
+  end
+
+  # ajax only
   def remote_waza
     @waza = Waza.find_by_id(@waza_id)
     if @waza && @video_id
@@ -57,7 +70,7 @@ class WazasController < ApplicationController
       end
     end
 
-    selection = sort_class.constantize.send(:get_wazas, art.downcase, filters, current_user)
+    selection = sort_class.constantize.send(:get_wazas, current_user)
     if video.nil? && waza_id.nil?
       first_selector = selection.keys.first
       ats = selection[first_selector]
@@ -73,20 +86,19 @@ class WazasController < ApplicationController
     return [selection, video]
   end
 
-  # def search_videos(art, search)
-  #   ats = Waza.send("#{art.downcase}_techniques").search(search)
-  #   ats.compact!
+  def search_videos(art, search)
+    waza_formats = Waza.search(search).map(&:waza_formats).flatten.compact.uniq
 
-  #   ats = ats.select {|at| VideoUtils.show_videos?(at.videos, current_user)}
-  #   first_video = nil
-  #   ats.each do |at|
-  #     first_video = at.first_video
-  #     break if first_video
-  #   end
+    waza_formats = waza_formats.select {|wf| VideoUtils.show_videos?(wf.videos, current_user)}
+    first_video = nil
+    waza_formats.each do |wf|
+      first_video = wf.waza.first_video
+      break if first_video
+    end
 
-  #   selection = Waza.build_selection(ats)
-  #   return [selection, first_video]
-  # end
+    selection = Waza.build_selection(waza_formats)
+    return [selection, first_video]
+  end
 
   def action_params
     @default_sort = 'Technique'

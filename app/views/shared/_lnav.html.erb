@@ -1,3 +1,8 @@
 <div class="lnav col-md-4">
+  <% sort_by ||= 'Rank' %>
+  <div id="filter_form">
+    <%= render 'wazas/search', type: type, sort_by: sort_by %>
+  </div>
+
   <%= render 'wazas/video_list', selection: selection, type: type, sort_by: sort_by %>
 </div>

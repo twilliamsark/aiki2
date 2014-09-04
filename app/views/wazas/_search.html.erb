@@ -1,0 +1,22 @@
+<% if ALLOW_SEARCH %>
+  <%= form_tag search_url, method: :get, remote: true do %>
+    <%= hidden_field_tag "type", type.titleize %>
+    <%= hidden_field_tag "sort_type", sort_by %>
+    <div class="row">
+      <div class="col-md-12"><h4>Search</h4></div>
+    </div>
+    <div id="sort_row" class="row lnav_row">
+      <div class="col-md-2">
+        <%= label_tag "keyword", "Keywords:" %>
+      </div>
+      <div class="col-md-6">
+        <%= text_field_tag 'search', nil, placeholder: 'Enter search term...' %>
+      </div>
+      <div class="col-md-2">
+        <%= submit_tag 'Go', id: 'search_go' %>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+  <% end %>
+<% end %>

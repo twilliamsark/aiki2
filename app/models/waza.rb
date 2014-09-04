@@ -8,12 +8,19 @@ class Waza < ActiveRecord::Base
 
   has_many :waza_formats, inverse_of: :waza
 
-  has_many :videos, through: :waza_formats
-  has_many :formats, through: :waza_formats
   has_many :ranks, through: :waza_formats
+  has_many :katas, through: :waza_formats
 
-  # after_save :set_keywords
+  has_many :formats, through: :waza_formats
 
+  has_many :videos, through: :waza_formats
+  has_many :senseis, through: :videos
+  has_many :attack_heights, through: :videos
+  has_many :styles, through: :videos
+
+  after_save :set_keywords
+
+  scope :distinct, -> { uniq }
   scope :for_direction, ->(direction) { where(direction_id: direction) }
   scope :for_technique, ->(technique) { where(technique_id: technique) }
   scope :for_stance, ->(stance) { where(stance_id: stance) }
@@ -27,19 +34,36 @@ class Waza < ActiveRecord::Base
   scope :demo,
    -> { joins(:videos).merge(Video.demo) }
 
-  def self.build_selection(wazas, klass=nil)
+  def self.search(keyword)
+    results = []
+    if keyword.present?
+      results = where('keywords like ?', "%#{keyword.downcase}%")
+      if keyword.downcase == 'ikkyo'
+        results.reject!{|r| r.keywords.include?('nikkyo') }
+      end
+    end
+    results
+  end
+
+  def self.build_selection(waza_formats, klass=nil)
     selection = {}
 
-    wazas.each do |at|
-      selection_key = if !klass.nil?
-        at.send(klass.to_s.underscore)
+    waza_formats.each do |wf|
+      key = if !klass.nil?
+        wf.send(klass.to_s.underscore)
       else
         'Search Results'
       end
+      next if key.nil?
 
-      selection[selection_key] ||= []
-      selection[selection_key] << at
+      selection[key] ||= []
+      selection[key] << wf.waza unless selection[key].include?(wf.waza)
     end
+
+    selection.keys.each do |key|
+      selection[key] = selection[key].sort_by(&:name)
+    end
+
     selection
   end
 
@@ -57,26 +81,38 @@ class Waza < ActiveRecord::Base
     videos.visible.any?
   end
 
-  # def set_keywords
-  #   technique_name = name.downcase
-  #   keywords = [technique_name, technique_name.gsub(/\s/,'')]
+  def set_keywords
+    technique_name = name.downcase
+    keywords = [technique_name, technique_name.gsub(/\s/,'')]
 
-  #   attribs = [:technique, :attack, :stance,
-  #              :direction, :style, :rank,
-  #              :format, :kata, :attack_height]
+    waza_attribs = []
 
-  #   attribs.each do |attrib|
-  #     keyword_list = self.send(attrib).keywords || "" rescue ""
-  #     keywords << keyword_list if keyword_list.present?
-  #   end
+    single_attribs = [:stance, :attack, :technique, :direction]
 
-  #   keywords << Video.keywords(videos) if videos.any?
+    single_attribs.each do |attrib|
+      waza_attribs << attrib
+    end
 
-  #   keywords = keywords.flatten.join(' ').strip
+    collection_attribs = [:videos,
+                          :ranks, :katas,
+                          :senseis, :attack_heights, :styles]
 
-  #   self.update_column(:keywords, keywords)
-  #   AppLogging.say("Update keywords for AT:#{id} to #{self.keywords}")
-  # end
+    collection_attribs.each do |attribs|
+      self.send(attribs).distinct.each do |attrib|
+        waza_attribs << attrib
+      end
+    end
+
+    waza_attribs.each do |attrib|
+      keyword_list = attrib.keywords || "" rescue ""
+      keywords << keyword_list if keyword_list.present?
+    end
+
+    keywords = keywords.flatten.join(' ').strip
+
+    self.update_column(:keywords, keywords)
+    keywords
+  end
 
   def list_name
     lname = name

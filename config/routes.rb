@@ -35,5 +35,6 @@ Aiki::Application.routes.draw do
 
   #AJAX Calls
   get "/video_list" => "wazas#video_list", as: :video_list
+  get "/search" => "wazas#search", as: :search
   get "/remote_waza" => "wazas#remote_waza", as: :remote_waza
 end

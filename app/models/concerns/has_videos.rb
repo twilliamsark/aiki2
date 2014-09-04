@@ -4,8 +4,7 @@ module HasVideos
   SELECT_ANY = -1
 
   included do
-    has_many :videos, through: :wazas
-
+    scope :distinct, -> { uniq }
     scope :default_order, -> { order(:name) }
   end
 
@@ -13,7 +12,7 @@ module HasVideos
     "#{name}#{(self.respond_to?(:short_description) && short_description.present?) ? ' - ' + short_description : '' }"
   end
 
-  def get_wazas(art, filters={}, current_user=nil)
+  def get_wazas(current_user=nil)
     ats = self.wazas
     ats = ats.select {|at| VideoUtils.show_videos?(at.videos, current_user)} if current_user
     ats.flatten
@@ -21,13 +20,13 @@ module HasVideos
 
   module ClassMethods
 
-    def get_wazas(art, filter_options={}, current_user)
-      ats = self.default_order.map do |a|
-        a.get_wazas(art, filter_options, current_user)
+    def get_wazas(current_user=nil)
+      wazas = self.default_order.map do |a|
+        a.get_wazas(current_user)
       end.flatten
 
-      ats.compact!
-      Waza.build_selection(ats, self)
+      wazas.compact!
+      Waza.build_selection(wazas.map(&:waza_formats).flatten.uniq, self)
     end
 
     def options_for_select(options={})
