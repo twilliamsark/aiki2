@@ -1,5 +1,5 @@
 class WazasController < ApplicationController
-  before_action :signed_in_user, only: :aikido
+  before_action :signed_in_user, only: [:aikido, :remote_waza]
   before_filter :action_params, only: [:aikido, :remote_waza]
 
   def aikido

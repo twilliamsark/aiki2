@@ -74,14 +74,23 @@ module SessionsHelper
   end
 
   def store_location
-    AppLogging.say("Store location for future redirect #{request.url}") if request.get?
-    session[:return_to] = request.url if request.get?
+    if request.get?
+      AppLogging.say("Store location for future redirect #{request.url}")
+      session[:return_to] = request.url
+    end
   end
 
   def signin_check
     unless signed_in?
-      store_location
-      redirect_to signin_url
+      respond_to do |format|
+        format.html {
+          store_location
+          redirect_to signin_url
+        }
+        format.js {
+          render 'sessions/redirect_to_login', layout: false
+        }
+      end
     end
   end
 end
