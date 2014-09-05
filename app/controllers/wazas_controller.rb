@@ -30,7 +30,7 @@ class WazasController < ApplicationController
 
     @search_term = params[:search]
     @selection, @video = search_videos(@type, @search_term)
-    @waza = @video.waza if @video && @waza.nil?
+    @waza = @video.wazas.first if @video && @waza.nil?
     render :video_list
   end
 
@@ -39,7 +39,7 @@ class WazasController < ApplicationController
     @waza = Waza.find_by_id(@waza_id)
     if @waza && @video_id
       @video = Video.find_by_id(@video_id)
-      unless @video.waza == @waza
+      unless @video.wazas.include? @waza
         @video = nil
         @video_id = nil
       end
@@ -73,14 +73,14 @@ class WazasController < ApplicationController
     selection = sort_class.constantize.send(:get_wazas, current_user)
     if video.nil? && waza_id.nil?
       first_selector = selection.keys.first
-      ats = selection[first_selector]
-      ats.each do |at|
-        video = at.first_video
+      wazas = selection[first_selector]
+      wazas.each do |waza|
+        video = waza.first_video
         if !video.nil?
-          @waza = at
+          @waza = waza
           break
         end
-      end unless ats.nil?
+      end unless wazas.nil?
     end
 
     return [selection, video]

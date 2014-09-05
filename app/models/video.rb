@@ -1,19 +1,20 @@
 class Video < ActiveRecord::Base
+  include Filterable
   include SeedFuSerializeable
 
-  belongs_to :waza_format, inverse_of: :videos
+  has_many :waza_format_videos
+  has_many :waza_formats, through: :waza_format_videos
+
   belongs_to :attack_height, inverse_of: :videos
   belongs_to :style, inverse_of: :videos
   belongs_to :sensei, inverse_of: :videos
 
-  has_one :waza, through: :waza_format
-  has_one :format, through: :waza_format
-  has_one :rank, through: :waza_format
-  has_one :kata, through: :waza_format
+  has_many :wazas, through: :waza_formats
+  has_many :formats, through: :waza_formats
+  has_many :ranks, through: :waza_formats
+  has_many :katas, through: :waza_formats
 
   validates :youtube_code, presence: true
-
-  # after_save :update_waza_keywords
 
   after_initialize do |video|
     video.youtube_code = 'n/a' unless video.youtube_code.present?
@@ -32,14 +33,18 @@ class Video < ActiveRecord::Base
 
     return base_name unless options[:more_info]
 
-    if format.name.present? || discription.present?
+    if formats.any? || discription.present?
       name_parts = []
-      name_parts << format.name if format.name.present?
+      name_parts << format_name if formats.any?
       name_parts << description if description.present?
       base_name += " (#{name_parts.join(' - ')})"
     end
 
     base_name
+  end
+
+  def format_name
+    formats.map(&:name).join(', ') rescue "" if formats.any?
   end
 
   def valid_youtube_code?
@@ -49,15 +54,4 @@ class Video < ActiveRecord::Base
   def self.show_video?(video=nil)
     VIDEOS_ONLINE && !video.nil? && video.valid_youtube_code? && App.connected_to_youtube?
   end
-
-  # def self.keywords(videos)
-  #   videos.map{|v| [v.sensei.name, v.description] }.flatten.uniq.select{|k| k.present? }.map(&:downcase)
-  # end
-
-  private
-
-  # def update_waza_keywords
-  #   waza.set_keywords
-  # end
-
 end

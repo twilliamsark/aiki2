@@ -23,7 +23,7 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= id %>">
-                <ul>
+                <ul class="ul_big">
                   <li class="no_bullet_list"><%= name %></li>
                   <li class="no_bullet_list_indented"><%= description %></li>
                 </ul>
@@ -34,7 +34,7 @@
           <div id="collapse<%= id %>" class="panel-collapse collapse<%= first ? ' in' : '' %>">
             <% first = false %>
             <div class="panel-body">
-              <ul>
+              <ul class="ul_big">
                 <% techniques.each do |t| %>
                   <li class="no_bullet_list">
                     <%=

@@ -13,7 +13,7 @@
     </div>
   </div>
   <% if SHOW_MENU && !@no_menu %>
-    <ul class="nav nav-pills">
+    <ul class="ul_big nav nav-pills">
       <li><%= link_to "Dojo", "http://www.aikipeace.com/aikido/index.html" %></li>
       <li id="nav_aikido"><%= link_to "Aikido", aikido_path %></li>
       <% if signed_in? %>
@@ -24,7 +24,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <%= current_user.email %> <b class="caret"></b>
           </a>
-          <ul class="dropdown-menu">
+          <ul class="ul_big dropdown-menu">
             <% unless current_user.restricted? %>
               <li><%= link_to "Change Password", change_password_user_path(current_user) %></li>
               <li class="divider"></li>

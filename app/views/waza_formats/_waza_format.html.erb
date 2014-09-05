@@ -1,0 +1,29 @@
+<% if VideoUtils.visible_videos(waza_format.videos, current_user).any? %>
+  <div class="row">
+    <div class="col-md-3"><label>Waza Form:</label></div>
+    <div class="col-md-9"><%= waza_format.name %></div>
+  </div>
+
+  <% if waza_format.description.present? %>
+    <div class="row">
+      <div class="col-md-3"><label>Description:</label></div>
+      <div class="col-md-9"><%= waza_format.description %></div>
+    </div>
+  <% end %>
+
+  <% if waza_format.rank %>
+    <div class="row">
+      <div class="col-md-3"><label>Rank:</label></div>
+      <div class="col-md-9"><%= waza_format.rank_name %></div>
+    </div>
+  <% end %>
+
+  <% if waza_format.kata %>
+    <div class="row">
+      <div class="col-md-3"><label>Kata:</label></div>
+      <div class="col-md-9"><%= waza_format.kata_name %></div>
+    </div>
+  <% end %>
+
+  <%= render 'wazas/waza_format_videos', waza_format: waza_format, video_id: video.id unless video.nil? %>
+<% end %>

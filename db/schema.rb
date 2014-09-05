@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140828193601) do
+ActiveRecord::Schema.define(version: 20140905211629) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -151,22 +151,32 @@ ActiveRecord::Schema.define(version: 20140828193601) do
     t.integer  "style_id"
     t.integer  "attack_height_id"
     t.string   "name"
-    t.integer  "waza_format_id"
   end
 
   add_index "videos", ["attack_height_id"], name: "index_videos_on_attack_height_id"
   add_index "videos", ["sensei_id"], name: "index_videos_on_sensei_id"
   add_index "videos", ["style_id"], name: "index_videos_on_style_id"
-  add_index "videos", ["waza_format_id"], name: "index_videos_on_waza_format_id"
+
+  create_table "waza_format_videos", force: true do |t|
+    t.integer  "waza_format_id"
+    t.integer  "video_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "waza_format_videos", ["video_id"], name: "index_waza_format_videos_on_video_id"
+  add_index "waza_format_videos", ["waza_format_id"], name: "index_waza_format_videos_on_waza_format_id"
 
   create_table "waza_formats", force: true do |t|
     t.integer  "waza_id"
     t.integer  "format_id"
     t.integer  "rank_id"
     t.integer  "kata_id"
-    t.boolean  "on_test",    default: false
+    t.boolean  "on_test",     default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "description"
+    t.integer  "kata_number"
   end
 
   add_index "waza_formats", ["format_id"], name: "index_waza_formats_on_format_id"

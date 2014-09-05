@@ -8,7 +8,7 @@ namespace :aiki do
   end
 
   task dump_to_seed_fu: :environment do
-    klasses = %w(Stance Attack Technique Direction Waza Format AttackHeight Style Sensei Rank Kata WazaFormat)
+    klasses = %w(Stance Attack Technique Direction Waza Format AttackHeight Style Sensei Rank Kata WazaFormat WazaFormatVideo)
     klasses.each do |klass|
       klass.constantize.to_seed_fu
     end
@@ -75,6 +75,15 @@ namespace :aiki do
     #     next if video.waza_id.nil?
     #     wf = WazaFormat.find_by(waza_id: video.waza_id)
     #     video.update_column('waza_format_id', wf.id) unless wf.nil?
+    #   end
+    # end
+
+    # task create_waza_format_videos: :environment do
+    #   Video.all.each do |video|
+    #     next unless video.waza_format_id
+    #     wfv = WazaFormatVideo.where(video_id: video.id, waza_format_id: video.waza_format_id).first_or_create
+    #     puts wfv.to_h if wfv
+    #     video.update_column('waza_format_id', nil) if wfv && wfv.valid?
     #   end
     # end
   end

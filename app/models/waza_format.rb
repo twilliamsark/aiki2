@@ -6,9 +6,39 @@ class WazaFormat < ActiveRecord::Base
   belongs_to :rank
   belongs_to :kata
 
-  has_many :videos, inverse_of: :waza_format
+  has_many :waza_format_videos
+  has_many :videos, through: :waza_format_videos
+
   has_one :stance, through: :waza
   has_one :attack, through: :waza
   has_one :technique, through: :waza
   has_one :direction, through: :waza
+
+  scope :rank_order, -> {joins(:rank).order('ranks.position')}
+
+  def waza_name
+    waza.name
+  end
+
+  def format_name
+    format.name rescue ""
+  end
+
+  def name
+    parts = waza_name
+    parts += " (#{format_name})" if format_name
+  end
+
+  def rank_name
+    rank.label
+  end
+
+  def kata_name
+    return "" unless kata
+    kname = kata.name
+    if !kata_number.nil?
+      kname += " (Kata #{kata_number})"
+    end
+    kname
+  end
 end

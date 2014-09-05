@@ -68,8 +68,10 @@ class Waza < ActiveRecord::Base
   end
 
   def first_video
-    video = videos.visible.primary.first
-    video = videos.visible.first unless video
+    wf = waza_formats.rank_order.first
+
+    video = wf.videos.visible.primary.first
+    video = wf.videos.visible.first unless video
     video
   end
 

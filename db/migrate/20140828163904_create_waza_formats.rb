@@ -1,5 +1,5 @@
 class CreateWazaFormats < ActiveRecord::Migration
-  def change
+  def up
     create_table :waza_formats do |t|
       t.references :waza, index: true
       t.references :format, index: true
@@ -10,5 +10,11 @@ class CreateWazaFormats < ActiveRecord::Migration
     end
     add_column :videos, :waza_format_id, :integer
     add_index :videos, :waza_format_id
+  end
+
+  def down
+    remove_index :videos, :waza_format_id
+    remove_column :videos, :waza_format_id
+    drop_table :waza_formats
   end
 end

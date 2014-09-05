@@ -1,0 +1,12 @@
+<ul class="left_align">
+  <% visible = VideoUtils.visible_videos(waza_format.videos, current_user) %>
+  <% visible.each do |vid| %>
+    <%
+      vid_name = vid.name(more_info: true)
+      vid_name = 'This Video - ' + vid_name if vid.id == video_id
+    %>
+    <li class="no_bullet_list_indented other_videos">
+      <%= link_to vid_name, remote_waza_url(waza: waza_format.waza, video: vid), remote: true %>
+    </li>
+  <% end %>
+</ul>

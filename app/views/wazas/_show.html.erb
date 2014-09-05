@@ -1,5 +1,8 @@
 <div id="vid" class="col-md-8">
   <%= render 'wazas/title', waza: waza, video: video %>
+  <%= render 'wazas/detail', waza: waza %>
+  <%= render 'waza_formats/detail', waza: waza, video: video %>
+  <%= render 'videos/detail', video: video if Video.show_video?(video) %>
   <div class="vid_area">
     <div class="videowrapper">
       <% if Video.show_video?(video) %>
@@ -11,7 +14,4 @@
       <% end %>
     </div>
   </div>
-  <%= render 'wazas/detail', waza: waza %>
-  <%= render 'videos/detail', video: video if Video.show_video?(video) %>
-  <%= render 'wazas/other_videos', waza: waza, video_id: video.id unless video.nil? %>
 </div>
