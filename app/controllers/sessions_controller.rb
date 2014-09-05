@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if authenticate(user)
-      sign_in(user, user.admin? ? 60 : 30)
+      sign_in(user, user.admin? ? 90 : 60)
       redirect_back_or root_path
     else
       flash.now[:error] = 'Login invalid'
