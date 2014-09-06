@@ -1,0 +1,12 @@
+<ul class="nav nav-tabs">
+  <% formats.each do |format| %>
+    <li class="<%= format_states[format][:state] %>">
+      <%
+        tab_class = format_states[format][:state] == 'disabled' ? 'disabled_link' : ''
+        first_waza_format = waza_formats_hash[format] ? waza_formats_hash[format].first : nil
+        tab_video = first_waza_format ? first_waza_format.first_video : nil
+      %>
+      <%= link_to format.name, remote_waza_url(waza: waza, video: tab_video), remote: true, 'data-toggle' => "tab", class: tab_class  %>
+    </li>
+  <% end %>
+</ul>
