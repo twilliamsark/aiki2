@@ -1,8 +1,7 @@
 require_relative 'exhibit'
 
 class WazaExhibit < Exhibit
-  def render_body(video)
-    waza_format = video.waza_formats.first
-    @context.render(partial: "show", locals: {waza: self, video: video})
+  def render_body(waza_format, video)
+    @context.render(partial: "show", locals: {waza: self, waza_format: waza_format, video: video})
   end
 end

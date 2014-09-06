@@ -2,7 +2,7 @@ $("#video_list").replaceWith("<%= escape_javascript(render('video_list', selecti
 <% if @waza
   at = exhibit(@waza, self)
 %>
-  $("#vid").replaceWith("<%= escape_javascript(at.render_body(@video)) %>")
+  $("#vid").replaceWith("<%= escape_javascript(at.render_body(@waza_format, @video)) %>")
 <% else %>
   $("#vid").replaceWith("<%= escape_javascript(render('shared/no_video')) %>")
 <% end %>

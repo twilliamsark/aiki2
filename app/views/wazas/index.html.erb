@@ -3,7 +3,7 @@
   <% if @waza
     at = exhibit(@waza, self)
   %>
-    <%= at.render_body(@video) %>
+    <%= at.render_body(@waza_format, @video) %>
   <% else %>
     <%= render 'shared/no_video' %>
   <% end %>
