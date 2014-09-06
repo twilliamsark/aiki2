@@ -1,7 +1,5 @@
-<% if @waza
-  at = exhibit(@waza, self)
-%>
-  $("#vid").replaceWith("<%= escape_javascript(at.render_body(@video)) %>")
+<% if @waza %>
+  $("#vid").replaceWith("<%= escape_javascript(exhibit(@waza, self).render_body(@video)) %>")
 <% else %>
   $("#vid").replaceWith("<%= escape_javascript(render('shared/no_video')) %>")
 <% end %>

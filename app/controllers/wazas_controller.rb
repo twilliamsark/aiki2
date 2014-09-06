@@ -7,6 +7,7 @@ class WazasController < ApplicationController
     @default_sort ||= "Technique"
     @selection, @video = wazas(@type.titleize, @default_sort, {}, @waza_id, @video_id)
     @waza = @video.waza if @video && @waza.nil?
+    @format = @video.formats.first if @video
     render :index
   end
 
@@ -19,6 +20,7 @@ class WazasController < ApplicationController
 
     @selection, @video = wazas(@type.titleize, @default_sort, {})
     @waza = @video.waza if @video && @waza.nil?
+    @format = @video.formats.first if @video
   end
 
   # ajax only
@@ -31,19 +33,25 @@ class WazasController < ApplicationController
     @search_term = params[:search]
     @selection, @video = search_videos(@type, @search_term)
     @waza = @video.wazas.first if @video && @waza.nil?
+    @format = @video.formats.first if @video
     render :video_list
   end
 
   # ajax only
   def remote_waza
     @waza = Waza.find_by_id(@waza_id)
-    if @waza && @video_id
-      @video = Video.find_by_id(@video_id)
-      unless @video.wazas.include? @waza
-        @video = nil
-        @video_id = nil
+    if @waza
+      if @video_id
+        @video = Video.find_by_id(@video_id)
+        unless @video.wazas.include? @waza
+          @video = nil
+          @video_id = nil
+        end
+      else
+        @video = @waza.first_video
       end
     end
+    @format = @video.formats.first if @video
   end
 
   private

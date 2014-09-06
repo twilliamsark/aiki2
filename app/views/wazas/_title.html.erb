@@ -3,7 +3,7 @@
   <h4 class="left_align"><%= waza.description %></h4>
 <% end %>
 <div class="section detail">
-  <% if current_user.admin? %>
+  <% if current_user.admin? && SHOW_ADMIN_FIELDS %>
     <div class="row">
       <div class="col-md-3"><label>Admin Page:</label></div>
       <div class="col-md-9"><%= link_to "Admin For #{waza.name}", admin_waza_path(waza) %></div>

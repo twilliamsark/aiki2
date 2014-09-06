@@ -50,6 +50,11 @@ input[type="submit"] {
   }
 }
 
+.disabled_link {
+  pointer-events: none;
+  cursor: default;
+}
+
 .field_with_errors {
   @extend .control-group !optional;
   @extend .error !optional;
@@ -59,7 +64,7 @@ input[type="submit"] {
   padding: 10px 5px 0px;
 }
 
-.aiki_header {
+.aiki_box {
   background-color: white;
   border: 1px solid black;
 }

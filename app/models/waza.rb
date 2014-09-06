@@ -34,6 +34,15 @@ class Waza < ActiveRecord::Base
   scope :demo,
    -> { joins(:videos).merge(Video.demo) }
 
+  def waza_formats_hash
+    hash = {}
+    waza_formats.each do |wf|
+      hash[wf.format] ||= []
+      hash[wf.format] << wf
+    end
+    hash
+  end
+
   def self.search(keyword)
     results = []
     if keyword.present?
@@ -68,7 +77,7 @@ class Waza < ActiveRecord::Base
   end
 
   def first_video
-    wf = waza_formats.rank_order.first
+    wf = waza_formats.format_order.first
 
     video = wf.videos.visible.primary.first
     video = wf.videos.visible.first unless video

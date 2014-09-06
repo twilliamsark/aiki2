@@ -14,7 +14,8 @@ class WazaFormat < ActiveRecord::Base
   has_one :technique, through: :waza
   has_one :direction, through: :waza
 
-  scope :rank_order, -> {joins(:rank).order('ranks.position')}
+  scope :rank_order, -> { joins(:rank).order('ranks.position') }
+  scope :format_order, -> { joins(:format).order('formats.position') }
 
   def waza_name
     waza.name

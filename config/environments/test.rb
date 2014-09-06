@@ -4,6 +4,7 @@ ALLOW_SEARCH = true
 SHOW_MENU = true
 SHOW_DEBUG = false
 CHECK_YOUTUBE = false
+SHOW_ADMIN_FIELDS = true
 
 Aiki::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.

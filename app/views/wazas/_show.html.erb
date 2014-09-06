@@ -1,8 +1,49 @@
 <div id="vid" class="col-md-8">
   <%= render 'wazas/title', waza: waza, video: video %>
   <%= render 'wazas/detail', waza: waza %>
-  <%= render 'waza_formats/detail', waza: waza, video: video %>
-  <%= render 'videos/detail', video: video if Video.show_video?(video) %>
+  <div id="waza_format" class="tabbale aiki_box navbar">
+    <%
+      format_states = {}
+      formats = Format.default_order
+
+      waza_formats = waza.waza_formats_hash
+      used = waza_formats.keys
+
+      formats.each do |format|
+        format_states[format] = {}
+
+        format_states[format][:state] = if @format && format.id == @format.id
+          'active'
+        elsif !used.include?(format)
+          'disabled'
+        else
+          ''
+        end
+      end
+    %>
+    <ul class="nav nav-tabs">
+      <% formats.each do |format| %>
+        <li class="<%= format_states[format][:state] %>">
+          <a class="<%= 'disabled_link' if format_states[format][:state] == 'disabled' %>" href="#tab<%= format.id %>" data-toggle="tab">
+            <%= format.name %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+    <div class="tab-content">
+      <% formats.each do |format| %>
+        <div class="tab-pane <%= format_states[format][:state] %>" id="tab<%= format.id %>">
+          <% if format_states[format][:state] == 'disabled' %>
+            <%= format.name %>
+          <% else %>
+            <br/>
+            <%= render waza_formats[format], video: video  %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <%= render 'videos/detail', video: video if Video.show_video?(video) %>
   <div class="vid_area">
     <div class="videowrapper">
       <% if Video.show_video?(video) %>
@@ -13,5 +54,8 @@
         <%= render 'shared/video_not_uploaded' %>
       <% end %>
     </div>
+  </div>
+
+
   </div>
 </div>
