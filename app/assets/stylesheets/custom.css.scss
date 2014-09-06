@@ -37,6 +37,11 @@ input[type="submit"] {
   margin-bottom: 5px;
 }
 
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: lightyellow;
+ }
+
 .ul_big, .signin, .detail {
   font-size: larger;
 }
