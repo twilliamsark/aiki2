@@ -24,18 +24,27 @@
     <ul class="nav nav-tabs">
       <% formats.each do |format| %>
         <li class="<%= format_states[format][:state] %>">
-          <a class="<%= 'disabled_link' if format_states[format][:state] == 'disabled' %>" href="#tab<%= format.id %>" data-toggle="tab">
-            <%= format.name %>
-          </a>
+          <%
+            tab_class = format_states[format][:state] == 'disabled' ? 'disabled_link' : ''
+            first_waza_format = waza_formats[format] ? waza_formats[format].first : nil
+            tab_video = first_waza_format ? first_waza_format.first_video : nil
+          %>
+          <%= link_to format.name, remote_waza_url(waza: waza, video: tab_video), remote: true, 'data-toggle' => "tab", class: tab_class  %>
         </li>
       <% end %>
     </ul>
     <div class="tab-content">
       <% formats.each do |format| %>
-        <div class="tab-pane <%= format_states[format][:state] %>" id="tab<%= format.id %>">
+        <div class="tab-pane pad_sides <%= format_states[format][:state] %>" id="tab<%= format.id %>">
           <% if format_states[format][:state] == 'disabled' %>
             <%= format.name %>
           <% else %>
+            <% waza_format = waza_formats[format] ? waza_formats[format].first : nil %>
+            <br/>
+            <div class="row">
+              <div class="col-md-3"><label><%= waza_format.format_name %>:</label></div>
+              <div class="col-md-9"><%= waza_format.format.description %></div>
+            </div>
             <br/>
             <%= render waza_formats[format], video: video  %>
           <% end %>
@@ -44,18 +53,18 @@
     </div>
 
     <%= render 'videos/detail', video: video if Video.show_video?(video) %>
-  <div class="vid_area">
-    <div class="videowrapper">
-      <% if Video.show_video?(video) %>
-        <iframe id="player" class="movie" width="560" height="315" src="http://www.youtube.com/embed/<%= video.youtube_code %>?rel=0" frameborder="1" html5="1" allowfullscreen></iframe>
-        <div><%= link_to "Reload", remote_waza_url(waza: waza, video: video), remote: true %></div>
-        <div id="link_for_moble"><a href="http://www.youtube.com/watch?v=<%= video.youtube_code %>">View on Youtube</a></div>
-      <% else %>
-        <%= render 'shared/video_not_uploaded' %>
-      <% end %>
-    </div>
-  </div>
 
+    <div class="vid_area">
+      <div class="videowrapper">
+        <% if Video.show_video?(video) %>
+          <iframe id="player" class="movie" width="560" height="315" src="http://www.youtube.com/embed/<%= video.youtube_code %>?rel=0" frameborder="1" html5="1" allowfullscreen></iframe>
+          <div><%= link_to "Reload", remote_waza_url(waza: waza, video: video), remote: true %></div>
+          <div id="link_for_moble"><a href="http://www.youtube.com/watch?v=<%= video.youtube_code %>">View on Youtube</a></div>
+        <% else %>
+          <%= render 'shared/video_not_uploaded' %>
+        <% end %>
+      </div>
+    </div>
 
   </div>
 </div>

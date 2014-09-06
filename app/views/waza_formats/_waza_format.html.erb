@@ -1,16 +1,4 @@
 <% if VideoUtils.visible_videos(waza_format.videos, current_user).any? %>
-  <div class="row">
-    <div class="col-md-3"><label>Waza Form:</label></div>
-    <div class="col-md-9"><%= waza_format.format_name %></div>
-  </div>
-
-  <% if waza_format.description.present? %>
-    <div class="row">
-      <div class="col-md-3"><label>Description:</label></div>
-      <div class="col-md-9"><%= waza_format.description %></div>
-    </div>
-  <% end %>
-
   <% if waza_format.rank %>
     <div class="row">
       <div class="col-md-3"><label>Rank:</label></div>

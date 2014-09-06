@@ -17,6 +17,12 @@ class WazaFormat < ActiveRecord::Base
   scope :rank_order, -> { joins(:rank).order('ranks.position') }
   scope :format_order, -> { joins(:format).order('formats.position') }
 
+  def first_video
+    video = videos.visible.primary.first
+    video = videos.visible.first unless video
+    video
+  end
+
   def waza_name
     waza.name
   end

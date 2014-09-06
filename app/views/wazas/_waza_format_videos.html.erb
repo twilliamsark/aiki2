@@ -2,7 +2,7 @@
   <% visible = VideoUtils.visible_videos(waza_format.videos, current_user) %>
   <% visible.each do |vid| %>
     <%
-      vid_name = vid.name(more_info: true)
+      vid_name = vid.name(description: true)
       vid_name = 'This Video - ' + vid_name if vid.id == video_id
     %>
     <li class="no_bullet_list_indented other_videos">

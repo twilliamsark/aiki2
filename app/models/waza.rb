@@ -36,7 +36,7 @@ class Waza < ActiveRecord::Base
 
   def waza_formats_hash
     hash = {}
-    waza_formats.each do |wf|
+    waza_formats.rank_order.each do |wf|
       hash[wf.format] ||= []
       hash[wf.format] << wf
     end
@@ -78,10 +78,7 @@ class Waza < ActiveRecord::Base
 
   def first_video
     wf = waza_formats.format_order.first
-
-    video = wf.videos.visible.primary.first
-    video = wf.videos.visible.first unless video
-    video
+    wf.first_video
   end
 
   def demo_videos?

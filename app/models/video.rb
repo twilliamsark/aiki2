@@ -27,17 +27,17 @@ class Video < ActiveRecord::Base
   scope :demo, ->(state=true) { where(for_demo: state) }
 
   def name(options={})
-    options.reverse_merge!(more_info: false)
+    options.reverse_merge!(format: false, description: false)
 
     base_name = attributes['name'] || waza.name
 
-    return base_name unless options[:more_info]
+    return base_name unless options[:description] || options[:format]
 
     if formats.any? || discription.present?
       name_parts = []
-      name_parts << format_name if formats.any?
-      name_parts << description if description.present?
-      base_name += " (#{name_parts.join(' - ')})"
+      name_parts << format_name if formats.any? && options[:format]
+      name_parts << description if description.present? && options[:description]
+      base_name += " (#{name_parts.join(' - ')})" if name_parts.any?
     end
 
     base_name
