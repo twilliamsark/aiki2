@@ -2,9 +2,13 @@
 <% visible.each do |vid| %>
   <%
     vid_name = vid.name(description: true)
-    vid_name = 'This Video - ' + vid_name if vid.id == video_id
   %>
   <tr>
+    <td>
+      <% if vid.id == video_id %>
+        <strong>&check;</strong>
+      <% end %>
+    </td>
     <td>
       <%= link_to vid_name, remote_waza_url(waza: waza_format.waza, video: vid), remote: true %>
     </td>
