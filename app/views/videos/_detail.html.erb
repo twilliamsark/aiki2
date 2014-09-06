@@ -1,37 +1,8 @@
-<div class="section detail pad_sides pad_top_slim">
-  <h4>This Video</h4>
-  <% if video.name.present? %>
-    <div class="row">
-      <div class="col-md-3"><label>Name:</label></div>
-      <div class="col-md-9"><%= video.name %></div>
-    </div>
-  <% end %>
-
+<div class="section detail pad_sides">
   <% if video.description.present? %>
     <div class="row">
       <div class="col-md-3"><label>Description:</label></div>
       <div class="col-md-9"><%= video.description %></div>
-    </div>
-  <% end %>
-
-  <% if video.sensei %>
-    <div class="row">
-      <div class="col-md-3"><label>Sensei:</label></div>
-      <div class="col-md-9"><%= video.sensei.name %></div>
-    </div>
-  <% end %>
-
-  <% if video.formats.any? %>
-    <div class="row">
-      <div class="col-md-3"><label>Format(s):</label></div>
-      <div class="col-md-9"><%= video.format_name %></div>
-    </div>
-  <% end %>
-
-  <% if video.style %>
-    <div class="row">
-      <div class="col-md-3"><label>Style:</label></div>
-      <div class="col-md-9"><%= video.style.name %></div>
     </div>
   <% end %>
 

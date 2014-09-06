@@ -35,18 +35,32 @@
     </ul>
     <div class="tab-content">
       <% formats.each do |format| %>
-        <div class="tab-pane pad_sides <%= format_states[format][:state] %>" id="tab<%= format.id %>">
+        <div class="tab-pane <%= format_states[format][:state] %>" id="tab<%= format.id %>">
           <% if format_states[format][:state] == 'disabled' %>
             <%= format.name %>
           <% else %>
             <% waza_format = waza_formats[format] ? waza_formats[format].first : nil %>
             <br/>
-            <div class="row">
-              <div class="col-md-3"><label><%= waza_format.format_name %>:</label></div>
-              <div class="col-md-9"><%= waza_format.format.description %></div>
+            <div class="row pad_sides">
+              <div class="col-md-12"><strong><%= waza_format.format.description %></strong></div>
             </div>
             <br/>
-            <%= render waza_formats[format], video: video  %>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-striped table-bordered">
+                  <thead>
+                    <th>Video</th>
+                    <th>Rank</th>
+                    <th>Format(s)</th>
+                    <th>Sensei</th>
+                    <th>Style</th>
+                  </thead>
+                  <tbody>
+                    <%= render waza_formats[format], video: video  %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           <% end %>
         </div>
       <% end %>
