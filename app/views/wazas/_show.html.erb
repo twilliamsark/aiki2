@@ -34,36 +34,35 @@
       <% end %>
     </ul>
     <div class="tab-content">
-      <% formats.each do |format| %>
-        <div class="tab-pane <%= format_states[format][:state] %>" id="tab<%= format.id %>">
-          <% if format_states[format][:state] == 'disabled' %>
-            <%= format.name %>
-          <% else %>
-            <% waza_format = waza_formats[format] ? waza_formats[format].first : nil %>
-            <br/>
-            <div class="row pad_sides">
-              <div class="col-md-12"><strong><%= waza_format.format.description %></strong></div>
+      <div class="tab-pane <%= format_states[@format][:state] %>" id="tab<%= @format.id %>">
+        <% if format_states[@format][:state] == 'disabled' %>
+          <%= @format.name %>
+        <% else %>
+          <% waza_format = waza_formats[@format] ? waza_formats[@format].first : nil %>
+          <br/>
+          <div class="row pad_sides">
+            <div class="col-md-12"><strong><%= waza_format.format.description %></strong></div>
+          </div>
+          <br/>
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <th></th>
+                  <th>Video</th>
+                  <th>Rank</th>
+                  <th>Format(s)</th>
+                  <th>Sensei</th>
+                  <th>Style</th>
+                </thead>
+                <tbody>
+                  <%= render waza_formats[@format], video: video  %>
+                </tbody>
+              </table>
             </div>
-            <br/>
-            <div class="row">
-              <div class="col-md-12">
-                <table class="table table-striped table-bordered">
-                  <thead>
-                    <th>Video</th>
-                    <th>Rank</th>
-                    <th>Format(s)</th>
-                    <th>Sensei</th>
-                    <th>Style</th>
-                  </thead>
-                  <tbody>
-                    <%= render waza_formats[format], video: video  %>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
 
     <%= render 'videos/detail', video: video if Video.show_video?(video) %>
