@@ -12,15 +12,16 @@ class WazasController < ApplicationController
   end
 
   # ajax only
-  def video_list
+  def sort
     @type = params[:type]
-    @default_sort = 'Technique'
+    @default_sort = params[:sort_type].gsub(/[[:space:]]/,'') || 'Technique'
     @selection = nil
     @video = nil
 
     @selection, @video = wazas(@type.titleize, @default_sort, {})
     @waza = @video.waza if @video && @waza.nil?
     @waza_format = @video.waza_formats.first if @video
+    render :video_list
   end
 
   # ajax only
