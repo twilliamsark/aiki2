@@ -48,7 +48,7 @@ class WazasController < ApplicationController
           @video_id = nil
         end
       else
-        @video = @waza.first_video
+        @video = @waza.first_video(@waza.first_waza_format.format)
       end
     end
     @waza_format = @video.waza_formats.first if @video
@@ -69,7 +69,7 @@ class WazasController < ApplicationController
       if !video_id.nil?
         video = Video.find_by_id(video_id)
       else
-        video = @waza.first_video
+        video = @waza.first_video(@waza.first_waza_format.format)
       end
 
       unless !video.nil? && video.waza == @waza && VideoUtils.show_video?(video, current_user)
@@ -83,7 +83,7 @@ class WazasController < ApplicationController
       first_selector = selection.keys.first
       wazas = selection[first_selector]
       wazas.each do |waza|
-        video = waza.first_video
+        video = waza.first_video(waza.first_waza_format.format)
         if !video.nil?
           @waza = waza
           break
@@ -100,7 +100,7 @@ class WazasController < ApplicationController
     waza_formats = waza_formats.select {|wf| VideoUtils.show_videos?(wf.videos, current_user)}
     first_video = nil
     waza_formats.each do |wf|
-      first_video = wf.waza.first_video
+      first_video = wf.waza.first_video(wf.format)
       break if first_video
     end
 

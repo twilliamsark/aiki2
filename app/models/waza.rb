@@ -43,6 +43,10 @@ class Waza < ActiveRecord::Base
     hash
   end
 
+  def first_waza_format
+    waza_formats.format_order.first
+  end
+
   def self.search(keyword)
     results = []
     if keyword.present?
@@ -76,9 +80,9 @@ class Waza < ActiveRecord::Base
     selection
   end
 
-  def first_video
-    wf = waza_formats.format_order.first
-    wf.first_video
+  def first_video(format)
+    wfs = waza_formats.where(format: format).rank_order
+    wfs.first.first_video
   end
 
   def demo_videos?
