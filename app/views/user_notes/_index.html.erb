@@ -1,0 +1,17 @@
+<%
+  notes = current_user.user_notes.where(waza_format: waza_format)
+  if notes.any?
+%>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <th>User Notes</th>
+        </thead>
+        <tbody>
+          <%= render notes %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>

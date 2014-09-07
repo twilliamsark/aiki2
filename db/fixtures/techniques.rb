@@ -1,6 +1,6 @@
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-05 16:48:09 -0500
+# Date: 2014-09-07 09:58:11 -0500
 # Seeding Stance
 # Written with the command:
 #
@@ -13,7 +13,7 @@ Stance.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-05 16:48:09 -0500
+# Date: 2014-09-07 09:58:11 -0500
 # Seeding Attack
 # Written with the command:
 #
@@ -38,7 +38,7 @@ Attack.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-05 16:48:09 -0500
+# Date: 2014-09-07 09:58:11 -0500
 # Seeding Technique
 # Written with the command:
 #
@@ -67,7 +67,7 @@ Technique.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-05 16:48:09 -0500
+# Date: 2014-09-07 09:58:11 -0500
 # Seeding Direction
 # Written with the command:
 #
@@ -80,7 +80,7 @@ Direction.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-05 16:48:09 -0500
+# Date: 2014-09-07 09:58:11 -0500
 # Seeding Waza
 # Written with the command:
 #
@@ -103,7 +103,7 @@ Waza.seed(:id,
   {:id=>19, :technique_id=>6, :attack_id=>4, :stance_id=>3, :direction_id=>nil, :name=>"Ai Hanmi Shomen Uchi Irimi Nage", :short_description=>nil, :description=>nil, :position=>nil, :keywords=>"ai hanmi shomen uchi irimi nage aihanmishomenuchiiriminage 3rd john bollinger johnbollinger suwari waza suwariwaza"},
   {:id=>21, :technique_id=>3, :attack_id=>4, :stance_id=>3, :direction_id=>nil, :name=>"Ai Hanmi Shomen Uchi Kote Gaeshi", :short_description=>nil, :description=>nil, :position=>nil, :keywords=>"ai hanmi shomen uchi kote gaeshi aihanmishomenuchikotegaeshi 3rd john bollinger johnbollinger suwari waza suwariwaza"},
   {:id=>22, :technique_id=>nil, :attack_id=>nil, :stance_id=>nil, :direction_id=>nil, :name=>"Tomesuemono", :short_description=>"Kata 15", :description=>"Table Cut", :position=>7, :keywords=>"tomesuemono tomesuemono 4th base john bollinger johnbollinger"},
-  {:id=>23, :technique_id=>4, :attack_id=>2, :stance_id=>3, :direction_id=>nil, :name=>"Ai Hanmi Katate Dori Shiho Nage", :short_description=>"Kata 4", :description=>"", :position=>8, :keywords=>"ai hanmi katate dori shiho nage aihanmikatatedorishihonage 4th base john bollinger johnbollinger"},
+  {:id=>23, :technique_id=>4, :attack_id=>2, :stance_id=>3, :direction_id=>nil, :name=>"Ai Hanmi Katate Dori Shiho Nage", :short_description=>"", :description=>"", :position=>8, :keywords=>"ai hanmi katate dori shiho nage aihanmikatatedorishihonage 4th base john bollinger johnbollinger"},
   {:id=>24, :technique_id=>16, :attack_id=>nil, :stance_id=>nil, :direction_id=>nil, :name=>"Hiji Kata", :short_description=>"Elbow Kata", :description=>"", :position=>nil, :keywords=>"hiji kata hijikata 4th 5th john bollinger johnbollinger tachi waza tachiwaza"},
   {:id=>26, :technique_id=>17, :attack_id=>nil, :stance_id=>nil, :direction_id=>nil, :name=>"Suwari Waza Kokyu Ho", :short_description=>"", :description=>"", :position=>nil, :keywords=>"suwari waza kokyu ho suwariwazakokyuho 5th john bollinger johnbollinger suwari waza suwariwaza"},
   {:id=>27, :technique_id=>8, :attack_id=>nil, :stance_id=>nil, :direction_id=>nil, :name=>"Jo Kata 2", :short_description=>"", :description=>"", :position=>nil, :keywords=>"jo kata 2 jokata2 2nd john bollinger johnbollinger"},
@@ -120,7 +120,7 @@ Waza.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-05 16:48:09 -0500
+# Date: 2014-09-07 09:58:11 -0500
 # Seeding Format
 # Written with the command:
 #
@@ -139,7 +139,7 @@ Format.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-05 16:48:09 -0500
+# Date: 2014-09-07 09:58:11 -0500
 # Seeding AttackHeight
 # Written with the command:
 #
@@ -153,7 +153,7 @@ AttackHeight.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-05 16:48:09 -0500
+# Date: 2014-09-07 09:58:11 -0500
 # Seeding Style
 # Written with the command:
 #
@@ -167,7 +167,7 @@ Style.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-05 16:48:09 -0500
+# Date: 2014-09-07 09:58:11 -0500
 # Seeding Sensei
 # Written with the command:
 #
@@ -179,7 +179,7 @@ Sensei.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-05 16:48:09 -0500
+# Date: 2014-09-07 09:58:11 -0500
 # Seeding Rank
 # Written with the command:
 #
@@ -199,7 +199,7 @@ Rank.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-05 16:48:09 -0500
+# Date: 2014-09-07 09:58:11 -0500
 # Seeding Kata
 # Written with the command:
 #
@@ -212,7 +212,7 @@ Kata.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-05 16:48:09 -0500
+# Date: 2014-09-07 09:58:11 -0500
 # Seeding WazaFormat
 # Written with the command:
 #
@@ -240,7 +240,7 @@ WazaFormat.seed(:id,
   {:id=>19, :waza_id=>19, :format_id=>2, :rank_id=>4, :kata_id=>nil, :on_test=>true, :description=>nil, :kata_number=>nil},
   {:id=>21, :waza_id=>21, :format_id=>2, :rank_id=>4, :kata_id=>nil, :on_test=>true, :description=>nil, :kata_number=>nil},
   {:id=>22, :waza_id=>22, :format_id=>8, :rank_id=>5, :kata_id=>2, :on_test=>true, :description=>nil, :kata_number=>nil},
-  {:id=>23, :waza_id=>23, :format_id=>8, :rank_id=>5, :kata_id=>2, :on_test=>true, :description=>nil, :kata_number=>nil},
+  {:id=>23, :waza_id=>23, :format_id=>8, :rank_id=>5, :kata_id=>2, :on_test=>true, :description=>nil, :kata_number=>4},
   {:id=>24, :waza_id=>24, :format_id=>2, :rank_id=>5, :kata_id=>nil, :on_test=>true, :description=>"Both Sides", :kata_number=>nil},
   {:id=>25, :waza_id=>24, :format_id=>2, :rank_id=>6, :kata_id=>nil, :on_test=>true, :description=>nil, :kata_number=>nil},
   {:id=>26, :waza_id=>26, :format_id=>2, :rank_id=>6, :kata_id=>nil, :on_test=>true, :description=>nil, :kata_number=>nil},
@@ -261,7 +261,7 @@ WazaFormat.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-05 16:48:09 -0500
+# Date: 2014-09-07 09:58:11 -0500
 # Seeding WazaFormatVideo
 # Written with the command:
 #
@@ -314,5 +314,19 @@ WazaFormatVideo.seed(:id,
   {:id=>45, :waza_format_id=>37, :video_id=>45},
   {:id=>46, :waza_format_id=>40, :video_id=>46},
   {:id=>47, :waza_format_id=>41, :video_id=>47}
+)
+# End auto-generated file.
+# DO NOT MODIFY THIS FILE, it was auto-generated.
+#
+# Date: 2014-09-07 09:58:11 -0500
+# Seeding UserNote
+# Written with the command:
+#
+#   /Users/todd/.rvm/gems/ruby-2.0.0-p481@aiki_gemset/bin/rake aiki:dump_to_seed_fu
+#
+UserNote.seed(:id,
+  {:id=>1, :note=>"Atemi with forarm, this allows to bring both the hand into play and the elbow. Keep the atemi(elbow) in contact as long as possible. ", :user_id=>1, :waza_format_id=>1},
+  {:id=>2, :note=>"At the bottom of the yokamen cut, catch uke's wrist in the fork between thumb and forefinger. As you step back/pivot into the hourse stance, keep uke in contact.", :user_id=>1, :waza_format_id=>1},
+  {:id=>3, :note=>"With heavy hand behind uke's neck and other hand at uke' opposite hip, bring uke's other hand to the shoulder away from you as you throw.", :user_id=>1, :waza_format_id=>1}
 )
 # End auto-generated file.
