@@ -10,10 +10,9 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require turbolinks
+// jquery and jquery_ujs are pulled in with bootstrap
 
+//= require turbolinks
 // jQuery plugin for drop-in fix binded events problem caused by Turbolinks
 //= require jquery.turbolinks
 

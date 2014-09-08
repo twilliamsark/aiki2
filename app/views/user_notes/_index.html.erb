@@ -7,9 +7,10 @@
       <table class="table table-striped table-bordered">
         <thead>
           <th>User Notes</th>
+          <th>Action</th>
         </thead>
         <tbody>
-          <%= render notes %>
+          <%= render notes, waza_format: waza_format, video: video %>
         </tbody>
       </table>
     </div>

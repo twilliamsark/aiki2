@@ -32,5 +32,10 @@
     <td>
       <%= vid.style ? vid.style.name : '' %>
     </td>
+    <% if !current_user.demo? && !current_user.restricted? %>
+      <td>
+        <%= link_to 'Add', new_user_waza_format_user_note_path(user_id: current_user, waza_format_id: waza_format, video: vid.id), {:class => "btn btn-primary btn-xs", :remote => true, 'data-toggle' => 'modal', 'data-target' => '#userNoteModal'} %>
+      </td>
+    <% end %>
   </tr>
 <% end %>

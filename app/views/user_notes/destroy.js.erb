@@ -1,0 +1,5 @@
+<% if @waza %>
+  $("#vid").replaceWith("<%= escape_javascript(exhibit(@waza, self).render_body(@waza_format, @video)) %>")
+<% else %>
+  $("#vid").replaceWith("<%= escape_javascript(render('shared/no_video')) %>")
+<% end %>

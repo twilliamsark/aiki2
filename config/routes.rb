@@ -16,6 +16,9 @@ Aiki::Application.routes.draw do
       get 'change_password'
       put 'save_password'
     end
+    resources :waza_formats do
+      resources :user_notes
+    end
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :wazas

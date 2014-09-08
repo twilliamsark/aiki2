@@ -19,6 +19,9 @@
               <th>Format(s)</th>
               <th>Sensei</th>
               <th>Style</th>
+              <% if !current_user.demo? && !current_user.restricted? %>
+                <th>Notes</th>
+              <% end %>
             </thead>
             <tbody>
               <%= render waza_formats_hash[format], video: video  %>
@@ -31,4 +34,4 @@
 </div>
 
 <%= render 'videos/detail', video: video if Video.show_video?(video) %>
-<%= render 'video', video: video, waza: waza %>
+<%= render 'wazas/video', video: video, waza: waza %>

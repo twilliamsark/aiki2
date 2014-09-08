@@ -1,3 +1,4 @@
 <tr>
   <td><%= user_note.note %></td>
+  <td><%= link_to "delete", user_waza_format_user_note_path(user_id: current_user, waza_format_id: waza_format, id: user_note, video: video), method: :delete, confirm: "Are you sure?", remote: true, class: "btn btn-primary btn-xs" %></td>
 </tr>

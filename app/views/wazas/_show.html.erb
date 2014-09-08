@@ -7,10 +7,10 @@
       formats, waza_formats_hash, format_states = available_formats(waza, this_format)
     %>
 
-    <%= render 'waza_format_tab_head', waza: waza, formats: formats, waza_formats_hash: waza_formats_hash, format_states: format_states %>
+    <%= render 'wazas/waza_format_tab_head', waza: waza, formats: formats, waza_formats_hash: waza_formats_hash, format_states: format_states %>
 
-    <%= render 'waza_format_tab_pane', waza: waza, video: video, format: this_format, waza_formats_hash: waza_formats_hash, format_states: format_states %>
+    <%= render 'wazas/waza_format_tab_pane', waza: waza, video: video, format: this_format, waza_formats_hash: waza_formats_hash, format_states: format_states %>
 
-    <%= render 'user_notes/index', waza_format: waza_format %>
+    <%= render 'user_notes/index', waza_format: waza_format, video: video %>
   </div>
 </div>

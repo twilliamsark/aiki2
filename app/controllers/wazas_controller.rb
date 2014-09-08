@@ -73,7 +73,7 @@ class WazasController < ApplicationController
         video = @waza.first_video(@waza.first_waza_format.format)
       end
 
-      unless !video.nil? && video.waza == @waza && VideoUtils.show_video?(video, current_user)
+      unless !video.nil? && video.wazas.include?(@waza) && VideoUtils.show_video?(video, current_user)
         video_id = nil
         video = nil
       end
