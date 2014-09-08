@@ -1,5 +1,5 @@
 <div class="row">
-  <%= render 'shared/lnav', type: @type, sort_by: @default_sort, selection: @selection %>
+  <%= render 'shared/lnav', type: @type, sort_by: @default_sort, selection: @selection, keys: @keys %>
   <% if @waza
     at = exhibit(@waza, self)
   %>

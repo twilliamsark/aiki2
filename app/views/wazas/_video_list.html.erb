@@ -7,7 +7,10 @@
     <div class="panel-group" id="accordion">
       <%
         first = true
-        selection.each do |key, techniques|
+
+        keys.each do |key|
+          techniques = selection[key]
+
           if key == 'Search Results'
             id = 'search_results'
             name = "Search Results"
@@ -36,10 +39,20 @@
             <div class="panel-body">
               <ul>
                 <% techniques.each do |t| %>
+                  <%
+                  #TODO Clean this up, make a helper
+                    name = t.list_name
+                    if sort_by == 'Rank'
+                      wfs = WazaFormat.where(waza: t, rank: key)
+                      if wfs
+                        v = wfs.first.first_video
+                        format_string = wfs.map{|wf| wf.format.name}.uniq.join(', ')
+                      end
+                    end
+                  %>
                   <li class="no_bullet_list" style="padding-bottom: 2px;">
-                    <%=
-                      link_to "#{t.list_name}", remote_waza_url(waza: t), remote: true
-                    %>
+                    <%= link_to "#{name}", remote_waza_url(waza: t, video: v), remote: true %>
+                    <%= " - #{format_string}" if format_string.present? %>
                   </li>
                 <% end %>
               </ul>

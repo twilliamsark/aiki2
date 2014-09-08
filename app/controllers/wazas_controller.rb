@@ -6,6 +6,7 @@ class WazasController < ApplicationController
     @type = "aikido"
     @default_sort ||= "Technique"
     @selection, @video = wazas(@type.titleize, @default_sort, {}, @waza_id, @video_id)
+    @keys = sort_keys(@selection, @default_sort)
     @waza = @video.waza if @video && @waza.nil?
     @waza_format = @video.waza_formats.first if @video
     render :index
@@ -19,6 +20,18 @@ class WazasController < ApplicationController
     @video = nil
 
     @selection, @video = wazas(@type.titleize, @default_sort, {})
+    @keys = sort_keys(@selection, @default_sort)
+
+    #TODO: clean this up, refactor out.  possibly call from inside def wazas
+    if @default_sort == 'Rank'
+      key = @keys.first
+      first_waza = @selection[key].first
+      wfs = WazaFormat.where(waza: first_waza, rank: key)
+      if wfs
+        @video = wfs.first.first_video
+      end
+    end
+
     @waza = @video.waza if @video && @waza.nil?
     @waza_format = @video.waza_formats.first if @video
     render :video_list
@@ -33,6 +46,7 @@ class WazasController < ApplicationController
 
     @search_term = params[:search]
     @selection, @video = search_videos(@type, @search_term)
+    @keys = sort_keys(@selection, @default_sort)
     @waza = @video.wazas.first if @video && @waza.nil?
     @waza_format = @video.waza_formats.first if @video
     render :video_list
@@ -107,6 +121,11 @@ class WazasController < ApplicationController
 
     selection = Waza.build_selection(waza_formats)
     return [selection, first_video]
+  end
+
+  def sort_keys(selection, sort_class)
+    sort_field = sort_class == 'Rank' ? 'position' : 'name'
+    selection.keys.sort{|x,y| x.send(sort_field) <=> y.send(sort_field)}
   end
 
   def action_params
