@@ -1,4 +1,4 @@
-<div id="video_list">
+<div id="video_list" style="margin-top: -5px;">
 
   <h3>Select an <%= type.titleize %> Video</h3>
   <h4>by <%= sort_by.pluralize %></h4>
@@ -23,7 +23,7 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= id %>">
-                <ul class="ul_big">
+                <ul>
                   <li class="no_bullet_list"><%= name %></li>
                   <li class="no_bullet_list_indented"><%= description %></li>
                 </ul>
@@ -34,9 +34,9 @@
           <div id="collapse<%= id %>" class="panel-collapse collapse<%= first ? ' in' : '' %>">
             <% first = false %>
             <div class="panel-body">
-              <ul class="ul_big">
+              <ul>
                 <% techniques.each do |t| %>
-                  <li class="no_bullet_list">
+                  <li class="no_bullet_list" style="padding-bottom: 2px;">
                     <%=
                       link_to "#{t.list_name}", remote_waza_url(waza: t), remote: true
                     %>

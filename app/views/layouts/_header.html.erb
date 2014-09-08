@@ -1,25 +1,27 @@
 <header class="aiki_box navbar container" role="navigation">
   <div class="row">
     <div class="col-md-2 center">
-      <%= image_tag 'ssj_mon_color_web.gif', class: "header_image", size: "100x100" %>
+      <%= image_tag 'ssj_mon_color_web.gif', class: "header_image", size: "50x50" %>
     </div>
     <div class="col-md-8 center">
-      <h1>Aikido Center of San Antonio</h1>
-      <h2>Video Library</h2>
+      <h4>Aikido Center of San Antonio: Video Library</h4>
       <p>a Yurusu Aikido Dojo</p>
     </div>
     <div class="col-md-2 center">
-      <%= image_tag 'Nishio_patch_dark.png', class: "header_image", size: "100x100" %>
+      <%= image_tag 'Nishio_patch_dark.png', class: "header_image", size: "50x50" %>
     </div>
   </div>
-  <% if SHOW_MENU && !@no_menu %>
+
     <ul class="ul_big nav nav-pills">
       <li><%= link_to "Dojo", "http://www.aikipeace.com/aikido/index.html" %></li>
-      <li id="nav_aikido"><%= link_to "Aikido", aikido_path %></li>
-      <% if signed_in? %>
+      <% if signed_in? && SHOW_MENU && !@no_menu%>
+        <li id="nav_aikido"><%= link_to "Aikido", aikido_path %></li>
         <% if current_user.admin? %>
           <li><%= link_to "Admin", admin_root_path %></li>
         <% end %>
+      <% end %>
+
+      <% if signed_in? && SHOW_MENU && !@no_menu%>
         <li id="fat-menu" class="dropdown pull-right">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <%= current_user.email %> <b class="caret"></b>
@@ -34,5 +36,5 @@
         </li>
       <% end %>
     </ul>
-  <% end %>
+
 </header>

@@ -1,5 +1,5 @@
 <% if ALLOW_SEARCH %>
-  <%= form_tag search_url, method: :get, remote: true do %>
+  <%= form_tag search_url, method: :get, remote: true, style: "margin-bottom: -5px;" do %>
     <%= hidden_field_tag "type", type.titleize %>
     <%= hidden_field_tag "sort_type", sort_by %>
     <div class="row">
