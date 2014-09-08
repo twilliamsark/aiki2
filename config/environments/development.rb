@@ -4,7 +4,7 @@ ALLOW_SEARCH = true
 SHOW_MENU = true
 SHOW_DEBUG = true
 CHECK_YOUTUBE = false
-SHOW_ADMIN_FIELDS = false
+SHOW_ADMIN_FIELDS = true
 DEVELOPMENT_REQUIRE_LOGIN = false
 DEVELOPMENT_LOGIN = 'example@example.com'
 
