@@ -45,8 +45,11 @@
                     if sort_by == 'Rank'
                       wfs = WazaFormat.where(waza: t, rank: key)
                       if wfs
-                        v = wfs.first.first_video
-                        format_string = wfs.map{|wf| wf.format.name}.uniq.join(', ')
+                        # v = wfs.first.first_video
+                        formats = wfs.map{|wf| wf.format}.uniq
+                        formats = formats.sort{|x,y| x.position <=> y.position}
+                        format_string = formats.map(&:name).join(', ')
+                        v = wfs.sort{|x,y| x.format.position <=> y.format.position }.first.first_video
                       end
                     end
                   %>
