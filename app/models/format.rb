@@ -16,6 +16,10 @@ class Format < ActiveRecord::Base
 
   scope :default_order, -> { order(:position) }
 
+  def iaido?
+    name == AIKI_TOHO
+  end
+
   def self.iaido
     aiki_toho.first rescue nil
   end

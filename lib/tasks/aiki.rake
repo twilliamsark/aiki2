@@ -86,6 +86,15 @@ namespace :aiki do
     #     video.update_column('waza_format_id', nil) if wfv && wfv.valid?
     #   end
     # end
+
+    # task add_kata_to_videos: :environment do
+    #   WazaFormat.where(format_id: 8).each do |wf|
+    #     wf.videos.each do |v|
+    #       v.update_column('kata_id', wf.kata_id)
+    #       v.update_column('kata_number', wf.kata_number)
+    #     end
+    #   end
+    # end
   end
 
 end

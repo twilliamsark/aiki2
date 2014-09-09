@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140907143036) do
+ActiveRecord::Schema.define(version: 20140909165555) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -162,9 +162,12 @@ ActiveRecord::Schema.define(version: 20140907143036) do
     t.integer  "style_id"
     t.integer  "attack_height_id"
     t.string   "name"
+    t.integer  "kata_id"
+    t.integer  "kata_number"
   end
 
   add_index "videos", ["attack_height_id"], name: "index_videos_on_attack_height_id"
+  add_index "videos", ["kata_id"], name: "index_videos_on_kata_id"
   add_index "videos", ["sensei_id"], name: "index_videos_on_sensei_id"
   add_index "videos", ["style_id"], name: "index_videos_on_style_id"
 
@@ -182,16 +185,13 @@ ActiveRecord::Schema.define(version: 20140907143036) do
     t.integer  "waza_id"
     t.integer  "format_id"
     t.integer  "rank_id"
-    t.integer  "kata_id"
     t.boolean  "on_test",     default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "description"
-    t.integer  "kata_number"
   end
 
   add_index "waza_formats", ["format_id"], name: "index_waza_formats_on_format_id"
-  add_index "waza_formats", ["kata_id"], name: "index_waza_formats_on_kata_id"
   add_index "waza_formats", ["rank_id"], name: "index_waza_formats_on_rank_id"
   add_index "waza_formats", ["waza_id"], name: "index_waza_formats_on_waza_id"
 

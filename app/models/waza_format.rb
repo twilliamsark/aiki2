@@ -39,13 +39,4 @@ class WazaFormat < ActiveRecord::Base
   def rank_name
     rank.label
   end
-
-  def kata_name
-    return "" unless kata
-    kname = kata.name
-    if !kata_number.nil?
-      kname += " (Kata #{kata_number})"
-    end
-    kname
-  end
 end

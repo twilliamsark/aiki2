@@ -9,11 +9,11 @@ class Waza < ActiveRecord::Base
   has_many :waza_formats, inverse_of: :waza
 
   has_many :ranks, through: :waza_formats
-  has_many :katas, through: :waza_formats
 
   has_many :formats, through: :waza_formats
 
   has_many :videos, through: :waza_formats
+  has_many :katas, through: :videos
   has_many :senseis, through: :videos
   has_many :attack_heights, through: :videos
   has_many :styles, through: :videos

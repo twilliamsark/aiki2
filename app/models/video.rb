@@ -8,11 +8,12 @@ class Video < ActiveRecord::Base
   belongs_to :attack_height, inverse_of: :videos
   belongs_to :style, inverse_of: :videos
   belongs_to :sensei, inverse_of: :videos
+  belongs_to :kata, inverse_of: :videos
 
   has_many :wazas, through: :waza_formats
   has_many :formats, through: :waza_formats
   has_many :ranks, through: :waza_formats
-  has_many :katas, through: :waza_formats
+  # has_many :katas, through: :waza_formats
 
   validates :youtube_code, presence: true
 
@@ -45,6 +46,15 @@ class Video < ActiveRecord::Base
 
   def format_name
     formats.map(&:name).join(', ') rescue "" if formats.any?
+  end
+
+  def kata_name
+    return "" unless kata
+    kname = kata.name
+    if !kata_number.nil?
+      kname += " (Kata #{kata_number})"
+    end
+    kname
   end
 
   def valid_youtube_code?

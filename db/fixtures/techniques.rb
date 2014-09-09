@@ -1,6 +1,6 @@
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-07 09:58:11 -0500
+# Date: 2014-09-09 12:37:49 -0500
 # Seeding Stance
 # Written with the command:
 #
@@ -13,7 +13,7 @@ Stance.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-07 09:58:11 -0500
+# Date: 2014-09-09 12:37:49 -0500
 # Seeding Attack
 # Written with the command:
 #
@@ -38,7 +38,7 @@ Attack.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-07 09:58:11 -0500
+# Date: 2014-09-09 12:37:49 -0500
 # Seeding Technique
 # Written with the command:
 #
@@ -67,7 +67,7 @@ Technique.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-07 09:58:11 -0500
+# Date: 2014-09-09 12:37:49 -0500
 # Seeding Direction
 # Written with the command:
 #
@@ -80,7 +80,7 @@ Direction.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-07 09:58:11 -0500
+# Date: 2014-09-09 12:37:50 -0500
 # Seeding Waza
 # Written with the command:
 #
@@ -99,10 +99,10 @@ Waza.seed(:id,
   {:id=>14, :technique_id=>5, :attack_id=>2, :stance_id=>2, :direction_id=>3, :name=>"Gyaku Hanmi Katate Dori Ikkyo Ura", :short_description=>"", :description=>"", :position=>nil, :keywords=>"gyaku hanmi katate dori ikkyo ura gyakuhanmikatatedoriikkyoura 3rd john bollinger johnbollinger tachi waza tachiwaza"},
   {:id=>15, :technique_id=>5, :attack_id=>2, :stance_id=>2, :direction_id=>2, :name=>"Gyaku Hanmi Katate Dori Ikkyo Omote", :short_description=>"", :description=>"", :position=>nil, :keywords=>"gyaku hanmi katate dori ikkyo omote gyakuhanmikatatedoriikkyoomote 3rd john bollinger johnbollinger tachi waza tachiwaza"},
   {:id=>16, :technique_id=>8, :attack_id=>nil, :stance_id=>nil, :direction_id=>nil, :name=>"Jo Kata 1", :short_description=>"", :description=>"", :position=>nil, :keywords=>"jo kata 1 jokata1 4th 3rd john bollinger johnbollinger"},
-  {:id=>18, :technique_id=>5, :attack_id=>2, :stance_id=>3, :direction_id=>2, :name=>"Ai Hanmi Katate Dori Ikkyo Omote", :short_description=>nil, :description=>nil, :position=>nil, :keywords=>"ai hanmi katate dori ikkyo omote aihanmikatatedoriikkyoomote 5th 4th base supplemental john bollinger johnbollinger tachi waza tachiwaza"},
+  {:id=>18, :technique_id=>5, :attack_id=>2, :stance_id=>3, :direction_id=>2, :name=>"Ai Hanmi Katate Dori Ikkyo Omote", :short_description=>nil, :description=>nil, :position=>nil, :keywords=>"ai hanmi katate dori ikkyo omote aihanmikatatedoriikkyoomote ukenagashi ai hanmi kata dori ikkyo omote variation aihanmikatadoriikkyoomotevariation ai hanmi katate dori ikkyo omote aihanmikatatedoriikkyoomote 5th 4th base supplemental john bollinger johnbollinger tachi waza tachiwaza"},
   {:id=>19, :technique_id=>6, :attack_id=>4, :stance_id=>3, :direction_id=>nil, :name=>"Ai Hanmi Shomen Uchi Irimi Nage", :short_description=>nil, :description=>nil, :position=>nil, :keywords=>"ai hanmi shomen uchi irimi nage aihanmishomenuchiiriminage 3rd john bollinger johnbollinger suwari waza suwariwaza"},
   {:id=>21, :technique_id=>3, :attack_id=>4, :stance_id=>3, :direction_id=>nil, :name=>"Ai Hanmi Shomen Uchi Kote Gaeshi", :short_description=>nil, :description=>nil, :position=>nil, :keywords=>"ai hanmi shomen uchi kote gaeshi aihanmishomenuchikotegaeshi 3rd john bollinger johnbollinger suwari waza suwariwaza"},
-  {:id=>22, :technique_id=>nil, :attack_id=>nil, :stance_id=>nil, :direction_id=>nil, :name=>"Tomesuemono", :short_description=>"Kata 15", :description=>"Table Cut", :position=>7, :keywords=>"tomesuemono tomesuemono 4th base john bollinger johnbollinger"},
+  {:id=>22, :technique_id=>nil, :attack_id=>nil, :stance_id=>nil, :direction_id=>nil, :name=>"Tomesuemono", :short_description=>"", :description=>"Table Cut", :position=>7, :keywords=>"tomesuemono tomesuemono 4th base john bollinger johnbollinger"},
   {:id=>23, :technique_id=>4, :attack_id=>2, :stance_id=>3, :direction_id=>nil, :name=>"Ai Hanmi Katate Dori Shiho Nage", :short_description=>"", :description=>"", :position=>8, :keywords=>"ai hanmi katate dori shiho nage aihanmikatatedorishihonage 4th base john bollinger johnbollinger"},
   {:id=>24, :technique_id=>16, :attack_id=>nil, :stance_id=>nil, :direction_id=>nil, :name=>"Hiji Kata", :short_description=>"Elbow Kata", :description=>"", :position=>nil, :keywords=>"hiji kata hijikata 4th 5th john bollinger johnbollinger tachi waza tachiwaza"},
   {:id=>26, :technique_id=>17, :attack_id=>nil, :stance_id=>nil, :direction_id=>nil, :name=>"Suwari Waza Kokyu Ho", :short_description=>"", :description=>"", :position=>nil, :keywords=>"suwari waza kokyu ho suwariwazakokyuho 5th john bollinger johnbollinger suwari waza suwariwaza"},
@@ -120,7 +120,7 @@ Waza.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-07 09:58:11 -0500
+# Date: 2014-09-09 12:37:50 -0500
 # Seeding Format
 # Written with the command:
 #
@@ -139,7 +139,7 @@ Format.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-07 09:58:11 -0500
+# Date: 2014-09-09 12:37:50 -0500
 # Seeding AttackHeight
 # Written with the command:
 #
@@ -153,7 +153,7 @@ AttackHeight.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-07 09:58:11 -0500
+# Date: 2014-09-09 12:37:50 -0500
 # Seeding Style
 # Written with the command:
 #
@@ -167,7 +167,7 @@ Style.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-07 09:58:11 -0500
+# Date: 2014-09-09 12:37:50 -0500
 # Seeding Sensei
 # Written with the command:
 #
@@ -179,7 +179,7 @@ Sensei.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-07 09:58:11 -0500
+# Date: 2014-09-09 12:37:50 -0500
 # Seeding Rank
 # Written with the command:
 #
@@ -199,7 +199,7 @@ Rank.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-07 09:58:11 -0500
+# Date: 2014-09-09 12:37:50 -0500
 # Seeding Kata
 # Written with the command:
 #
@@ -212,56 +212,55 @@ Kata.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-07 09:58:11 -0500
+# Date: 2014-09-09 12:37:50 -0500
 # Seeding WazaFormat
 # Written with the command:
 #
 #   /Users/todd/.rvm/gems/ruby-2.0.0-p481@aiki_gemset/bin/rake aiki:dump_to_seed_fu
 #
 WazaFormat.seed(:id,
-  {:id=>1, :waza_id=>1, :format_id=>2, :rank_id=>6, :kata_id=>nil, :on_test=>true, :description=>nil, :kata_number=>nil},
-  {:id=>2, :waza_id=>2, :format_id=>2, :rank_id=>4, :kata_id=>nil, :on_test=>true, :description=>nil, :kata_number=>nil},
-  {:id=>3, :waza_id=>3, :format_id=>2, :rank_id=>4, :kata_id=>nil, :on_test=>true, :description=>nil, :kata_number=>nil},
-  {:id=>4, :waza_id=>4, :format_id=>8, :rank_id=>6, :kata_id=>2, :on_test=>true, :description=>nil, :kata_number=>1},
-  {:id=>5, :waza_id=>18, :format_id=>8, :rank_id=>6, :kata_id=>2, :on_test=>true, :description=>nil, :kata_number=>2},
-  {:id=>6, :waza_id=>18, :format_id=>8, :rank_id=>6, :kata_id=>1, :on_test=>true, :description=>nil, :kata_number=>nil},
-  {:id=>7, :waza_id=>1, :format_id=>8, :rank_id=>6, :kata_id=>2, :on_test=>true, :description=>nil, :kata_number=>3},
-  {:id=>8, :waza_id=>8, :format_id=>8, :rank_id=>6, :kata_id=>1, :on_test=>false, :description=>nil, :kata_number=>nil},
-  {:id=>9, :waza_id=>9, :format_id=>8, :rank_id=>6, :kata_id=>1, :on_test=>true, :description=>nil, :kata_number=>nil},
-  {:id=>10, :waza_id=>10, :format_id=>2, :rank_id=>10, :kata_id=>nil, :on_test=>false, :description=>nil, :kata_number=>nil},
-  {:id=>11, :waza_id=>11, :format_id=>2, :rank_id=>4, :kata_id=>nil, :on_test=>true, :description=>nil, :kata_number=>nil},
-  {:id=>12, :waza_id=>2, :format_id=>9, :rank_id=>10, :kata_id=>nil, :on_test=>false, :description=>nil, :kata_number=>nil},
-  {:id=>13, :waza_id=>13, :format_id=>2, :rank_id=>4, :kata_id=>nil, :on_test=>true, :description=>nil, :kata_number=>nil},
-  {:id=>14, :waza_id=>14, :format_id=>2, :rank_id=>4, :kata_id=>nil, :on_test=>true, :description=>nil, :kata_number=>nil},
-  {:id=>15, :waza_id=>15, :format_id=>2, :rank_id=>4, :kata_id=>nil, :on_test=>true, :description=>nil, :kata_number=>nil},
-  {:id=>16, :waza_id=>16, :format_id=>7, :rank_id=>5, :kata_id=>nil, :on_test=>true, :description=>nil, :kata_number=>nil},
-  {:id=>17, :waza_id=>16, :format_id=>7, :rank_id=>4, :kata_id=>nil, :on_test=>true, :description=>"Both Sides", :kata_number=>nil},
-  {:id=>18, :waza_id=>18, :format_id=>2, :rank_id=>5, :kata_id=>nil, :on_test=>true, :description=>nil, :kata_number=>nil},
-  {:id=>19, :waza_id=>19, :format_id=>2, :rank_id=>4, :kata_id=>nil, :on_test=>true, :description=>nil, :kata_number=>nil},
-  {:id=>21, :waza_id=>21, :format_id=>2, :rank_id=>4, :kata_id=>nil, :on_test=>true, :description=>nil, :kata_number=>nil},
-  {:id=>22, :waza_id=>22, :format_id=>8, :rank_id=>5, :kata_id=>2, :on_test=>true, :description=>nil, :kata_number=>nil},
-  {:id=>23, :waza_id=>23, :format_id=>8, :rank_id=>5, :kata_id=>2, :on_test=>true, :description=>nil, :kata_number=>4},
-  {:id=>24, :waza_id=>24, :format_id=>2, :rank_id=>5, :kata_id=>nil, :on_test=>true, :description=>"Both Sides", :kata_number=>nil},
-  {:id=>25, :waza_id=>24, :format_id=>2, :rank_id=>6, :kata_id=>nil, :on_test=>true, :description=>nil, :kata_number=>nil},
-  {:id=>26, :waza_id=>26, :format_id=>2, :rank_id=>6, :kata_id=>nil, :on_test=>true, :description=>nil, :kata_number=>nil},
-  {:id=>27, :waza_id=>27, :format_id=>7, :rank_id=>3, :kata_id=>nil, :on_test=>true, :description=>nil, :kata_number=>nil},
-  {:id=>28, :waza_id=>28, :format_id=>2, :rank_id=>10, :kata_id=>nil, :on_test=>false, :description=>nil, :kata_number=>nil},
-  {:id=>29, :waza_id=>29, :format_id=>2, :rank_id=>10, :kata_id=>nil, :on_test=>false, :description=>nil, :kata_number=>nil},
-  {:id=>30, :waza_id=>30, :format_id=>2, :rank_id=>10, :kata_id=>nil, :on_test=>false, :description=>nil, :kata_number=>nil},
-  {:id=>31, :waza_id=>31, :format_id=>2, :rank_id=>6, :kata_id=>nil, :on_test=>true, :description=>nil, :kata_number=>nil},
-  {:id=>32, :waza_id=>32, :format_id=>9, :rank_id=>10, :kata_id=>nil, :on_test=>false, :description=>nil, :kata_number=>nil},
-  {:id=>33, :waza_id=>33, :format_id=>9, :rank_id=>10, :kata_id=>nil, :on_test=>false, :description=>nil, :kata_number=>nil},
-  {:id=>34, :waza_id=>34, :format_id=>5, :rank_id=>10, :kata_id=>nil, :on_test=>false, :description=>nil, :kata_number=>nil},
-  {:id=>35, :waza_id=>34, :format_id=>6, :rank_id=>10, :kata_id=>nil, :on_test=>false, :description=>nil, :kata_number=>nil},
-  {:id=>36, :waza_id=>36, :format_id=>9, :rank_id=>10, :kata_id=>nil, :on_test=>false, :description=>nil, :kata_number=>nil},
-  {:id=>37, :waza_id=>37, :format_id=>2, :rank_id=>10, :kata_id=>nil, :on_test=>false, :description=>nil, :kata_number=>nil},
-  {:id=>40, :waza_id=>37, :format_id=>5, :rank_id=>nil, :kata_id=>nil, :on_test=>false, :description=>nil, :kata_number=>nil},
-  {:id=>41, :waza_id=>37, :format_id=>6, :rank_id=>nil, :kata_id=>nil, :on_test=>false, :description=>nil, :kata_number=>nil}
+  {:id=>1, :waza_id=>1, :format_id=>2, :rank_id=>6, :on_test=>true, :description=>nil},
+  {:id=>2, :waza_id=>2, :format_id=>2, :rank_id=>4, :on_test=>true, :description=>nil},
+  {:id=>3, :waza_id=>3, :format_id=>2, :rank_id=>4, :on_test=>true, :description=>nil},
+  {:id=>4, :waza_id=>4, :format_id=>8, :rank_id=>6, :on_test=>true, :description=>nil},
+  {:id=>5, :waza_id=>18, :format_id=>8, :rank_id=>6, :on_test=>true, :description=>nil},
+  {:id=>7, :waza_id=>1, :format_id=>8, :rank_id=>6, :on_test=>true, :description=>nil},
+  {:id=>8, :waza_id=>8, :format_id=>8, :rank_id=>6, :on_test=>false, :description=>nil},
+  {:id=>9, :waza_id=>9, :format_id=>8, :rank_id=>6, :on_test=>true, :description=>nil},
+  {:id=>10, :waza_id=>10, :format_id=>2, :rank_id=>10, :on_test=>false, :description=>nil},
+  {:id=>11, :waza_id=>11, :format_id=>2, :rank_id=>4, :on_test=>true, :description=>nil},
+  {:id=>12, :waza_id=>2, :format_id=>9, :rank_id=>10, :on_test=>false, :description=>nil},
+  {:id=>13, :waza_id=>13, :format_id=>2, :rank_id=>4, :on_test=>true, :description=>nil},
+  {:id=>14, :waza_id=>14, :format_id=>2, :rank_id=>4, :on_test=>true, :description=>nil},
+  {:id=>15, :waza_id=>15, :format_id=>2, :rank_id=>4, :on_test=>true, :description=>nil},
+  {:id=>16, :waza_id=>16, :format_id=>7, :rank_id=>5, :on_test=>true, :description=>nil},
+  {:id=>17, :waza_id=>16, :format_id=>7, :rank_id=>4, :on_test=>true, :description=>"Both Sides"},
+  {:id=>18, :waza_id=>18, :format_id=>2, :rank_id=>5, :on_test=>true, :description=>nil},
+  {:id=>19, :waza_id=>19, :format_id=>2, :rank_id=>4, :on_test=>true, :description=>nil},
+  {:id=>21, :waza_id=>21, :format_id=>2, :rank_id=>4, :on_test=>true, :description=>nil},
+  {:id=>22, :waza_id=>22, :format_id=>8, :rank_id=>5, :on_test=>true, :description=>nil},
+  {:id=>23, :waza_id=>23, :format_id=>8, :rank_id=>5, :on_test=>true, :description=>nil},
+  {:id=>24, :waza_id=>24, :format_id=>2, :rank_id=>5, :on_test=>true, :description=>"Both Sides"},
+  {:id=>25, :waza_id=>24, :format_id=>2, :rank_id=>6, :on_test=>true, :description=>nil},
+  {:id=>26, :waza_id=>26, :format_id=>2, :rank_id=>6, :on_test=>true, :description=>nil},
+  {:id=>27, :waza_id=>27, :format_id=>7, :rank_id=>3, :on_test=>true, :description=>nil},
+  {:id=>28, :waza_id=>28, :format_id=>2, :rank_id=>10, :on_test=>false, :description=>nil},
+  {:id=>29, :waza_id=>29, :format_id=>2, :rank_id=>10, :on_test=>false, :description=>nil},
+  {:id=>30, :waza_id=>30, :format_id=>2, :rank_id=>10, :on_test=>false, :description=>nil},
+  {:id=>31, :waza_id=>31, :format_id=>2, :rank_id=>6, :on_test=>true, :description=>nil},
+  {:id=>32, :waza_id=>32, :format_id=>9, :rank_id=>10, :on_test=>false, :description=>nil},
+  {:id=>33, :waza_id=>33, :format_id=>9, :rank_id=>10, :on_test=>false, :description=>nil},
+  {:id=>34, :waza_id=>34, :format_id=>5, :rank_id=>10, :on_test=>false, :description=>nil},
+  {:id=>35, :waza_id=>34, :format_id=>6, :rank_id=>10, :on_test=>false, :description=>nil},
+  {:id=>36, :waza_id=>36, :format_id=>9, :rank_id=>10, :on_test=>false, :description=>nil},
+  {:id=>37, :waza_id=>37, :format_id=>2, :rank_id=>10, :on_test=>false, :description=>nil},
+  {:id=>40, :waza_id=>37, :format_id=>5, :rank_id=>nil, :on_test=>false, :description=>nil},
+  {:id=>41, :waza_id=>37, :format_id=>6, :rank_id=>nil, :on_test=>false, :description=>nil}
 )
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-07 09:58:11 -0500
+# Date: 2014-09-09 12:37:50 -0500
 # Seeding WazaFormatVideo
 # Written with the command:
 #
@@ -273,7 +272,7 @@ WazaFormatVideo.seed(:id,
   {:id=>4, :waza_format_id=>3, :video_id=>3},
   {:id=>5, :waza_format_id=>4, :video_id=>4},
   {:id=>6, :waza_format_id=>5, :video_id=>5},
-  {:id=>7, :waza_format_id=>6, :video_id=>6},
+  {:id=>7, :waza_format_id=>5, :video_id=>6},
   {:id=>8, :waza_format_id=>7, :video_id=>7},
   {:id=>9, :waza_format_id=>8, :video_id=>8},
   {:id=>10, :waza_format_id=>9, :video_id=>9},
@@ -318,7 +317,7 @@ WazaFormatVideo.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-07 09:58:11 -0500
+# Date: 2014-09-09 12:37:50 -0500
 # Seeding UserNote
 # Written with the command:
 #
@@ -327,6 +326,10 @@ WazaFormatVideo.seed(:id,
 UserNote.seed(:id,
   {:id=>1, :note=>"Atemi with forarm, this allows to bring both the hand into play and the elbow. Keep the atemi(elbow) in contact as long as possible. ", :user_id=>1, :waza_format_id=>1},
   {:id=>2, :note=>"At the bottom of the yokamen cut, catch uke's wrist in the fork between thumb and forefinger. As you step back/pivot into the hourse stance, keep uke in contact.", :user_id=>1, :waza_format_id=>1},
-  {:id=>3, :note=>"With heavy hand behind uke's neck and other hand at uke' opposite hip, bring uke's other hand to the shoulder away from you as you throw.", :user_id=>1, :waza_format_id=>1}
+  {:id=>3, :note=>"With heavy hand behind uke's neck and other hand at uke' opposite hip, bring uke's other hand to the shoulder away from you as you throw.", :user_id=>1, :waza_format_id=>1},
+  {:id=>23, :note=>"Rotate upper hand palm out for initial lead", :user_id=>1, :waza_format_id=>31},
+  {:id=>25, :note=>"low hand grab's uke's hand not wrist", :user_id=>1, :waza_format_id=>31},
+  {:id=>26, :note=>"motorcycle uke's arm keeping your elbow beneath uke's elbow. from this point on maintain contact at the shoulder level.", :user_id=>1, :waza_format_id=>31},
+  {:id=>27, :note=>"for the yokomen cut, twist uke's hand toward their head,  this will rotate their arm so it is touching their head.  then cut down and toward your opposite hip.", :user_id=>1, :waza_format_id=>31}
 )
 # End auto-generated file.
