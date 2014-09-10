@@ -13,7 +13,6 @@ class Video < ActiveRecord::Base
   has_many :wazas, through: :waza_formats
   has_many :formats, through: :waza_formats
   has_many :ranks, through: :waza_formats
-  # has_many :katas, through: :waza_formats
 
   validates :youtube_code, presence: true
 
