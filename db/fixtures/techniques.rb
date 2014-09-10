@@ -1,6 +1,6 @@
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-09 12:37:49 -0500
+# Date: 2014-09-10 11:25:19 -0500
 # Seeding Stance
 # Written with the command:
 #
@@ -13,7 +13,7 @@ Stance.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-09 12:37:49 -0500
+# Date: 2014-09-10 11:25:19 -0500
 # Seeding Attack
 # Written with the command:
 #
@@ -38,7 +38,7 @@ Attack.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-09 12:37:49 -0500
+# Date: 2014-09-10 11:25:19 -0500
 # Seeding Technique
 # Written with the command:
 #
@@ -67,7 +67,7 @@ Technique.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-09 12:37:49 -0500
+# Date: 2014-09-10 11:25:19 -0500
 # Seeding Direction
 # Written with the command:
 #
@@ -80,7 +80,7 @@ Direction.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-09 12:37:50 -0500
+# Date: 2014-09-10 11:25:19 -0500
 # Seeding Waza
 # Written with the command:
 #
@@ -120,7 +120,7 @@ Waza.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-09 12:37:50 -0500
+# Date: 2014-09-10 11:25:20 -0500
 # Seeding Format
 # Written with the command:
 #
@@ -139,7 +139,7 @@ Format.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-09 12:37:50 -0500
+# Date: 2014-09-10 11:25:20 -0500
 # Seeding AttackHeight
 # Written with the command:
 #
@@ -153,7 +153,7 @@ AttackHeight.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-09 12:37:50 -0500
+# Date: 2014-09-10 11:25:20 -0500
 # Seeding Style
 # Written with the command:
 #
@@ -167,7 +167,7 @@ Style.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-09 12:37:50 -0500
+# Date: 2014-09-10 11:25:20 -0500
 # Seeding Sensei
 # Written with the command:
 #
@@ -179,7 +179,7 @@ Sensei.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-09 12:37:50 -0500
+# Date: 2014-09-10 11:25:20 -0500
 # Seeding Rank
 # Written with the command:
 #
@@ -199,7 +199,7 @@ Rank.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-09 12:37:50 -0500
+# Date: 2014-09-10 11:25:20 -0500
 # Seeding Kata
 # Written with the command:
 #
@@ -212,7 +212,7 @@ Kata.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-09 12:37:50 -0500
+# Date: 2014-09-10 11:25:20 -0500
 # Seeding WazaFormat
 # Written with the command:
 #
@@ -260,7 +260,7 @@ WazaFormat.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-09 12:37:50 -0500
+# Date: 2014-09-10 11:25:20 -0500
 # Seeding WazaFormatVideo
 # Written with the command:
 #
@@ -313,23 +313,5 @@ WazaFormatVideo.seed(:id,
   {:id=>45, :waza_format_id=>37, :video_id=>45},
   {:id=>46, :waza_format_id=>40, :video_id=>46},
   {:id=>47, :waza_format_id=>41, :video_id=>47}
-)
-# End auto-generated file.
-# DO NOT MODIFY THIS FILE, it was auto-generated.
-#
-# Date: 2014-09-09 12:37:50 -0500
-# Seeding UserNote
-# Written with the command:
-#
-#   /Users/todd/.rvm/gems/ruby-2.0.0-p481@aiki_gemset/bin/rake aiki:dump_to_seed_fu
-#
-UserNote.seed(:id,
-  {:id=>1, :note=>"Atemi with forarm, this allows to bring both the hand into play and the elbow. Keep the atemi(elbow) in contact as long as possible. ", :user_id=>1, :waza_format_id=>1},
-  {:id=>2, :note=>"At the bottom of the yokamen cut, catch uke's wrist in the fork between thumb and forefinger. As you step back/pivot into the hourse stance, keep uke in contact.", :user_id=>1, :waza_format_id=>1},
-  {:id=>3, :note=>"With heavy hand behind uke's neck and other hand at uke' opposite hip, bring uke's other hand to the shoulder away from you as you throw.", :user_id=>1, :waza_format_id=>1},
-  {:id=>23, :note=>"Rotate upper hand palm out for initial lead", :user_id=>1, :waza_format_id=>31},
-  {:id=>25, :note=>"low hand grab's uke's hand not wrist", :user_id=>1, :waza_format_id=>31},
-  {:id=>26, :note=>"motorcycle uke's arm keeping your elbow beneath uke's elbow. from this point on maintain contact at the shoulder level.", :user_id=>1, :waza_format_id=>31},
-  {:id=>27, :note=>"for the yokomen cut, twist uke's hand toward their head,  this will rotate their arm so it is touching their head.  then cut down and toward your opposite hip.", :user_id=>1, :waza_format_id=>31}
 )
 # End auto-generated file.
