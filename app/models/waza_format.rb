@@ -4,7 +4,6 @@ class WazaFormat < ActiveRecord::Base
   belongs_to :waza
   belongs_to :format
   belongs_to :rank
-  belongs_to :kata
 
   has_many :waza_format_videos
   has_many :videos, through: :waza_format_videos
