@@ -12,9 +12,6 @@
     <td>
       <%= link_to vid_name, remote_waza_url(waza: waza_format.waza, video: vid), remote: true %>
     </td>
-    <td>
-      <%= waza_format.rank_name %>
-    </td>
     <% if format.iaido? %>
       <td>
         <%= vid.kata_name if vid.kata %>

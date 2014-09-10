@@ -37,8 +37,8 @@ class Waza < ActiveRecord::Base
   def waza_formats_hash
     hash = {}
     waza_formats.rank_order.each do |wf|
-      hash[wf.format] ||= []
-      hash[wf.format] << wf
+      hash[wf.format] ||= {}
+      hash[wf.format][wf.rank] = wf
     end
     hash
   end

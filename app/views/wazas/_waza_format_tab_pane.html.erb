@@ -3,41 +3,46 @@
     <% if format_states[format][:state] == 'disabled' %>
       <%= format.name %>
     <% else %>
-      <% waza_format = waza_formats_hash[format] ? waza_formats_hash[format].first : nil %>
       <br/>
       <div class="row pad_sides">
-        <div class="col-md-3"><label>Waza:</label></div>
-        <div class="col-md-6"><%= waza.name %></div>
-        <div class="col-md-3">
-            <%= link_to 'Add Note', new_user_waza_format_user_note_path(user_id: current_user, waza_format_id: waza_format, video: video.id), {:class => "btn btn-primary btn-xs pull-right", :remote => true, 'data-toggle' => 'modal', 'data-target' => '#userNoteModal'} %>
-        </div>
-      </div>
-      <div class="row pad_sides">
-        <div class="col-md-3"><label><%= format.name %>:</label></div>
-        <div class="col-md-9"><%= format.description %></div>
+        <div class="col-md-12"><label><%= format.name %>:&nbsp;</label>(<%= format.description %>)</div>
       </div>
       <br/>
-      <div class="row">
-        <div class="col-md-12">
-          <table class="table table-striped table-bordered">
-            <thead>
-              <th></th>
-              <th>Video</th>
-              <th>Rank</th>
-              <% if format.iaido? %>
-                <th>Kata</th>
-              <% end %>
-              <th>Format(s)</th>
-              <th>Sensei</th>
-              <th>Style</th>
-            </thead>
-            <tbody>
-              <%= render waza_formats_hash[format], format: format, video: video  %>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    <% end %>
+
+      <%
+        ranks = waza_formats_hash[format].keys
+        ranks.each do |rank|
+          waza_format = waza_formats_hash[format][rank]
+      %>
+        <div class="row pad_sides">
+          <div class="col-md-12">
+            <table class="table table-striped table-bordered">
+              <thead style="background-color: lightgray;">
+                <th colspan="<%= format.iaido? ? 5 : 4 %>"><%= rank.label %></th>
+                <th>
+                  <% if waza_format.videos.include?(video) %>
+                    <%= link_to 'Add Note', new_user_waza_format_user_note_path(user_id: current_user, waza_format_id: waza_format, video: video.id), {:class => "btn btn-primary btn-xs pull-right", :remote => true, 'data-toggle' => 'modal', 'data-target' => '#userNoteModal'} %>
+                  <% end %>
+                </th>
+              </thead>
+              <thead>
+                <th></th>
+                <th>Video</th>
+                <% if format.iaido? %>
+                  <th>Kata</th>
+                <% end %>
+                <th>Format(s)</th>
+                <th>Sensei</th>
+                <th>Style</th>
+              </thead>
+              <tbody>
+                <%= render waza_format, format: format, video: video  %>
+              </tbody>
+            </table>
+          </div>
+        </div> <!-- table div -->
+      <% end %> <!-- ranks -->
+    <% end %> <!-- format active -->
   </div>
 </div>
 
