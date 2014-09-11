@@ -37,7 +37,6 @@ Aiki::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: 'delete'
 
   #AJAX Calls
-  get "/sort" => "wazas#sort", as: :sort
   get "/search" => "wazas#search", as: :search
   get "/remote_waza" => "wazas#remote_waza", as: :remote_waza
 end

@@ -1,5 +1,5 @@
   <% if FILTERING %>
-    <%= form_tag sort_url, method: :get, remote: true do %>
+    <%= form_tag aikido_url, method: :get, remote: true do %>
       <%
         sort_options = %w(Rank Stance Attack Technique Direction)
       %>
@@ -17,9 +17,6 @@
           <%= submit_tag 'Go', id: 'top_go' %>
         </div>
       </div>
-
-      <%= hidden_field_tag "type", type.titleize %>
-
     <% end %>
   <% else %>
     <br/>

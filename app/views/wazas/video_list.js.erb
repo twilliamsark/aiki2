@@ -1,4 +1,4 @@
-$("#video_list").replaceWith("<%= escape_javascript(render('video_list', selection: @selection, keys: @keys, sort_by: @default_sort, type: @type)) %>")
+$("#video_list").replaceWith("<%= escape_javascript(render('video_list', selection: @selection, keys: @keys, sort_by: @default_sort)) %>")
 <% if @waza
   at = exhibit(@waza, self)
 %>

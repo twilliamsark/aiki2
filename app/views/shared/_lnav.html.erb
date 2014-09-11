@@ -1,9 +1,9 @@
 <div class="lnav col-md-4">
   <% sort_by ||= 'Technique' %>
   <div id="filter_form">
-    <%= render 'wazas/search_form', type: type, sort_by: sort_by %>
-    <%= render 'wazas/sort_form', type: type, sort_by: sort_by %>
+    <%= render 'wazas/search_form', sort_by: sort_by %>
+    <%= render 'wazas/sort_form', sort_by: sort_by %>
   </div>
 
-  <%= render 'wazas/video_list', selection: selection, keys: keys, type: type, sort_by: sort_by %>
+  <%= render 'wazas/video_list', selection: selection, keys: keys, sort_by: sort_by %>
 </div>

@@ -45,28 +45,6 @@
     <div class="col-md-2">
     </div>
   </div>
-  <% if type == 'aikido' %>
-    <div class="row lnav_row">
-      <div class="col-md-2">
-        <%= label_tag "format_type", "Format:" %>
-      </div>
-      <div class="col-md-8">
-        <%= select_tag "format_type", options_for_select(Format.options_for_select(exclusion_names: [Format::AIKI_TOHO]), Format::SELECT_ANY) %>
-      </div>
-      <div class="col-md-2 filter_buttons">
-      </div>
-    </div>
-    <div class="row lnav_row">
-      <div class="col-md-2">
-        <%= label_tag "waza_type", "Waza:" %>
-      </div>
-      <div class="col-md-8">
-        <%= select_tag "waza_type", options_for_select(Waza.options_for_select, Waza::SELECT_ANY) %>
-      </div>
-      <div class="col-md-2">
-      </div>
-    </div>
-  <% end %>
   <div class="row lnav_row">
     <div class="col-md-2">
       <%= label_tag "rank_type", "Rank:" %>

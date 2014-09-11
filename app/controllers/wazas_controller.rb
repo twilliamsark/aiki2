@@ -3,23 +3,13 @@ class WazasController < ApplicationController
   before_filter :action_params, only: [:aikido, :remote_waza]
 
   def aikido
-    @type = "aikido"
-    @default_sort ||= "Technique"
-    @selection, @video = wazas(@type.titleize, @default_sort, {}, @waza_id, @video_id)
-    @keys = sort_keys(@selection, @default_sort)
-    @waza = @video.waza if @video && @waza.nil?
-    @waza_format = @video.waza_formats.first if @video
-    render :index
-  end
+    @default_sort = if params[:sort_type]
+      params[:sort_type].gsub(/[[:space:]]/,'')
+    else
+      'Rank'
+    end
 
-  # ajax only
-  def sort
-    @type = params[:type]
-    @default_sort = params[:sort_type].gsub(/[[:space:]]/,'') || 'Technique'
-    @selection = nil
-    @video = nil
-
-    @selection, @video = wazas(@type.titleize, @default_sort, {})
+    @selection, @video = wazas(@default_sort, {}, @waza_id, @video_id)
     @keys = sort_keys(@selection, @default_sort)
 
     #TODO: clean this up, refactor out.  possibly call from inside def wazas
@@ -34,12 +24,19 @@ class WazasController < ApplicationController
 
     @waza = @video.waza if @video && @waza.nil?
     @waza_format = @video.waza_formats.first if @video
-    render :video_list
+
+    respond_to do |format|
+      format.html {
+        render :index
+      }
+      format.js {
+        render :video_list
+      }
+    end
   end
 
   # ajax only
   def search
-    @type = params[:type]
     @default_sort = params[:sort_type].gsub(/[[:space:]]/,'') || "Rank"
     @selection = nil
     @video = nil
@@ -71,7 +68,7 @@ class WazasController < ApplicationController
 
   private
 
-  def wazas(art, sort_class, filters={}, waza_id = nil, video_id = nil)
+  def wazas(sort_class, filters={}, waza_id = nil, video_id = nil)
     if !waza_id.nil?
       @waza = Waza.find_by_id(waza_id)
       unless @waza
@@ -109,7 +106,7 @@ class WazasController < ApplicationController
     return [selection, video]
   end
 
-  def search_videos(art, search)
+  def search_videos(search)
     waza_formats = Waza.search(search).map(&:waza_formats).flatten.compact.uniq
 
     waza_formats = waza_formats.select {|wf| VideoUtils.show_videos?(wf.videos, current_user)}
@@ -129,7 +126,6 @@ class WazasController < ApplicationController
   end
 
   def action_params
-    @default_sort = 'Technique'
     @waza_id = params[:waza]
     @video_id = params[:video]
   end
