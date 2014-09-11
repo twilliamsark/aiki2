@@ -1,5 +1,5 @@
 class WazasController < ApplicationController
-  before_action :signed_in_user, only: [:aikido, :remote_waza]
+  before_action :signed_in_user, only: [:aikido, :search, :remote_waza]
   before_filter :action_params, only: [:aikido, :remote_waza]
 
   def aikido
@@ -12,7 +12,6 @@ class WazasController < ApplicationController
     @selection, @video = wazas(@default_sort, {}, @waza_id, @video_id)
     @keys = sort_keys(@selection, @default_sort)
 
-    #TODO: clean this up, refactor out.  possibly call from inside def wazas
     if @default_sort == 'Rank'
       key = @keys.first
       first_waza = @selection[key].first
@@ -37,12 +36,12 @@ class WazasController < ApplicationController
 
   # ajax only
   def search
-    @default_sort = params[:sort_type].gsub(/[[:space:]]/,'') || "Rank"
+    @default_sort = "Technique"
     @selection = nil
     @video = nil
 
     @search_term = params[:search]
-    @selection, @video = search_videos(@type, @search_term)
+    @selection, @video = search_videos(@search_term)
     @keys = sort_keys(@selection, @default_sort)
     @waza = @video.wazas.first if @video && @waza.nil?
     @waza_format = @video.waza_formats.first if @video
