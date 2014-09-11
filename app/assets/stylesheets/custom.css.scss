@@ -42,6 +42,10 @@ input[type="submit"] {
    background-color: lightyellow;
  }
 
+.rank_row {
+  background-color: lightgray;
+}
+
 .ul_big, .signin, .detail {
   font-size: larger;
 }
@@ -75,6 +79,10 @@ input[type="submit"] {
 
 .pad_top_slim {
   padding-top: 1px;
+}
+
+.pull_up {
+  margin-top: -5px;
 }
 
 .aiki_box {
@@ -141,6 +149,10 @@ input[type="submit"] {
 
 .pad_bottom {
   padding-bottom: 5px;
+}
+
+.pad_bottom_sm {
+  padding-bottom: 2px;
 }
 
 .panel-heading {

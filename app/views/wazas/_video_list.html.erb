@@ -1,4 +1,4 @@
-<div id="video_list" style="margin-top: -5px;">
+<div id="video_list" class="pull_up">
 
   <h4>by <%= sort_by.pluralize %></h4>
 
@@ -52,7 +52,7 @@
                       end
                     end
                   %>
-                  <li class="no_bullet_list" style="padding-bottom: 2px;">
+                  <li class="no_bullet_list pad_bottom_sm">
                     <%= link_to "#{name}", remote_waza_url(waza: t, video: v), remote: true %>
                     <%= " - #{format_string}" if format_string.present? %>
                   </li>
