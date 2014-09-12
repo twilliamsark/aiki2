@@ -1,10 +1,10 @@
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-10 11:25:29 -0500
+# Date: 2014-09-12 16:35:41 +0000
 # Seeding Video
 # Written with the command:
 #
-#   /Users/todd/.rvm/gems/ruby-2.0.0-p481@aiki_gemset/bin/rake aiki:dump_video_seed_fu
+#   /app/vendor/bundle/ruby/2.0.0/bin/rake aiki:dump_video_seed_fu
 #
 Video.seed(:id,
   {:id=>1, :youtube_code=>"uz_HX7XSw_E", :primary=>true, :description=>"", :visible=>true, :for_demo=>true, :copyright=>"Aikido Center of San Antonio, Copyright 2014", :sensei_id=>1, :style_id=>2, :attack_height_id=>nil, :name=>"Gyaku Hanmi Kaiten Nage Omote", :kata_id=>nil, :kata_number=>nil},
