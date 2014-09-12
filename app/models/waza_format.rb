@@ -19,6 +19,7 @@ class WazaFormat < ActiveRecord::Base
   def first_video
     video = videos.visible.primary.first
     video = videos.visible.first unless video
+    video = videos.first unless video
     video
   end
 

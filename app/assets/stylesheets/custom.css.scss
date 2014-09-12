@@ -30,11 +30,15 @@ textarea, select, .uneditable-input {
 // don't mess with submit button inputs
 input:not([type="submit"]) {
   @extend %full_width_inputs;
-  margin-bottom: 15px;
+  // margin-bottom: 15px;
 }
 
 input[type="submit"] {
   margin-bottom: 5px;
+}
+
+input.no_margin_bottom {
+  margin-bottom: 0px;
 }
 
 .table-striped>tbody>tr:nth-child(odd)>td,
@@ -46,7 +50,7 @@ input[type="submit"] {
   background-color: lightgray;
 }
 
-.ul_big, .signin, .detail {
+.ul_big, .detail, .input_form {
   font-size: larger;
 }
 

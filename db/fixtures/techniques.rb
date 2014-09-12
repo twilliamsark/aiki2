@@ -62,7 +62,8 @@ Technique.seed(:id,
   {:id=>16, :name=>"Hiji Kata", :description=>"Hija (elbow) Kata", :short_description=>"Elbow Kata"},
   {:id=>17, :name=>"Kokyu Ho", :description=>"Breath power", :short_description=>""},
   {:id=>18, :name=>"Udekimenage", :description=>"throw applying pressure to the underside of the elbow (or upper arm)", :short_description=>""},
-  {:id=>19, :name=>"Iaido Only", :description=>"Aiki Toho that do not have a Tiado counterpart", :short_description=>""}
+  {:id=>19, :name=>"Iaido Only", :description=>"Aiki Toho that do not have a Tiado counterpart", :short_description=>""},
+  {:id=>20, :name=>"Bokken Suburi", :description=>"Sequential movements with a Bokken", :short_description=>nil}
 )
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.

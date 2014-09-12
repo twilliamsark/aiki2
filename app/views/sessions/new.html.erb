@@ -3,15 +3,29 @@
     <h1>Sign in</h1>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3 signin">
-    <%= form_for(:session, url: sessions_path) do |f| %>
-      <%= f.label :email %>
-      <%= f.email_field :email %>
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-
-      <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
-    <% end %>
+<%= form_for(:session, url: sessions_path, html: { class: "input_form" }) do |f| %>
+  <div class="row">
+    <div class="col-md-12"><%= render 'shared/error_messages', object: f.object %></div>
   </div>
-</div>
+  <div class="row pad_bottom">
+    <div class="col-md-1 col-md-offset-2">
+      <%= f.label :email %>
+    </div>
+    <div class="col-md-6">
+      <%= f.email_field :email %>
+    </div>
+  </div>
+  <div class="row pad_bottom">
+    <div class="col-md-1 col-md-offset-2">
+      <%= f.label :password %>
+    </div>
+    <div class="col-md-6">
+      <%= f.password_field :password %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+    </div>
+  </div>
+<% end %>

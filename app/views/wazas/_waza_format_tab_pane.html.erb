@@ -18,7 +18,7 @@
           <div class="col-md-12">
             <table class="table table-striped table-bordered">
               <thead class="rank_row">
-                <th colspan="<%= format.iaido? ? 5 : 4 %>"><%= rank.label %></th>
+                <th colspan="<%= format.iaido? ? 6 : 5 %>"><%= rank.label %></th>
                 <th>
                   <% if waza_format.videos.include?(video) && !current_user.restricted? %>
                     <%= link_to 'Add User Note', new_user_waza_format_user_note_path(user_id: current_user, waza_format_id: waza_format, video: video.id), {:class => "btn btn-primary btn-xs pull-right", :remote => true, 'data-toggle' => 'modal', 'data-target' => '#userNoteModal'} %>
@@ -32,6 +32,7 @@
                   <th>Kata</th>
                 <% end %>
                 <th>Format(s)</th>
+                <th>On Test</th>
                 <th>Sensei</th>
                 <th>Style</th>
               </thead>

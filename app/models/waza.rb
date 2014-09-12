@@ -1,5 +1,6 @@
 class Waza < ActiveRecord::Base
   include SeedFuSerializeable
+  before_save :set_name
 
   belongs_to :stance, inverse_of: :wazas
   belongs_to :attack, inverse_of: :wazas
@@ -21,6 +22,7 @@ class Waza < ActiveRecord::Base
   after_save :set_keywords
 
   scope :distinct, -> { uniq }
+  scope :default_order, -> { order(:name) }
   scope :for_direction, ->(direction) { where(direction_id: direction) }
   scope :for_technique, ->(technique) { where(technique_id: technique) }
   scope :for_stance, ->(stance) { where(stance_id: stance) }
@@ -132,5 +134,15 @@ class Waza < ActiveRecord::Base
       lname += " - #{short_description}"
     end
     lname
+  end
+
+  def set_name
+    return if name.present?
+    name_parts = []
+    [:stance, :attack, :technique, :direction].each do |sym|
+      attr = self.send(sym)
+      name_parts << attr.name if attr
+    end
+    self.name = name_parts.join(' ')
   end
 end

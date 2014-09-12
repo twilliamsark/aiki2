@@ -13,7 +13,7 @@ ActiveAdmin.register Waza do
     column :technique
     column :direction
     column "View in Library" do |at|
-      link_to 'View Video', aikido_path(waza: at)
+      link_to 'View Video', aikido_path(waza: at, sort_type: "Technique")
     end
     actions
   end
@@ -47,7 +47,7 @@ ActiveAdmin.register Waza do
   end
 
   sidebar "View in Library", only: [:show] do
-    link_to waza.name, aikido_path(waza: waza)
+    link_to waza.name, aikido_path(waza: waza, sort_type: "Technique")
   end
 
   form do |f|

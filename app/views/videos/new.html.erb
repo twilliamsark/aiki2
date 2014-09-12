@@ -1,0 +1,146 @@
+<h1>New Video</h1>
+<%= form_tag videos_path, method: :post, class: "input_form" do %>
+  <div class="row pad_bottom">
+    <div class="col-md-6 col-md-offset-3"><strong>Waza</strong></div>
+  </div>
+  <div class="row pad_bottom">
+    <div class="col-md-1 col-md-offset-2">
+      <%= label_tag :stance %>
+    </div>
+    <div class="col-md-6">
+      <%= select_tag :stance_id, options_for_select(Stance.default_order.collect { |s| [ s.name, s.id ] }), include_blank: true %>
+    </div>
+  </div>
+  <div class="row pad_bottom">
+    <div class="col-md-1 col-md-offset-2">
+      <%= label_tag :attack %>
+    </div>
+    <div class="col-md-6">
+      <%= select_tag :attack_id, options_for_select(Attack.default_order.collect { |a| [ a.name, a.id ] }), include_blank: true %>
+    </div>
+  </div>
+  <div class="row pad_bottom">
+    <div class="col-md-1 col-md-offset-2">
+      <%= label_tag :technique %>
+    </div>
+    <div class="col-md-6">
+      <%= select_tag :technique_id, options_for_select(Technique.default_order.collect { |t| [ t.name, t.id ] }), include_blank: true %>
+    </div>
+  </div>
+  <div class="row pad_bottom">
+    <div class="col-md-1 col-md-offset-2">
+      <%= label_tag :direction %>
+    </div>
+    <div class="col-md-6">
+      <%= select_tag :direction_id, options_for_select(Direction.default_order.collect { |d| [ d.name, d.id ] }), multiple: true %>
+    </div>
+  </div>
+  <br/>
+
+  <div class="row pad_bottom">
+    <div class="col-md-6 col-md-offset-3"><strong>Waza Form</strong></div>
+  </div>
+  <div class="row pad_bottom">
+    <div class="col-md-1 col-md-offset-2">
+      <%= label_tag :format %>
+    </div>
+    <div class="col-md-6">
+      <%= select_tag :format_id, options_for_select(Format.default_order.collect { |format| [ format.name, format.id ] }), multiple: true %>
+    </div>
+  </div>
+  <div class="row pad_bottom">
+    <div class="col-md-1 col-md-offset-2">
+      <%= label_tag :rank %>
+    </div>
+    <div class="col-md-6">
+      <%= select_tag :rank_id, options_for_select(Rank.default_order.collect { |r| [ r.label, r.id ] }), include_blank: true %>
+    </div>
+  </div>
+  <div class="row pad_bottom">
+    <div class="col-md-1 col-md-offset-2">
+      <%= label_tag :on_test %>
+    </div>
+    <div class="col-md-1">
+      <%= check_box_tag :on_test%>
+    </div>
+  </div>
+  <br/>
+
+  <div class="row pad_bottom">
+    <div class="col-md-6 col-md-offset-3"><strong>Video</strong></div>
+  </div>
+  <div class="row pad_bottom">
+    <div class="col-md-1 col-md-offset-2">
+      <%= label_tag :title %>
+    </div>
+    <div class="col-md-6">
+      <%= text_field_tag :title, nil, class: "no_margin_bottom" %>
+    </div>
+  </div>
+  <div class="row pad_bottom">
+    <div class="col-md-1 col-md-offset-2">
+      <%= label_tag "Youtube Id" %>
+    </div>
+    <div class="col-md-6">
+      <%= text_field_tag :youtube_code, 'n/a' %>
+    </div>
+  </div>
+  <div class="row pad_bottom">
+    <div class="col-md-1 col-md-offset-2">
+      <%= label_tag :sensei %>
+    </div>
+    <div class="col-md-6">
+      <%= select_tag :sensei_id, options_for_select(Sensei.default_order.collect { |sensei| [ sensei.name, sensei.id ] }), include_blank: true %>
+    </div>
+  </div>
+  <div class="row pad_bottom">
+    <div class="col-md-1 col-md-offset-2">
+      <%= label_tag :style %>
+    </div>
+    <div class="col-md-6">
+      <%= select_tag :style_id, options_for_select(Style.all.collect { |style| [ style.name, style.id ] }), include_blank: true %>
+    </div>
+  </div>
+  <div class="row pad_bottom">
+    <div class="col-md-1 col-md-offset-2">
+      <%= label_tag :attack_height %>
+    </div>
+    <div class="col-md-6">
+      <%= select_tag :attack_height, options_for_select(AttackHeight.all.collect { |attack_height| [ attack_height.name, attack_height.id ] }), include_blank: true %>
+    </div>
+  </div>
+  <div class="row pad_bottom">
+    <div class="col-md-1 col-md-offset-2">
+      <%= label_tag :visible %>
+    </div>
+    <div class="col-md-1">
+      <%= check_box_tag :visible%>
+    </div>
+  </div>
+  <div class="row pad_bottom">
+    <div class="col-md-1 col-md-offset-2">
+      <%= label_tag :kata %>
+    </div>
+    <div class="col-md-6">
+      <%= select_tag :kata_id, options_for_select(Kata.default_order.collect { |k| [ k.name, k.id ] }), include_blank: true %>
+    </div>
+  </div>
+  <div class="row pad_bottom">
+    <div class="col-md-1 col-md-offset-2">
+      <%= label_tag "Kata #" %>
+    </div>
+    <div class="col-md-6">
+      <%= text_field_tag :kata_number, nil, class: "no_margin_bottom" %>
+    </div>
+  </div>
+  <br/>
+
+  <div class="row">
+    <div class="col-md-5 col-md-offset-3">
+      <%= submit_tag "Create Video", class: "btn btn-primary btn-xs" %>
+    </div>
+    <div class="col-md-3">
+      <%= link_to "Cancel", root_path, class: "btn btn-primary btn-xs" %>
+    </div>
+  </div>
+<% end %>

@@ -61,8 +61,13 @@ class WazasController < ApplicationController
       else
         @video = @waza.first_video(@waza.first_waza_format.format)
       end
+
+      if @video
+        @waza_format = @video.waza_formats.first
+      else
+        @waza_format = @waza.first_waza_format
+      end
     end
-    @waza_format = @video.waza_formats.first if @video
   end
 
   private

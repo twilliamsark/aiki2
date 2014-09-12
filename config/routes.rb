@@ -22,6 +22,7 @@ Aiki::Application.routes.draw do
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :wazas
+  resources :videos
 
 # shows the primary video associated with the applied technique
 # /aikido?waza=15

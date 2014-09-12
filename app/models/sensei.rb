@@ -8,4 +8,7 @@ class Sensei < ActiveRecord::Base
   has_many :formats, through: :waza_formats
 
   validates_presence_of :name
+
+  scope :distinct, -> { uniq }
+  scope :default_order, -> { order(:name) }
 end
