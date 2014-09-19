@@ -21,7 +21,6 @@ Aiki::Application.routes.draw do
     end
   end
   resources :sessions, only: [:new, :create, :destroy]
-  resources :wazas
   resources :videos
 
 # shows the primary video associated with the applied technique

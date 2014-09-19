@@ -14,6 +14,7 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
+    <div id="modal" class="modal" tableindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true"></div>
     <div class="container pad_sides">
       <% flash.each do |key, value| %>
         <%= content_tag(:div, value, class: "alert alert-#{key}") %>

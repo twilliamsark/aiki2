@@ -85,6 +85,23 @@ input.no_margin_bottom {
   padding-top: 1px;
 }
 
+.pad_top {
+  padding-top: 5px;
+}
+
+.pad_bottom {
+  padding-bottom: 5px;
+}
+
+.pad_bottom_sm {
+  padding-bottom: 2px;
+}
+
+.pad_top_bottom {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 .pull_up {
   margin-top: -5px;
 }
@@ -151,13 +168,6 @@ input.no_margin_bottom {
   padding-bottom: 5px;
 }
 
-.pad_bottom {
-  padding-bottom: 5px;
-}
-
-.pad_bottom_sm {
-  padding-bottom: 2px;
-}
 
 .panel-heading {
   border-top-left-radius: 3px;
