@@ -62,6 +62,11 @@ class User < ActiveRecord::Base
     {id: id, email: email, admin: admin?, demo: demo?, regular: regular?}
   end
 
+  #for active_admin
+  def display_name
+    email
+  end
+
   private
 
   def check_user_flags
