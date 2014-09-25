@@ -16,6 +16,9 @@ ActiveAdmin.register UserRememberToken do
     column :created_at
     column :expires_at
     column :signed_out_at
+    column "IP" do |token|
+      link_to(token.ip, "http://www.whois.com/whois/#{token.ip}", target: "_blank")
+    end
     actions
   end
 end
