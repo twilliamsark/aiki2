@@ -106,7 +106,7 @@ class Waza < ActiveRecord::Base
       waza_attribs << self.send(attrib, true)
     end
 
-    collection_attribs = [:videos,
+    collection_attribs = [:videos, :formats,
                           :ranks, :katas,
                           :senseis, :attack_heights, :styles]
 

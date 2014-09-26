@@ -8,6 +8,7 @@ class Format < ActiveRecord::Base
 
   has_many :waza_formats, inverse_of: :format
   has_many :wazas, through: :waza_formats
+  has_many :videos, through: :waza_formats
 
   validates :name, presence: true
 
@@ -22,5 +23,9 @@ class Format < ActiveRecord::Base
 
   def self.iaido
     aiki_toho.first rescue nil
+  end
+
+  def self.tiado
+    where(name: TIADO).first rescue nil
   end
 end

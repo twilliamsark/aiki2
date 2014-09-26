@@ -3,7 +3,7 @@ shared_examples "filterable" do
   it { should respond_to(:keywords) }
   it { should respond_to(:update_waza_keywords) }
 
-  let(:waza_format) { fake_waza_format }
+  let(:waza_format) { fake_waza_format(subject.class.to_s.downcase.to_sym => subject) }
 
   before do
     @local_subject = subject.class.to_s.downcase
