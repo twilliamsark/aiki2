@@ -11,26 +11,34 @@ def valid_signin(user, options={})
   end
 end
 
-def fake_video_with_waza(options={})
+def fake_video_with_waza_format(options={})
   options.reverse_merge!(visible: true,
                          primary: true,
-                         for_demo: false,
-                         format: 'Tiado')
+                         for_demo: false)
 
-  FactoryGirl.create(:video,
+  video = FactoryGirl.create(:video,
         visible: options[:visible],
         primary: options[:primary],
-        for_demo: options[:for_demo],
-        waza: fake_waza(options))
+        for_demo: options[:for_demo])
+
+  wf = fake_waza_format
+  wf.videos << video
+  video
 end
 
-def fake_waza(options={})
-  options.reverse_merge!(format: 'Tiado')
+def fake_waza_format(options={})
+  options.reverse_merge!(format: FactoryGirl.create(:format),
+                         rank: FactoryGirl.create(:rank))
 
+  FactoryGirl.create(:waza_format,
+                     waza: fake_waza,
+                     format: options[:format],
+                     rank: options[:rank])
+end
+
+def fake_waza
   FactoryGirl.create(:waza,
-                     technique: FactoryGirl.create(:technique),
-                     format: FactoryGirl.create(:format, name: options[:format]),
-                     rank: FactoryGirl.create(:rank))
+                     technique: FactoryGirl.create(:technique))
 end
 
 #Michael Hartl. Ruby on Rails Tutorial

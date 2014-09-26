@@ -1,5 +1,6 @@
 class WazaFormat < ActiveRecord::Base
   include SeedFuSerializeable
+  after_save :update_waza_keywords
 
   belongs_to :waza
   belongs_to :format
@@ -38,5 +39,13 @@ class WazaFormat < ActiveRecord::Base
 
   def rank_name
     rank.label
+  end
+
+  def keywords
+    waza.keywords
+  end
+
+  def update_waza_keywords
+    waza.set_keywords
   end
 end

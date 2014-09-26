@@ -10,10 +10,9 @@ class Waza < ActiveRecord::Base
   has_many :waza_formats, inverse_of: :waza
 
   has_many :ranks, through: :waza_formats
-
   has_many :formats, through: :waza_formats
-
   has_many :videos, through: :waza_formats
+
   has_many :katas, through: :videos
   has_many :senseis, through: :videos
   has_many :attack_heights, through: :videos
@@ -104,7 +103,7 @@ class Waza < ActiveRecord::Base
     single_attribs = [:stance, :attack, :technique, :direction]
 
     single_attribs.each do |attrib|
-      waza_attribs << attrib
+      waza_attribs << self.send(attrib, true)
     end
 
     collection_attribs = [:videos,
@@ -112,7 +111,7 @@ class Waza < ActiveRecord::Base
                           :senseis, :attack_heights, :styles]
 
     collection_attribs.each do |attribs|
-      self.send(attribs).distinct.each do |attrib|
+      self.send(attribs, true).distinct.each do |attrib|
         waza_attribs << attrib
       end
     end

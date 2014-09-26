@@ -13,7 +13,7 @@ module HasVideos
   end
 
   def get_wazas(current_user=nil)
-    ats = self.wazas
+    ats = self.wazas.distinct
     ats = ats.select {|at| VideoUtils.show_videos?(at.videos, current_user)} if current_user
     ats.flatten
   end

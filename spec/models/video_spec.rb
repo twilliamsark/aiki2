@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Video do
 
   before do
-    @video = FactoryGirl.create(:video)
+    @video = fake_video_with_waza_format(visible: false, primary: false)
   end
 
   subject { @video }
@@ -98,30 +98,6 @@ describe Video do
 
       it "list of demo should contain video" do
         expect(videos).to include(@video)
-      end
-    end
-  end
-
-  describe "video in applied technique collections" do
-    describe "#{Format::TIADO}" do
-      let(:video) { fake_video_with_waza(format: Format::TIADO) }
-
-      it "should be in aikido videos" do
-        expect(Video.for_aikido).to include(video)
-      end
-      it "should not be in iaido videos" do
-        expect(Video.for_iaido).not_to include(video)
-      end
-    end
-
-    describe "#{Format::AIKI_TOHO}" do
-      let(:video) { fake_video_with_waza(format: Format::AIKI_TOHO) }
-
-      it "should not be in aikido videos" do
-        expect(Video.for_aikido).not_to include(video)
-      end
-      it "should be in iaido videos" do
-        expect(Video.for_iaido).to include(video)
       end
     end
   end

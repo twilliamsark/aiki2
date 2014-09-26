@@ -33,12 +33,15 @@ FactoryGirl.define do
   factory :waza, class: Waza do
     name "foo_waza"
     technique
-    rank
+  end
+
+  factory :waza_format, class: WazaFormat do
+    waza
     format
+    rank
   end
 
   factory :video, class: Video do
     youtube_code = "nonsense"
-    waza
   end
 end
