@@ -25,7 +25,7 @@ class WazaFormat < ActiveRecord::Base
   end
 
   def waza_name
-    waza.name
+    waza.name rescue ""
   end
 
   def format_name
