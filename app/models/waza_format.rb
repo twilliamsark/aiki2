@@ -8,6 +8,7 @@ class WazaFormat < ActiveRecord::Base
 
   has_many :waza_format_videos
   has_many :videos, through: :waza_format_videos
+  accepts_nested_attributes_for :videos, allow_destroy: true
 
   has_one :stance, through: :waza
   has_one :attack, through: :waza
