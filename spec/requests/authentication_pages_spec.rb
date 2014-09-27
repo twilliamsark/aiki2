@@ -47,10 +47,6 @@ describe "AuthenticationPages" do
         before { visit aikido_path }
         it { should have_content('Sign in') }
       end
-      describe "iaido" do
-        before { visit iaido_path }
-        it { should have_content('Sign in') }
-      end
       describe "admin" do
         before { visit admin_root_path }
         it { should have_content('Sign in') }

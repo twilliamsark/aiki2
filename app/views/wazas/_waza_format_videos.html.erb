@@ -24,7 +24,7 @@
       <%= waza_format.on_test ? 'True' : 'False' %>
     </td>
     <td>
-      <%= vid.sensei.name %>
+      <%= vid.sensei.name rescue '' %>
     </td>
     <td>
       <%= vid.style ? vid.style.name : '' %>
