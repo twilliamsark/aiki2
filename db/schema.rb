@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140909165555) do
+ActiveRecord::Schema.define(version: 20140927214930) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -147,6 +147,7 @@ ActiveRecord::Schema.define(version: 20140909165555) do
     t.datetime "updated_at"
     t.boolean  "demo"
     t.date     "demo_user_expires_on"
+    t.boolean  "cotu",                 default: false
   end
 
   create_table "videos", force: true do |t|
