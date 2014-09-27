@@ -5,6 +5,8 @@ class WazasController < ApplicationController
   def aikido
     @default_sort = if params[:sort_type]
       params[:sort_type].gsub(/[[:space:]]/,'')
+    elsif @waza_id
+      'Technique'
     else
       'Rank'
     end

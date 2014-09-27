@@ -14,6 +14,11 @@ class Video < ActiveRecord::Base
   has_many :formats, through: :waza_formats
   has_many :ranks, through: :waza_formats
 
+  has_many :stances, through: :wazas
+  has_many :attacks, through: :wazas
+  has_many :techniques, through: :wazas
+  has_many :directions, through: :wazas
+
   validates :youtube_code, presence: true
 
   after_initialize do |video|
