@@ -7,7 +7,8 @@ ActiveAdmin.register Video do
   index do
     column :id
     column "Applied Technique" do |video|
-      link_to(video.waza.name, admin_waza_path(video.waza))
+      break unless video.first_waza
+      link_to(video.first_waza.name, admin_waza_path(video.first_waza))
     end
     column :youtube_code
     column :visible
