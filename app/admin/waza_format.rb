@@ -1,6 +1,8 @@
 ActiveAdmin.register WazaFormat do
-  permit_params :waza_id, :format_id, :rank_id, :on_test, :kata_id
+  permit_params :waza_id, :format_id, :rank_id, :on_test, :description
   menu priority: 0
+
+  config.sort_order = 'format_id_asc'
 
   index do
     column :id
@@ -8,7 +10,9 @@ ActiveAdmin.register WazaFormat do
     column :format
     column :rank
     column :on_test
-    column :kata
+    column 'View in Library' do |wf|
+      link_to 'View Video', aikido_path(waza: wf.waza)
+    end
     actions
   end
 
