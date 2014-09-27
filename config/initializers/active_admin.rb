@@ -120,7 +120,7 @@ ActiveAdmin.setup do |config|
   # roots for each namespace.
   #
   # Default:
-  config.root_to = 'wazas#index'
+  config.root_to = 'waza_formats#index'
 
 
   # == Admin Comments
