@@ -44,6 +44,10 @@ class Waza < ActiveRecord::Base
     hash
   end
 
+  def aiki_toho?
+    formats.aiki_toho.any?
+  end
+
   def first_waza_format
     waza_formats.format_order.first
   end

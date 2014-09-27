@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Waza do
 
   before do
-    @waza = fake_video_with_waza.waza
+    @waza = fake_video_with_waza_format.wazas(true).first
   end
 
   subject { @waza }
@@ -25,7 +25,7 @@ describe Waza do
     end
 
     it "expect subject returned in search on known keyword" do
-      expect(AppliedTechnique.search(@keyword)).to include(subject)
+      expect(Waza.search(@keyword)).to include(subject)
     end
   end
 end
