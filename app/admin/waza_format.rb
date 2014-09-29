@@ -60,6 +60,9 @@ ActiveAdmin.register WazaFormat do
         column :youtube_code
         column :name
         column :description
+        column "Format(s)" do |video|
+          video.format_name
+        end
         column :visible
         column :for_demo
         column "Watch" do |video|
