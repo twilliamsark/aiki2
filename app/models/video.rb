@@ -55,6 +55,10 @@ class Video < ActiveRecord::Base
     waza_formats.first.waza rescue nil
   end
 
+  def first_waza_format
+    waza_formats.first rescue nil
+  end
+
   def format_name
     formats.map(&:name).join(', ') rescue "" if formats.any?
   end

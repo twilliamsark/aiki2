@@ -7,10 +7,10 @@ ActiveAdmin.register Video do
   index do
     column :id
     column :name
-    column "Waza" do |video|
-      waza = video.first_waza
-      if !waza.nil?
-        link_to(video.first_waza.name, admin_waza_path(video.first_waza))
+    column "Waza Format" do |video|
+      wf = video.first_waza_format
+      if !wf.nil?
+        link_to(video.first_waza_format.name, admin_waza_format_path(video.first_waza_format))
       else
         'n/a'
       end
