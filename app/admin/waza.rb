@@ -44,6 +44,24 @@ ActiveAdmin.register Waza do
       end
     end
 
+    panel 'Videos' do
+      table_for(waza.videos) do
+        column :youtube_code
+        column :name
+        column :description
+        column :visible
+        column :for_demo
+        column "Watch" do |video|
+          link_to 'Watch', aikido_path(waza: waza, video: video)
+        end
+        column "View" do |video|
+          link_to "View", admin_video_path(video)
+        end
+        column "Edit" do |video|
+          link_to "Edit", edit_admin_video_path(video)
+        end
+      end
+    end
   end
 
   sidebar "View in Library", only: [:show] do
