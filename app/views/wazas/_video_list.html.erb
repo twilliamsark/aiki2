@@ -39,6 +39,14 @@
           <div id="collapse<%= id %>" class="panel-collapse collapse<%= selected_key.id == key.id ? ' in' : '' %>">
             <div class="panel-body">
               <ul>
+
+                <% if sort_by == 'Rank' && current_user.admin? %>
+                  <li class="no_bullet_list pad_bottom_sm">
+                    <%= link_to "ADMIN for Rank #{key.label}", admin_rank_path(key), target: '_blank' %>
+                  </li>
+                  <li class="no_bullet_list">&nbsp;</li>
+                <% end %>
+
                 <% techniques.each do |t| %>
                   <%
                   #TODO Clean this up, make a helper
