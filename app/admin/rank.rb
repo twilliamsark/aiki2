@@ -37,5 +37,27 @@ ActiveAdmin.register Rank do
         row :updated_at
       end
     end
+
+    panel 'Videos' do
+      table_for(rank.videos) do
+        column :youtube_code
+        column :name
+        column :description
+        column "Format(s)" do |video|
+          video.format_name
+        end
+        column :visible
+        column :for_demo
+        column "Watch" do |video|
+          link_to 'Watch', aikido_path(waza: video.wazas.first, video: video)
+        end
+        column "View" do |video|
+          link_to "View", admin_video_path(video)
+        end
+        column "Edit" do |video|
+          link_to "Edit", edit_admin_video_path(video)
+        end
+      end
+    end
   end
 end
