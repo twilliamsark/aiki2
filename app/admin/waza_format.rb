@@ -62,6 +62,9 @@ ActiveAdmin.register WazaFormat do
         column :description
         column :visible
         column :for_demo
+        column "Watch" do |video|
+          link_to 'Watch', aikido_path(waza: waza_format.waza, video: video)
+        end
         column "View" do |video|
           link_to "View", admin_video_path(video)
         end
