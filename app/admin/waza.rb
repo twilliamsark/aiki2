@@ -83,9 +83,6 @@ ActiveAdmin.register Waza do
       f.input :short_description
       f.input :description
     end
-    f.inputs "Related" do
-      f.input :related
-    end
     f.actions
   end
 end
