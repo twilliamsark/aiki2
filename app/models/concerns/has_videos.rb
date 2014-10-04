@@ -12,17 +12,18 @@ module HasVideos
     "#{name}#{(self.respond_to?(:short_description) && short_description.present?) ? ' - ' + short_description : '' }"
   end
 
-  def get_wazas(current_user=nil)
-    ats = self.wazas.distinct
-    ats = ats.select {|at| VideoUtils.show_videos?(at.videos, current_user)} if current_user
-    ats.flatten
+  def get_wazas(options={})
+    user = options[:user]
+    wazas = self.wazas.distinct
+    wazas = wazas.select {|waza| VideoUtils.show_videos?(waza.videos, user)} if user
+    wazas.flatten
   end
 
   module ClassMethods
 
     def get_wazas(current_user=nil)
       wazas = self.default_order.map do |a|
-        a.get_wazas(current_user)
+        a.get_wazas(user: current_user)
       end.flatten
 
       wazas.compact!
