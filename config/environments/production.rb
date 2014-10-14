@@ -1,6 +1,6 @@
 VIDEOS_ONLINE = true
 FILTERING = true
-ALLOW_SEARCH = true
+ALLOW_SEARCH = false
 SHOW_MENU = true
 SHOW_DEBUG = false
 CHECK_YOUTUBE = false
