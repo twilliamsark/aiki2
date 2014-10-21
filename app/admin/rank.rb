@@ -10,7 +10,9 @@ ActiveAdmin.register Rank do
 
   index do
     id_column
-    column :name
+    column :name do |r|
+      link_to r.name, admin_rank_path(r)
+    end
     column :description
     column :belt
     column :position
