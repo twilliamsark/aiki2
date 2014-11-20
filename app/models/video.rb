@@ -89,7 +89,7 @@ class Video < ActiveRecord::Base
   end
 
   def to_csv
-    csv = [name, first_waza_format.format_name, first_waza_format.waza_name, first_waza_format.rank_name]
+    csv = [id, name, first_waza_format.format_name, first_waza_format.waza_name, first_waza_format.rank_name]
     csv << (first_waza_format.on_test ? 'on test' : 'learn for rank')
     csv << (primary ? 'primary' : 'secondary')
     csv << (visible ? 'visible' : 'hidden')
