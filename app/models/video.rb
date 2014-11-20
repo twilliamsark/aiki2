@@ -31,6 +31,14 @@ class Video < ActiveRecord::Base
   scope :visible, ->(state=true) { where(visible: state) }
   scope :demo, ->(state=true) { where(for_demo: state) }
 
+  def self.videos_csv
+    all.each {|v| puts v.to_csv}
+  end
+
+  def self.primary_videos_csv
+    primary.each {|v| puts v.to_csv}
+  end
+
   def name(options={})
     options.reverse_merge!(format: false, description: false)
 
@@ -78,5 +86,14 @@ class Video < ActiveRecord::Base
 
   def self.show_video?(video=nil)
     VIDEOS_ONLINE && !video.nil? && video.valid_youtube_code? && App.connected_to_youtube?
+  end
+
+  def to_csv
+    csv = [name, first_waza_format.format_name, first_waza_format.waza_name, first_waza_format.rank_name]
+    csv << (first_waza_format.on_test ? 'on test' : 'learn for rank')
+    csv << (primary ? 'primary' : 'secondary')
+    csv << (visible ? 'visible' : 'hidden')
+    csv << (for_demo ? 'demo' : 'not in demo')
+    csv.join(', ')
   end
 end
