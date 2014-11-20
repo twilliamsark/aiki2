@@ -39,6 +39,7 @@ class VideosController < ApplicationController
     unless visible.nil?
       video.visible = visible == "1" ? true : false
     end
+    video.primary = true
     video.save
 
     waza_formats.each do |wf|
