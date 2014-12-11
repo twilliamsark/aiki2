@@ -10,6 +10,6 @@ class EditorMailer < ActionMailer::Base
     @format = format
     @note = note
 
-    mail(to: EMAIL_ADDR, from: user.email, subject: "Review Notes for #{@target}")
+    mail(to: EMAIL_ADDR, from: user.email, bcc: user.email, subject: "Review Notes for #{@target}")
   end
 end
