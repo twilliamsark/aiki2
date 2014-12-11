@@ -11,7 +11,7 @@ class WazasController < ApplicationController
       'Rank'
     end
 
-    @selection, @video = wazas(@default_sort, {}, @waza_id, @video_id)
+    @selection, @video, @format = wazas(@default_sort, {}, @waza_id, @video_id, @format_id)
     @keys = sort_keys(@selection, @default_sort)
 
     if @default_sort == 'Rank'
@@ -24,7 +24,18 @@ class WazasController < ApplicationController
     end
 
     @waza = @video.waza if @video && @waza.nil?
-    @waza_format = @video.waza_formats.first if @video
+
+    if @waza && @format
+      @waza_format = WazaFormat.find_by(waza_id: @waza.id, format_id: @format.id)
+    end
+
+    if @video && !@waza_format
+      @waza_format = @video.waza_formats.first
+    end
+
+    if !@format && @waza_format
+      @foramt = @waza_format.format
+    end
 
     respond_to do |format|
       format.html {
@@ -74,7 +85,7 @@ class WazasController < ApplicationController
 
   private
 
-  def wazas(sort_class, filters={}, waza_id = nil, video_id = nil)
+  def wazas(sort_class, filters={}, waza_id = nil, video_id = nil, format_id = nil)
     if !waza_id.nil?
       @waza = Waza.find_by_id(waza_id)
       unless @waza
@@ -83,11 +94,18 @@ class WazasController < ApplicationController
       end
     end
 
+    if !format_id.nil?
+      @format = Format.find_by_id(format_id)
+    end
+
     if !waza_id.nil?
       if !video_id.nil?
         video = Video.find_by_id(video_id)
+      elsif @format
+        video = @waza.first_video(@format)
       else
-        video = @waza.first_video(@waza.first_waza_format.format)
+        @format = @waza.first_waza_format.format
+        video = @waza.first_video(@format)
       end
 
       unless !video.nil? && video.wazas.include?(@waza) && VideoUtils.show_video?(video, current_user)
@@ -109,7 +127,7 @@ class WazasController < ApplicationController
       end unless wazas.nil?
     end
 
-    return [selection, video]
+    return [selection, video, @format]
   end
 
   def search_videos(search)
@@ -134,5 +152,6 @@ class WazasController < ApplicationController
   def action_params
     @waza_id = params[:waza]
     @video_id = params[:video]
+    @format_id = params[:format_type]
   end
 end

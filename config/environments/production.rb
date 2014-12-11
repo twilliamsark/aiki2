@@ -1,3 +1,6 @@
+EMAIL_ADDR = 'yurusu.aikikai@gmail.com'
+EMAIL_PWD = ENV['EMAIL_KEY']
+SEND_EMAILS = true
 VIDEOS_ONLINE = true
 FILTERING = true
 ALLOW_SEARCH = true
@@ -69,10 +72,23 @@ Aiki::Application.configure do
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
   # config.assets.precompile += %w( search.js )
 
-  # Ignore bad email addresses and do not raise email delivery errors.
-  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { host: 'guarded-mountain-2953.herokuapp.com' }
+  # Mailer settings (See: http://guides.rubyonrails.org/action_mailer_basics.html)
+  config.action_mailer.default_url_options = { host: 'yurusu-video.herokuapp.com' }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = SEND_EMAILS # Whether or not to actually send emails when calling #deliver on an ActionMailer action. Set to `false` to aid in functional testing.
+  # config.action_mailer.logger = nil
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => 'smtp.gmail.com',
+    :port                 => 587,
+    :domain               => EMAIL_ADDR.split('@').last,
+    :user_name            => EMAIL_ADDR,
+    :password             => EMAIL_PWD,
+    :authentication       => 'plain',
+    :enable_starttls_auto => true
+  }
+
+
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).

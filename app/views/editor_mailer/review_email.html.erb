@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+  </head>
+  <body>
+    <%
+      link_options = {
+        waza: @waza
+      }
+      link_options[:format_type] = @format if @format
+    %>
+    Review notes have been entered for <%= link_to @target, aikido_url(link_options) %>
+    <br/>
+    Reviewer: <%= @user.email %><br/>
+    <%= @note %>
+  </body>
+</html>
