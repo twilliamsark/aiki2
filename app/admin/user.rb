@@ -16,11 +16,19 @@ ActiveAdmin.register User do
     redirect_to :back
   end
 
+  batch_action :toggle_reviewer do |selection|
+    User.find(selection).each do |user|
+      user.toggle!(:reviewer)
+    end
+    redirect_to :back
+  end
+
   index download_links: false do
     selectable_column
     id_column
     column :email
     column :admin
+    column :reviewer
     column :demo
     column :demo_user_expires_on
     column :current_sign_in_at
@@ -30,6 +38,7 @@ ActiveAdmin.register User do
 
   filter :email
   filter :admin
+  filter :reviewer
   filter :demo
   filter :current_sign_in_at
   filter :sign_in_count
@@ -40,6 +49,7 @@ ActiveAdmin.register User do
       f.input :password
       f.input :password_confirmation
       f.input :admin
+      f.input :reviewer
       f.input :demo
       f.input :demo_user_expires_on
     end
@@ -52,6 +62,7 @@ ActiveAdmin.register User do
         row :id
         row :email
         row :admin
+        row :reviewer
         row :demo
         row :demo_user_expires_on
         row :sign_in_count
