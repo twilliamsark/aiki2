@@ -1,6 +1,6 @@
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-12 16:36:18 +0000
+# Date: 2014-12-12 14:42:39 +0000
 # Seeding Stance
 # Written with the command:
 #
@@ -13,7 +13,7 @@ Stance.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-12 16:36:18 +0000
+# Date: 2014-12-12 14:42:39 +0000
 # Seeding Attack
 # Written with the command:
 #
@@ -38,7 +38,7 @@ Attack.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-12 16:36:19 +0000
+# Date: 2014-12-12 14:42:40 +0000
 # Seeding Technique
 # Written with the command:
 #
@@ -67,60 +67,62 @@ Technique.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-12 16:36:19 +0000
+# Date: 2014-12-12 14:42:40 +0000
 # Seeding Direction
 # Written with the command:
 #
 #   /app/vendor/bundle/ruby/2.0.0/bin/rake aiki:dump_to_seed_fu
 #
 Direction.seed(:id,
-  {:id=>2, :name=>"Omote", :description=>"Entering in the front, throw is across the front", :short_description=>"front"},
-  {:id=>3, :name=>"Ura", :description=>"Entering in the back, throw is across the back", :short_description=>"back"}
+  {:id=>2, :name=>"Omote", :description=>"Finishing move is across the front", :short_description=>"front"},
+  {:id=>3, :name=>"Ura", :description=>"Finishing move is across the back", :short_description=>"back"}
 )
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-12 16:36:19 +0000
+# Date: 2014-12-12 14:42:40 +0000
 # Seeding Waza
 # Written with the command:
 #
 #   /app/vendor/bundle/ruby/2.0.0/bin/rake aiki:dump_to_seed_fu
 #
 Waza.seed(:id,
-  {:id=>1, :technique_id=>2, :attack_id=>2, :stance_id=>2, :direction_id=>2, :name=>"Gyaku Hanmi Kaiten Nage Omote", :short_description=>nil, :description=>nil, :position=>nil, :keywords=>"gyaku hanmi kaiten nage omote gyakuhanmikaitennageomote ushirogiri gyaku hanmi kaiten nage omote gyakuhanmikaitennageomote 5th base john bollinger johnbollinger tachi waza tachiwaza"},
+  {:id=>1, :technique_id=>2, :attack_id=>2, :stance_id=>2, :direction_id=>2, :name=>"Gyaku Hanmi Kaiten Nage Omote", :short_description=>nil, :description=>nil, :position=>nil, :keywords=>"gyaku hanmi kaiten nage omote gyakuhanmikaitennageomote gyaku hanmi gyakuhanmi opposing katate dori katatedori kaiten nage kaitennage omote front ushirogiri gyaku hanmi kaiten nage omote gyakuhanmikaitennageomote aiki toho aikitoho iaido tiado hand 5th base john bollinger johnbollinger tachi waza tachiwaza"},
   {:id=>2, :technique_id=>3, :attack_id=>2, :stance_id=>2, :direction_id=>nil, :name=>"Gyaku Hanmi Kote Gaeshi", :short_description=>"", :description=>"", :position=>nil, :keywords=>"gyaku hanmi kote gaeshi gyakuhanmikotegaeshi gyaku hanmi kote gaeshi jodan gyakuhanmikotegaeshijodan gyaku hanmi kote gaeshi gyakuhanmikotegaeshi gyaku hanmi kote gaeshi gyakuhanmikotegaeshi miscellaneous 3rd john bollinger johnbollinger jodan upper height upperheight tachi waza tachiwaza"},
   {:id=>3, :technique_id=>4, :attack_id=>2, :stance_id=>2, :direction_id=>nil, :name=>"Gyaku Hanmi Katate Dori Shiho Nage", :short_description=>nil, :description=>nil, :position=>nil, :keywords=>"gyaku hanmi katate dori shiho nage gyakuhanmikatatedorishihonage gyaku hanmi katate dori shiho nage gyakuhanmikatatedorishihonage 3rd john bollinger johnbollinger tachi waza tachiwaza"},
   {:id=>4, :technique_id=>19, :attack_id=>nil, :stance_id=>nil, :direction_id=>nil, :name=>"Shohatto Maegiri", :short_description=>"Kata 1", :description=>"Front Cut", :position=>1, :keywords=>"shohatto maegiri shohattomaegiri shohatto maegiri shohattomaegiri 5th base john bollinger johnbollinger"},
   {:id=>8, :technique_id=>19, :attack_id=>nil, :stance_id=>nil, :direction_id=>nil, :name=>"Variation to Kata 3", :short_description=>"", :description=>"", :position=>5, :keywords=>"variation to kata 3 variationtokata3 variation to kata 3 variationtokata3 5th supplemental john bollinger johnbollinger"},
-  {:id=>9, :technique_id=>5, :attack_id=>4, :stance_id=>nil, :direction_id=>2, :name=>"Shomen Uchi Ikkyo Omote", :short_description=>"", :description=>"", :position=>6, :keywords=>"shomen uchi ikkyo omote shomenuchiikkyoomote kiriage kiriage 5th supplemental john bollinger johnbollinger"},
+  {:id=>9, :technique_id=>5, :attack_id=>4, :stance_id=>nil, :direction_id=>2, :name=>"Shomen Uchi Ikkyo Omote", :short_description=>"", :description=>"", :position=>6, :keywords=>"shomen uchi ikkyo omote shomenuchiikkyoomote shomen uchi shomenuchi ikkyo omote front kiriage kiriage aiki toho aikitoho iaido 5th supplemental john bollinger johnbollinger"},
   {:id=>10, :technique_id=>6, :attack_id=>2, :stance_id=>3, :direction_id=>nil, :name=>"Ai Hanmi Irimi Nage Backstretch", :short_description=>nil, :description=>nil, :position=>nil, :keywords=>"ai hanmi irimi nage backstretch aihanmiiriminagebackstretch ai hanmi irimi nage backstretch aihanmiiriminagebackstretch miscellaneous john bollinger johnbollinger tachi waza tachiwaza"},
-  {:id=>11, :technique_id=>7, :attack_id=>2, :stance_id=>2, :direction_id=>3, :name=>"Gyaku Hanmi Katate Dori Nikkyo Ura", :short_description=>"", :description=>"", :position=>nil, :keywords=>"gyaku hanmi katate dori nikkyo ura gyakuhanmikatatedorinikkyoura gyaku hanmi katate dori nikkyo ura gyakuhanmikatatedorinikkyoura gyaku hanmi katate dori nikkyo ura gyakuhanmikatatedorinikkyoura 3rd john bollinger johnbollinger tachi waza tachiwaza"},
+  {:id=>11, :technique_id=>7, :attack_id=>2, :stance_id=>2, :direction_id=>3, :name=>"Gyaku Hanmi Katate Dori Nikkyo Ura", :short_description=>"", :description=>"", :position=>nil, :keywords=>"gyaku hanmi katate dori nikkyo ura gyakuhanmikatatedorinikkyoura gyaku hanmi gyakuhanmi opposing katate dori katatedori nikkyo ura back gyaku hanmi katate dori nikkyo ura gyakuhanmikatatedorinikkyoura gyaku hanmi katate dori nikkyo ura gyakuhanmikatatedorinikkyoura tiado hand 3rd john bollinger johnbollinger tachi waza tachiwaza"},
   {:id=>13, :technique_id=>6, :attack_id=>2, :stance_id=>2, :direction_id=>nil, :name=>"Gyaku Hanmi Irimi Nage", :short_description=>"", :description=>"", :position=>nil, :keywords=>"gyaku hanmi irimi nage gyakuhanmiiriminage gyaku hanmi irimi nage gyakuhanmiiriminage gyaku hanmi irimi nage gyakuhanmiiriminage 3rd john bollinger johnbollinger tachi waza tachiwaza"},
-  {:id=>14, :technique_id=>5, :attack_id=>2, :stance_id=>2, :direction_id=>3, :name=>"Gyaku Hanmi Katate Dori Ikkyo Ura", :short_description=>"", :description=>"", :position=>nil, :keywords=>"gyaku hanmi katate dori ikkyo ura gyakuhanmikatatedoriikkyoura gyaku hanmi katate dori ikkyo ura gyakuhanmikatatedoriikkyoura gyaku hanmi katate dori ikkyo ura gyakuhanmikatatedoriikkyoura 3rd john bollinger johnbollinger tachi waza tachiwaza"},
-  {:id=>15, :technique_id=>5, :attack_id=>2, :stance_id=>2, :direction_id=>2, :name=>"Gyaku Hanmi Katate Dori Ikkyo Omote", :short_description=>"", :description=>"", :position=>nil, :keywords=>"gyaku hanmi katate dori ikkyo omote gyakuhanmikatatedoriikkyoomote gyaku hanmi katate dori ikkyo omote gyakuhanmikatatedoriikkyoomote gyaku hanmi katate dori ikkyo omote gyakuhanmikatatedoriikkyoomote 3rd john bollinger johnbollinger tachi waza tachiwaza"},
-  {:id=>16, :technique_id=>8, :attack_id=>nil, :stance_id=>nil, :direction_id=>nil, :name=>"Jo Kata 1", :short_description=>"", :description=>"", :position=>nil, :keywords=>"jo kata 1 jokata1 jo kata 1 both sides jokata1bothsides jo kata 1 right side jokata1rightside 3rd 4th john bollinger johnbollinger"},
-  {:id=>18, :technique_id=>5, :attack_id=>2, :stance_id=>3, :direction_id=>2, :name=>"Ai Hanmi Katate Dori Ikkyo Omote", :short_description=>nil, :description=>nil, :position=>nil, :keywords=>"ai hanmi katate dori ikkyo omote aihanmikatatedoriikkyoomote ai hanmi katate dori ikkyo omote aihanmikatatedoriikkyoomote ukenagashi ai hanmi kata dori ikkyo omote variation aihanmikatadoriikkyoomotevariation 4th 5th base supplemental john bollinger johnbollinger tachi waza tachiwaza"},
+  {:id=>14, :technique_id=>5, :attack_id=>2, :stance_id=>2, :direction_id=>3, :name=>"Gyaku Hanmi Katate Dori Ikkyo Ura", :short_description=>"", :description=>"", :position=>nil, :keywords=>"gyaku hanmi katate dori ikkyo ura gyakuhanmikatatedoriikkyoura gyaku hanmi gyakuhanmi opposing katate dori katatedori ikkyo ura back gyaku hanmi katate dori ikkyo ura gyakuhanmikatatedoriikkyoura gyaku hanmi katate dori ikkyo ura gyakuhanmikatatedoriikkyoura tiado hand 3rd john bollinger johnbollinger tachi waza tachiwaza"},
+  {:id=>15, :technique_id=>5, :attack_id=>2, :stance_id=>2, :direction_id=>2, :name=>"Gyaku Hanmi Katate Dori Ikkyo Omote", :short_description=>"", :description=>"", :position=>nil, :keywords=>"gyaku hanmi katate dori ikkyo omote gyakuhanmikatatedoriikkyoomote gyaku hanmi gyakuhanmi opposing katate dori katatedori ikkyo omote front gyaku hanmi katate dori ikkyo omote gyakuhanmikatatedoriikkyoomote gyaku hanmi katate dori ikkyo omote gyakuhanmikatatedoriikkyoomote tiado hand 3rd john bollinger johnbollinger tachi waza tachiwaza"},
+  {:id=>16, :technique_id=>8, :attack_id=>nil, :stance_id=>nil, :direction_id=>nil, :name=>"Jo Kata 1", :short_description=>"", :description=>"", :position=>nil, :keywords=>"jo kata 1 jokata1 jo kata jokata jo kata 1 both sides jokata1bothsides jo kata 1 right side jokata1rightside other 3rd 4th john bollinger johnbollinger"},
+  {:id=>18, :technique_id=>5, :attack_id=>2, :stance_id=>3, :direction_id=>2, :name=>"Ai Hanmi Katate Dori Ikkyo Omote", :short_description=>nil, :description=>nil, :position=>nil, :keywords=>"ai hanmi katate dori ikkyo omote aihanmikatatedoriikkyoomote ai hanmi aihanmi mirroring katate dori katatedori ikkyo omote front ai hanmi katate dori ikkyo omote aihanmikatatedoriikkyoomote ukenagashi ai hanmi kata dori ikkyo omote variation aihanmikatadoriikkyoomotevariation tiado hand aiki toho aikitoho iaido 4th 5th base supplemental john bollinger johnbollinger tachi waza tachiwaza"},
   {:id=>19, :technique_id=>6, :attack_id=>4, :stance_id=>3, :direction_id=>nil, :name=>"Ai Hanmi Shomen Uchi Irimi Nage", :short_description=>nil, :description=>nil, :position=>nil, :keywords=>"ai hanmi shomen uchi irimi nage aihanmishomenuchiiriminage suwari waza irimi nage suwariwazairiminage 3rd john bollinger johnbollinger suwari waza suwariwaza"},
   {:id=>21, :technique_id=>3, :attack_id=>4, :stance_id=>3, :direction_id=>nil, :name=>"Ai Hanmi Shomen Uchi Kote Gaeshi", :short_description=>nil, :description=>nil, :position=>nil, :keywords=>"ai hanmi shomen uchi kote gaeshi aihanmishomenuchikotegaeshi suwari waza kote gaeshi suwariwazakotegaeshi 3rd john bollinger johnbollinger suwari waza suwariwaza"},
   {:id=>22, :technique_id=>nil, :attack_id=>nil, :stance_id=>nil, :direction_id=>nil, :name=>"Tomesuemono", :short_description=>"", :description=>"Table Cut", :position=>7, :keywords=>"tomesuemono tomesuemono tomesuemono tomesuemono 4th base john bollinger johnbollinger"},
-  {:id=>23, :technique_id=>4, :attack_id=>2, :stance_id=>3, :direction_id=>nil, :name=>"Ai Hanmi Katate Dori Shiho Nage", :short_description=>"", :description=>"", :position=>8, :keywords=>"ai hanmi katate dori shiho nage aihanmikatatedorishihonage zenngogiri 4th base john bollinger johnbollinger"},
-  {:id=>24, :technique_id=>16, :attack_id=>nil, :stance_id=>nil, :direction_id=>nil, :name=>"Hiji Kata", :short_description=>"Elbow Kata", :description=>"", :position=>nil, :keywords=>"hiji kata hijikata hiji kata right side hijikatarightside hiji kata both sides hijikatabothsides 5th 4th john bollinger johnbollinger tachi waza tachiwaza"},
+  {:id=>23, :technique_id=>4, :attack_id=>2, :stance_id=>3, :direction_id=>nil, :name=>"Ai Hanmi Katate Dori Shiho Nage", :short_description=>"", :description=>"", :position=>8, :keywords=>"ai hanmi katate dori shiho nage aihanmikatatedorishihonage ai hanmi aihanmi mirroring katate dori katatedori shiho nage shihonage zenngogiri aiki toho aikitoho iaido 4th base john bollinger johnbollinger"},
+  {:id=>24, :technique_id=>16, :attack_id=>nil, :stance_id=>nil, :direction_id=>nil, :name=>"Hiji Kata", :short_description=>"Elbow Kata", :description=>"", :position=>nil, :keywords=>"hiji kata hijikata hiji kata hijikata elbow kata elbowkata hiji kata both sides hijikatabothsides hiji kata right side hijikatarightside other 4th 5th john bollinger johnbollinger tachi waza tachiwaza"},
   {:id=>26, :technique_id=>17, :attack_id=>nil, :stance_id=>nil, :direction_id=>nil, :name=>"Suwari Waza Kokyu Ho", :short_description=>"", :description=>"", :position=>nil, :keywords=>"suwari waza kokyu ho suwariwazakokyuho suwari waza kokyu ho suwariwazakokyuho 5th john bollinger johnbollinger suwari waza suwariwaza"},
-  {:id=>27, :technique_id=>8, :attack_id=>nil, :stance_id=>nil, :direction_id=>nil, :name=>"Jo Kata 2", :short_description=>"", :description=>"", :position=>nil, :keywords=>"jo kata 2 jokata2 jo kata 2 jokata2 2nd john bollinger johnbollinger"},
+  {:id=>27, :technique_id=>8, :attack_id=>nil, :stance_id=>nil, :direction_id=>nil, :name=>"Jo Kata 2", :short_description=>"", :description=>"", :position=>nil, :keywords=>"jo kata 2 jokata2 jo kata jokata jo kata 2 jokata2 other 2nd john bollinger johnbollinger"},
   {:id=>28, :technique_id=>17, :attack_id=>2, :stance_id=>2, :direction_id=>nil, :name=>"Gyaku Hanmi Kokyu Ho", :short_description=>"", :description=>"", :position=>nil, :keywords=>"gyaku hanmi kokyu ho gyakuhanmikokyuho gyaku hanmi kokyu ho gyakuhanmikokyuho miscellaneous john bollinger johnbollinger tachi waza tachiwaza"},
-  {:id=>29, :technique_id=>7, :attack_id=>2, :stance_id=>2, :direction_id=>3, :name=>"Zempo Gaidan Kushushi Nikkyo", :short_description=>"", :description=>"Quick entry to Nikkyo. Zempo Gedan(Gaidan) Kushushi translates roughly to 'Forward off balance to the lower'.", :position=>nil, :keywords=>"zempo gaidan kushushi nikkyo zempogaidankushushinikkyo zempo gaidan kushushi nikkyo zempogaidankushushinikkyo zempo gaidan kushushi nikkyo zempogaidankushushinikkyo miscellaneous john bollinger johnbollinger gedan lower height lowerheight tachi waza tachiwaza"},
+  {:id=>29, :technique_id=>7, :attack_id=>2, :stance_id=>2, :direction_id=>3, :name=>"Zempo Gaidan Kushushi Nikkyo", :short_description=>"", :description=>"Quick entry to Nikkyo. Zempo Gedan(Gaidan) Kushushi translates roughly to 'Forward off balance to the lower'.", :position=>nil, :keywords=>"zempo gaidan kushushi nikkyo zempogaidankushushinikkyo gyaku hanmi gyakuhanmi opposing katate dori katatedori nikkyo ura back zempo gaidan kushushi nikkyo zempogaidankushushinikkyo zempo gaidan kushushi nikkyo zempogaidankushushinikkyo tiado hand miscellaneous john bollinger johnbollinger gedan lower height lowerheight tachi waza tachiwaza"},
   {:id=>30, :technique_id=>18, :attack_id=>2, :stance_id=>3, :direction_id=>nil, :name=>"Ai Hanmi Udekimenage", :short_description=>"", :description=>"", :position=>nil, :keywords=>"ai hanmi udekimenage aihanmiudekimenage ai hanmi udekimenage aihanmiudekimenage miscellaneous john bollinger johnbollinger tachi waza tachiwaza"},
-  {:id=>31, :technique_id=>4, :attack_id=>3, :stance_id=>nil, :direction_id=>nil, :name=>"Ryote Dori Shiho Nage", :short_description=>"", :description=>"", :position=>nil, :keywords=>"ryote dori shiho nage ryotedorishihonage ryote dori shiho nage ryotedorishihonage 5th john bollinger johnbollinger tachi waza tachiwaza"},
+  {:id=>31, :technique_id=>4, :attack_id=>3, :stance_id=>nil, :direction_id=>2, :name=>"Ryote Dori Shiho Nage Omote", :short_description=>"", :description=>"", :position=>nil, :keywords=>"ryote dori shiho nage omote ryotedorishihonageomote ryote dori ryotedori shiho nage shihonage omote front ryote dori shiho nage ryotedorishihonage tiado hand 5th john bollinger johnbollinger tachi waza tachiwaza"},
   {:id=>32, :technique_id=>6, :attack_id=>10, :stance_id=>2, :direction_id=>nil, :name=>"Tuski Irimi Nage", :short_description=>"", :description=>"", :position=>nil, :keywords=>"tuski irimi nage tuskiiriminage tuski irimi nage tuskiiriminage miscellaneous john bollinger johnbollinger tachi waza tachiwaza"},
   {:id=>33, :technique_id=>3, :attack_id=>10, :stance_id=>2, :direction_id=>nil, :name=>"Tuski Kote Gaeshi", :short_description=>"", :description=>"", :position=>nil, :keywords=>"tuski kote gaeshi tuskikotegaeshi tuski kote gaeshi tuskikotegaeshi miscellaneous john bollinger johnbollinger tachi waza tachiwaza"},
   {:id=>34, :technique_id=>3, :attack_id=>2, :stance_id=>3, :direction_id=>nil, :name=>"Ai Hanmi Katate Dori Kote Gaeshi", :short_description=>"", :description=>"", :position=>nil, :keywords=>"ai hanmi katate dori kote gaeshi aihanmikatatedorikotegaeshi ken ti jo kote gaeshi kentijokotegaeshi ken ti ken kote gaeshi kentikenkotegaeshi miscellaneous john bollinger johnbollinger tachi waza tachiwaza"},
   {:id=>36, :technique_id=>7, :attack_id=>4, :stance_id=>2, :direction_id=>nil, :name=>"Shomen Uchi Nikkyo", :short_description=>"", :description=>"", :position=>nil, :keywords=>"shomen uchi nikkyo shomenuchinikkyo shomen uchi nikkyo shomenuchinikkyo miscellaneous john bollinger johnbollinger tachi waza tachiwaza"},
-  {:id=>37, :technique_id=>7, :attack_id=>2, :stance_id=>3, :direction_id=>nil, :name=>"Ai Hanmi Nikkyo", :short_description=>"", :description=>"", :position=>nil, :keywords=>"ai hanmi nikkyo aihanminikkyo ken ti jo nikkyo kentijonikkyo ken ti ken nikkyo kentikennikkyo ai hanmi nikkyo aihanminikkyo miscellaneous john bollinger johnbollinger tachi waza tachiwaza"}
+  {:id=>37, :technique_id=>7, :attack_id=>2, :stance_id=>3, :direction_id=>nil, :name=>"Ai Hanmi Nikkyo", :short_description=>"", :description=>"", :position=>nil, :keywords=>"ai hanmi nikkyo aihanminikkyo ken ti jo nikkyo kentijonikkyo ken ti ken nikkyo kentikennikkyo ai hanmi nikkyo aihanminikkyo miscellaneous john bollinger johnbollinger tachi waza tachiwaza"},
+  {:id=>39, :technique_id=>5, :attack_id=>2, :stance_id=>3, :direction_id=>3, :name=>"Ai Hanmi Katate Dori Ikkyo Ura", :short_description=>nil, :description=>nil, :position=>nil, :keywords=>"ai hanmi katate dori ikkyo ura aihanmikatatedoriikkyoura ai hanmi aihanmi mirroring katate dori katatedori ikkyo ura back aihanmi katatedori ikkyo ura aihanmikatatedoriikkyoura tiado hand 4th john bollinger johnbollinger tachi waza tachiwaza"},
+  {:id=>40, :technique_id=>5, :attack_id=>9, :stance_id=>nil, :direction_id=>3, :name=>"Kata Dori Menuchi Ikkyo Ura", :short_description=>nil, :description=>nil, :position=>nil, :keywords=>"kata dori menuchi ikkyo ura katadorimenuchiikkyoura kata dori menuchi katadorimenuchi ikkyo ura back katadori menuchi ikkyo ura katadorimenuchiikkyoura tiado hand 1st john bollinger johnbollinger tachi waza tachiwaza"}
 )
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-12 16:36:19 +0000
+# Date: 2014-12-12 14:42:40 +0000
 # Seeding Format
 # Written with the command:
 #
@@ -132,14 +134,14 @@ Format.seed(:id,
   {:id=>4, :name=>"Jo no Tebiki", :description=>"With jo guidance (one person with jo)", :short_description=>"nage with jo", :position=>3},
   {:id=>5, :name=>"Ken ti Ken", :description=>"Sword vs Sword (bokens)", :short_description=>"sword vs sword", :position=>6},
   {:id=>6, :name=>"Ken ti Jo", :description=>"Sword(boken) vs Jo", :short_description=>"sword vs jo", :position=>5},
-  {:id=>7, :name=>"Suburi", :description=>"A single movement using the ken or jo, done as a solo practice", :short_description=>"weapon (non-Iaido) kata", :position=>99},
+  {:id=>7, :name=>"Other", :description=>"Other Techniques", :short_description=>"", :position=>99},
   {:id=>8, :name=>"Aiki Toho", :description=>"Japanese swordsmanship", :short_description=>"Iaido", :position=>2},
   {:id=>9, :name=>"Oyo Waza", :description=>"Advanced version or application of the technique", :short_description=>"Advanced", :position=>8}
 )
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-12 16:36:19 +0000
+# Date: 2014-12-12 14:42:41 +0000
 # Seeding AttackHeight
 # Written with the command:
 #
@@ -153,7 +155,7 @@ AttackHeight.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-12 16:36:19 +0000
+# Date: 2014-12-12 14:42:41 +0000
 # Seeding Style
 # Written with the command:
 #
@@ -167,7 +169,7 @@ Style.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-12 16:36:19 +0000
+# Date: 2014-12-12 14:42:41 +0000
 # Seeding Sensei
 # Written with the command:
 #
@@ -179,7 +181,7 @@ Sensei.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-12 16:36:19 +0000
+# Date: 2014-12-12 14:42:41 +0000
 # Seeding Rank
 # Written with the command:
 #
@@ -199,7 +201,7 @@ Rank.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-12 16:36:19 +0000
+# Date: 2014-12-12 14:42:41 +0000
 # Seeding Kata
 # Written with the command:
 #
@@ -212,7 +214,7 @@ Kata.seed(:id,
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-12 16:36:19 +0000
+# Date: 2014-12-12 14:42:41 +0000
 # Seeding WazaFormat
 # Written with the command:
 #
@@ -240,8 +242,8 @@ WazaFormat.seed(:id,
   {:id=>21, :waza_id=>21, :format_id=>2, :rank_id=>4, :on_test=>true, :description=>nil},
   {:id=>22, :waza_id=>22, :format_id=>8, :rank_id=>5, :on_test=>true, :description=>nil},
   {:id=>23, :waza_id=>23, :format_id=>8, :rank_id=>5, :on_test=>true, :description=>nil},
-  {:id=>24, :waza_id=>24, :format_id=>2, :rank_id=>5, :on_test=>true, :description=>"Both Sides"},
-  {:id=>25, :waza_id=>24, :format_id=>2, :rank_id=>6, :on_test=>true, :description=>nil},
+  {:id=>24, :waza_id=>24, :format_id=>7, :rank_id=>5, :on_test=>true, :description=>"Both Sides"},
+  {:id=>25, :waza_id=>24, :format_id=>7, :rank_id=>6, :on_test=>true, :description=>nil},
   {:id=>26, :waza_id=>26, :format_id=>2, :rank_id=>6, :on_test=>true, :description=>nil},
   {:id=>27, :waza_id=>27, :format_id=>7, :rank_id=>3, :on_test=>true, :description=>nil},
   {:id=>28, :waza_id=>28, :format_id=>2, :rank_id=>10, :on_test=>false, :description=>nil},
@@ -255,12 +257,14 @@ WazaFormat.seed(:id,
   {:id=>36, :waza_id=>36, :format_id=>9, :rank_id=>10, :on_test=>false, :description=>nil},
   {:id=>37, :waza_id=>37, :format_id=>2, :rank_id=>10, :on_test=>false, :description=>nil},
   {:id=>40, :waza_id=>37, :format_id=>5, :rank_id=>nil, :on_test=>false, :description=>nil},
-  {:id=>41, :waza_id=>37, :format_id=>6, :rank_id=>nil, :on_test=>false, :description=>nil}
+  {:id=>41, :waza_id=>37, :format_id=>6, :rank_id=>nil, :on_test=>false, :description=>nil},
+  {:id=>43, :waza_id=>39, :format_id=>2, :rank_id=>5, :on_test=>true, :description=>nil},
+  {:id=>44, :waza_id=>40, :format_id=>2, :rank_id=>2, :on_test=>true, :description=>nil}
 )
 # End auto-generated file.
 # DO NOT MODIFY THIS FILE, it was auto-generated.
 #
-# Date: 2014-09-12 16:36:19 +0000
+# Date: 2014-12-12 14:42:41 +0000
 # Seeding WazaFormatVideo
 # Written with the command:
 #
@@ -312,6 +316,8 @@ WazaFormatVideo.seed(:id,
   {:id=>44, :waza_format_id=>36, :video_id=>44},
   {:id=>45, :waza_format_id=>37, :video_id=>45},
   {:id=>46, :waza_format_id=>40, :video_id=>46},
-  {:id=>47, :waza_format_id=>41, :video_id=>47}
+  {:id=>47, :waza_format_id=>41, :video_id=>47},
+  {:id=>49, :waza_format_id=>43, :video_id=>49},
+  {:id=>50, :waza_format_id=>44, :video_id=>50}
 )
 # End auto-generated file.
