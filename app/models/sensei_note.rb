@@ -1,0 +1,2 @@
+class SenseiNote < Note
+end

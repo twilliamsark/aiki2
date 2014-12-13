@@ -3,15 +3,21 @@
 
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cancel</span></button>
-      <h4 id="userNoteModalTitle" clas="modal-title">Compose Note for <%= @waza_format.name %></h4>
+      <h4 id="userNoteModalTitle" clas="modal-title">Compose <%= @note.kind %> Note for <%= @waza_format.name %></h4>
     </div>
-    <%= form_for(@user_note, url: user_waza_format_user_notes_path, method: :post, remote: true, role: :form) do |f| %>
+
+    <%
+      review_note = @note.instance_of? ReviewNote
+      path = user_waza_format_user_notes_path
+      path = user_waza_format_review_notes_path if review_note
+    %>
+
+    <%= form_for(@note, url: path, method: :post, remote: true, role: :form) do |f| %>
 
       <div class="modal-body">
         <%= f.label :note %>
         <%= f.text_area :note, placeholder: "Compose new note...", class: "form-control" %>
 
-        <%= hidden_field_tag :video, @video %>
         <%= f.hidden_field :user_id, value: @user.id %>
         <%= f.hidden_field :waza_format_id, value: @waza_format.id %>
       </div>

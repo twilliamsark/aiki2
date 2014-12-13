@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141212144914) do
+ActiveRecord::Schema.define(version: 20141212205839) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -68,6 +68,19 @@ ActiveRecord::Schema.define(version: 20141212144914) do
     t.datetime "updated_at"
   end
 
+  create_table "notes", force: true do |t|
+    t.text     "note"
+    t.integer  "user_id"
+    t.integer  "waza_format_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.string   "type"
+  end
+
+  add_index "notes", ["user_id"], name: "index_notes_on_user_id"
+  add_index "notes", ["waza_format_id"], name: "index_notes_on_waza_format_id"
+
   create_table "ranks", force: true do |t|
     t.string   "name"
     t.string   "description"
@@ -109,17 +122,6 @@ ActiveRecord::Schema.define(version: 20141212144914) do
     t.string   "short_description", limit: 20
   end
 
-  create_table "user_notes", force: true do |t|
-    t.text     "note"
-    t.integer  "user_id"
-    t.integer  "waza_format_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "user_notes", ["user_id"], name: "index_user_notes_on_user_id"
-  add_index "user_notes", ["waza_format_id"], name: "index_user_notes_on_waza_format_id"
-
   create_table "user_remember_tokens", force: true do |t|
     t.string   "remember_token"
     t.integer  "user_id"
@@ -148,7 +150,7 @@ ActiveRecord::Schema.define(version: 20141212144914) do
     t.boolean  "demo"
     t.date     "demo_user_expires_on"
     t.boolean  "cotu",                 default: false
-    t.boolean  "reviewer",             default: false
+    t.boolean  "reviewer"
   end
 
   create_table "videos", force: true do |t|

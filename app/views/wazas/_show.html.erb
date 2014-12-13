@@ -11,7 +11,10 @@
 
     <%= render 'wazas/waza_format_tab_pane', waza: waza, video: video, format: this_format, waza_formats_hash: waza_formats_hash, format_states: format_states %>
 
-    <%= render 'user_notes/index', waza_format: waza_format, video: video %>
+    <%= render 'review_notes/index', waza_format: waza_format %>
+    <% if current_user.reviewer? || current_user.admin? %>
+      <%= render 'user_notes/index', waza_format: waza_format %>
+    <% end %>
   </div>
   <%= render 'wazas/admin', waza: waza, video: video %>
 </div>

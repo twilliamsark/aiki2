@@ -1,6 +1,22 @@
 <tr><td>
+  <%
+    user = note.user
+    review_note = note.instance_of? ReviewNote
+    user_note = note.instance_of? UserNote
+  %>
+  <% if review_note %>
+    <div class="row pad_sides">
+      <div class="col-md-12"><strong>Author:</strong> <%= user.email %></div>
+    </div>
+  <% end %>
   <div class="row pad_sides">
-    <div class="col-md-10"><%= user_note.note %></div>
-    <div class="col-md-2"><%= link_to "delete", user_waza_format_user_note_path(user_id: current_user, waza_format_id: waza_format, id: user_note, video: video), method: :delete, data: {confirm: "Are you sure?"}, remote: true, class: "btn btn-primary btn-xs pull-right" %></div>
+    <div class="col-md-10"><%= note.note %></div>
+    <% if user_note %>
+      <div class="col-md-2"><%= link_to "delete", user_waza_format_user_note_path(user_id: user, waza_format_id: waza_format, id: note), method: :delete, data: {confirm: "Are you sure?"}, remote: true, class: "btn btn-primary btn-xs pull-right" %></div>
+    <% elsif review_note && (current_user.admin? || current_user?(user))%>
+      <div class="col-md-2"><%= link_to "delete", user_waza_format_review_note_path(user_id: user, waza_format_id: waza_format, id: note), method: :delete, data: {confirm: "Are you sure?"}, remote: true, class: "btn btn-primary btn-xs pull-right" %></div>
+    <% else %>
+      <div class="col-md-2">&nbsp;</div>
+    <% end %>
   </div>
 </td></tr>

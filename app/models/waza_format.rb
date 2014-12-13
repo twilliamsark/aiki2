@@ -15,6 +15,9 @@ class WazaFormat < ActiveRecord::Base
   has_one :technique, through: :waza
   has_one :direction, through: :waza
 
+  has_many :user_notes, inverse_of: :waza_format
+  has_many :review_notes, inverse_of: :waza_format
+
   scope :rank_order, -> { joins(:rank).order('ranks.position') }
   scope :format_order, -> { joins(:format).order('formats.position') }
 

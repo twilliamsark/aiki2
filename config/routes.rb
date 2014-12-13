@@ -18,6 +18,7 @@ Aiki::Application.routes.draw do
     end
     resources :waza_formats do
       resources :user_notes
+      resources :review_notes
     end
   end
   resources :sessions, only: [:new, :create, :destroy]
