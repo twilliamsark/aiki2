@@ -25,7 +25,7 @@
                   <% end %>
                 </th>
               </thead>
-              <% if waza_format.videos.include?(video) && current_user.reviewer? %>
+              <% if waza_format.videos.include?(video) && (current_user.reviewer? || current_user.admin?) %>
               <thead class="rank_row">
                 <th colspan="<%= format.iaido? ? 6 : 5 %>">&nbsp;</th>
                 <th>
