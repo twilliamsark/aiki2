@@ -27,5 +27,6 @@ class UserNotesController < ApplicationController
     @waza_format = WazaFormat.find_by(id: params[:waza_format_id])
     redirect_to(aikido_path) if @waza_format.nil?
     @waza = @waza_format.waza
+    @video = @waza_format.first_video
   end
 end
