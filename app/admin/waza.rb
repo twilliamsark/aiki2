@@ -13,7 +13,11 @@ ActiveAdmin.register Waza do
     column :technique
     column :direction
     column "View in Library" do |at|
-      link_to 'View Video', aikido_path(waza: at, sort_type: "Technique")
+      if at.videos.any?
+        link_to 'View Video', aikido_path(waza: at, sort_type: "Technique")
+      else
+        "No Videos"
+      end
     end
     actions
   end
@@ -68,7 +72,11 @@ ActiveAdmin.register Waza do
   end
 
   sidebar "View in Library", only: [:show] do
-    link_to waza.name, aikido_path(waza: waza, sort_type: "Technique")
+    if waza.videos.any?
+      link_to waza.name, aikido_path(waza: waza, sort_type: "Technique")
+    else
+      "No Videos"
+    end
   end
 
   form do |f|
