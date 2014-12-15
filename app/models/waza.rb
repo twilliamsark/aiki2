@@ -159,6 +159,10 @@ class Waza < ActiveRecord::Base
 
   def set_name
     return if name.present?
+    do_set_name
+  end
+
+  def do_set_name
     name_parts = []
     [:stance, :attack, :technique, :direction].each do |sym|
       attr = self.send(sym)
