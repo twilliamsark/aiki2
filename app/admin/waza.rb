@@ -5,6 +5,7 @@ ActiveAdmin.register Waza do
   config.sort_order = "name_asc"
 
   index do
+    column :id
     column "Name", sortable: :name do |at|
       link_to(at.name, admin_waza_path(at))
     end
