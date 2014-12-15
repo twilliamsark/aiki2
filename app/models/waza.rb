@@ -35,21 +35,18 @@ class Waza < ActiveRecord::Base
   scope :demo,
    -> { joins(:videos).merge(Video.demo) }
 
-  def waza_formats_hash
-    hash = {}
-    waza_formats.rank_order.each do |wf|
-      hash[wf.format] ||= {}
-      hash[wf.format][wf.rank] = wf
+
+  def self.master_hash
+    master = Hash.new
+
+    Waza.all.sort_by(&:name).each do |waza|
+      waza.waza_formats.each do |waza_format|
+        master[waza.name] ||= Hash.new
+        master[waza.name][waza_format.format.name] ||= Array.new
+        master[waza.name][waza_format.format.name] << waza_format
+      end
     end
-    hash
-  end
-
-  def aiki_toho?
-    formats.aiki_toho.any?
-  end
-
-  def first_waza_format
-    waza_formats.format_order.first
+    master
   end
 
   def self.search(keyword)
@@ -83,6 +80,23 @@ class Waza < ActiveRecord::Base
     end
 
     selection
+  end
+
+  def waza_formats_hash
+    hash = {}
+    waza_formats.rank_order.each do |wf|
+      hash[wf.format] ||= {}
+      hash[wf.format][wf.rank] = wf
+    end
+    hash
+  end
+
+  def aiki_toho?
+    formats.aiki_toho.any?
+  end
+
+  def first_waza_format
+    waza_formats.format_order.first
   end
 
   def first_video(format)

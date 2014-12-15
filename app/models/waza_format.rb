@@ -42,7 +42,7 @@ class WazaFormat < ActiveRecord::Base
   end
 
   def rank_name
-    rank.label rescue "not ranked"
+    rank.label rescue "Not Ranked"
   end
 
   def keywords

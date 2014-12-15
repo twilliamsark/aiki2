@@ -15,6 +15,9 @@
     <ul class="ul_big nav nav-pills">
       <li><%= link_to "Dojo", "http://www.aikipeace.com/aikido/index.html" %></li>
       <% if signed_in? && SHOW_MENU && !@no_menu%>
+        <% if current_user.admin? || current_user.reviewer? %>
+          <li><%= link_to "Master Grid", master_view_path %></li>
+        <% end %>
         <% if current_user.admin? %>
           <% if current_user.cotu? %>
             <li><%= link_to "New Video", new_video_path %></li>

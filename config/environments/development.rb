@@ -1,7 +1,7 @@
 EMAIL_ADDR = 'twilliamsark@gmail.com'
 EMAIL_PWD = ENV['EMAIL_KEY']
-SEND_EMAILS = true
-VIDEOS_ONLINE = true
+SEND_EMAILS = false
+VIDEOS_ONLINE = false
 FILTERING = true
 ALLOW_SEARCH = true
 SHOW_MENU = true

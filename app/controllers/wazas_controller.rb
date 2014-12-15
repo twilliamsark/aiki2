@@ -1,5 +1,5 @@
 class WazasController < ApplicationController
-  before_action :signed_in_user, only: [:aikido, :search, :remote_waza]
+  before_action :signed_in_user, only: [:aikido, :search, :remote_waza, :master_view]
   before_filter :action_params, only: [:aikido, :remote_waza]
 
   def aikido
@@ -45,6 +45,10 @@ class WazasController < ApplicationController
         render :video_list
       }
     end
+  end
+
+  def master_view
+    @master_hash = Waza.master_hash
   end
 
   # ajax only
