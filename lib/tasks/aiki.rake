@@ -95,6 +95,21 @@ namespace :aiki do
     #     end
     #   end
     # end
+
+    task fix_attribute_names: :environment do
+      klasses = %w(AttackHeight Attack Stance Technique)
+      klasses.each do |klass|
+        puts "#{klass.upcase}"
+        klass.constantize.all.each do |k|
+          name_parts = k.name.split(' ')
+          first = name_parts.shift
+          name_parts.collect!{|n| (n == 'Nage' || n == 'Gaeshi' || n == 'Ho') ? n.downcase : n}
+          name_parts.unshift first
+          puts "#{k.name} => #{name_parts.join}"
+          k.update_column('name', name_parts.join)
+        end
+      end
+    end
   end
 
 end
