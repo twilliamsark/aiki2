@@ -3,7 +3,7 @@
   <%= render 'wazas/detail', waza: waza %>
   <div id="waza_format" class="tabbale aiki_box navbar">
     <%
-      this_format = waza_format.format
+      this_format = waza_format.format rescue Format.tiado
       formats, waza_formats_hash, format_states = available_formats(waza, this_format)
     %>
 

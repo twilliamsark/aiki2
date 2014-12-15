@@ -1,5 +1,5 @@
 <%
-  notes = waza_format.review_notes
+  notes = waza_format.review_notes rescue []
   if notes.any?
 %>
   <h4 class="pad_sides">Review Notes</h4>

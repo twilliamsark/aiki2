@@ -22,6 +22,7 @@ class WazaFormat < ActiveRecord::Base
   scope :format_order, -> { joins(:format).order('formats.position') }
 
   def first_video
+    return nil unless videos.any?
     video = videos.visible.primary.first
     video = videos.visible.first unless video
     video = videos.first unless video

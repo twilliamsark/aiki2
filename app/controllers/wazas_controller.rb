@@ -108,7 +108,7 @@ class WazasController < ApplicationController
       elsif @format
         video = @waza.first_video(@format)
       else
-        @format = @waza.first_waza_format.format
+        @format = @waza.first_waza_format.format rescue nil
         video = @waza.first_video(@format)
       end
 

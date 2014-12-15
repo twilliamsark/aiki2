@@ -45,6 +45,8 @@
 <%= render 'videos/detail', video: video if Video.show_video?(video) %>
 <%= render 'wazas/video', video: video, waza: waza %>
 
+<% if VideoUtils.visible_videos(waza.videos, current_user).any? %>
+
 <div class="row pad_sides">
   <%
     colwidth = 12
@@ -64,5 +66,6 @@
   <% end %>
 </div>
 
+<% end %>
 <br/>
 

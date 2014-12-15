@@ -1,5 +1,8 @@
 <%
-  notes = current_user.user_notes.where(waza_format: waza_format)
+  notes = []
+  if waza_format
+    notes = current_user.user_notes.where(waza_format: waza_format) rescue []
+  end
   if notes.any?
 %>
   <h4 class="pad_sides">User Notes</h4>

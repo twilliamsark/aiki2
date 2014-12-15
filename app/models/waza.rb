@@ -40,10 +40,12 @@ class Waza < ActiveRecord::Base
     master = Hash.new
 
     Waza.all.sort_by(&:name).each do |waza|
-      waza.waza_formats.each do |waza_format|
-        master[waza.name] ||= Hash.new
-        master[waza.name][waza_format.format.name] ||= Array.new
-        master[waza.name][waza_format.format.name] << waza_format
+      master[waza.name] ||= Hash.new
+      if waza.waza_formats
+        waza.waza_formats.each do |waza_format|
+          master[waza.name][waza_format.format.name] ||= Array.new
+          master[waza.name][waza_format.format.name] << waza_format
+        end
       end
     end
     master
@@ -84,6 +86,7 @@ class Waza < ActiveRecord::Base
 
   def waza_formats_hash
     hash = {}
+    return hash unless waza_formats.any?
     waza_formats.rank_order.each do |wf|
       hash[wf.format] ||= {}
       hash[wf.format][wf.rank] = wf
@@ -100,6 +103,7 @@ class Waza < ActiveRecord::Base
   end
 
   def first_video(format)
+    return nil unless waza_formats.any?
     wfs = waza_formats.where(format: format).rank_order
     wfs.first.first_video
   end
