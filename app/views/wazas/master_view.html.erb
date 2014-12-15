@@ -31,6 +31,9 @@
                   <%
                   waza_formats.each do |waza_format|
                     data = "#{waza_format.rank_name} - #{waza_format.videos.size} Video(s)"
+                    if waza == "Iaido Only"
+                      data = "#{waza_format.waza.short_description} - " + data
+                    end
                   %>
                     <% if waza_format.videos.any? %>
                       <%= link_to data, aikido_path(waza: waza_format.waza, video: waza_format.first_video) %>
@@ -42,7 +45,6 @@
                       <br/>
                     <% end %>
                   <% end %>
-
 
                 </td>
             <% else %>
