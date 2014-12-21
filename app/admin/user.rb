@@ -33,6 +33,8 @@ ActiveAdmin.register User do
     column :demo_user_expires_on
     column :current_sign_in_at
     column :sign_in_count
+    column :password_reset_token
+    column :password_reset_sent_at
     actions
   end
 
