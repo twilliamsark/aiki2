@@ -2,6 +2,7 @@ class VideosController < ApplicationController
   before_action :correct_user, only: [:new, :create, :destroy]
 
   def new
+    @title = 'New Video'
   end
 
   def create
