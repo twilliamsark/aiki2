@@ -31,7 +31,7 @@
         <% end %>
       <% end %>
 
-      <% if signed_in? && SHOW_MENU && !@no_menu%>
+      <% if signed_in? && SHOW_MENU && !@no_menu && @title != "Update Password" %>
         <li id="fat-menu" class="dropdown pull-right">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <%= current_user.email %> <b class="caret"></b>
