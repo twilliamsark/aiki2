@@ -44,7 +44,17 @@ class User < ActiveRecord::Base
     user.reviewer = true
     user.save
 
-    UserMailer.invite_review_user(user).deliver
+    user.invite_review_user
+  end
+
+  def invite_review_user
+    if reviewer?
+      unless password_reset_token.present?
+        set_password_reset_token
+      end
+      AppLogging.say("Sending reviewer invite to #{email}")
+      UserMailer.invite_review_user(self).deliver
+    end
   end
 
   def regular?
@@ -83,13 +93,17 @@ class User < ActiveRecord::Base
   end
 
   def send_password_reset
-    self.password_reset_token = User.new_token
-    self.password_reset_sent_at = Time.zone.now
-    save(validate: false)
+    set_password_reset_token
     UserMailer.password_reset(self).deliver
   end
 
   private
+
+  def set_password_reset_token
+    self.password_reset_token = User.new_token
+    self.password_reset_sent_at = Time.zone.now
+    save(validate: false)
+  end
 
   def check_user_flags
     errors.add(:base, 'cannot be both admin and demo user') if admin? && demo?
