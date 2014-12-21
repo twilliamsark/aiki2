@@ -33,6 +33,20 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  def self.invite_review_user(email)
+    user = User.new
+    bad_pw = User.new_token
+    user.email = email
+    user.password = bad_pw
+    user.password_confirmation = bad_pw
+    user.password_reset_token = User.new_token
+    user.password_reset_sent_at = Time.zone.now
+    user.reviewer = true
+    user.save
+
+    UserMailer.invite_review_user(user).deliver
+  end
+
   def regular?
     !admin? && !demo?
   end
