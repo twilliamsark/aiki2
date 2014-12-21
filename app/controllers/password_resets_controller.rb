@@ -5,7 +5,7 @@ class PasswordResetsController < ApplicationController
     begin
       @user = User.find_by_password_reset_token!(params[:id])
     rescue
-      redirect_to root_url
+      redirect_to root_url, notice: "Invalid/Expired password update token"
     end
   end
 
@@ -14,7 +14,7 @@ class PasswordResetsController < ApplicationController
     if @user && @user.update_attributes(user_params)
       @user.update_attribute(:password_reset_token, nil)
       sign_in @user
-      redirect_to root_url, :notice => "Password has been reset!"
+      redirect_to root_url, notice: "Password has been reset!"
     else
       render :edit
     end
