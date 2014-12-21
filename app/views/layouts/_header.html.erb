@@ -14,7 +14,9 @@
 
     <ul class="ul_big nav nav-pills">
       <li><%= link_to "Dojo", "http://www.aikipeace.com/aikido/index.html" %></li>
-      <li><%= link_to "Video Library", root_path %></li>
+      <% if @title %>
+        <li><%= link_to "Video Library", root_path %></li>
+      <% end %>
       <% if signed_in? && SHOW_MENU && !@no_menu%>
         <% if current_user.admin? || current_user.reviewer? %>
           <% unless @title == 'Master Grid' %>
