@@ -1,5 +1,6 @@
 Aiki::Application.routes.draw do
 
+  # get "password_resets/new"
   # Active Admin
   ActiveAdmin.routes(self)
   namespace :admin do
@@ -23,6 +24,7 @@ Aiki::Application.routes.draw do
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :videos
+  resources :password_resets
 
 # shows the primary video associated with the applied technique
 # /aikido?waza=15

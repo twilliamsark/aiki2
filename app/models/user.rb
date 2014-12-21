@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
     not_admin.not_demo
   end
 
-  def self.new_remember_token
+  def self.new_token
     SecureRandom.urlsafe_base64
   end
 
@@ -68,6 +68,13 @@ class User < ActiveRecord::Base
     email
   end
 
+  def send_password_reset
+    self.password_reset_token = User.new_token
+    self.password_reset_sent_at = Time.zone.now
+    save(validate: false)
+    UserMailer.password_reset(self).deliver
+  end
+
   private
 
   def check_user_flags
@@ -75,6 +82,6 @@ class User < ActiveRecord::Base
   end
 
   def create_remember_token
-    self.remember_token = User.encrypt(User.new_remember_token)
+    self.remember_token = User.encrypt(User.new_token)
   end
 end

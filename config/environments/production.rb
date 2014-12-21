@@ -1,4 +1,5 @@
 EMAIL_ADDR = 'yurusu.aikikai@gmail.com'
+DEV_EMAIL = 'twilliamsark+yurusu@gmail.com'
 EMAIL_PWD = ENV['EMAIL_KEY']
 SEND_EMAILS = true
 VIDEOS_ONLINE = true
