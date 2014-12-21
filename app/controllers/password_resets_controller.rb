@@ -2,7 +2,11 @@ class PasswordResetsController < ApplicationController
   def edit
     sign_out if current_user
     @title = "Update Password"
-    @user = User.find_by_password_reset_token!(params[:id])
+    begin
+      @user = User.find_by_password_reset_token!(params[:id])
+    rescue
+      redirect_to root_url
+    end
   end
 
   def update
