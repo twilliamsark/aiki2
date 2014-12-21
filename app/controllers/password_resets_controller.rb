@@ -6,6 +6,7 @@ class PasswordResetsController < ApplicationController
   def update
     @user = User.find_by_password_reset_token!(params[:id])
     if @user && @user.update_attributes(user_params)
+      @user.update_attribute(:password_reset_token, nil)
       sign_in @user
       redirect_to root_url, :notice => "Password has been reset!"
     else
