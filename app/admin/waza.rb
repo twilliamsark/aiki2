@@ -15,7 +15,8 @@ ActiveAdmin.register Waza do
     column :direction
     column "View in Library" do |at|
       if at.videos.any?
-        link_to 'View Video', aikido_path(waza: at, sort_type: "Technique")
+        sort_attr = at.technique ? "Technique" : "Attack"
+        link_to 'View Video', aikido_path(waza: at, sort_type: sort_attr)
       else
         "No Videos"
       end
@@ -74,7 +75,8 @@ ActiveAdmin.register Waza do
 
   sidebar "View in Library", only: [:show] do
     if waza.videos.any?
-      link_to waza.name, aikido_path(waza: waza, sort_type: "Technique")
+      sort_attr = waza.technique ? "Technique" : "Attack"
+      link_to waza.name, aikido_path(waza: waza, sort_type: sort_attr)
     else
       "No Videos"
     end

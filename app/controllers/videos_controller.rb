@@ -48,7 +48,9 @@ class VideosController < ApplicationController
       wf.videos << video
     end
 
-    redirect_to aikido_path(waza: wazas.first, video: video, sort_type: "Technique")
+    waza = wazas.first
+    sort_attr = waza.technique ? "Technique" : "Attack"
+    redirect_to aikido_path(waza: waza, video: video, sort_type: sort_attr)
   end
 
   def show
