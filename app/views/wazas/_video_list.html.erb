@@ -38,7 +38,7 @@
 
           <%
             selected_panel = ''
-            if id == 'search_results' || selected_key.id == key.id
+            if id == 'search_results' || (selected_key && selected_key.id == key.id)
               selected_panel = ' in'
             end
           %>
