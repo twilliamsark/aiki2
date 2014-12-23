@@ -44,7 +44,9 @@ class Waza < ActiveRecord::Base
       if waza.waza_formats
         waza.waza_formats.each do |waza_format|
           master[waza.name][waza_format.format.name] ||= Array.new
-          master[waza.name][waza_format.format.name] << waza_format
+          unless master[waza.name][waza_format.format.name].include?(waza_format)
+            master[waza.name][waza_format.format.name] << waza_format
+          end
         end
       end
     end
@@ -59,7 +61,9 @@ class Waza < ActiveRecord::Base
         waza = waza_format.waza
         master[waza.name] ||= Hash.new
         master[waza.name][waza_format.format.name] ||= Array.new
-        master[waza.name][waza_format.format.name] << waza_format
+        unless master[waza.name][waza_format.format.name].include?(waza_format)
+          master[waza.name][waza_format.format.name] << waza_format
+        end
       end
     end
     master
