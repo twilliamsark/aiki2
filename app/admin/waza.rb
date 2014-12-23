@@ -50,6 +50,23 @@ ActiveAdmin.register Waza do
       end
     end
 
+    panel 'Formats' do
+      table_for(waza.waza_formats) do
+        column :format
+        column :rank
+        column :on_test
+        column "Videos" do |waza_format|
+          waza_format.videos.size
+        end
+        column "View" do |waza_format|
+          link_to "View", admin_waza_format_path(waza_format)
+        end
+        column "Edit" do |waza_format|
+          link_to "Edit", edit_admin_waza_format_path(waza_format)
+        end
+      end
+    end
+
     panel 'Videos' do
       table_for(waza.videos) do
         column :youtube_code
