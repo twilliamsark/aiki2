@@ -2,6 +2,6 @@
 <%
   @format_names = Format.all.sort_by(&:position).map(&:name)
 %>
-<%= render 'master_grid', local_title: 'Recent Uploads', format_names: @format_names, master_hash: @recent_master_hash %>
+<%= render 'master_grid', local_title: 'Recent Uploads', format_names: @format_names, master_hash: @recent_master_hash, recent_only: true %>
 <br/>
 <%= render 'master_grid', local_title: 'Master Grid', format_names: @format_names, master_hash: @master_hash %>

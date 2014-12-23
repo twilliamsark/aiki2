@@ -40,6 +40,16 @@ class Video < ActiveRecord::Base
     primary.each {|v| puts v.to_csv}
   end
 
+  def self.first_video(videos, options={})
+    options.reverse_merge!(recent_only: false)
+    videos = videos.recent if options[:recent_only]
+    return nil unless videos.any?
+    video = videos.visible.primary.first
+    video = videos.visible.first unless video
+    video = videos.first unless video
+    video
+  end
+
   def name(options={})
     options.reverse_merge!(format: false, description: false)
 
