@@ -3,7 +3,7 @@
   @format_names = Format.all.sort_by(&:position).map(&:name)
 %>
 <% unless @recent_master_hash.empty? %>
-  <%= render 'master_grid', local_title: 'Recent Uploads (Within Last Month)', format_names: @format_names, master_hash: @recent_master_hash, recent_only: true %>
+  <%= render 'master_grid', format_names: @format_names, master_hash: @recent_master_hash, recent_only: true %>
   <br/>
 <% end %>
-<%= render 'master_grid', local_title: 'Master Grid', format_names: @format_names, master_hash: @master_hash %>
+<%= render 'master_grid', format_names: @format_names, master_hash: @master_hash %>

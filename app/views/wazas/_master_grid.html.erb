@@ -1,12 +1,18 @@
 <%
   recent_only ||= false
-  local_title ||= 'Master Grid'
+
+  local_title = recent_only ? 'Recent Uploads' : 'Master Grid'
+
   if recent_only
-    local_title += " - #{Video.recent.size}"
+    local_title += " - #{Video.recent.count}"
+  else
+    local_title += " - #{Video.count}"
   end
 %>
 <h1><%= local_title %></h1>
-
+<% if recent_only %>
+<h4>Uploaded within the last month</h4>
+<% end %>
 <div class="row pad_top pad_sides aiki_box">
   <div class="col-md-12">
     <table class="table table-striped table-bordered">
@@ -33,7 +39,7 @@
                   <%
                   waza_formats.each do |waza_format|
                     videos = recent_only ? waza_format.videos.recent : waza_format.videos
-                    data = "#{waza_format.rank_name} - #{videos.size} Video(s)"
+                    data = "#{waza_format.rank_name} - #{videos.count} Video(s)"
                     if waza == "Iaido Only"
                       data = "#{waza_format.waza.short_description} - " + data
                     end
