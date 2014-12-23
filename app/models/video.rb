@@ -30,6 +30,7 @@ class Video < ActiveRecord::Base
 
   scope :visible, ->(state=true) { where(visible: state) }
   scope :demo, ->(state=true) { where(for_demo: state) }
+  scope :recent, -> { where(arel_table[:created_at].gt(1.month.ago)) }
 
   def self.videos_csv
     all.each {|v| puts v.to_csv}

@@ -49,6 +49,7 @@ class WazasController < ApplicationController
 
   def master_view
     @master_hash = Waza.master_hash
+    @recent_master_hash = Waza.recent_master_hash
     @title = "Master Grid"
   end
 

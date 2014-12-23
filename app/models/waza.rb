@@ -51,6 +51,20 @@ class Waza < ActiveRecord::Base
     master
   end
 
+  def self.recent_master_hash
+    master = Hash.new
+
+    Video.recent.each do |video|
+      video.waza_formats.each do |waza_format|
+        waza = waza_format.waza
+        master[waza.name] ||= Hash.new
+        master[waza.name][waza_format.format.name] ||= Array.new
+        master[waza.name][waza_format.format.name] << waza_format
+      end
+    end
+    master
+  end
+
   def self.search(keyword)
     results = []
     if keyword.present?

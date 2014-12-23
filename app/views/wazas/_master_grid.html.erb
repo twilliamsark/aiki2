@@ -1,9 +1,4 @@
-<% provide(:title, @title) %>
-<h1>Master Grid</h1>
-
-<%
-  format_names = Format.all.sort_by(&:position).map(&:name)
-%>
+<h1><%= local_title %></h1>
 
 <div class="row pad_top pad_sides aiki_box">
   <div class="col-md-12">
@@ -16,8 +11,7 @@
       </thead>
       <tbody>
         <%
-        master = Waza.master_hash
-        master.each do |waza, format_hash|
+        master_hash.each do |waza, format_hash|
         %>
           <tr>
           <td><strong><%= waza %></strong></td>
@@ -60,6 +54,3 @@
     </table>
   </div>
 </div>
-
-
-
