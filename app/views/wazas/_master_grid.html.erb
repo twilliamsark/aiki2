@@ -1,4 +1,10 @@
-<% recent_only ||= false %>
+<%
+  recent_only ||= false
+  local_title ||= 'Master Grid'
+  if recent_only
+    local_title += " - #{Video.recent.size}"
+  end
+%>
 <h1><%= local_title %></h1>
 
 <div class="row pad_top pad_sides aiki_box">
