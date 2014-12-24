@@ -8,6 +8,7 @@ class Waza < ActiveRecord::Base
   belongs_to :direction, inverse_of: :wazas
 
   has_many :waza_formats, inverse_of: :waza
+  accepts_nested_attributes_for :waza_formats, allow_destroy: true
 
   has_many :ranks, through: :waza_formats
   has_many :formats, through: :waza_formats

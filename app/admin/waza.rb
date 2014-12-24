@@ -1,5 +1,5 @@
 ActiveAdmin.register Waza do
-  permit_params :name, :technique_id, :attack_id, :stance_id, :direction_id, :position, :on_test, :description, :short_description
+  permit_params :name, :technique_id, :attack_id, :stance_id, :direction_id, :position, :on_test, :description, :short_description, waza_format_attributes: [:id, :waza_id, :format_id, :rank_id, :on_test]
   menu priority: 0
 
   config.sort_order = "name_asc"
@@ -111,6 +111,16 @@ ActiveAdmin.register Waza do
       f.input :short_description
       f.input :description
     end
+
+    f.inputs do
+      f.has_many :waza_formats, :allow_destroy => true, :heading => 'Formats' do |cf|
+        cf.input :waza
+        cf.input :format
+        cf.input :rank
+        cf.input :on_test
+      end
+    end
+
     f.actions
   end
 end
