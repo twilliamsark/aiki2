@@ -15,13 +15,15 @@ class User < ActiveRecord::Base
 
   validate :check_user_flags
 
+  scope :reviewer, -> { where(reviewer: true) }
+  scope :not_reviewer, -> { where(arel_table[:reviewer].eq(nil).or(arel_table[:reviewer].eq(false))) }
   scope :admin, -> { where(admin: true) }
   scope :not_admin, -> { where(arel_table[:admin].eq(nil).or(arel_table[:admin].eq(false))) }
   scope :demo, -> { where(demo: true) }
   scope :not_demo, -> { where(arel_table[:demo].eq(nil).or(arel_table[:demo].eq(false))) }
 
   def self.regular
-    not_admin.not_demo
+    not_admin.not_demo.not_reviewer
   end
 
   def self.new_token
