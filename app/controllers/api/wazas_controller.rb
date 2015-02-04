@@ -3,7 +3,7 @@ module API
     # curl -iH "Accept: application/json" http://localhost:3000/api/wazas?sort_by=Rank
     # curl -iH "Accept: application/json" https://yurusu-video.herokuapp.com/api/wazas?sort_by=Technique
     def index
-      @sort_class = params[:sort_by]
+      @sort_class = params[:sort_by] || 'Rank'
       @selection = @sort_class.constantize.send(:get_wazas)
     end
 
