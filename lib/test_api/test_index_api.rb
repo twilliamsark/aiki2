@@ -1,16 +1,15 @@
 require 'debugger'
 require 'net/http'
-# require 'openssl'
 require 'uri'
 require 'json'
 require 'ap'
 
-# uri = URI.parse("https://yurusu-video.herokuapp.com/api/wazas?sort_by=Technique")
-uri = URI.parse("http://localhost:3000/api/wazas?sort_by=Rank")
+uri = URI.parse("http://yurusu-video.herokuapp.com/api/wazas?sort_by=Technique")
+uri = URI.parse("http://yurusu-video.herokuapp.com/api/wazas")
+# uri = URI.parse("http://localhost:3000/api/wazas?sort_by=Stance")
+# uri = URI.parse("http://localhost:3000/api/wazas")
 
 http = Net::HTTP.new(uri.host, uri.port)
-# http.use_ssl = true
-# http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Get.new(uri.request_uri)
 request.add_field('Content-Type', 'application/json')
