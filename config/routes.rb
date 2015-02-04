@@ -42,4 +42,10 @@ Aiki::Application.routes.draw do
   #AJAX Calls
   get "/search" => "wazas#search", as: :search
   get "/remote_waza" => "wazas#remote_waza", as: :remote_waza
+
+  #API
+  namespace :api, defaults: {format: 'json'} do
+    resources :wazas, only: [:index, :show]
+    get 'wazas/:id/formats/:format_id', to: 'wazas#show_waza_format', via: 'get', as: :waza_format
+  end
 end
