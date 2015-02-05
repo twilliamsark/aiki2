@@ -5,6 +5,7 @@ require 'json'
 require 'ap'
 
 uri = URI.parse("http://localhost:3000/api/wazas/18")
+# uri = URI.parse("http://yurusu-video.herokuapp.com/api/wazas/18")
 
 http = Net::HTTP.new(uri.host, uri.port)
 
