@@ -1,5 +1,6 @@
 show_videos ||= nil
 if waza_format.format
+  json.id waza_format.format.id
   json.name waza_format.format.name
   if waza_format.format.description.present?
     json.description waza_format.format.description
