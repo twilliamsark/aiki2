@@ -4,10 +4,10 @@ require 'uri'
 require 'json'
 require 'ap'
 
-uri = URI.parse("http://yurusu-video.herokuapp.com/api/wazas?sort_by=Technique")
-uri = URI.parse("http://yurusu-video.herokuapp.com/api/wazas")
+# uri = URI.parse("http://yurusu-video.herokuapp.com/api/wazas?sort_by=Technique")
+# uri = URI.parse("http://yurusu-video.herokuapp.com/api/wazas")
 # uri = URI.parse("http://localhost:3000/api/wazas?sort_by=Stance")
-# uri = URI.parse("http://localhost:3000/api/wazas")
+uri = URI.parse("http://localhost:3000/api/wazas")
 
 http = Net::HTTP.new(uri.host, uri.port)
 

@@ -8,7 +8,13 @@ module API
     end
 
     def show
-      #TODO
+      id = params[:id]
+      @waza = Waza.find_by(id: id)
+      if @waza
+        respond_to {|format| format.json}
+      else
+        render json: {error: 'Unable to find'}, status: :unprocessable_entity
+      end
     end
 
     def show_waza_format
