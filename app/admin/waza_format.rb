@@ -1,5 +1,5 @@
 ActiveAdmin.register WazaFormat do
-  permit_params :waza_id, :format_id, :rank_id, :on_test, :description, videos_attributes: [:id, :youtube_code, :primary, :visible, :for_demo, :description, :attack_height_id, :style_id, :sensei_id, :kata_id, :kata_number, :copyright, :_destroy]
+  permit_params :waza_id, :format_id, :rank_id, :on_test, :description, videos_attributes: [:id, :name, :youtube_code, :primary, :visible, :for_demo, :description, :attack_height_id, :style_id, :sensei_id, :kata_id, :kata_number, :copyright, :_destroy]
   menu priority: 0
 
   config.sort_order = 'format_id_asc'
