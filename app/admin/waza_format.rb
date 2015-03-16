@@ -89,6 +89,7 @@ ActiveAdmin.register WazaFormat do
     f.inputs do
       f.has_many :videos, :allow_destroy => true, :heading => 'Videos' do |cf|
         cf.input :youtube_code
+        cf.input :name
         cf.input :description
         cf.input :visible
         cf.input :primary
@@ -98,7 +99,7 @@ ActiveAdmin.register WazaFormat do
         cf.input :sensei
         cf.input :kata
         cf.input :kata_number
-        cf.input :copyright, :input_html => { :value => 'Aikido Center of San Antonio, Copyright 2015' }
+        cf.input :copyright, :input_html => { :value => cf.object.copyright || 'Aikido Center of San Antonio, Copyright 2015' }
       end
     end
     f.actions

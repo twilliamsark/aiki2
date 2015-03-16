@@ -38,6 +38,7 @@ ActiveAdmin.register Video do
         row :style
         row :kata
         row :kata_number
+        row :copyright
       end
     end
 
