@@ -1,5 +1,5 @@
 ActiveAdmin.register WazaFormat do
-  permit_params :waza_id, :format_id, :rank_id, :on_test, :description, videos_attributes: [:id, :youtube_code, :primary, :visible, :for_demo, :description, :attack_height_id, :style_id, :sensei_id, :kata_id, :copyright, :_destroy]
+  permit_params :waza_id, :format_id, :rank_id, :on_test, :description, videos_attributes: [:id, :youtube_code, :primary, :visible, :for_demo, :description, :attack_height_id, :style_id, :sensei_id, :kata_id, :kata_number, :copyright, :_destroy]
   menu priority: 0
 
   config.sort_order = 'format_id_asc'
@@ -97,7 +97,8 @@ ActiveAdmin.register WazaFormat do
         cf.input :style
         cf.input :sensei
         cf.input :kata
-        cf.input :copyright
+        cf.input :kata_number
+        cf.input :copyright, :input_html => { :value => 'Aikido Center of San Antonio, Copyright 2015' }
       end
     end
     f.actions

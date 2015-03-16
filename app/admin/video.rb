@@ -1,7 +1,7 @@
 ActiveAdmin.register Video do
   config.clear_action_items!
 
-  permit_params :waza_id, :youtube_code, :primary, :visible, :for_demo, :description, :attack_height_id, :sensei_id, :style_id, :copyright, :name
+  permit_params :waza_id, :youtube_code, :primary, :visible, :for_demo, :description, :attack_height_id, :sensei_id, :style_id, :copyright, :name, :kata_id, :kata_number
   menu priority: 2
 
   index do
@@ -36,6 +36,8 @@ ActiveAdmin.register Video do
         row :sensei
         row :attack_height
         row :style
+        row :kata
+        row :kata_number
       end
     end
 
