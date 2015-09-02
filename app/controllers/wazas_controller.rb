@@ -48,9 +48,34 @@ class WazasController < ApplicationController
   end
 
   def master_view
-    @master_hash = Waza.master_hash
+    options = {}
+    if params[:stance].present?
+      @stance = Stance.find_by(id: params[:stance]) rescue nil
+      if @stance
+        options[:stance] = @stance.name
+        @stance = @stance.id
+      end
+    end
+    if params[:technique].present?
+      @technique = Technique.find_by(id: params[:technique]) rescue nil
+      if @technique
+        options[:technique] = @technique.name
+        @technique = @technique.id
+      end
+    end
+    if params[:format].present?
+      @format = Format.find_by(id: params[:format]) rescue nil
+      if @format
+        options[:format] = @format.name
+        @format = @format.id
+      end
+    end
+
+    @master_hash = Waza.master_hash(options)
     @recent_master_hash = Waza.recent_master_hash
     @title = "Master Grid"
+
+    render :master_view
   end
 
   # ajax only

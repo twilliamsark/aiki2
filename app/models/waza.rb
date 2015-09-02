@@ -37,10 +37,11 @@ class Waza < ActiveRecord::Base
    -> { joins(:videos).merge(Video.demo) }
 
 
-  def self.master_hash
+  def self.master_hash(options={})
     master = Hash.new
-
     Waza.all.sort_by(&:name).each do |waza|
+      next unless include_waza?(waza, options)
+      next unless include_format?(waza.formats.map(&:name), options)
       master[waza.name] ||= Hash.new
       if waza.waza_formats
         waza.waza_formats.each do |waza_format|
@@ -68,6 +69,27 @@ class Waza < ActiveRecord::Base
       end
     end
     master
+  end
+
+  def self.include_format?(formats, options)
+    return true unless options[:format].present? && formats.any?
+    formats.include? options[:format]
+  end
+
+  def self.include_waza?(waza, options)
+    return true if options.empty?
+
+    technique_include = options[:technique].present? ? false : true
+    if options[:technique].present? && waza.technique
+      technique_include = options[:technique] == waza.technique.name
+    end
+
+    stance_include = options[:stance].present? ? false : true
+    if options[:stance].present? && waza.stance
+      stance_include = options[:stance] == waza.stance.name
+    end
+
+    return technique_include && stance_include
   end
 
   def self.search(keyword)

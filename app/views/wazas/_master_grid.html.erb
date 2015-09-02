@@ -15,6 +15,49 @@
 <strong>Ordered newest to oldest</strong>
 <% end %>
 </br>
+
+<% unless recent_only %>
+  <%= form_tag master_view_path, method: :get do %>
+    <% 
+      @stance ||= nil
+      @technique ||= nil
+      @format ||= nil
+    %>
+    <div class="row">
+      <div class="col-md-12"><h4>Filters</h4></div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <%= label_tag "stance", "Stance:" %>
+      </div>
+      <div class="col-md-6">
+        <%= select_tag "stance", options_for_select(Stance.order(:name).map{|s| [s.name, s.id]}, @stance), include_blank: true %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <%= label_tag "technique", "Technique:" %>
+      </div>
+      <div class="col-md-6">
+        <%= select_tag "technique", options_for_select(Technique.order(:name).map{|s| [s.name, s.id]}, @technique), include_blank: true %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <%= label_tag "format", "Format:" %>
+      </div>
+      <div class="col-md-6">
+        <%= select_tag "format", options_for_select(Format.order(:name).map{|s| [s.name, s.id]}, @format), include_blank: true %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= submit_tag 'Go' %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+</br>
 <div class="row pad_top pad_sides aiki_box">
   <div class="col-md-12">
     <table class="table table-striped table-bordered">

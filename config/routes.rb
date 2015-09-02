@@ -34,7 +34,7 @@ Aiki::Application.routes.draw do
 # /aikido?waza=15&video=17
 # /aikido?waza=15&video=17&sort=format
   match '/aikido', to: 'wazas#aikido', via: 'get'
-  match '/master_view', to: 'wazas#master_view', via: 'get'
+  match '/master_view', to: 'wazas#master_view', via: 'get', as: 'master_view'
   match '/video_signup', to: 'users#new', via: 'get'
   match '/signin', to: 'sessions#new', via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'

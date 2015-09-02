@@ -35,7 +35,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'debugger'
+  gem 'pry-byebug'
   gem 'rspec-rails', '2.13.1'
   gem 'sqlite3'
   gem 'factory_girl_rails', '4.2.1'
