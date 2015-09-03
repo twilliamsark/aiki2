@@ -15,15 +15,28 @@ module HasVideos
   def get_wazas(options={})
     user = options[:user]
     wazas = self.wazas.distinct
-    wazas = wazas.select {|waza| VideoUtils.show_videos?(waza.videos, user)} if user
+
+    if user
+      wazas = wazas.select do |waza| 
+        if options[:format]
+          # binding.pry
+          videos = waza.waza_formats.for_format(options[:format]).map(&:videos)
+        else
+          videos = waza.videos
+        end
+
+        VideoUtils.show_videos?(videos, user)
+      end
+    end
+
     wazas.flatten
   end
 
   module ClassMethods
 
-    def get_wazas(current_user=nil)
+    def get_wazas(options={})
       wazas = self.default_order.map do |a|
-        a.get_wazas(user: current_user)
+        a.get_wazas(options)
       end.flatten
 
       wazas.compact!

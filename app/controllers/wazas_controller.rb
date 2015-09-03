@@ -3,6 +3,7 @@ class WazasController < ApplicationController
   before_filter :action_params, only: [:aikido, :remote_waza]
 
   def aikido
+    # binding.pry
     @default_sort = if params[:sort_type]
       params[:sort_type].gsub(/[[:space:]]/,'')
     elsif @waza_id
@@ -117,6 +118,8 @@ class WazasController < ApplicationController
   private
 
   def wazas(sort_class, filters={}, waza_id = nil, video_id = nil, format_id = nil)
+    options = {user: current_user}
+
     if !waza_id.nil?
       @waza = Waza.find_by_id(waza_id)
       unless @waza
@@ -127,6 +130,7 @@ class WazasController < ApplicationController
 
     if !format_id.nil?
       @format = Format.find_by_id(format_id)
+      options[:format] = @format if @format
     end
 
     if !waza_id.nil?
@@ -144,8 +148,8 @@ class WazasController < ApplicationController
         video = nil
       end
     end
-
-    selection = sort_class.constantize.send(:get_wazas, current_user)
+# binding.pry if format_id
+    selection = sort_class.constantize.send(:get_wazas, options)
     if video.nil? && waza_id.nil?
       first_selector = selection.keys.first
       wazas = selection[first_selector]
@@ -183,6 +187,6 @@ class WazasController < ApplicationController
   def action_params
     @waza_id = params[:waza]
     @video_id = params[:video]
-    @format_id = params[:format_type]
+    @format_id = params[:format_id]
   end
 end

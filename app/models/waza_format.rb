@@ -20,6 +20,7 @@ class WazaFormat < ActiveRecord::Base
 
   scope :rank_order, -> { joins(:rank).order('ranks.position') }
   scope :format_order, -> { joins(:format).order('formats.position') }
+  scope :for_format, ->(format) { where(format_id: format) }
 
   def first_video(options={})
     options.reverse_merge!(recent_only: false)
