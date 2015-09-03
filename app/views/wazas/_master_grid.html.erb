@@ -1,12 +1,17 @@
 <%
   recent_only ||= false
+  @stance ||= nil
+  @technique ||= nil
+  @format ||= nil
 
   local_title = recent_only ? 'Recent Uploads' : 'Master Grid'
 
   if recent_only
     local_title += " - #{Video.recent.count}"
-  else
+  elsif @stance.nil? && @technique.nil? && @format.nil?
     local_title += " - #{Video.count}"
+  else
+    local_title += " - Filtered"
   end
 %>
 <h1><%= local_title %></h1>
@@ -18,11 +23,6 @@
 
 <% unless recent_only %>
   <%= form_tag master_view_path, method: :get do %>
-    <% 
-      @stance ||= nil
-      @technique ||= nil
-      @format ||= nil
-    %>
     <div class="row">
       <div class="col-md-12"><h4>Filters</h4></div>
     </div>
