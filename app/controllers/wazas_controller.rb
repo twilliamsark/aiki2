@@ -72,7 +72,9 @@ class WazasController < ApplicationController
     end
 
     @master_hash = Waza.master_hash(options)
-    @recent_master_hash = Waza.recent_master_hash
+    if @stance.nil? && @technique.nil? && @format.nil?
+      @recent_master_hash = Waza.recent_master_hash
+    end
     @title = "Master Grid"
 
     render :master_view

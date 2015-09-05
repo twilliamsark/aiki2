@@ -1,8 +1,12 @@
 <% provide(:title, @title) %>
 <%
   @format_names = Format.all.sort_by(&:position).map(&:name)
+  @recent_master_hash ||= nil
+  @stance ||= nil
+  @technique ||= nil
+  @format ||= nil  
 %>
-<% unless @recent_master_hash.empty? %>
+<% if (@recent_master_hash && !@recent_master_hash.empty?) && (@stance.nil? && @technique.nil? && @format.nil?) %>
   <%= render 'master_grid', format_names: @format_names, master_hash: @recent_master_hash, recent_only: true %>
   <br/>
 <% end %>
