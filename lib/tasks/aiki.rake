@@ -14,6 +14,10 @@ namespace :aiki do
     end
   end
 
+  task users_to_seed_fu: :environment do
+    User.to_seed_fu
+  end
+
   task dump_video_seed_fu: :environment do
     Video.to_seed_fu
   end

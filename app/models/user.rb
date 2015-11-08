@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include SeedFuSerializeable
   before_create :create_remember_token
   before_save { email.downcase! }
 
@@ -85,9 +86,9 @@ class User < ActiveRecord::Base
     save(validate: false)
   end
 
-  def to_h
-    {id: id, email: email, admin: admin?, demo: demo?, regular: regular?}
-  end
+  # def to_h
+  #   {id: id, email: email, admin: admin?, demo: demo?, regular: regular?}
+  # end
 
   #for active_admin
   def display_name
