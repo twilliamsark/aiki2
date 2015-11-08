@@ -89,7 +89,7 @@ class User < ActiveRecord::Base
   def to_h
     # {id: id, email: email, admin: admin?, demo: demo?, regular: regular?}
     h = attributes.keys.select do |k| 
-      k != "created_at" && k != "updated_at" && k != "current_sign_in_at" && k != "last_sign_in_at" && k != "password_reset_sent_at"
+      k != "created_at" && k != "updated_at" && k != "current_sign_in_at" && k != "last_sign_in_at" && k != "password_reset_sent_at" && k != "demo_user_expires_on"
     end.map{|k| "#{k}: #{k}"}.join(', ')
     eval("{#{h}}")
   end
