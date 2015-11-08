@@ -86,9 +86,13 @@ class User < ActiveRecord::Base
     save(validate: false)
   end
 
-  # def to_h
-  #   {id: id, email: email, admin: admin?, demo: demo?, regular: regular?}
-  # end
+  def to_h
+    # {id: id, email: email, admin: admin?, demo: demo?, regular: regular?}
+    h = attributes.keys.select do |k| 
+      k != "created_at" && k != "updated_at" && k != "current_sign_in_at" && k != "last_sign_in_at" && k != "password_reset_sent_at"
+    end.map{|k| "#{k}: #{k}"}.join(', ')
+    eval("{#{h}}")
+  end
 
   #for active_admin
   def display_name
