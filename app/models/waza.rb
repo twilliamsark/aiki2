@@ -21,7 +21,7 @@ class Waza < ActiveRecord::Base
 
   after_save :set_keywords
 
-  scope :distinct, -> { uniq }
+  scope :distinct_model, -> { uniq }
   scope :default_order, -> { order(:name) }
   scope :for_direction, ->(direction) { where(direction_id: direction) }
   scope :for_technique, ->(technique) { where(technique_id: technique) }
@@ -174,7 +174,7 @@ class Waza < ActiveRecord::Base
                           :senseis, :attack_heights, :styles]
 
     collection_attribs.each do |attribs|
-      self.send(attribs, true).distinct.each do |attrib|
+      self.send(attribs, true).distinct_model.each do |attrib|
         waza_attribs << attrib
       end
     end

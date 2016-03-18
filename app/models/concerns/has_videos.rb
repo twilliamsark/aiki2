@@ -4,7 +4,7 @@ module HasVideos
   SELECT_ANY = -1
 
   included do
-    scope :distinct, -> { uniq }
+    scope :distinct_model, -> { uniq }
     scope :default_order, -> { order(:name) }
   end
 
@@ -14,7 +14,7 @@ module HasVideos
 
   def get_wazas(options={})
     user = options[:user]
-    wazas = self.wazas.distinct
+    wazas = self.wazas.distinct_model
     wazas = wazas.select {|waza| VideoUtils.show_videos?(waza.videos, user)} if user
     wazas.flatten
   end

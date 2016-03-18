@@ -23,6 +23,6 @@ module Filterable
   end
 
   def update_waza_keywords
-    wazas.distinct.each(&:set_keywords)
+    wazas.distinct_model.each(&:set_keywords)
   end
 end

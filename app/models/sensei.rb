@@ -9,6 +9,6 @@ class Sensei < ActiveRecord::Base
 
   validates_presence_of :name
 
-  scope :distinct, -> { uniq }
+  scope :distinct_model, -> { uniq }
   scope :default_order, -> { order(:name) }
 end
